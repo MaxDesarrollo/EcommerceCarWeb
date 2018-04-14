@@ -43,11 +43,12 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Domain\Entities\" />
-    <Folder Include="Domain\Services\" />
-    <Folder Include="Infrastucture\Data\DataModels\" />
-    <Folder Include="Infrastucture\Data\Repositories\" />
+    <Content Include="Domain\Entities\Obs.txt" />
+    <Content Include="Domain\Services\Obs.txt" />
+    <Content Include="Infrastucture\Data\DataModels\Obs.txt" />
+    <Content Include="Infrastucture\Data\Repositories\Obs.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
