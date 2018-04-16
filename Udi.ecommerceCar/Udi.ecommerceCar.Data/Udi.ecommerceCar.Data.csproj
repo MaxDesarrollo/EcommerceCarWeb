@@ -30,8 +30,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,14 +52,112 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Domain\Services\ComunServicio.cs" />
+    <Compile Include="Domain\Services\ProductoServicio.cs" />
+    <Compile Include="Infrastructure\Data\DataModels\DbContext.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbContext.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Data\DataModels\DbContext.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Data\DataModels\DbContext.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbContext.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Data\DataModels\DetalleVentaProducto.cs">
+      <DependentUpon>DbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Data\DataModels\DetalleVentaServicio.cs">
+      <DependentUpon>DbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Data\DataModels\DetalleVentaVehiculo.cs">
+      <DependentUpon>DbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Data\DataModels\Marca.cs">
+      <DependentUpon>DbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Data\DataModels\Modelo.cs">
+      <DependentUpon>DbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Data\DataModels\Producto.cs">
+      <DependentUpon>DbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Data\DataModels\Servicios.cs">
+      <DependentUpon>DbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Data\DataModels\Stock.cs">
+      <DependentUpon>DbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Data\DataModels\TestDrive.cs">
+      <DependentUpon>DbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Data\DataModels\TipoCaja.cs">
+      <DependentUpon>DbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Data\DataModels\TipoProducto.cs">
+      <DependentUpon>DbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Data\DataModels\TipoServicio.cs">
+      <DependentUpon>DbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Data\DataModels\TipoVehiculo.cs">
+      <DependentUpon>DbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Data\DataModels\Usuario.cs">
+      <DependentUpon>DbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Data\DataModels\Vehiculo.cs">
+      <DependentUpon>DbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Data\DataModels\VentaProducto.cs">
+      <DependentUpon>DbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Data\DataModels\VentaServicio.cs">
+      <DependentUpon>DbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Data\DataModels\VentaVehiculo.cs">
+      <DependentUpon>DbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Data\Repositories\EFRepositorio.cs" />
+    <Compile Include="Infrastructure\Data\Repositories\ProductoRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EntityDeploy Include="Infrastructure\Data\DataModels\DbContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DbContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Domain\Entities\Obs.txt" />
     <Content Include="Domain\Services\Obs.txt" />
-    <Content Include="Infrastucture\Data\DataModels\Obs.txt" />
-    <Content Include="Infrastucture\Data\Repositories\Obs.txt" />
+    <Content Include="Infrastructure\Data\DataModels\DbContext.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DbContext.edmx</DependentUpon>
+      <LastGenOutput>DbContext.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Infrastructure\Data\DataModels\DbContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DbContext.edmx</DependentUpon>
+      <LastGenOutput>DbContext.cs</LastGenOutput>
+    </Content>
+    <Content Include="Infrastructure\Data\DataModels\Obs.txt" />
+    <Content Include="Infrastructure\Data\Repositories\Obs.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="Infrastructure\Data\DataModels\DbContext.edmx.diagram">
+      <DependentUpon>DbContext.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
