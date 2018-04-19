@@ -7,7 +7,7 @@
 */
 
 /* 1. VARIABLES GLOBALES */
-var _datosProducto;
+var _datosProductos;
 
 /* 2. FUNCIONES GENERALES */
 
@@ -17,16 +17,14 @@ function getProductCardHtml(nombre, descripcion, urlImagen, tipoProducto, precio
         `<div class="product-card">
             <div class="product-card-header">
                 <span class="product-card-title">${nombre}</span>
-                <span class="product-card-description">${descripcion}</span>
             </div>
 
-            <div class="product-card-image">
-                <img src="Images/${tipoProducto}/${nombre}.jpg" alt="${nombre}">
+            <div class ="product-card-image" style="background-image: url('Images/${tipoProducto}/${nombre}.jpg')">
             </div>
 
             <div class="product-card-detail">
                 <div class="product-card-price">
-                    ${precio}
+                    $${precio}
                 </div>
 
                 <button class="btnProductCardAddtoCart">
@@ -34,6 +32,9 @@ function getProductCardHtml(nombre, descripcion, urlImagen, tipoProducto, precio
                 </button>
             </div>
         </div>`;
+
+    //<span class="product-card-description">${descripcion}</span>
+    //<img src="Images/${tipoProducto}/${nombre}.jpg" alt="${nombre}">
 
     return productCardHtml;
 }
@@ -55,7 +56,7 @@ function mostrarDatosProductos() {
     //});
 
     var listaProductCardHtml = '';
-    _datosProducto.forEach(function (producto) {
+    _datosProductos.forEach(function (producto) {
         listaProductCardHtml += getProductCardHtml(producto.Nombre, producto.Descripcion, producto.Nombre, producto.TipoProducto, 65);
     });
 
@@ -65,8 +66,8 @@ function mostrarDatosProductos() {
 function obtenerProductosExitoso(resultado) {
     console.log(resultado);
     if (resultado.Success) {
-        _datosProducto = resultado.Data;
-        console.log(_datosProducto);
+        _datosProductos = resultado.Data;
+        console.log(_datosProductos);
         //_datosTipo = resultado.Data.Tipos;
 
         mostrarDatosProductos();
