@@ -1,0 +1,377 @@
+﻿/*
+	INDICE
+	1. GENERAL
+	2. HEADER
+	3. SECCION SLIDERS
+	4. SECCION PRODUCTOS
+	5. SECCION SERVICIOS
+	6. SECCION TEST-DRIVE
+	7. FOOTER
+	8. KEYFRAMES
+*/
+
+/* 1. GENERAL */
+:root {
+	--margin-inicio: 135px;
+	--seccion-autos-height: 60vh;
+
+	--animation-duration: 20s;
+}
+
+html, body {
+	min-height: 100vh;
+	max-width: 100vw;
+	padding: 0;
+	margin: 0;
+
+	font-family: Helvetica, Arial, sans-serif;
+	color: #333;
+}
+
+.seccion {
+	padding: 60px 80px;
+	width: 100%;
+	min-height: 100vh;
+
+	margin: 0; 
+	overflow: hidden;
+
+	position: relative;
+	box-sizing: border-box;
+	/*min-height: 50vh;*/
+}
+
+
+.flex-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.seccion-titulo {
+	color: black;
+
+	font-size: 3em;
+	padding: 15px;
+}
+
+
+.formulario-largo {
+	background-color: white;
+
+	width: 400px;
+	height: 450px;
+
+	padding: 20px;
+	box-sizing: border-box;
+}
+.formulario-largo .seccion-titulo {
+	font-size: 2.5em;
+}
+
+.formulario {
+	background-color: white;
+
+	width: 600px;
+	height: 200px;
+
+	padding: 20px;
+	box-sizing: border-box;
+}
+.formulario-campo {
+	/*width: 100%;*/
+	margin: 5px 30px;
+
+	display: flex;
+	flex-direction: column;
+}
+
+
+/* 2. HEADER */
+.navheader {
+	/*height: var(--margin-inicio);*/
+	width: 100vw;
+	position: fixed;
+	top: 0;
+	z-index: 100;
+
+	/*background-color: transparent;*/
+	/*color: #333;*/
+
+	display: flex;
+	/*align-items: center;*/
+	align-items: flex-end;
+	/*justify-content: space-between;*/
+	/*justify-content: space-between;*/
+
+	transition: .4s;
+
+	padding: 0 80px;
+	box-sizing: border-box;
+}
+.navheader {
+	height: calc((var(--margin-inicio) / 2) - 10px);
+
+	background-color: #000;
+	color: #fff;
+
+	/*display: flex;*/
+	align-items: center;
+	justify-content: space-between;
+}
+
+
+/*.navheader--scrolled {
+	height: calc((var(--margin-inicio) / 2) - 10px) !important;
+
+	background-color: #000 !important;
+	color: #fff !important;
+
+	display: flex;
+	align-items: center;
+
+	transition: .6s;
+}
+.navheader--scrolled .navheader-link {
+	color: #fff !important;
+}*/
+
+.navheader-link {
+	text-decoration: none;
+	/*color: #000;*/
+	color: #fff;
+
+	padding: 20px;
+	box-sizing: border-box;
+}
+.navheader-link:link,
+.navheader-link:visited,
+.navheader-link:active {
+	/*color: #000;*/
+	color: #fff;
+}
+.navheader-link:hover {
+	color: grey;
+}
+
+
+/* 3. SECCION SLIDERS */
+.sliders {
+	/*width: 100vw;*/
+	overflow-x: hidden;
+
+	padding: 0;
+	/*margin-top: var(--margin-inicio);*/
+
+	/*background-color: red;*/
+	/*min-height: calc(var(--seccion-autos-height) + var(--margin-inicio));*/
+	min-height: 85vh;
+
+	/*margin-bottom: 100px;*/
+}
+
+.slider {
+	width: 100%;
+	position: absolute;
+	/*height: calc(var(--seccion-autos-height) + var(--margin-inicio));*/
+	height: 100%;
+
+	padding-bottom: 20px;
+	box-sizing: border-box; 
+}
+
+.slider-one {
+	background-color: white;
+	/*background-image: url('../img/test-drive/test-drive-image-01.jpg');*/
+	left: -100%;
+
+	display: flex;
+	justify-content: space-evenly;
+	align-items: flex-end;
+
+	animation: moveFirstSlider var(--animation-duration) infinite;
+}
+.slider-two {
+	background-image: url('../img/test-drive/test-drive-image-01.jpg');
+	background-size: cover;
+	background-position: center;
+	left: 0%;
+
+	display: flex;
+	justify-content: space-evenly;
+	align-items: flex-end;
+
+	animation: moveSecondSlider var(--animation-duration) infinite;
+}
+.slider-three {
+	background-color: white;
+	left: 100%;
+
+	display: flex;
+	justify-content: space-evenly;
+	align-items: flex-end;
+
+	animation: moveThirdSlider var(--animation-duration) infinite;
+}
+
+
+.slider-message {
+	max-width: 33%;
+
+	box-sizing: border-box;
+	padding: 50px;
+	padding-bottom: 0px;
+}
+.slider-title {
+	font-size: 35px;
+	font-weight: bold;
+
+}
+.slider-text {
+	font-size: 31px;
+	margin-top: 0;
+}
+
+
+.slider-image-container {
+	display: flex;
+	align-items: center;
+}
+.slider-image {
+	max-height: 40vh;
+}
+
+
+/*
+.imagen-auto {
+	max-width: 900px;
+}*/
+
+/* 4. SECCION PRODUCTOS */
+.productos {
+	/*background-color: #562354;*/
+	background-color: #1abc9c;
+
+	flex-direction: column;
+}
+
+/* 5. SECCION SERVICIOS */
+.servicios {
+	/*background-color: #6846aa;*/
+
+	flex-direction: column;
+}
+
+/* 6. SECCION TEST DRIVE */
+.test-drive {
+	/*background-color: #12ffa8;*/
+	background-image: url('../img/test-drive/test-drive-image-02.jpg');
+	background-size: cover;
+	background-position: center;
+
+	display: flex;
+	align-items: center;
+	/*flex-direction: column;*/
+	/*justify-content: flex-end;*/
+}
+.test-drive-formulario {
+	padding: 0 15px;
+}
+
+
+/* 7. FOOTER */
+footer {
+	background: #223559;
+
+	height: 100px;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	color: white;
+
+	padding: 0 80px;
+	box-sizing: border-box;
+}
+
+
+/* 8. KEYFRAMES */
+@keyframes moveFirstSlider {
+	0% {
+		left: -100%;
+	}
+	20% {
+		left: -100%;
+		z-index: -1;
+	} 
+	30% {
+		left: 100%;
+	}
+	50% {
+		left: 100%;
+		z-index: 0;
+	}
+	60% {
+		left: 0%;
+	}
+	90% {
+		left: 0%;
+	}
+	100% {
+		left: -100%;
+	}
+}
+
+@keyframes moveSecondSlider {
+	0% {
+		left: 0%;
+	}
+	20% {
+		left: 0%;
+	} 
+	30% {
+		left: -100%;
+	}
+	50% {
+		left: -100%;
+		z-index: -1;
+	}
+	60% {
+		left: 100%;
+	}
+	90% {
+		left: 100%;
+		z-index: 0;
+	}
+	100% {
+		left: 0%;
+	}
+}
+
+@keyframes moveThirdSlider {
+	0% {
+		left: 100%;
+	}
+	20% {
+		left: 100%;
+		z-index: 0;
+	} 
+	30% {
+		left: 0%;
+	}
+	50% {
+		left: 0%;
+	}
+	60% {
+		left: -100%;
+	}
+	90% {
+		left: -100%;
+		/*z-index: -1;*/
+	}
+	100% {
+		left: 100%;
+		z-index: -1;
+	}
+}

@@ -45,6 +45,12 @@
 	color: #23211f;
 	text-transform: uppercase;
 
+    width: 210px;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
 	font-weight: 900;
 }
 .product-card-description {
@@ -54,6 +60,12 @@
 }
 
 .product-card-image {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    height: 180px;
+
 	width: 100%;
 	max-height: 180px;
 
