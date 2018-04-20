@@ -95,14 +95,8 @@ html, body {
 	top: 0;
 	z-index: 100;
 
-	/*background-color: transparent;*/
-	/*color: #333;*/
-
 	display: flex;
-	/*align-items: center;*/
 	align-items: flex-end;
-	/*justify-content: space-between;*/
-	/*justify-content: space-between;*/
 
 	transition: .4s;
 
@@ -115,30 +109,12 @@ html, body {
 	background-color: #000;
 	color: #fff;
 
-	/*display: flex;*/
 	align-items: center;
 	justify-content: space-between;
 }
 
-
-/*.navheader--scrolled {
-	height: calc((var(--margin-inicio) / 2) - 10px) !important;
-
-	background-color: #000 !important;
-	color: #fff !important;
-
-	display: flex;
-	align-items: center;
-
-	transition: .6s;
-}
-.navheader--scrolled .navheader-link {
-	color: #fff !important;
-}*/
-
 .navheader-link {
 	text-decoration: none;
-	/*color: #000;*/
 	color: #fff;
 
 	padding: 20px;
@@ -147,7 +123,6 @@ html, body {
 .navheader-link:link,
 .navheader-link:visited,
 .navheader-link:active {
-	/*color: #000;*/
 	color: #fff;
 }
 .navheader-link:hover {
@@ -157,17 +132,10 @@ html, body {
 
 /* 3. SECCION SLIDERS */
 .sliders {
-	/*width: 100vw;*/
 	overflow-x: hidden;
 
 	padding: 0;
-	/*margin-top: var(--margin-inicio);*/
-
-	/*background-color: red;*/
-	/*min-height: calc(var(--seccion-autos-height) + var(--margin-inicio));*/
 	min-height: 85vh;
-
-	/*margin-bottom: 100px;*/
 }
 
 .slider {
@@ -192,7 +160,7 @@ html, body {
 	animation: moveFirstSlider var(--animation-duration) infinite;
 }
 .slider-two {
-	background-image: url('../img/test-drive/test-drive-image-01.jpg');
+	background-image: url('../../Images/Slider/slider-two.jpg');
 	background-size: cover;
 	background-position: center;
 	left: 0%;
@@ -230,6 +198,8 @@ html, body {
 .slider-text {
 	font-size: 31px;
 	margin-top: 0;
+
+    margin-bottom: 0;
 }
 
 
@@ -242,14 +212,8 @@ html, body {
 }
 
 
-/*
-.imagen-auto {
-	max-width: 900px;
-}*/
-
 /* 4. SECCION PRODUCTOS */
 .productos {
-	/*background-color: #562354;*/
 	background-color: #1abc9c;
 
 	flex-direction: column;
@@ -257,22 +221,17 @@ html, body {
 
 /* 5. SECCION SERVICIOS */
 .servicios {
-	/*background-color: #6846aa;*/
-
 	flex-direction: column;
 }
 
 /* 6. SECCION TEST DRIVE */
 .test-drive {
-	/*background-color: #12ffa8;*/
-	background-image: url('../img/test-drive/test-drive-image-02.jpg');
+	background-image: url('../../Images/TestDrive/test-drive-01.jpg');
 	background-size: cover;
 	background-position: center;
 
 	display: flex;
 	align-items: center;
-	/*flex-direction: column;*/
-	/*justify-content: flex-end;*/
 }
 .test-drive-formulario {
 	padding: 0 15px;

@@ -55,6 +55,7 @@
     <Compile Include="Domain\Entities\MarcaDto.cs" />
     <Compile Include="Domain\Entities\ModeloDto.cs" />
     <Compile Include="Domain\Entities\ProductoDto.cs" />
+    <Compile Include="Domain\Entities\ServicioDto.cs" />
     <Compile Include="Domain\Entities\TestDriveDto.cs" />
     <Compile Include="Domain\Entities\TipoCajaDto.cs" />
     <Compile Include="Domain\Entities\TipoVehiculo.cs" />

@@ -4,18 +4,41 @@
 
 @section styles {
     <link href="~/Content/general/product-card.css" rel="stylesheet" />
-    <link href="~/Content/general/index.css" rel="stylesheet" />
+    <link href="~/Content/general/service-card.css" rel="stylesheet" />
+    <link href="~/Content/pages/index.css" rel="stylesheet" />
 }
 
 @section scripts {
     <script src="~/Scripts/pages/producto.js"></script>
+    <script src="~/Scripts/pages/servicio.js"></script>
+}
+
+@section navbar {
+    <nav id="navheader" class="navheader">
+    <!-- <div class="navheader-container"> -->
+        <div class="logo">LOGO</div>
+
+        <div class="navheader-links">
+            <!-- <button>asdf</button>
+            <button>asdf</button>
+            <button>asdf</button>
+            <button>asdf</button> -->
+
+            <a href="" class="navheader-link">Vehículos</a>
+            <a href="" class="navheader-link">Productos</a>
+            <a href="" class="navheader-link">Servicios</a>
+            <a href="" class="navheader-link">Test-Drive</a>
+            <a href="" class="navheader-link">Vehículos</a>
+        </div>
+        <!-- </div> -->
+    </nav>    
 }
 
 <div class="seccion sliders">
     <div class="slider slider-one">
 
         <div class="slider-image-container">
-            <img class="slider-image" src="img/auto-azul.png" alt="">
+            <img class="slider-image" src="~/Images/Slider/slider-one.png" alt="">
         </div>
 
         <div class="slider-message">
@@ -45,15 +68,15 @@
     <div class="slider slider-three">
 
         <!-- <img src="img/auto-azul.png" alt=""> -->
-        <div class="slider-image-container">
-            <img class="slider-image" src="img/auto-azul.png" alt="">
-        </div>
-
         <div class="slider-message">
             <span class="slider-title">Titulo</span>
             <p class="slider-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt nostrum placeat </p>
 
             <button>Ver más</button>
+        </div>
+
+        <div class="slider-image-container">
+            <img class="slider-image" src="~/Images/Slider/slider-three.png" alt="">
         </div>
 
     </div>
@@ -150,33 +173,33 @@
     </div>
 </div>
 
-<div class="seccion servicios flex-center">
+<div id="servicios" class="seccion servicios flex-center">
     <div class="seccion-titulo">Servicios</div>
 
     <div class="service-card-container">
-        <div class="service-card" style="background-image: url('img/services/service-image-01.jpg')">
+        @*<div class="service-card" style="background-image: url('img/services/service-image-01.jpg')">
             <div class="service-card-description">
                 Mantenimiento general
             </div>
-        </div>
+        </div>*@
 
-        <div class="service-card" style="background-image: url('img/services/service-image-02.jpg')">
+        @*<div class="service-card" style="background-image: url('img/services/service-image-02.jpg')">
             <div class="service-card-description">
                 Servicio de Llantas
             </div>
-        </div>
+        </div>*@
 
-        <div class="service-card" style="background-image: url('img/services/service-image-03.jpg')">
+        @*<div class="service-card" style="background-image: url('img/services/service-image-03.jpg')">
             <div class="service-card-description">
                 Arreglo de Motor
             </div>
-        </div>
+        </div>*@
 
-        <div class="service-card" style="background-image: url('img/services/service-image-04.jpg')">
+        @*<div class="service-card" style="background-image: url('img/services/service-image-04.jpg')">
             <div class="service-card-description">
                 Servicio de frenos
             </div>
-        </div>
+        </div>*@
 
     </div>
 </div>

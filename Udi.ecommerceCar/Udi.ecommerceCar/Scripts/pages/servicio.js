@@ -30,7 +30,7 @@ function getServiceCardHtml(nombre, urlImagen) {
 function mostrarDatosServicios() {
     var listaServiceCardHtml = '';
     _datosServicios.forEach(function (servicio) {
-        listaServiceCardHtml += getServiceCardHtml("", "");
+        listaServiceCardHtml += getServiceCardHtml(servicio.TipoServicio, servicio.TipoServicio);
     });
 
     $("#servicios .service-card-container").html(listaServiceCardHtml);

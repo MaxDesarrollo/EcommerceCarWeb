@@ -34,20 +34,45 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
             return new ServicioDto()
             {
                 ////////////CAMBIAR PRECIO Y ESTADO
-                Precio = decimal.Parse(servicio.Precio),
-                Estado = bool.Parse(servicio.Estado),
+                //Precio = decimal.Parse(servicio.Precio),
+                //Estado = bool.Parse(servicio.Estado),
+                Precio = servicio.Precio,
+                Estado = servicio.Estado,
                 TipoServicioID = servicio.TipoServicioID
             };
         }
 
         public List<ServicioDto> ObtenerServicios()
         {
+            //List<Servicios> servicios = this.BuildQuery().ToList();
+            //List<ServicioDto> serviciosDto = new List<ServicioDto>();
+            //foreach (Servicios servicio in servicios)
+            //{
+            //    decimal precio = decimal.Parse(servicio.Precio);
+            //    bool estado = bool.Parse(servicio.Estado);
+
+
+            //    ServicioDto servicioDto = new ServicioDto()
+            //    {
+            //        ////////////CAMBIAR PRECIO Y ESTADO
+            //        ServicioID = servicio.ServicioID,
+            //        Precio = precio,
+            //        Estado = estado,
+            //        TipoServicioID = servicio.TipoServicioID,
+            //        TipoServicio = servicio.
+            //    };
+
+            //    serviciosDto.Add(servicioDto);
+            //}
+
+            //return serviciosDto;
+
             return this.BuildQuery().Select(servicio => new ServicioDto()
             {
                 ////////////CAMBIAR PRECIO Y ESTADO
                 ServicioID = servicio.ServicioID,
-                Precio = decimal.Parse(servicio.Precio),
-                Estado = bool.Parse(servicio.Estado),
+                Precio = servicio.Precio,
+                Estado = servicio.Estado,
                 TipoServicioID = servicio.TipoServicioID,
                 TipoServicio = servicio.TipoServicio.Nombre
             }).ToList();

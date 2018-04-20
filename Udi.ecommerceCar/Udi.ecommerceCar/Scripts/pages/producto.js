@@ -64,10 +64,10 @@ function mostrarDatosProductos() {
 }
 
 function obtenerProductosExitoso(resultado) {
-    console.log(resultado);
+    //console.log(resultado);
     if (resultado.Success) {
         _datosProductos = resultado.Data;
-        console.log(_datosProductos);
+        //console.log(_datosProductos);
         //_datosTipo = resultado.Data.Tipos;
 
         mostrarDatosProductos();
