@@ -27,8 +27,8 @@ function getProductCardHtml(nombre, descripcion, urlImagen, tipoProducto, precio
                     $${precio}
                 </div>
 
-                <button class="btnProductCardAddtoCart">
-                    Add to cart
+                <button class="btnProductCardVerMas">
+                    Ver más
                 </button>
             </div>
         </div>`;
