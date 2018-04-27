@@ -11,26 +11,29 @@
 @section scripts {
     <script src="~/Scripts/pages/producto.js"></script>
     <script src="~/Scripts/pages/servicio.js"></script>
+
+    <script src="~/Scripts/pages/index.js"></script>
 }
 
 @section navbar {
     <nav id="navheader" class="navheader">
-    <!-- <div class="navheader-container"> -->
+
         <div class="logo">LOGO</div>
 
-        <div class="navheader-links">
-            <!-- <button>asdf</button>
-            <button>asdf</button>
-            <button>asdf</button>
-            <button>asdf</button> -->
+        <div class="logo-bar-right">
+            <div id="hamburgerIcon" class="hamburger-icon">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
 
-            <a href="" class="navheader-link">Vehículos</a>
-            <a href="" class="navheader-link">Productos</a>
-            <a href="" class="navheader-link">Servicios</a>
-            <a href="" class="navheader-link">Test-Drive</a>
-            <a href="" class="navheader-link">Vehículos</a>
+            <div id="navheaderLinks" class="navheader-links">
+                <button class="navheader-link moveToSection" data-section="vehiculos">Vehículos</button>
+                <button class="navheader-link moveToSection" data-section="productos">Productos</button>
+                <button class="navheader-link moveToSection" data-section="servicios">Servicios</button>
+                <button class="navheader-link moveToSection" data-section="test-drive">Test-Drive</button>
+            </div>
         </div>
-        <!-- </div> -->
     </nav>    
 }
 
@@ -52,22 +55,10 @@
 
     <div class="slider slider-two">
 
-        <!-- <div class="slider-message">
-            <span class="slider-title">Titulo</span>
-            <p class="slider-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt nostrum placeat </p>
-
-            <button>Ver más</button>
-        </div>
-
-        <div class="slider-image-container">
-            <img class="slider-image" src="img/auto-azul.png" alt="">
-        </div> -->
-
     </div>
 
     <div class="slider slider-three">
 
-        <!-- <img src="img/auto-azul.png" alt=""> -->
         <div class="slider-message">
             <span class="slider-title">Titulo</span>
             <p class="slider-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt nostrum placeat </p>
@@ -84,7 +75,7 @@
 
 <div id="productos" class="seccion productos flex-center">
     <!-- <h2 class="seccion-titulo"></h2> -->
-    <div class="seccion-titulo">Accesorios</div>
+    <div class="seccion-titulo">Productos</div>
 
     <div class="product-card-container">
         @*<div class="product-card">
@@ -204,8 +195,8 @@
     </div>
 </div>
 
-<div class="seccion test-drive">
-    <div class="formulario-largo">
+<div id="test-drive" class="seccion test-drive">
+    <div class="formulario-largo formulario-largo--transparente">
         <div class="seccion-titulo">Pide tu Test-Drive!</div>
         <div class="test-drive-formulario">
             <p>Descripcion de por que pedir un Test-Drive</p>
@@ -240,6 +231,52 @@
 </div>
 
 <footer>
-    Derechos reservados Raiden Makio Tomori
+    <div class="footer-info">
+        <div class="footer-column">
+            <span class="footer-column-title">Conócenos</span>
+
+            <span>Historia</span>
+            <span>Por qué lo hacemos</span>
+        </div>
+
+        <div class="footer-column">
+            <span class="footer-column-title">Nuestros vehículos</span>
+            
+            <span>Honda</span>
+            <span>Dogde</span>
+            <span>Mitsubishi</span>
+            <span>Chevrolet</span>
+            <span>Toyota</span>
+        </div>
+
+        <div class="footer-column">
+            <span class="footer-column-title">Contáctanos</span>
+
+            <span>78002780</span>
+            <span>eCommerceCar@gmail.com</span>
+
+            <span class="footer-column-title">Nuestras redes sociales</span>
+
+            <span>Facebook</span>
+            <span>Twitter</span>
+            <span>Instagram</span>
+            <span>Snapchat</span>
+            <span>Google+</span>
+            <span>Youtube</span>
+        </div>
+
+        <div class="footer-column">
+            <span class="footer-column-title">¿Necesitas Ayuda?</span>
+
+            <span>Cómo me registro</span>
+            <span>No puedo comprar</span>
+            <span>Quiero reunirme con un asesor</span>
+            <span>Quiero hacer un Test-Drive</span>
+        </div>
+    </div>
+
+    <div class="footer-copyright">
+        Copyright © 2018 eCommerceCar Inc. Todos los derechos reservados.
+    </div>
 </footer>
 

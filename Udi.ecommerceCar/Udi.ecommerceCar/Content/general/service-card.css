@@ -3,9 +3,10 @@
     1. CONTENEDOR
     2. SERVICE-CARD
     3. SERVICE-CARD DETAILS
+    4. MEDIA QUERIES
 */
 
-/* 1. CONTENEDOR */
+/*#region 1. CONTENEDOR */
 .service-card-container {
 	display: flex;
 	justify-content: space-between;
@@ -13,12 +14,13 @@
 
 	width: 100%;
 }
+/*#endregion */
 
-/* 2. SERVICE-CARD */
+/*#region 2. SERVICE-CARD */
 .service-card {
 	width: 270px;
 	height: 460px;
-	background-color: red;
+	background-color: white;
 	
 	background-size: cover;
 	background-position: center;
@@ -26,8 +28,9 @@
 	display: flex;
 	align-items: flex-end;
 }
+/*#endregion */
 
-/* 2. SERVICE-CARD DETAILS */
+/*#region 3. SERVICE-CARD DETAILS */
 .service-card-description {
 	font-size: 1.1em;
 	font-weight: lighter;
@@ -42,5 +45,19 @@
 	background-color: rgba(49, 49, 49, 0.7);
 	text-align: center;
 }
+/*#endregion */
 
+/*#region 4. MEDIA QUERIES */
+@media only screen and (max-width: 784px) {
+    .service-card-container {
+        flex-direction: column-reverse;
+    }
 
+    .service-card {
+        max-width: 100%;
+        /*max-height: 60vh;*/
+
+        margin-bottom: 20px;
+    }
+}
+/*#endregion */

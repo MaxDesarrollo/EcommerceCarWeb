@@ -3,9 +3,10 @@
     1. CONTENEDOR
     2. PRODUCT-CARD
     3. PRODUCT-CARD DETAILS
+    4. MEDIA QUERIES
 */
 
-/* 1. CONTENEDOR */
+/*#region 1. CONTENEDOR */
 .product-card-container {
 	display: flex;
 	justify-content: space-between;
@@ -13,8 +14,9 @@
 
 	width: 100%;
 }
+/*#endregion */
 
-/* 2. PRODUCT-CARD */
+/*#region 2. PRODUCT-CARD */
 .product-card {
 	background-color: white;
 	width: 270px;
@@ -32,9 +34,9 @@
 	
 	transition: .6s;
 }
+/*#endregion */
 
-
-/* 3. PRODUCT-CARD DETAILS */
+/*#region 3. PRODUCT-CARD DETAILS */
 .product-card-header {
 	display: flex;
 	flex-direction: column;
@@ -79,8 +81,6 @@
 	max-height: 100%;
 }
 
-
-
 .product-card-detail {
 	display: flex;
 	justify-content: space-between;
@@ -88,5 +88,17 @@
 .product-card-price {
 	font-size: 1.3em;
 }
+/*#endregion */
 
+/*#region 4. MEDIA QUERIES */
+@media only screen and (max-width: 784px) {
+    .product-card-container {
+        flex-direction: column-reverse;
+    }
 
+    .product-card {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+}
+/*#endregion */

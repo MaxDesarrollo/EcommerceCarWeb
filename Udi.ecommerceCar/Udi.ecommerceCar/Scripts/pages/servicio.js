@@ -37,10 +37,10 @@ function mostrarDatosServicios() {
 }
 
 function obtenerServiciosExitoso(resultado) {
-    console.log(resultado);
+    //console.log(resultado);
     if (resultado.Success) {
         _datosServicios = resultado.Data;
-        console.log(_datosServicios);
+        //console.log(_datosServicios);
         //_datosTipo = resultado.Data.Tipos;
 
         mostrarDatosServicios();

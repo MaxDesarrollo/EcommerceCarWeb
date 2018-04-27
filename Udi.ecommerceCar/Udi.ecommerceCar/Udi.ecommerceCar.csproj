@@ -184,6 +184,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\general.css" />
     <Content Include="Content\general\product-card.css" />
     <Content Include="Content\general\service-card.css" />
     <Content Include="Content\pages\index.css" />
@@ -193,7 +194,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\Repuestos\Dunlop Sp Sport Maxx.jpg" />
-    <Content Include="Images\Repuestos\Llanta Dunlop GT601.png" />
+    <Content Include="Images\Repuestos\Llanta Dunlop GT601.jpg" />
     <Content Include="Images\Repuestos\Llanta DUNLOP SP Sport LM704.jpg" />
     <Content Include="Images\Repuestos\LLANTA DUNLOP SP Touring T1 82T.jpg" />
     <Content Include="Images\Servicios\Arreglo de Motor.jpg" />
@@ -201,12 +202,14 @@
     <Content Include="Images\Servicios\Servicio de Frenos.jpg" />
     <Content Include="Images\Servicios\Servicio de Llantas.jpg" />
     <Content Include="Images\Slider\slider-one.png" />
+    <Content Include="Images\Slider\slider-three-background.png" />
     <Content Include="Images\Slider\slider-three.png" />
-    <Content Include="Images\Slider\slider-two.jpg" />
+    <Content Include="Images\Slider\slider-two-background.jpg" />
     <Content Include="Images\TestDrive\test-drive-01.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\general.js" />
     <Content Include="Scripts\Generico.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
