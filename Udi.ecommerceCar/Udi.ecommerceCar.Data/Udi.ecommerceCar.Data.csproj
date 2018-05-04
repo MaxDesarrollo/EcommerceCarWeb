@@ -63,6 +63,7 @@
     <Compile Include="Domain\Services\ComunServicio.cs" />
     <Compile Include="Domain\Services\ProductoServicio.cs" />
     <Compile Include="Domain\Services\ServicioServicio.cs" />
+    <Compile Include="Domain\Services\VehiculoServicio.cs" />
     <Compile Include="Infrastructure\Data\DataModels\DbContext.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -135,6 +136,7 @@
     <Compile Include="Infrastructure\Data\Repositories\EFRepositorio.cs" />
     <Compile Include="Infrastructure\Data\Repositories\ProductoRepositorio.cs" />
     <Compile Include="Infrastructure\Data\Repositories\ServicioRepositorio.cs" />
+    <Compile Include="Infrastructure\Data\Repositories\VehiculoRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

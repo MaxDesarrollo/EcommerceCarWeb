@@ -172,6 +172,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\ServicioController.cs" />
+    <Compile Include="Controllers\VehiculoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -187,12 +188,14 @@
     <Content Include="Content\general.css" />
     <Content Include="Content\general\product-card.css" />
     <Content Include="Content\general\service-card.css" />
+    <Content Include="Content\general\vehicle-card.css" />
     <Content Include="Content\pages\index.css" />
     <Content Include="Content\pages\producto.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Repuestos\Aro Plateado.jpg" />
     <Content Include="Images\Repuestos\Dunlop Sp Sport Maxx.jpg" />
     <Content Include="Images\Repuestos\Llanta Dunlop GT601.jpg" />
     <Content Include="Images\Repuestos\Llanta DUNLOP SP Sport LM704.jpg" />
@@ -201,11 +204,15 @@
     <Content Include="Images\Servicios\Mantenimiento General.jpg" />
     <Content Include="Images\Servicios\Servicio de Frenos.jpg" />
     <Content Include="Images\Servicios\Servicio de Llantas.jpg" />
+    <Content Include="Images\Slider\slider-one-background.jpg" />
     <Content Include="Images\Slider\slider-one.png" />
     <Content Include="Images\Slider\slider-three-background.png" />
     <Content Include="Images\Slider\slider-three.png" />
+    <Content Include="Images\Slider\slider-two-background-02.jpg" />
     <Content Include="Images\Slider\slider-two-background.jpg" />
     <Content Include="Images\TestDrive\test-drive-01.jpg" />
+    <Content Include="Images\Vehiculos\ASX.png" />
+    <Content Include="Images\Vehiculos\Pathfinder.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -222,6 +229,7 @@
     <Content Include="Scripts\pages\index.js" />
     <Content Include="Scripts\pages\producto.js" />
     <Content Include="Scripts\pages\servicio.js" />
+    <Content Include="Scripts\pages\vehiculo.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\toastr.js" />
@@ -262,6 +270,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Producto\Index.cshtml" />
     <Content Include="Views\Servicio\Index.cshtml" />
+    <Content Include="Views\Vehiculo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

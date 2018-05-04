@@ -42,31 +42,9 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
             };
         }
 
-        public List<ServicioDto> ObtenerServicios()
+        ////////////EFRepositorio tiene su propio metodo para llamar por paginas, seria estudiarlo un poco
+        public List<ServicioDto> ObtenerServicios(int page, int size)
         {
-            //List<Servicios> servicios = this.BuildQuery().ToList();
-            //List<ServicioDto> serviciosDto = new List<ServicioDto>();
-            //foreach (Servicios servicio in servicios)
-            //{
-            //    decimal precio = decimal.Parse(servicio.Precio);
-            //    bool estado = bool.Parse(servicio.Estado);
-
-
-            //    ServicioDto servicioDto = new ServicioDto()
-            //    {
-            //        ////////////CAMBIAR PRECIO Y ESTADO
-            //        ServicioID = servicio.ServicioID,
-            //        Precio = precio,
-            //        Estado = estado,
-            //        TipoServicioID = servicio.TipoServicioID,
-            //        TipoServicio = servicio.
-            //    };
-
-            //    serviciosDto.Add(servicioDto);
-            //}
-
-            //return serviciosDto;
-
             return this.BuildQuery().Select(servicio => new ServicioDto()
             {
                 ////////////CAMBIAR PRECIO Y ESTADO
@@ -75,7 +53,25 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                 Estado = servicio.Estado,
                 TipoServicioID = servicio.TipoServicioID,
                 TipoServicio = servicio.TipoServicio.Nombre
-            }).ToList();
+            })
+            .OrderBy(x => x.ServicioID)
+            .Skip(page * size)
+            .Take(size)
+            .ToList();
+        }
+
+        public List<ServicioDto> ObtenerServiciosTodos()
+        {
+            return this.BuildQuery().Select(servicio => new ServicioDto()
+            {
+                ////////////CAMBIAR PRECIO Y ESTADO
+                ServicioID = servicio.ServicioID,
+                Precio = servicio.Precio,
+                Estado = servicio.Estado,
+                TipoServicioID = servicio.TipoServicioID,
+                TipoServicio = servicio.TipoServicio.Nombre
+            })
+            .ToList();
         }
     }
 }

@@ -27,9 +27,17 @@ namespace Udi.ecommerceCar.Data.Domain.Services
             return servicioRepositorio.ObtenerServicio(pk);
         }
 
-        public List<ServicioDto> ObtenerServicios()
+        public List<ServicioDto> ObtenerServicios(int? page, int? size)
         {
-            return servicioRepositorio.ObtenerServicios();
+            int p = page == null ? 10 : (int)page;
+            int s = size == null ? 10 : (int)size;
+
+            return servicioRepositorio.ObtenerServicios(p, s);
+        }
+
+        public List<ServicioDto> ObtenerServiciosTodos()
+        {
+            return servicioRepositorio.ObtenerServiciosTodos();
         }
     }
 }

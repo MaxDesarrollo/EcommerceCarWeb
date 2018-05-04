@@ -3,12 +3,13 @@
 	1. GENERAL
 	2. HEADER
 	3. SECCION SLIDERS
-	4. SECCION PRODUCTOS
-	5. SECCION SERVICIOS
-	6. SECCION TEST-DRIVE
-	7. FOOTER
-    8. MEDIA QUERIES
-	9. KEYFRAMES
+    4. SECCION VEHICULOS
+	5. SECCION PRODUCTOS
+	6. SECCION SERVICIOS
+	7. SECCION TEST-DRIVE
+	8. FOOTER
+    9. MEDIA QUERIES
+	10. KEYFRAMES
 */
 
 /*#region 1. GENERAL */
@@ -54,24 +55,25 @@ html, body {
 
 	font-size: 3em;
 	padding: 15px;
+    padding-top: 0;
 }
 
 
-.formulario-largo {
+.formulario-corto {
 	background-color: white;
 
 	width: 400px;
-	height: 300px;
+	min-height: 200px;
 
 	padding: 20px;
-	box-sizing: border-box;
+	/*box-sizing: border-box;*/
 }
-.formulario-largo--transparente {
+.formulario-corto--transparente {
     background-color: rgba(255, 255, 255, 0.8);
 }
 
 .formulario-largo .seccion-titulo {
-	font-size: 2.5em;
+	font-size: 2.2em;
 }
 
 .formulario {
@@ -199,8 +201,9 @@ html, body {
 }
 
 .slider-one {
-	background-color: white;
-	/*background-image: url('../img/test-drive/test-drive-image-01.jpg');*/
+	/*background-color: white;*/
+	background-image: url('../../Images/Slider/slider-one-background.jpg');
+    background-size: cover;
 	left: -100%;
 
 	display: flex;
@@ -233,7 +236,7 @@ html, body {
     align-items: center;
 
 	/*justify-content: space-evenly;*/
-	align-items: flex-end;
+	/*align-items: flex-end;*/
 
 	animation: moveThirdSlider var(--animation-duration) infinite;
 }
@@ -279,7 +282,21 @@ html, body {
 }
 /*#endregion */
 
-/*#region 4. SECCION PRODUCTOS */
+/*#region 4. SECCION VEHICULOS */
+.vehiculos {
+    flex-direction: column;
+}
+
+.vehiculos-catalogo {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    width: 100vw;
+}
+/*#endregion */
+
+/*#region 5. SECCION PRODUCTOS */
 .productos {
     background-color: #1abc9c;
     /*background-color: #7d5fff;*/
@@ -288,7 +305,7 @@ html, body {
 }
 /*#endregion */
 
-/*#region 5. SECCION SERVICIOS */
+/*#region 6. SECCION SERVICIOS */
 .servicios {
     /*background-color: #7efff5;*/
 
@@ -296,7 +313,7 @@ html, body {
 }
 /*#endregion */
 
-/*#region 6. SECCION TEST DRIVE */
+/*#region 7. SECCION TEST DRIVE */
 .test-drive {
 	background-image: url('../../Images/TestDrive/test-drive-01.jpg');
 	background-size: cover;
@@ -310,16 +327,17 @@ html, body {
 }
 /*#endregion */
 
-/*#region 7. FOOTER */
+/*#region 8. FOOTER */
 footer {
 	background: #223559;
 
 	min-height: 100px;
 
 	display: flex;
-	align-items: center;
-	justify-content: space-between;
-    flex-direction: column;
+	flex-direction: column;
+
+    /*justify-content: center;*/
+    /*align-content: space-between;*/
 
 	color: white;
 
@@ -329,7 +347,8 @@ footer {
 
 .footer-info {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    flex-wrap: wrap;
 
     width: 100%;
     margin-bottom: 30px;
@@ -352,8 +371,51 @@ footer {
 }
 /*#endregion */
 
-/*#region 8. MEDIA QUERIES */
-@media only screen and (max-width: 784px) {
+/*#region 9. MEDIA QUERIES */
+@media only screen and (max-width: 1024px) {
+    /*.navheader {
+        padding: 0 40px;
+    }
+
+    .seccion {
+        padding: 40px;
+    }
+
+    .navheader-links {
+        display: none;
+    }
+
+    .navheader-links--open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        right: 12vw;
+        top: 10vh;
+    }
+
+    .hamburger-icon {
+        display: inline-block;
+        cursor: pointer;
+    }
+    
+    */
+
+    .slider-one .slider-message,
+    .slider-three .slider-message {
+        max-width: 35%;
+        font-size: .7em;
+        padding: 25px;
+    }
+
+    .slider-one .slider-image,
+    .slider-three .slider-image {
+        max-height: 50vh;
+        max-width: 60vw;
+        z-index: 2;
+    }
+}
+
+@media only screen and (max-width: 425px) {
     .navheader {
         padding: 0 40px;
     }
@@ -408,10 +470,22 @@ footer {
         /*transform: translateY(5vh);*/
         transform: translateY(-4vh);
     }
+
+    footer {
+        padding: 40px;
+    }
+
+
+    .footer-info {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
 }
+
+
 /*#endregion */
 
-/*#region 9. KEYFRAMES */
+/*#region 10. KEYFRAMES */
 @keyframes moveFirstSlider {
 	0% {
 		left: -100%;

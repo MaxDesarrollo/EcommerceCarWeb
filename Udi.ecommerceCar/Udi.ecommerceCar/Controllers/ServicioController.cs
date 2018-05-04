@@ -41,11 +41,25 @@ namespace Udi.ecommerceCar.Controllers
         //    }
         //}
 
-        public JsonResult ObtenerServicios()
+        public JsonResult ObtenerServiciosTodos()
         {
             try
             {
-                var data = servicioServicio.ObtenerServicios();
+                var data = servicioServicio.ObtenerServiciosTodos();
+
+                return new JsonResult { Data = new { Success = true, Data = data } };
+            }
+            catch (Exception ex)
+            {
+                return new JsonResult { Data = new { Success = false, Mensaje = ex.Message } };
+            }
+        }
+
+        public JsonResult ObtenerServicios(int page, int size)
+        {
+            try
+            {
+                var data = servicioServicio.ObtenerServicios(page, size);
 
                 return new JsonResult { Data = new { Success = true, Data = data } };
             }

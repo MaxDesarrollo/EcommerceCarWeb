@@ -3,16 +3,22 @@
 }
 
 @section styles {
+    <link href="~/Content/general.css" rel="stylesheet" />
+    
+    <link href="~/Content/general/vehicle-card.css" rel="stylesheet" />
     <link href="~/Content/general/product-card.css" rel="stylesheet" />
     <link href="~/Content/general/service-card.css" rel="stylesheet" />
+    
     <link href="~/Content/pages/index.css" rel="stylesheet" />
 }
 
 @section scripts {
+    <script src="~/Scripts/pages/index.js"></script>
+
+    <script src="~/Scripts/pages/vehiculo.js"></script>
     <script src="~/Scripts/pages/producto.js"></script>
     <script src="~/Scripts/pages/servicio.js"></script>
 
-    <script src="~/Scripts/pages/index.js"></script>
 }
 
 @section navbar {
@@ -45,8 +51,8 @@
         </div>
 
         <div class="slider-message">
-            <span class="slider-title">Titulo</span>
-            <p class="slider-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt nostrum placeat </p>
+            <span class="slider-title">¿Necesitas un vehículo nuevo?</span>
+            <p class="slider-text">Conoce los nuevos vehículos económicos aquí</p>
 
             <button>Ver más</button>
         </div>
@@ -60,8 +66,8 @@
     <div class="slider slider-three">
 
         <div class="slider-message">
-            <span class="slider-title">Titulo</span>
-            <p class="slider-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt nostrum placeat </p>
+            <span class="slider-title">Nuevo</span>
+            <p class="slider-text">Experimenta el nuevo RAV4 2018 para todos los terrenos</p>
 
             <button>Ver más</button>
         </div>
@@ -70,6 +76,20 @@
             <img class="slider-image" src="~/Images/Slider/slider-three.png" alt="">
         </div>
 
+    </div>
+</div>
+
+
+<div id="vehiculos" class="seccion vehiculos flex-center">
+    <!-- <h2 class="seccion-titulo"></h2> -->
+    <div class="seccion-titulo">Vehículos</div>
+
+    <div class="vehiculos-catalogo">
+        <div id="btnPreviousVehicleCard" class="btnMoveCards"><</div>
+
+        <div class="vehicle-card-container"></div>
+
+        <div id="btnNextVehicleCard" class="btnMoveCards">></div>
     </div>
 </div>
 
@@ -196,10 +216,10 @@
 </div>
 
 <div id="test-drive" class="seccion test-drive">
-    <div class="formulario-largo formulario-largo--transparente">
+    <div class="formulario-corto formulario-corto--transparente">
         <div class="seccion-titulo">Pide tu Test-Drive!</div>
         <div class="test-drive-formulario">
-            <p>Descripcion de por que pedir un Test-Drive</p>
+            <p>¿Deseas probar uno de nuestros vehículos? ¡Qué esperas!</p>
 
             <button>Pedir</button>
         </div>

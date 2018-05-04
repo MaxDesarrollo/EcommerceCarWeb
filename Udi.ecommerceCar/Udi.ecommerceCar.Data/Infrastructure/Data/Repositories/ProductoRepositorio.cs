@@ -40,7 +40,8 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
             };
         }
 
-        public List<ProductoDto> ObtenerProductos()
+        ////////////EFRepositorio tiene su propio metodo para llamar por paginas, seria estudiarlo un poco
+        public List<ProductoDto> ObtenerProductos(int page, int size)
         {
             return this.BuildQuery().Select(producto => new ProductoDto()
             {
@@ -50,7 +51,25 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                 Cantidad = producto.Cantidad,
                 TipoProductoID = producto.TipoProductoID,
                 TipoProducto = producto.TipoProducto.Nombre
-            }).ToList();
+            })
+            .OrderBy(x => x.ProductoID)
+            .Skip(page * size)
+            .Take(size)
+            .ToList();
+        }
+
+        public List<ProductoDto> ObtenerProductosTodos()
+        {
+            return this.BuildQuery().Select(producto => new ProductoDto()
+            {
+                ProductoID = producto.ProductoID,
+                Nombre = producto.Nombre,
+                Descripcion = producto.Descripcion,
+                Cantidad = producto.Cantidad,
+                TipoProductoID = producto.TipoProductoID,
+                TipoProducto = producto.TipoProducto.Nombre
+            })
+            .ToList();
         }
     }
 }

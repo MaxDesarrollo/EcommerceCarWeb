@@ -4,6 +4,7 @@ toastr.options.timeOut = 3000;
 function solicitudAjax(solicitudUrl, onSuccess, data, tipoDato, tipo) {
     var tipoSolicitud = tipo ? 'POST' : 'GET',
         datatype = tipoDato ? 'text' : 'json';
+
     $.ajax({
         type: tipoSolicitud,
         datatype: datatype,
@@ -15,6 +16,7 @@ function solicitudAjax(solicitudUrl, onSuccess, data, tipoDato, tipo) {
                 onSuccess(responseText);
         },
         error: function (exception) {
+            console.log(exception);
         }
     });
 }

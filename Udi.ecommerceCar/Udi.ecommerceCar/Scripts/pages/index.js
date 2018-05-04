@@ -10,6 +10,8 @@ var moveToSectionButtons = document.getElementsByClassName('moveToSection');
 var hamburgerIcon = document.getElementById('hamburgerIcon');
 var navheaderLinks = document.getElementById('navheaderLinks');
 
+var page = 0, size = 4;
+
 /* 2. FUNCIONES */
 function activateMoveToSection() {
     Array.prototype.forEach.call(moveToSectionButtons, link => {

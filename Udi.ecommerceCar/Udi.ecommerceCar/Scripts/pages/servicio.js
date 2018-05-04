@@ -26,7 +26,7 @@ function getServiceCardHtml(nombre, urlImagen) {
     return serviceCardHtml;
 }
 
-/* 3. OBTENER PRODUCTOS */
+/* 3. OBTENER SERVICIOS */
 function mostrarDatosServicios() {
     var listaServiceCardHtml = '';
     _datosServicios.forEach(function (servicio) {
@@ -37,10 +37,8 @@ function mostrarDatosServicios() {
 }
 
 function obtenerServiciosExitoso(resultado) {
-    //console.log(resultado);
     if (resultado.Success) {
         _datosServicios = resultado.Data;
-        //console.log(_datosServicios);
         //_datosTipo = resultado.Data.Tipos;
 
         mostrarDatosServicios();
@@ -53,7 +51,11 @@ function obtenerServiciosExitoso(resultado) {
 function init() {
     var url = "/Servicio/ObtenerServicios";
     var tipo = 'GET';
-    var datos = {};
+    var datos = {
+        page: page,
+        size: size
+    };
+
     var tipoDatos = 'JSON';
     solicitudAjax(url, obtenerServiciosExitoso, datos, tipoDatos, tipo);
 }

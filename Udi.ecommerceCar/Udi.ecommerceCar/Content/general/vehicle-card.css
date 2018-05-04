@@ -1,0 +1,119 @@
+﻿/*
+	INDICE
+	1. CONTENEDOR
+	2. VEHICLE-CARD
+	3. VEHICLE-CARD DETAILS
+	4. MEDIA QUERIES
+	5. KEYFRAMES
+*/
+
+
+/* 1. CONTENEDOR */
+.vehicle-card-container {
+	display: flex;
+	justify-content: space-between;
+
+	overflow: hidden;
+	max-width: 90vw;
+
+	width: 100%;
+
+    transition: .6s;
+}
+
+
+.btnMoveCards {
+    z-index: 2;
+}
+
+/* 1. VEHICLE-CARD */
+.vehicle-card {
+	transform: scale(0.6);
+
+	/*width: 35%;*/
+
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+
+    margin: 0 4vw;
+}
+
+/* 1. VEHICLE-CARD DETAILS */
+.vehicle-card-header {
+	display: flex;
+	flex-direction: column;
+
+	align-items: center;
+}
+
+.vehicle-card-title {
+	font-size: 2em;
+	font-weight: 900;
+}
+
+
+.vehicle-card-price {
+	display: none;
+}
+
+.vehicle-card-image {
+	margin: 20px 0;
+}
+.vehicle-card-image img {
+	max-height: 200px;
+}
+
+.vehicle-card-description {
+	/*margin-bottom: 20px;*/
+	display: none;
+}
+
+.vehicle-card-detail {
+	text-align: center;
+}
+.vehicle-card-detail .button {
+    display: none;
+}
+
+
+.vehicle-card--active {
+	/*transform: scale(1);*/
+	animation: agrandarVehicleCard 1s forwards;
+}
+.vehicle-card--active .vehicle-card-price {
+	display: block;
+}
+.vehicle-card--active .vehicle-card-description {
+	display: block;
+}
+.vehicle-card--active .vehicle-card-detail .button {
+	display: block;
+}
+
+
+
+/* 1. MEDIA QUERIES */
+@media only screen and (max-width: 425px) {
+    .vehicle-card-container {
+        flex-direction: column-reverse;
+    }
+
+    .vehicle-card {
+        max-width: 100%;
+        width: 100%;
+
+        margin-bottom: 20px;
+    }
+}
+
+/* 5. KEYFRAMES */
+@keyframes agrandarVehicleCard {
+	0% {
+		transform: scale(0.6);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+

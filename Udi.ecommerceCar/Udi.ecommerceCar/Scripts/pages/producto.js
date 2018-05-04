@@ -64,10 +64,8 @@ function mostrarDatosProductos() {
 }
 
 function obtenerProductosExitoso(resultado) {
-    //console.log(resultado);
     if (resultado.Success) {
         _datosProductos = resultado.Data;
-        //console.log(_datosProductos);
         //_datosTipo = resultado.Data.Tipos;
 
         mostrarDatosProductos();
@@ -80,7 +78,11 @@ function obtenerProductosExitoso(resultado) {
 function init() {
     var url = "/Producto/ObtenerProductos";
     var tipo = 'GET';
-    var datos = {};
+    var datos = {
+        page: page,
+        size: size
+    };
+
     var tipoDatos = 'JSON';
     solicitudAjax(url, obtenerProductosExitoso, datos, tipoDatos, tipo);
 }

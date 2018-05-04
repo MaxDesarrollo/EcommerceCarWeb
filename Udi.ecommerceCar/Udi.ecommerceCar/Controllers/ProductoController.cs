@@ -24,7 +24,7 @@ namespace Udi.ecommerceCar.Controllers
             try
             {
                 //Producto prod = ComunServicio.ObtenerDtoFromString<Producto>(producto);
-                int id = productoServicio.ObtenerProductos().Count;
+                int id = productoServicio.ObtenerProductosTodos().Count;
                 ProductoDto prod = new ProductoDto()
                 {
                     ProductoID = id + 1,
@@ -43,11 +43,26 @@ namespace Udi.ecommerceCar.Controllers
             }
         }
 
-        public JsonResult ObtenerProductos()
+        public JsonResult ObtenerProductosTodos()
         {
             try
             {
-                var data = productoServicio.ObtenerProductos();
+                var data = productoServicio.ObtenerProductosTodos();
+
+                return new JsonResult { Data = new { Success = true, Data = data } };
+            }
+            catch (Exception ex)
+            {
+                return new JsonResult { Data = new { Success = false, Mensaje = ex.Message } };
+            }
+        }
+
+        public JsonResult ObtenerProductos(int page, int size)
+        {
+            try
+            {
+
+                var data = productoServicio.ObtenerProductos(page, size);
 
                 return new JsonResult { Data = new { Success = true, Data = data } };
             }
