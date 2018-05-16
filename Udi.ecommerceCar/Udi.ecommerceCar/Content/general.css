@@ -1,7 +1,24 @@
 ﻿/*
-
+    INDICE
+    1. GENERAL
+    2. BOTONES
+    3. METODOS
+    4. FOOTER
 */
 
+/*#region 1. GENERAL */
+html, body {
+	min-height: 100vh;
+	max-width: 100vw;
+	padding: 0;
+	margin: 0;
+
+	font-family: Helvetica, Arial, sans-serif;
+	color: #333;
+}
+/*#endregion */
+
+/*#region 2. BOTONES */
 .button {
 	padding: 8px 50px;
 	box-sizing: border-box;
@@ -9,11 +26,37 @@
 
 	font-size: 1.3em;
 }
-.button-blue {
-	background-color: #012c5f;
-	color: white;	
+.button:hover {
+    cursor: pointer;
 }
 
+.button-blue {
+	background-color: #012c5f;
+	color: white;
+    border: 1px solid white;
+    transition: .4s;
+}
+.button-blue:hover {
+    background-color: white;
+	color: #012c5f;
+    border: 1px solid #012c5f;
+    transition: .6s;
+}
+/*#endregion */
+
+/*#region 3. METODOS */
+.pagina-contenedor {
+    padding: 0 60px;
+
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.flex-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 
 .centrado {
     display: flex;
@@ -28,3 +71,48 @@
 .all-device-width {
     width: 100vw;
 }
+/*#endregion */
+
+/*#region 4. FOOTER */
+footer {
+	background: #223559;
+
+	min-height: 100px;
+
+	display: flex;
+	flex-direction: column;
+
+    /*justify-content: center;*/
+    /*align-content: space-between;*/
+
+	color: white;
+
+	padding: 40px 80px;
+	/*box-sizing: border-box;*/
+}
+
+.footer-info {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    width: 100%;
+    margin-bottom: 30px;
+}
+.footer-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-column span {
+    line-height: 1.5;
+
+    font-size: 0.9em;
+}
+.footer-column-title {
+    margin: 20px 0 5px 0;
+    color: #ecf0f1;
+
+    font-size: 1.2em !important;
+}
+/*#endregion */

@@ -18,6 +18,19 @@ namespace Udi.ecommerceCar.Controllers
             return View();
         }
 
+        public ActionResult Detalle(int id)
+        {
+            VehiculoDto vehiculo = vehiculoServicio.ObtenerVehiculo(id);
+
+            if (vehiculo != null)
+            {
+                //Si existe, que mande el view, sino que mande una pagin de error o algo asi
+                return View(vehiculo);
+            }
+
+            return View();
+        }
+
         //public JsonResult GuardarProducto(int cantidadDisponible, decimal precio, DateTime anho, int modeloId, int cantidadPuertas, )
         //{
         //    try
@@ -53,6 +66,25 @@ namespace Udi.ecommerceCar.Controllers
         //        return new JsonResult { Data = new { Success = false, Mensaje = ex.Message } };
         //    }
         //}
+
+        public JsonResult ObtenerVehiculo(int pk)
+        {
+            try
+            {
+                var data = vehiculoServicio.ObtenerVehiculo(pk);
+
+                if (data == null)
+                {
+                    return new JsonResult { Data = new { Success = false } };
+                }
+
+                return new JsonResult { Data = new { Success = true, Data = data } };
+            }
+            catch (Exception ex)
+            {
+                return new JsonResult { Data = new { Success = false, Mensaje = ex.Message } };
+            }
+        }
 
         public JsonResult ObtenerVehiculosTodos()
         {

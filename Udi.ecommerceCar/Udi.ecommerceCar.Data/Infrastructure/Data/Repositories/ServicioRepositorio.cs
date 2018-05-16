@@ -29,17 +29,27 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
 
         public ServicioDto ObtenerServicio(int pk)
         {
-            Servicios servicio = Get(pk);
-
-            return new ServicioDto()
+            try
             {
-                ////////////CAMBIAR PRECIO Y ESTADO
-                //Precio = decimal.Parse(servicio.Precio),
-                //Estado = bool.Parse(servicio.Estado),
-                Precio = servicio.Precio,
-                Estado = servicio.Estado,
-                TipoServicioID = servicio.TipoServicioID
-            };
+                //Servicios servicio = Get(pk);
+
+                return this.BuildQuery()
+                .Select(servicio => new ServicioDto()
+                {
+                    ////////////CAMBIAR PRECIO Y ESTADO
+                    ServicioID = servicio.ServicioID,
+                    Precio = servicio.Precio,
+                    Estado = servicio.Estado,
+                    TipoServicioID = servicio.TipoServicioID,
+                    TipoServicio = servicio.TipoServicio.Nombre
+                })
+                .First(x => x.ServicioID == pk);
+            }
+            catch (Exception)
+            {
+                return null;
+                throw;
+            }
         }
 
         ////////////EFRepositorio tiene su propio metodo para llamar por paginas, seria estudiarlo un poco

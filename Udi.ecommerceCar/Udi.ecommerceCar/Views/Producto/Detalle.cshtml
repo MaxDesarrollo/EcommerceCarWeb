@@ -1,0 +1,62 @@
+﻿@model Udi.ecommerceCar.Data.Domain.Entities.ProductoDto
+@{
+    ViewBag.Title = "Detalle";
+}
+
+@section styles {
+    <link href="~/Content/general/detalle-articulo.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    @*<script src="~/Scripts/pages/producto.js"></script>*@
+}
+
+<div class="pagina-contenedor">
+    @*<div>Breadcrumb</div>*@
+
+    <div class="detalle-articulo-contenedor">
+        <div class="detalle-articulo-imagen-contenedor">
+            @*<img class="detalle-articulo-imagen" src="../img/articulos/pes-2017.jpg" alt="">*@
+            <img class="detalle-articulo-imagen" src="~/Images/@Model.TipoProducto/@(Model.Nombre).jpg" alt="">
+        </div>
+
+        <div class="detalle-articulo-descripcion-contenedor">
+            <div class="detalle-articulo-titulo">
+                @*Xbox One Game PES 2017 Pro Evolution Soccer 17 Football Game*@
+                @Model.Nombre
+            </div>
+
+            <div class="detalle-articulo-ranking">
+                <div class="detalle-articulo-ranking-image"></div>
+                <div class="detalle-articulo-ranking-fill"></div>
+            </div>
+
+            <div class="detalle-articulo-precio">
+                Bs. 112.98
+            </div>
+
+            <div class="detalle-articulo-text-descripcion-largo">
+                @*PES 2017 focuses on the gameplay of "Control Reality": it takes the award-winning gameplay with advanced control elements and a neuPES 2017 - CONTROL REALITY*@
+                @Model.Descripcion
+            </div>
+        </div>
+
+        <div class="detalle-articulo-opciones-contenedor">
+            <div class="detalle-articulo-opciones-cantidad">
+                <span>Cantidad</span>
+
+                <select>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+
+            <button class="btnAddToCart">Añadir al carro</button>
+            @*<button class="btnAddToList">Add to List</button>*@
+            @*<button class="btnAddToFavorites">Add to Favorites</button>*@
+        </div>
+    </div>
+</div>

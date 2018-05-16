@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Udi.ecommerceCar.Data.Domain.Entities;
 using Udi.ecommerceCar.Data.Infrastructure.Data.DataModels;
 
@@ -29,21 +27,27 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
 
         public ProductoDto ObtenerProducto(int pk)
         {
-            Producto producto = Get(pk);
-            return new ProductoDto()
+            try
             {
-                Nombre = producto.Nombre,
-                Descripcion = producto.Descripcion,
-                Cantidad = producto.Cantidad,
-                TipoProductoID = producto.TipoProductoID,
-                TipoProducto = producto.TipoProducto.Nombre
-            };
+                return BuildQuery().Where(x => x.ProductoID == pk).Select(producto => new ProductoDto()
+                {
+                    Nombre = producto.Nombre,
+                    Descripcion = producto.Descripcion,
+                    Cantidad = producto.Cantidad,
+                    TipoProductoID = producto.TipoProductoID,
+                    TipoProducto = producto.TipoProducto.Nombre
+                }).First();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         ////////////EFRepositorio tiene su propio metodo para llamar por paginas, seria estudiarlo un poco
         public List<ProductoDto> ObtenerProductos(int page, int size)
         {
-            return this.BuildQuery().Select(producto => new ProductoDto()
+            return BuildQuery().Select(producto => new ProductoDto()
             {
                 ProductoID = producto.ProductoID,
                 Nombre = producto.Nombre,
@@ -60,7 +64,7 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
 
         public List<ProductoDto> ObtenerProductosTodos()
         {
-            return this.BuildQuery().Select(producto => new ProductoDto()
+            return BuildQuery().Select(producto => new ProductoDto()
             {
                 ProductoID = producto.ProductoID,
                 Nombre = producto.Nombre,

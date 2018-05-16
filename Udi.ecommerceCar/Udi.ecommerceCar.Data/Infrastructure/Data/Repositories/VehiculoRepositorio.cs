@@ -28,33 +28,40 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
             return newVehiculo.InventarioVehiculoID;
         }
 
-        //public VehiculoDto ObtenerVehiculo(int pk)
-        //{
-        //    Vehiculo vehiculo = Get(pk);
+        public VehiculoDto ObtenerVehiculo(int pk)
+        {
+            try
+            {
+                //Vehiculo vehiculo = Get(pk);
 
-        //    return new VehiculoDto()
-        //    {
-        //        ////////////////////////////CAMBIAR EN LA BD
-        //        VehiculoID = vehiculo.InventarioVehiculoID,                     // CAMBIAR el nombre de la id
-        //        CantidadDisponible = int.Parse(vehiculo.CantidadDispnible),     // CAMBIAR Dispnible
-        //        Precio = decimal.Parse(vehiculo.Precio.ToString()),             // CAMBIAR de string a decimal
-        //        Año = DateTime.Parse(vehiculo.Año.ToString()),                  // CAMBIAR de string a datetime
-        //        ModeloID = (int)vehiculo.ModeloID,
-        //        CantidadPuertas = (int)vehiculo.Modelo.CantidadPuertas,
-        //        HabilitadoTestDrive = (bool)vehiculo.Modelo.HabilitadoTestDrive,
-        //        Estado = bool.Parse(vehiculo.Modelo.Estado.Value.ToString()),   // CAMBIAR Estado, muy dificil de castear
-        //        NombreModelo = vehiculo.Modelo.NombreModelo,
-        //        MarcaID = vehiculo.Modelo.MarcaID,
-        //        NombreMarca = vehiculo.Modelo.Marca.Nombre,
-        //        PaisOrigen = vehiculo.Modelo.Marca.PaisOrigen,
-        //        TipoVehiculoID = (int)vehiculo.Modelo.TipoVehiculoID,
-        //        NombreTipoVehiculo = vehiculo.Modelo.TipoVehiculo.Nombre,
-        //        TipoCajaID = (int)vehiculo.Modelo.TipoCajaID,
-        //        NombreTipoCaja = vehiculo.Modelo.TipoCaja.Nombre
-        //        // VER MODELO Y VEHICULO, PARECEN ESTAR AL REVES
-        //        // VER LOS NULOS, SI CAMBIAR EN EL DTO O CASTEARLOS COMO ESTAN AHORITA
-        //    };
-        //}
+                return BuildQuery().Where(x => x.InventarioVehiculoID == pk).Select(vehiculo => new VehiculoDto()
+                {
+                    ////////////////////////////CAMBIAR EN LA BD
+                    VehiculoID = vehiculo.InventarioVehiculoID,                     // CAMBIAR el nombre de la id
+                    CantidadDisponible = vehiculo.CantidadDispnible,     // CAMBIAR Dispnible
+                    Precio = vehiculo.Precio,             // CAMBIAR de string a decimal
+                    Año = vehiculo.Año.ToString(),                  // CAMBIAR de string a datetime
+                    ModeloID = (int)vehiculo.ModeloID,
+                    CantidadPuertas = (int)vehiculo.Modelo.CantidadPuertas,
+                    HabilitadoTestDrive = (bool)vehiculo.Modelo.HabilitadoTestDrive,
+                    Estado = vehiculo.Modelo.Estado.Value,   // CAMBIAR Estado, muy dificil de castear
+                    NombreModelo = vehiculo.Modelo.NombreModelo,
+                    MarcaID = vehiculo.Modelo.MarcaID,
+                    NombreMarca = vehiculo.Modelo.Marca.Nombre,
+                    PaisOrigen = vehiculo.Modelo.Marca.PaisOrigen,
+                    TipoVehiculoID = (int)vehiculo.Modelo.TipoVehiculoID,
+                    NombreTipoVehiculo = vehiculo.Modelo.TipoVehiculo.Nombre,
+                    TipoCajaID = (int)vehiculo.Modelo.TipoCajaID,
+                    NombreTipoCaja = vehiculo.Modelo.TipoCaja.Nombre
+                    // VER MODELO Y VEHICULO, PARECEN ESTAR AL REVES
+                    // VER LOS NULOS, SI CAMBIAR EN EL DTO O CASTEARLOS COMO ESTAN AHORITA
+                }).First();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
 
         ////////////EFRepositorio tiene su propio metodo para llamar por paginas, seria estudiarlo un poco
         public List<VehiculoDto> ObtenerVehiculos(int page, int size)

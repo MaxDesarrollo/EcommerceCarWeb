@@ -15,6 +15,7 @@
 
 	overflow: hidden;
 	max-width: 90vw;
+    padding-right: 50px;
 
 	width: 100%;
 
@@ -37,6 +38,11 @@
 	flex-direction: column;
 
     margin: 0 4vw;
+
+    padding: 20px;
+
+    border: 1px solid transparent;
+    transition: .2s;
 }
 
 /* 1. VEHICLE-CARD DETAILS */
@@ -80,13 +86,23 @@
 .vehicle-card--active {
 	/*transform: scale(1);*/
 	animation: agrandarVehicleCard 1s forwards;
+    border: 1px solid #808080;
+    transition: .3s;
+
 }
-.vehicle-card--active .vehicle-card-price {
-	display: block;
+/*.vehicle-card--active:hover {
+    border: 1px solid #808080;
+    transition: .3s;
+}*/
+.vehicle-card--active .vehicle-card-image {
+	margin-top: 30px;
 }
-.vehicle-card--active .vehicle-card-description {
-	display: block;
+.vehicle-card--active .vehicle-card-image img {
+    max-height: 220px;
 }
+
+.vehicle-card--active .vehicle-card-price,
+.vehicle-card--active .vehicle-card-description,
 .vehicle-card--active .vehicle-card-detail .button {
 	display: block;
 }
@@ -110,7 +126,7 @@
 /* 5. KEYFRAMES */
 @keyframes agrandarVehicleCard {
 	0% {
-		transform: scale(0.6);
+		transform: scale(0.4);
 	}
 	100% {
 		transform: scale(1);

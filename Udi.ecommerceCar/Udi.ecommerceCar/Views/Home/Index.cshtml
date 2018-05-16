@@ -1,10 +1,9 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_LayoutPrincipal.cshtml";
 }
 
-@section styles {
-    <link href="~/Content/general.css" rel="stylesheet" />
-    
+@section styles {    
     <link href="~/Content/general/vehicle-card.css" rel="stylesheet" />
     <link href="~/Content/general/product-card.css" rel="stylesheet" />
     <link href="~/Content/general/service-card.css" rel="stylesheet" />
@@ -13,15 +12,13 @@
 }
 
 @section scripts {
-    <script src="~/Scripts/pages/index.js"></script>
-
     <script src="~/Scripts/pages/vehiculo.js"></script>
     <script src="~/Scripts/pages/producto.js"></script>
     <script src="~/Scripts/pages/servicio.js"></script>
 
 }
 
-@section navbar {
+@*@section navbar {
     <nav id="navheader" class="navheader">
 
         <div class="logo">LOGO</div>
@@ -40,8 +37,8 @@
                 <button class="navheader-link moveToSection" data-section="test-drive">Test-Drive</button>
             </div>
         </div>
-    </nav>    
-}
+    </nav>
+}*@
 
 <div class="seccion sliders">
     <div class="slider slider-one">
@@ -82,7 +79,7 @@
 
 <div id="vehiculos" class="seccion vehiculos flex-center">
     <!-- <h2 class="seccion-titulo"></h2> -->
-    <div class="seccion-titulo">Vehículos</div>
+    @*<div class="seccion-titulo">Vehículos</div>*@
 
     <div class="vehiculos-catalogo">
         <div id="btnPreviousVehicleCard" class="btnMoveCards"><</div>
@@ -95,124 +92,23 @@
 
 <div id="productos" class="seccion productos flex-center">
     <!-- <h2 class="seccion-titulo"></h2> -->
-    <div class="seccion-titulo">Productos</div>
+    <div class="seccion-cabecera">
+        <div class="seccion-titulo">Productos</div>
 
-    <div class="product-card-container">
-        @*<div class="product-card">
-            <div class="product-card-header">
-                <span class="product-card-title">Llanta Dunlop</span>
-                <span class="product-card-description">SP Touring T1</span>
-            </div>
-
-            <div class="product-card-image">
-                <img src="img/Llanta_Dunlop_SP_Touring_T1_44.jpg" alt="Llanta Dunlop SP Touring Color negro">
-            </div>
-
-            <div class="product-card-detail">
-                <div class="product-card-price">
-                    $65
-                </div>
-
-                <button class="btnProductCardAddtoCart">
-                    Add to cart
-                </button>
-            </div>
-        </div>
-
-        <div class="product-card">
-            <div class="product-card-header">
-                <span class="product-card-title">Llanta Dunlop</span>
-                <span class="product-card-description">SP Touring T1</span>
-            </div>
-
-            <div class="product-card-image">
-                <img src="img/Llanta_Dunlop_SP_Touring_T1_44.jpg" alt="Llanta Dunlop SP Touring Color negro">
-            </div>
-
-            <div class="product-card-detail">
-                <div class="product-card-price">
-                    $65
-                </div>
-
-                <button class="btnProductCardAddtoCart">
-                    Add to cart
-                </button>
-            </div>
-        </div>
-
-        <div class="product-card">
-            <div class="product-card-header">
-                <span class="product-card-title">Llanta Dunlop</span>
-                <span class="product-card-description">SP Touring T1</span>
-            </div>
-
-            <div class="product-card-image">
-                <img src="img/Llanta_Dunlop_SP_Touring_T1_44.jpg" alt="Llanta Dunlop SP Touring Color negro">
-            </div>
-
-            <div class="product-card-detail">
-                <div class="product-card-price">
-                    $65
-                </div>
-
-                <button class="btnProductCardAddtoCart">
-                    Add to cart
-                </button>
-            </div>
-        </div>
-
-        <div class="product-card">
-            <div class="product-card-header">
-                <span class="product-card-title">Llanta Dunlop</span>
-                <span class="product-card-description">SP Touring T1</span>
-            </div>
-
-            <div class="product-card-image">
-                <img src="img/Llanta_Dunlop_SP_Touring_T1_44.jpg" alt="Llanta Dunlop SP Touring Color negro">
-            </div>
-
-            <div class="product-card-detail">
-                <div class="product-card-price">
-                    $65
-                </div>
-
-                <button class="btnProductCardAddtoCart">
-                    Add to cart
-                </button>
-            </div>
-        </div>*@
+        <a href="vermas.html">Ver todos los productos</a>
     </div>
+
+    <div class="product-card-container"></div>
 </div>
 
 <div id="servicios" class="seccion servicios flex-center">
-    <div class="seccion-titulo">Servicios</div>
+    <div class="seccion-cabecera">
+        <div class="seccion-titulo">Servicios</div>
 
-    <div class="service-card-container">
-        @*<div class="service-card" style="background-image: url('img/services/service-image-01.jpg')">
-            <div class="service-card-description">
-                Mantenimiento general
-            </div>
-        </div>*@
-
-        @*<div class="service-card" style="background-image: url('img/services/service-image-02.jpg')">
-            <div class="service-card-description">
-                Servicio de Llantas
-            </div>
-        </div>*@
-
-        @*<div class="service-card" style="background-image: url('img/services/service-image-03.jpg')">
-            <div class="service-card-description">
-                Arreglo de Motor
-            </div>
-        </div>*@
-
-        @*<div class="service-card" style="background-image: url('img/services/service-image-04.jpg')">
-            <div class="service-card-description">
-                Servicio de frenos
-            </div>
-        </div>*@
-
+        <a href="vermasservicios.html">Ver todos los servicios</a>
     </div>
+
+    <div class="service-card-container"></div>
 </div>
 
 <div id="test-drive" class="seccion test-drive">
@@ -224,79 +120,7 @@
             <button>Pedir</button>
         </div>
     </div>
-
-    <!-- <div class="seccion-titulo">Pide tu Test-Drive!</div> -->
-    <!-- <div class="formulario">
-        <div class="formulario-titulo"></div>
-
-        <div class="formulario-campo">
-            <label for="txtNombreUsuario">Nombre</label>
-            <input type="text" id="txtNombreUsuario">
-        </div>
-
-        <div class="formulario-campo">
-            <label for="txtApellidosUsuario" class="">Apellidos</label>
-            <input type="text" id="txtApellidosUsuario">
-        </div>
-
-        <div class="formulario-campo">
-            <label for="txtApellidosUsuario" class="">Auto</label>
-            <input type="text" id="txtApellidosUsuario">
-        </div>
-
-        <div class="formulario-campo">
-            <button>Pedir Test-Drive!</button>
-        </div>
-    </div> -->
 </div>
 
-<footer>
-    <div class="footer-info">
-        <div class="footer-column">
-            <span class="footer-column-title">Conócenos</span>
 
-            <span>Historia</span>
-            <span>Por qué lo hacemos</span>
-        </div>
-
-        <div class="footer-column">
-            <span class="footer-column-title">Nuestros vehículos</span>
-            
-            <span>Honda</span>
-            <span>Dogde</span>
-            <span>Mitsubishi</span>
-            <span>Chevrolet</span>
-            <span>Toyota</span>
-        </div>
-
-        <div class="footer-column">
-            <span class="footer-column-title">Contáctanos</span>
-
-            <span>78002780</span>
-            <span>eCommerceCar@gmail.com</span>
-
-            <span class="footer-column-title">Nuestras redes sociales</span>
-
-            <span>Facebook</span>
-            <span>Twitter</span>
-            <span>Instagram</span>
-            <span>Snapchat</span>
-            <span>Google+</span>
-            <span>Youtube</span>
-        </div>
-
-        <div class="footer-column">
-            <span class="footer-column-title">¿Necesitas Ayuda?</span>
-
-            <span>Cómo me registro</span>
-            <span>No puedo comprar</span>
-            <span>Quiero reunirme con un asesor</span>
-            <span>Quiero hacer un Test-Drive</span>
-        </div>
-    </div>
-
-    <div class="footer-copyright">
-        Copyright © 2018 eCommerceCar Inc. Todos los derechos reservados.
-    </div>
-</footer>
 

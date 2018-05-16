@@ -185,7 +185,9 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\general\detalle-articulo.css" />
     <Content Include="Content\general.css" />
+    <Content Include="Content\general\navegador.css" />
     <Content Include="Content\general\product-card.css" />
     <Content Include="Content\general\service-card.css" />
     <Content Include="Content\general\vehicle-card.css" />
@@ -195,6 +197,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Recursos\five-star.png" />
     <Content Include="Images\Repuestos\Aro Plateado.jpg" />
     <Content Include="Images\Repuestos\Dunlop Sp Sport Maxx.jpg" />
     <Content Include="Images\Repuestos\Llanta Dunlop GT601.jpg" />
@@ -226,7 +229,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\pages\index.js" />
+    <Content Include="Scripts\pages\navegador.js" />
     <Content Include="Scripts\pages\producto.js" />
     <Content Include="Scripts\pages\servicio.js" />
     <Content Include="Scripts\pages\vehiculo.js" />
@@ -271,6 +274,11 @@
     <Content Include="Views\Producto\Index.cshtml" />
     <Content Include="Views\Servicio\Index.cshtml" />
     <Content Include="Views\Vehiculo\Index.cshtml" />
+    <Content Include="Views\Producto\Detalle.cshtml" />
+    <Content Include="Views\Vehiculo\Detalle.cshtml" />
+    <Content Include="Views\Servicio\Detalle.cshtml" />
+    <Content Include="Views\Shared\_Navegador.cshtml" />
+    <Content Include="Views\Shared\_LayoutPrincipal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

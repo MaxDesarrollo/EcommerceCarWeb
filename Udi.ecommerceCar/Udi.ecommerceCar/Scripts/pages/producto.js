@@ -15,21 +15,18 @@ var _datosProductos;
 function getProductCardHtml(nombre, descripcion, urlImagen, tipoProducto, precio) {
     var productCardHtml =
         `<div class="product-card">
-            <div class="product-card-header">
-                <span class="product-card-title">${nombre}</span>
-            </div>
+            <div class ="product-card-image" style="background-image: url('Images/${tipoProducto}/${nombre}.jpg')"></div>
 
-            <div class ="product-card-image" style="background-image: url('Images/${tipoProducto}/${nombre}.jpg')">
-            </div>
-
-            <div class="product-card-detail">
-                <div class="product-card-price">
-                    $${precio}
+            <div class="product-card-description">
+                <div class ="product-card-header">
+                    <span class ="product-card-title">${nombre}</span>
                 </div>
 
-                <button class="btnProductCardVerMas">
-                    Ver más
-                </button>
+                <div class ="product-card-detail">
+                    <div class ="product-card-price">
+                        Bs.${precio}
+                    </div>
+                </div>
             </div>
         </div>`;
 

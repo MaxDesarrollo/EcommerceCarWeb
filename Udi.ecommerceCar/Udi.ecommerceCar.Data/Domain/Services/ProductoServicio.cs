@@ -1,45 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Udi.ecommerceCar.Data.Domain.Entities;
-using Udi.ecommerceCar.Data.Infrastructure.Data.DataModels;
 using Udi.ecommerceCar.Data.Infrastructure.Data.Repositories;
 
 namespace Udi.ecommerceCar.Data.Domain.Services
 {
     public class ProductoServicio
     {
-        private readonly ProductoRepositorio productoRepositorio;
+        private readonly ProductoRepositorio _productoRepositorio;
 
         public ProductoServicio()
         {
-            this.productoRepositorio = new ProductoRepositorio();
+            _productoRepositorio = new ProductoRepositorio();
         }
 
         public int GuardarProducto(ProductoDto producto)
         {
-            int pk = productoRepositorio.GuardarProducto(producto);
-            return pk;
+            return _productoRepositorio.GuardarProducto(producto);
         }
 
         public ProductoDto ObtenerProducto(int pk)
         {
-            return productoRepositorio.ObtenerProducto(pk);
+            return _productoRepositorio.ObtenerProducto(pk);
         }
 
         public List<ProductoDto> ObtenerProductos(int? page, int? size)
         {
-            int p = page == null ? 10 : (int)page;
-            int s = size == null ? 10 : (int)size;
+            var p = page ?? 0;
+            var s = size ?? 10;
 
-            return productoRepositorio.ObtenerProductos(p, s);
+            return _productoRepositorio.ObtenerProductos(p, s);
         }
 
         public List<ProductoDto> ObtenerProductosTodos()
         {
-            return productoRepositorio.ObtenerProductosTodos();
+            return _productoRepositorio.ObtenerProductosTodos();
         }
     }
 }

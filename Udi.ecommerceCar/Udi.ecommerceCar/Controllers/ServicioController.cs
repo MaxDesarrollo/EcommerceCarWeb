@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Udi.ecommerceCar.Data.Domain.Entities;
 using Udi.ecommerceCar.Data.Domain.Services;
 
 namespace Udi.ecommerceCar.Controllers
@@ -14,6 +15,19 @@ namespace Udi.ecommerceCar.Controllers
         // GET: Servicio
         public ActionResult Index()
         {
+            return View();
+        }
+
+        public ActionResult Detalle(int id)
+        {
+            ServicioDto servicio = servicioServicio.ObtenerServicio(id);
+
+            if (servicio != null)
+            {
+                //Si existe, que mande el view, sino que mande una pagin de error o algo asi
+                return View(servicio);
+            }
+
             return View();
         }
 
@@ -40,6 +54,25 @@ namespace Udi.ecommerceCar.Controllers
         //        return new JsonResult { Data = new { Success = false, Mensaje = ex.Message } };
         //    }
         //}
+
+        public JsonResult ObtenerServicio(int pk)
+        {
+            try
+            {
+                var data = servicioServicio.ObtenerServicio(pk);
+
+                if (data == null)
+                {
+                    return new JsonResult { Data = new { Success = false } };
+                }
+
+                return new JsonResult { Data = new { Success = true, Data = data } };
+            }
+            catch (Exception ex)
+            {
+                return new JsonResult { Data = new { Success = false, Mensaje = ex.Message } };
+            }
+        }
 
         public JsonResult ObtenerServiciosTodos()
         {

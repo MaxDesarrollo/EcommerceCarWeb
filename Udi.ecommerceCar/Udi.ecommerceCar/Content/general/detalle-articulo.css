@@ -1,0 +1,161 @@
+﻿/*
+	INDICE
+	1. CONTENEDOR
+	2. IMAGEN
+	3. DESCRIPCION
+	4. OPCIONES
+	5. ANIMATIONS
+	6. MEDIA QUERIES
+*/
+
+/*#region 1. CONTENEDOR */
+.detalle-articulo-contenedor {
+	/*width: 100%;*/
+    margin-top: 50px;
+    /*padding: 0 60px;*/
+	min-height: 50vh;
+
+	display: grid;
+	grid-gap: 15px;
+
+	grid-template-columns: 40% auto 18%;
+	grid-template-areas: 
+	"da-imagen da-descripcion da-opciones";
+}
+/*#endregion */
+
+/*#region 2. IMAGEN */
+.detalle-articulo-imagen-contenedor {
+	grid-area: da-imagen;
+
+	display: flex;
+	justify-content: center;
+    align-items: center;
+
+    /*background-color: red;*/
+}
+
+.detalle-articulo-imagen {
+	max-height: 360px;
+	/*max-height: 50vh;*/
+	max-width: 360px;
+}
+
+
+/*#endregion */
+
+/*#region 3. DESCRIPCION */
+.detalle-articulo-descripcion-contenedor {
+	grid-area: da-descripcion;
+
+	width: 100%;
+	height: 100%;
+	/*background-color: blue;*/
+}
+
+.detalle-articulo-titulo {
+	font-size: 1.5em;
+}
+
+.detalle-articulo-ranking-image {
+	background-image: url('../../Images/Recursos/five-star.png');
+	background-size: cover;
+	background-position: center;
+
+	position: absolute;
+
+	width: 100px;
+	height: 25px;
+}
+.detalle-articulo-ranking-fill {
+	width: 100px;
+	max-height: 100px;
+	height: 25px;
+
+	background-color: yellow;
+
+	transition: .5s;
+}
+
+
+.detalle-articulo-precio {
+	font-size: 1.2em;
+}
+
+.detalle-articulo-text-descripcion-largo {
+	margin-top: 20px;
+}
+/*#endregion */
+
+/*#region 4. OPCIONES */
+.detalle-articulo-opciones-contenedor {
+	grid-area: da-opciones;
+
+	width: 100%;
+	height: 100%;
+	/*background-color: red;*/
+
+	/*border: 1px solid black;*/
+
+	padding: 0 20px 20px;
+	box-sizing: border-box;
+
+	display: flex;
+	flex-direction: column;
+}
+
+.detalle-articulo-opciones-cantidad {
+	width: 100%;
+
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+
+	font-size: 1.2em;
+}
+
+.detalle-articulo-opciones-cantidad select {
+	width: 200px;
+
+	padding: 5px;
+}
+
+.btnAddToCart {
+	margin: 15px 0;
+
+	background-color: #006efc;
+	color: white;
+	border: none;
+	padding: 15px;
+
+	font-size: 1.2em;
+}
+
+.btnAddToList {
+	margin: 15px 0;
+
+	background-color: white;
+	border: 1px solid #006efc;
+	padding: 15px;
+
+	color: #006efc;
+}
+
+.btnAddToFavorites {
+	margin: 15px 0;
+
+	background-color: white;
+	border: 1px solid #006efc;
+	padding: 15px;
+
+	color: #006efc;
+}
+/*#endregion */
+
+/*#region 5. ANIMATIONS */
+
+/*#endregion */
+
+/*#region 6. MEDIA QUERIES */
+
+/*#endregion */

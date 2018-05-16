@@ -14,7 +14,9 @@ var _datosServicios;
 
 function getServiceCardHtml(nombre, urlImagen) {
     var serviceCardHtml =
-        `<div class="service-card" style="background-image: url('Images/Servicios/${nombre}.jpg')">
+        `<div class="service-card">
+            <img src="Images/Servicios/${nombre}.jpg" alt="${nombre}" />
+
             <div class="service-card-description">
                 ${nombre}
             </div>

@@ -19,6 +19,12 @@ namespace Udi.ecommerceCar.Controllers
             return View();
         }
 
+        public ActionResult Detalle(int id)
+        {
+            ProductoDto producto = productoServicio.ObtenerProducto(id);
+            return producto != null ? View(producto) : View();
+        }
+
         public JsonResult GuardarProducto(string nombre, string descripcion, int cantidad, int tipoProductoId)
         {
             try
@@ -36,6 +42,25 @@ namespace Udi.ecommerceCar.Controllers
                 int pk = productoServicio.GuardarProducto(prod);
 
                 return new JsonResult { Data = new { Success = true, Data = pk } };
+            }
+            catch (Exception ex)
+            {
+                return new JsonResult { Data = new { Success = false, Mensaje = ex.Message } };
+            }
+        }
+
+        public JsonResult ObtenerProducto(int pk)
+        {
+            try
+            {
+                var data = productoServicio.ObtenerProducto(pk);
+
+                if (data == null)
+                {
+                    return new JsonResult { Data = new { Success = false} };
+                }
+
+                return new JsonResult { Data = new { Success = true, Data = data } };
             }
             catch (Exception ex)
             {

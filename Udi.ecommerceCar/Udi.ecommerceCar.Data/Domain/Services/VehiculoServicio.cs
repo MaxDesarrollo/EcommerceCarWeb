@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Udi.ecommerceCar.Data.Domain.Entities;
 using Udi.ecommerceCar.Data.Infrastructure.Data.Repositories;
 
@@ -10,34 +6,34 @@ namespace Udi.ecommerceCar.Data.Domain.Services
 {
     public class VehiculoServicio
     {
-        private readonly VehiculoRepositorio vehiculoRepositorio;
+        private readonly VehiculoRepositorio _vehiculoRepositorio;
 
         public VehiculoServicio()
         {
-            this.vehiculoRepositorio = new VehiculoRepositorio();
+            this._vehiculoRepositorio = new VehiculoRepositorio();
         }
 
         public int GuardarVehiculo(VehiculoDto vehiculo)
         {
-            return vehiculoRepositorio.GuardarVehiculo(vehiculo);
+            return _vehiculoRepositorio.GuardarVehiculo(vehiculo);
         }
 
-        //public VehiculoDto ObtenerVehiculo(int pk)
-        //{
-        //    return vehiculoRepositorio.ObtenerVehiculo(pk);
-        //}
+        public VehiculoDto ObtenerVehiculo(int pk)
+        {
+            return _vehiculoRepositorio.ObtenerVehiculo(pk);
+        }
 
         public List<VehiculoDto> ObtenerVehiculos(int? page, int? size)
         {
-            int p = page == null ? 10 : (int)page;
-            int s = size == null ? 10 : (int)size;
+            var p = page ?? 0;
+            var s = size ?? 10;
 
-            return vehiculoRepositorio.ObtenerVehiculos(p, s);
+            return _vehiculoRepositorio.ObtenerVehiculos(p, s);
         }
 
         public List<VehiculoDto> ObtenerVehiculosTodos()
         {
-            return vehiculoRepositorio.ObtenerVehiculosTodos();
+            return _vehiculoRepositorio.ObtenerVehiculosTodos();
         }
     }
 }
