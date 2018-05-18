@@ -16,12 +16,12 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.DataModels
     {
         public int TestDriveID { get; set; }
         public Nullable<System.DateTime> FechaProgramada { get; set; }
-        public Nullable<System.DateTime> HoraInicio { get; set; }
-        public Nullable<System.DateTime> HoraFinal { get; set; }
+        public Nullable<System.TimeSpan> HoraInicio { get; set; }
+        public Nullable<System.TimeSpan> HoraFinal { get; set; }
         public Nullable<int> VehiculoID { get; set; }
         public Nullable<int> UsuarioID { get; set; }
     
-        public virtual Modelo Modelo { get; set; }
         public virtual Usuario Usuario { get; set; }
+        public virtual Vehiculo Vehiculo { get; set; }
     }
 }

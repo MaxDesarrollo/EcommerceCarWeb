@@ -16,15 +16,13 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.DataModels
     {
         public int DetalleVentaVehiculo1 { get; set; }
         public Nullable<int> Cantidad { get; set; }
-        public Nullable<decimal> Precio { get; set; }
+        public Nullable<decimal> Monto { get; set; }
         public Nullable<System.DateTime> Fecha { get; set; }
         public Nullable<System.TimeSpan> Hora { get; set; }
-        public Nullable<int> VehiculoID { get; set; }
-        public Nullable<int> VentaVehiculoID { get; set; }
         public Nullable<int> InventarioVehiculoID { get; set; }
         public Nullable<int> VentaVehiculo { get; set; }
     
-        public virtual Vehiculo Vehiculo { get; set; }
+        public virtual InventarioVehiculo InventarioVehiculo { get; set; }
         public virtual VentaVehiculo VentaVehiculo1 { get; set; }
     }
 }

@@ -21,9 +21,9 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.DataModels
         }
     
         public int VentaID { get; set; }
-        public Nullable<int> Monto { get; set; }
+        public Nullable<decimal> Monto { get; set; }
         public Nullable<System.DateTime> Fecha { get; set; }
-        public Nullable<System.DateTime> Hora { get; set; }
+        public Nullable<System.TimeSpan> Hora { get; set; }
         public int UsuarioID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

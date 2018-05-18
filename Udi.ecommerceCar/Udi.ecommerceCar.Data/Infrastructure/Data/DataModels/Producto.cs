@@ -26,9 +26,16 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.DataModels
         public string Descripcion { get; set; }
         public Nullable<int> TipoProductoID { get; set; }
         public Nullable<int> Cantidad { get; set; }
+        public Nullable<decimal> Precio { get; set; }
+        public string UrlAmigable { get; set; }
+        public Nullable<bool> VisibleMain { get; set; }
+        public Nullable<int> Puntuacion { get; set; }
+        public Nullable<int> ImagenID { get; set; }
+        public string DescripcionCorta { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DetalleVentaProducto> DetalleVentaProducto { get; set; }
+        public virtual Imagen Imagen { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Stock> Stock { get; set; }
         public virtual TipoProducto TipoProducto { get; set; }

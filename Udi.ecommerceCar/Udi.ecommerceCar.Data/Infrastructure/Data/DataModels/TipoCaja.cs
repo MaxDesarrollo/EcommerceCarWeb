@@ -17,13 +17,13 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.DataModels
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TipoCaja()
         {
-            this.Modelo = new HashSet<Modelo>();
+            this.Vehiculo = new HashSet<Vehiculo>();
         }
     
         public int TipoCajaID { get; set; }
         public string Nombre { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Modelo> Modelo { get; set; }
+        public virtual ICollection<Vehiculo> Vehiculo { get; set; }
     }
 }

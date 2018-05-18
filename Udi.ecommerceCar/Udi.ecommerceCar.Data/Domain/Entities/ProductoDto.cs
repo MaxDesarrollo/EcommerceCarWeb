@@ -11,7 +11,9 @@ namespace Udi.ecommerceCar.Data.Domain.Entities
         public int ProductoID { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
+        public string DescripcionCorta { get; set; }
         public int? Cantidad { get; set; }
+        public decimal? Precio { get; set; }
         public int? TipoProductoID { get; set; }
         public string TipoProducto { get; set; }
     }

@@ -12,31 +12,24 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.DataModels
     using System;
     using System.Collections.Generic;
     
-    public partial class Modelo
+    public partial class Imagen
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Modelo()
+        public Imagen()
         {
+            this.Producto = new HashSet<Producto>();
+            this.Servicio = new HashSet<Servicio>();
             this.Vehiculo = new HashSet<Vehiculo>();
-            this.TestDrive = new HashSet<TestDrive>();
         }
     
-        public int VehiculoID { get; set; }
-        public Nullable<int> CantidadPuertas { get; set; }
-        public Nullable<bool> HabilitadoTestDrive { get; set; }
-        public Nullable<int> Estado { get; set; }
-        public Nullable<int> ModeloID { get; set; }
-        public Nullable<int> TipoVehiculoID { get; set; }
-        public Nullable<int> TipoCajaID { get; set; }
-        public string NombreModelo { get; set; }
-        public int MarcaID { get; set; }
+        public int ImagenID { get; set; }
+        public string UrlImagen { get; set; }
     
-        public virtual Marca Marca { get; set; }
-        public virtual TipoCaja TipoCaja { get; set; }
-        public virtual TipoVehiculo TipoVehiculo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Producto> Producto { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Servicio> Servicio { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Vehiculo> Vehiculo { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TestDrive> TestDrive { get; set; }
     }
 }

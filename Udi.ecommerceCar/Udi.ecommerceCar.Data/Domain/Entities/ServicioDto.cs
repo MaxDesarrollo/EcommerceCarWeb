@@ -11,8 +11,8 @@ namespace Udi.ecommerceCar.Data.Domain.Entities
         public int ServicioID { get; set; }
 
         ////////////CAMBIAAAAAR
-        public string Precio { get; set; }
-        public string Estado { get; set; }
+        public decimal Precio { get; set; }
+        public bool Estado { get; set; }
 
 
         public int TipoServicioID { get; set; }

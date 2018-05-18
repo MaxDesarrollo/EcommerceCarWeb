@@ -17,18 +17,32 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.DataModels
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Vehiculo()
         {
-            this.DetalleVentaVehiculo = new HashSet<DetalleVentaVehiculo>();
+            this.InventarioVehiculo = new HashSet<InventarioVehiculo>();
+            this.TestDrive = new HashSet<TestDrive>();
         }
     
-        public int InventarioVehiculoID { get; set; }
-        public string CantidadDispnible { get; set; }
-        public Nullable<decimal> Precio { get; set; }
-        public Nullable<int> ModeloID { get; set; }
-        public string Color { get; set; }
-        public string Año { get; set; }
+        public int VehiculoID { get; set; }
+        public Nullable<int> CantidadPuertas { get; set; }
+        public Nullable<bool> HabilitadoTestDrive { get; set; }
+        public Nullable<bool> Estado { get; set; }
+        public Nullable<int> TipoVehiculoID { get; set; }
+        public Nullable<int> TipoCajaID { get; set; }
+        public string NombreModelo { get; set; }
+        public int MarcaID { get; set; }
+        public string UrlAmigable { get; set; }
+        public Nullable<bool> VisibleMain { get; set; }
+        public Nullable<int> Puntuacion { get; set; }
+        public Nullable<int> ImagenID { get; set; }
+        public string Descripcion { get; set; }
+        public string DescripcionCorta { get; set; }
     
+        public virtual Imagen Imagen { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DetalleVentaVehiculo> DetalleVentaVehiculo { get; set; }
-        public virtual Modelo Modelo { get; set; }
+        public virtual ICollection<InventarioVehiculo> InventarioVehiculo { get; set; }
+        public virtual Marca Marca { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TestDrive> TestDrive { get; set; }
+        public virtual TipoCaja TipoCaja { get; set; }
+        public virtual TipoVehiculo TipoVehiculo { get; set; }
     }
 }

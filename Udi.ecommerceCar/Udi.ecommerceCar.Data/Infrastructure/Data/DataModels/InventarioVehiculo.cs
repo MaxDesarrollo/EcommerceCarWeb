@@ -12,21 +12,23 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.DataModels
     using System;
     using System.Collections.Generic;
     
-    public partial class Servicios
+    public partial class InventarioVehiculo
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Servicios()
+        public InventarioVehiculo()
         {
-            this.DetalleVentaServicio = new HashSet<DetalleVentaServicio>();
+            this.DetalleVentaVehiculo = new HashSet<DetalleVentaVehiculo>();
         }
     
-        public int ServicioID { get; set; }
-        public string Precio { get; set; }
-        public string Estado { get; set; }
-        public int TipoServicioID { get; set; }
+        public int InventarioVehiculoID { get; set; }
+        public Nullable<int> CantidadDisponible { get; set; }
+        public Nullable<decimal> Precio { get; set; }
+        public Nullable<int> VehiculoID { get; set; }
+        public string Color { get; set; }
+        public Nullable<System.DateTime> Año { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DetalleVentaServicio> DetalleVentaServicio { get; set; }
-        public virtual TipoServicio TipoServicio { get; set; }
+        public virtual ICollection<DetalleVentaVehiculo> DetalleVentaVehiculo { get; set; }
+        public virtual Vehiculo Vehiculo { get; set; }
     }
 }

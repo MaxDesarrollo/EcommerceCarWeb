@@ -1,23 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Udi.ecommerceCar.Data.Domain.Entities;
 using Udi.ecommerceCar.Data.Infrastructure.Data.DataModels;
 
 namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
 {
-    class ServicioRepositorio : EFRepositorio<Servicios>
+    class ServicioRepositorio : EFRepositorio<Servicio>
     {
         public int GuardarServicio(ServicioDto servicio)
         {
-            Servicios newServicio = new Servicios()
+            Servicio newServicio = new Servicio()
             {
-                //////////////////////////CAMBIAR El precio y el Estado
                 ServicioID = servicio.ServicioID,
-                Precio = servicio.Precio.ToString(),
-                Estado = servicio.Estado.ToString(),
+                Precio = servicio.Precio,
+                Estado = servicio.Estado,
                 TipoServicioID = servicio.TipoServicioID
             };
 
@@ -33,13 +30,12 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
             {
                 //Servicios servicio = Get(pk);
 
-                return this.BuildQuery()
+                return BuildQuery()
                 .Select(servicio => new ServicioDto()
                 {
-                    ////////////CAMBIAR PRECIO Y ESTADO
                     ServicioID = servicio.ServicioID,
-                    Precio = servicio.Precio,
-                    Estado = servicio.Estado,
+                    Precio = (decimal) servicio.Precio,
+                    Estado = (bool) servicio.Estado,
                     TipoServicioID = servicio.TipoServicioID,
                     TipoServicio = servicio.TipoServicio.Nombre
                 })
@@ -48,19 +44,17 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
             catch (Exception)
             {
                 return null;
-                throw;
             }
         }
 
         ////////////EFRepositorio tiene su propio metodo para llamar por paginas, seria estudiarlo un poco
         public List<ServicioDto> ObtenerServicios(int page, int size)
         {
-            return this.BuildQuery().Select(servicio => new ServicioDto()
+            return BuildQuery().Select(servicio => new ServicioDto()
             {
-                ////////////CAMBIAR PRECIO Y ESTADO
                 ServicioID = servicio.ServicioID,
-                Precio = servicio.Precio,
-                Estado = servicio.Estado,
+                Precio = (decimal) servicio.Precio,
+                Estado = (bool) servicio.Estado,
                 TipoServicioID = servicio.TipoServicioID,
                 TipoServicio = servicio.TipoServicio.Nombre
             })
@@ -72,12 +66,11 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
 
         public List<ServicioDto> ObtenerServiciosTodos()
         {
-            return this.BuildQuery().Select(servicio => new ServicioDto()
+            return BuildQuery().Select(servicio => new ServicioDto()
             {
-                ////////////CAMBIAR PRECIO Y ESTADO
                 ServicioID = servicio.ServicioID,
-                Precio = servicio.Precio,
-                Estado = servicio.Estado,
+                Precio = (decimal) servicio.Precio,
+                Estado = (bool) servicio.Estado,
                 TipoServicioID = servicio.TipoServicioID,
                 TipoServicio = servicio.TipoServicio.Nombre
             })

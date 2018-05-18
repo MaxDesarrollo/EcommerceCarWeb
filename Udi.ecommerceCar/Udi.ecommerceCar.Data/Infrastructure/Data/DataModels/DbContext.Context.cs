@@ -13,10 +13,10 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.DataModels
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class EcommercedbEntities : DbContext
+    public partial class EcommercedbEntities1 : DbContext
     {
-        public EcommercedbEntities()
-            : base("name=EcommercedbEntities")
+        public EcommercedbEntities1()
+            : base("name=EcommercedbEntities1")
         {
         }
     
@@ -28,11 +28,13 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.DataModels
         public virtual DbSet<DetalleVentaProducto> DetalleVentaProducto { get; set; }
         public virtual DbSet<DetalleVentaServicio> DetalleVentaServicio { get; set; }
         public virtual DbSet<DetalleVentaVehiculo> DetalleVentaVehiculo { get; set; }
+        public virtual DbSet<Imagen> Imagen { get; set; }
+        public virtual DbSet<InventarioVehiculo> InventarioVehiculo { get; set; }
         public virtual DbSet<Marca> Marca { get; set; }
-        public virtual DbSet<Modelo> Modelo { get; set; }
         public virtual DbSet<Producto> Producto { get; set; }
-        public virtual DbSet<Servicios> Servicios { get; set; }
+        public virtual DbSet<Servicio> Servicio { get; set; }
         public virtual DbSet<Stock> Stock { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TestDrive> TestDrive { get; set; }
         public virtual DbSet<TipoCaja> TipoCaja { get; set; }
         public virtual DbSet<TipoProducto> TipoProducto { get; set; }

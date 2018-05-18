@@ -7,26 +7,24 @@
       <Schema Namespace="EcommercedbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="DetalleVentaProducto">
           <Key>
-            <PropertyRef Name="DetalleVentaProducto" />
+            <PropertyRef Name="DetalleVentaProductoID" />
           </Key>
-          <Property Name="DetalleVentaProducto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Cantidad" Type="varchar" MaxLength="50" />
+          <Property Name="DetalleVentaProductoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cantidad" Type="int" />
           <Property Name="Fecha" Type="date" />
-          <Property Name="Hora" Type="datetime" />
-          <Property Name="VentaProductoID" Type="int" />
+          <Property Name="Hora" Type="time" Precision="7" />
           <Property Name="ProductoID" Type="int" />
-          <Property Name="VentaID" Type="int" />
+          <Property Name="VentaProductoID" Type="int" />
         </EntityType>
         <EntityType Name="DetalleVentaServicio">
           <Key>
             <PropertyRef Name="DetalleVentaServicioID" />
           </Key>
           <Property Name="DetalleVentaServicioID" Type="int" Nullable="false" />
-          <Property Name="Costo" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Monto" Type="decimal" Precision="18" Scale="0" />
           <Property Name="Fecha" Type="date" />
           <Property Name="Hora" Type="time" Precision="7" />
           <Property Name="ServicioID" Type="int" />
-          <Property Name="VentaID" Type="int" />
           <Property Name="Cantidad" Type="int" />
           <Property Name="VentaServicioID" Type="int" />
         </EntityType>
@@ -36,13 +34,29 @@
           </Key>
           <Property Name="DetalleVentaVehiculo" Type="int" Nullable="false" />
           <Property Name="Cantidad" Type="int" />
-          <Property Name="Precio" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Monto" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Fecha" Type="date" />
           <Property Name="Hora" Type="time" Precision="7" />
-          <Property Name="VehiculoID" Type="int" />
-          <Property Name="VentaVehiculoID" Type="int" />
           <Property Name="InventarioVehiculoID" Type="int" />
           <Property Name="VentaVehiculo" Type="int" />
+        </EntityType>
+        <EntityType Name="Imagen">
+          <Key>
+            <PropertyRef Name="ImagenID" />
+          </Key>
+          <Property Name="ImagenID" Type="int" Nullable="false" />
+          <Property Name="UrlImagen" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="InventarioVehiculo">
+          <Key>
+            <PropertyRef Name="InventarioVehiculoID" />
+          </Key>
+          <Property Name="InventarioVehiculoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CantidadDisponible" Type="int" />
+          <Property Name="Precio" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="VehiculoID" Type="int" />
+          <Property Name="Color" Type="varchar" MaxLength="50" />
+          <Property Name="Año" Type="date" />
         </EntityType>
         <EntityType Name="Marca">
           <Key>
@@ -52,38 +66,36 @@
           <Property Name="Nombre" Type="varchar" MaxLength="50" />
           <Property Name="PaisOrigen" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="Modelo">
-          <Key>
-            <PropertyRef Name="VehiculoID" />
-          </Key>
-          <Property Name="VehiculoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CantidadPuertas" Type="int" />
-          <Property Name="HabilitadoTestDrive" Type="bit" />
-          <Property Name="Estado" Type="int" />
-          <Property Name="ModeloID" Type="int" />
-          <Property Name="TipoVehiculoID" Type="int" />
-          <Property Name="TipoCajaID" Type="int" />
-          <Property Name="NombreModelo" Type="varchar" MaxLength="50" />
-          <Property Name="MarcaID" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="Producto">
           <Key>
             <PropertyRef Name="ProductoID" />
           </Key>
           <Property Name="ProductoID" Type="int" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="50" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="250" />
           <Property Name="TipoProductoID" Type="int" />
           <Property Name="Cantidad" Type="int" />
+          <Property Name="Precio" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="UrlAmigable" Type="varchar" MaxLength="50" />
+          <Property Name="VisibleMain" Type="bit" />
+          <Property Name="Puntuacion" Type="int" />
+          <Property Name="ImagenID" Type="int" />
+          <Property Name="DescripcionCorta" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="Servicios">
+        <EntityType Name="Servicio">
           <Key>
             <PropertyRef Name="ServicioID" />
           </Key>
           <Property Name="ServicioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Precio" Type="varchar" MaxLength="50" />
-          <Property Name="Estado" Type="varchar" MaxLength="50" />
+          <Property Name="Precio" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Estado" Type="bit" />
           <Property Name="TipoServicioID" Type="int" Nullable="false" />
+          <Property Name="UrlAmigable" Type="varchar" MaxLength="50" />
+          <Property Name="VisibleMain" Type="bit" />
+          <Property Name="Puntuacion" Type="int" />
+          <Property Name="ImagenID" Type="int" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="250" />
+          <Property Name="DescripcionCorta" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Stock">
           <Key>
@@ -91,10 +103,20 @@
           </Key>
           <Property Name="LoteProductoID" Type="int" Nullable="false" />
           <Property Name="Stock" Type="int" />
-          <Property Name="Precio" Type="varchar" MaxLength="50" />
+          <Property Name="Precio" Type="decimal" Precision="18" Scale="2" />
           <Property Name="ProductoID" Type="int" />
           <Property Name="CantidadIngreso" Type="int" />
           <Property Name="FechaIngreso" Type="date" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="TestDrive">
           <Key>
@@ -102,8 +124,8 @@
           </Key>
           <Property Name="TestDriveID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FechaProgramada" Type="date" />
-          <Property Name="HoraInicio" Type="datetime" />
-          <Property Name="HoraFinal" Type="datetime" />
+          <Property Name="HoraInicio" Type="time" Precision="7" />
+          <Property Name="HoraFinal" Type="time" Precision="7" />
           <Property Name="VehiculoID" Type="int" />
           <Property Name="UsuarioID" Type="int" />
         </EntityType>
@@ -142,28 +164,36 @@
           <Property Name="UsuarioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="50" />
           <Property Name="Apellido" Type="varchar" MaxLength="50" />
-          <Property Name="Username" Type="varchar" MaxLength="50" />
-          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="Username" Type="varchar" MaxLength="20" />
+          <Property Name="Password" Type="varchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="Vehiculo">
           <Key>
-            <PropertyRef Name="InventarioVehiculoID" />
+            <PropertyRef Name="VehiculoID" />
           </Key>
-          <Property Name="InventarioVehiculoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CantidadDispnible" Type="varchar" MaxLength="50" />
-          <Property Name="Precio" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="ModeloID" Type="int" />
-          <Property Name="Color" Type="varchar" MaxLength="50" />
-          <Property Name="Año" Type="varchar" MaxLength="50" />
+          <Property Name="VehiculoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CantidadPuertas" Type="int" />
+          <Property Name="HabilitadoTestDrive" Type="bit" />
+          <Property Name="Estado" Type="bit" />
+          <Property Name="TipoVehiculoID" Type="int" />
+          <Property Name="TipoCajaID" Type="int" />
+          <Property Name="NombreModelo" Type="varchar" MaxLength="50" />
+          <Property Name="MarcaID" Type="int" Nullable="false" />
+          <Property Name="UrlAmigable" Type="varchar" MaxLength="50" />
+          <Property Name="VisibleMain" Type="bit" />
+          <Property Name="Puntuacion" Type="int" />
+          <Property Name="ImagenID" Type="int" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="250" />
+          <Property Name="DescripcionCorta" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="VentaProducto">
           <Key>
             <PropertyRef Name="VentaID" />
           </Key>
           <Property Name="VentaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Monto" Type="int" />
+          <Property Name="Monto" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Fecha" Type="date" />
-          <Property Name="Hora" Type="datetime" />
+          <Property Name="Hora" Type="time" Precision="7" />
           <Property Name="UsuarioID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="VentaServicio">
@@ -171,8 +201,8 @@
             <PropertyRef Name="VentaServicioID" />
           </Key>
           <Property Name="VentaServicioID" Type="int" Nullable="false" />
-          <Property Name="Monto" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Monto" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Fecha" Type="date" />
           <Property Name="Hora" Type="time" Precision="7" />
           <Property Name="UsuarioID" Type="int" Nullable="false" />
         </EntityType>
@@ -181,7 +211,7 @@
             <PropertyRef Name="VentaVehiculo" />
           </Key>
           <Property Name="VentaVehiculo" Type="int" Nullable="false" />
-          <Property Name="Monto" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Monto" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Fecha" Type="date" />
           <Property Name="Hora" Type="time" Precision="7" />
           <Property Name="UsuarioID" Type="int" Nullable="false" />
@@ -206,15 +236,15 @@
               <PropertyRef Name="VentaID" />
             </Principal>
             <Dependent Role="DetalleVentaProducto">
-              <PropertyRef Name="VentaID" />
+              <PropertyRef Name="VentaProductoID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DetalleVentaServicio_Servicios">
-          <End Role="Servicios" Type="Self.Servicios" Multiplicity="0..1" />
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="0..1" />
           <End Role="DetalleVentaServicio" Type="Self.DetalleVentaServicio" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Servicios">
+            <Principal Role="Servicio">
               <PropertyRef Name="ServicioID" />
             </Principal>
             <Dependent Role="DetalleVentaServicio">
@@ -235,10 +265,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DetalleVentaVehiculo_Vehiculo">
-          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="0..1" />
+          <End Role="InventarioVehiculo" Type="Self.InventarioVehiculo" Multiplicity="0..1" />
           <End Role="DetalleVentaVehiculo" Type="Self.DetalleVentaVehiculo" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Vehiculo">
+            <Principal Role="InventarioVehiculo">
               <PropertyRef Name="InventarioVehiculoID" />
             </Principal>
             <Dependent Role="DetalleVentaVehiculo">
@@ -272,49 +302,37 @@
         </Association>
         <Association Name="FK_Modelo_Marca">
           <End Role="Marca" Type="Self.Marca" Multiplicity="1" />
-          <End Role="Modelo" Type="Self.Modelo" Multiplicity="*" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Marca">
               <PropertyRef Name="MarcaID" />
             </Principal>
-            <Dependent Role="Modelo">
+            <Dependent Role="Vehiculo">
               <PropertyRef Name="MarcaID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Modelo_TipoCaja">
           <End Role="TipoCaja" Type="Self.TipoCaja" Multiplicity="0..1" />
-          <End Role="Modelo" Type="Self.Modelo" Multiplicity="*" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TipoCaja">
               <PropertyRef Name="TipoCajaID" />
             </Principal>
-            <Dependent Role="Modelo">
+            <Dependent Role="Vehiculo">
               <PropertyRef Name="TipoCajaID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Modelo_TipoVehiculo">
-          <End Role="TipoVehiculo" Type="Self.TipoVehiculo" Multiplicity="0..1" />
-          <End Role="Modelo" Type="Self.Modelo" Multiplicity="*" />
+        <Association Name="FK_Producto_Imagen">
+          <End Role="Imagen" Type="Self.Imagen" Multiplicity="0..1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TipoVehiculo">
-              <PropertyRef Name="TipoVehiculoID" />
+            <Principal Role="Imagen">
+              <PropertyRef Name="ImagenID" />
             </Principal>
-            <Dependent Role="Modelo">
-              <PropertyRef Name="TipoVehiculoID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Modelo_Vehiculo">
-          <End Role="Modelo" Type="Self.Modelo" Multiplicity="0..1" />
-          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Modelo">
-              <PropertyRef Name="VehiculoID" />
-            </Principal>
-            <Dependent Role="Vehiculo">
-              <PropertyRef Name="ModeloID" />
+            <Dependent Role="Producto">
+              <PropertyRef Name="ImagenID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -330,14 +348,26 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Servicio_Imagen">
+          <End Role="Imagen" Type="Self.Imagen" Multiplicity="0..1" />
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Imagen">
+              <PropertyRef Name="ImagenID" />
+            </Principal>
+            <Dependent Role="Servicio">
+              <PropertyRef Name="ImagenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Servicios_TipoServicio">
           <End Role="TipoServicio" Type="Self.TipoServicio" Multiplicity="1" />
-          <End Role="Servicios" Type="Self.Servicios" Multiplicity="*" />
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TipoServicio">
               <PropertyRef Name="TipoServicioID" />
             </Principal>
-            <Dependent Role="Servicios">
+            <Dependent Role="Servicio">
               <PropertyRef Name="TipoServicioID" />
             </Dependent>
           </ReferentialConstraint>
@@ -355,14 +385,50 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_TestDrive_Vehiculo">
-          <End Role="Modelo" Type="Self.Modelo" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="0..1" />
           <End Role="TestDrive" Type="Self.TestDrive" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Modelo">
+            <Principal Role="Vehiculo">
               <PropertyRef Name="VehiculoID" />
             </Principal>
             <Dependent Role="TestDrive">
               <PropertyRef Name="VehiculoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehiculo_Imagen">
+          <End Role="Imagen" Type="Self.Imagen" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Imagen">
+              <PropertyRef Name="ImagenID" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="ImagenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehiculo_InventarioVehiculo">
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="0..1" />
+          <End Role="InventarioVehiculo" Type="Self.InventarioVehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehiculo">
+              <PropertyRef Name="VehiculoID" />
+            </Principal>
+            <Dependent Role="InventarioVehiculo">
+              <PropertyRef Name="VehiculoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehiculo_TipoVehiculo">
+          <End Role="TipoVehiculo" Type="Self.TipoVehiculo" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoVehiculo">
+              <PropertyRef Name="TipoVehiculoID" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="TipoVehiculoID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -406,11 +472,13 @@
           <EntitySet Name="DetalleVentaProducto" EntityType="Self.DetalleVentaProducto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetalleVentaServicio" EntityType="Self.DetalleVentaServicio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetalleVentaVehiculo" EntityType="Self.DetalleVentaVehiculo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Imagen" EntityType="Self.Imagen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InventarioVehiculo" EntityType="Self.InventarioVehiculo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Marca" EntityType="Self.Marca" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Modelo" EntityType="Self.Modelo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Servicios" EntityType="Self.Servicios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Servicio" EntityType="Self.Servicio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Stock" EntityType="Self.Stock" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TestDrive" EntityType="Self.TestDrive" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoCaja" EntityType="Self.TipoCaja" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoProducto" EntityType="Self.TipoProducto" Schema="dbo" store:Type="Tables" />
@@ -430,7 +498,7 @@
             <End Role="DetalleVentaProducto" EntitySet="DetalleVentaProducto" />
           </AssociationSet>
           <AssociationSet Name="FK_DetalleVentaServicio_Servicios" Association="Self.FK_DetalleVentaServicio_Servicios">
-            <End Role="Servicios" EntitySet="Servicios" />
+            <End Role="Servicio" EntitySet="Servicio" />
             <End Role="DetalleVentaServicio" EntitySet="DetalleVentaServicio" />
           </AssociationSet>
           <AssociationSet Name="FK_DetalleVentaServicio_VentaServicio" Association="Self.FK_DetalleVentaServicio_VentaServicio">
@@ -438,7 +506,7 @@
             <End Role="DetalleVentaServicio" EntitySet="DetalleVentaServicio" />
           </AssociationSet>
           <AssociationSet Name="FK_DetalleVentaVehiculo_Vehiculo" Association="Self.FK_DetalleVentaVehiculo_Vehiculo">
-            <End Role="Vehiculo" EntitySet="Vehiculo" />
+            <End Role="InventarioVehiculo" EntitySet="InventarioVehiculo" />
             <End Role="DetalleVentaVehiculo" EntitySet="DetalleVentaVehiculo" />
           </AssociationSet>
           <AssociationSet Name="FK_DetalleVentaVehiculo_VentaVehiculo" Association="Self.FK_DetalleVentaVehiculo_VentaVehiculo">
@@ -451,35 +519,47 @@
           </AssociationSet>
           <AssociationSet Name="FK_Modelo_Marca" Association="Self.FK_Modelo_Marca">
             <End Role="Marca" EntitySet="Marca" />
-            <End Role="Modelo" EntitySet="Modelo" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
           </AssociationSet>
           <AssociationSet Name="FK_Modelo_TipoCaja" Association="Self.FK_Modelo_TipoCaja">
             <End Role="TipoCaja" EntitySet="TipoCaja" />
-            <End Role="Modelo" EntitySet="Modelo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Modelo_TipoVehiculo" Association="Self.FK_Modelo_TipoVehiculo">
-            <End Role="TipoVehiculo" EntitySet="TipoVehiculo" />
-            <End Role="Modelo" EntitySet="Modelo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Modelo_Vehiculo" Association="Self.FK_Modelo_Vehiculo">
-            <End Role="Modelo" EntitySet="Modelo" />
             <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Producto_Imagen" Association="Self.FK_Producto_Imagen">
+            <End Role="Imagen" EntitySet="Imagen" />
+            <End Role="Producto" EntitySet="Producto" />
           </AssociationSet>
           <AssociationSet Name="FK_Producto_TipoProducto" Association="Self.FK_Producto_TipoProducto">
             <End Role="TipoProducto" EntitySet="TipoProducto" />
             <End Role="Producto" EntitySet="Producto" />
           </AssociationSet>
+          <AssociationSet Name="FK_Servicio_Imagen" Association="Self.FK_Servicio_Imagen">
+            <End Role="Imagen" EntitySet="Imagen" />
+            <End Role="Servicio" EntitySet="Servicio" />
+          </AssociationSet>
           <AssociationSet Name="FK_Servicios_TipoServicio" Association="Self.FK_Servicios_TipoServicio">
             <End Role="TipoServicio" EntitySet="TipoServicio" />
-            <End Role="Servicios" EntitySet="Servicios" />
+            <End Role="Servicio" EntitySet="Servicio" />
           </AssociationSet>
           <AssociationSet Name="FK_TestDrive_Usuario" Association="Self.FK_TestDrive_Usuario">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="TestDrive" EntitySet="TestDrive" />
           </AssociationSet>
           <AssociationSet Name="FK_TestDrive_Vehiculo" Association="Self.FK_TestDrive_Vehiculo">
-            <End Role="Modelo" EntitySet="Modelo" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
             <End Role="TestDrive" EntitySet="TestDrive" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehiculo_Imagen" Association="Self.FK_Vehiculo_Imagen">
+            <End Role="Imagen" EntitySet="Imagen" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehiculo_InventarioVehiculo" Association="Self.FK_Vehiculo_InventarioVehiculo">
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+            <End Role="InventarioVehiculo" EntitySet="InventarioVehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehiculo_TipoVehiculo" Association="Self.FK_Vehiculo_TipoVehiculo">
+            <End Role="TipoVehiculo" EntitySet="TipoVehiculo" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
           </AssociationSet>
           <AssociationSet Name="FK_VentaProducto_Usuario" Association="Self.FK_VentaProducto_Usuario">
             <End Role="Usuario" EntitySet="Usuario" />
@@ -501,15 +581,14 @@
       <Schema Namespace="EcommercedbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="DetalleVentaProducto">
           <Key>
-            <PropertyRef Name="DetalleVentaProducto1" />
+            <PropertyRef Name="DetalleVentaProductoID" />
           </Key>
-          <Property Name="DetalleVentaProducto1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Cantidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DetalleVentaProductoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cantidad" Type="Int32" />
           <Property Name="Fecha" Type="DateTime" Precision="0" />
-          <Property Name="Hora" Type="DateTime" Precision="3" />
-          <Property Name="VentaProductoID" Type="Int32" />
+          <Property Name="Hora" Type="Time" Precision="7" />
           <Property Name="ProductoID" Type="Int32" />
-          <Property Name="VentaID" Type="Int32" />
+          <Property Name="VentaProductoID" Type="Int32" />
           <NavigationProperty Name="Producto" Relationship="Self.FK_DetalleVentaProducto_Producto" FromRole="DetalleVentaProducto" ToRole="Producto" />
           <NavigationProperty Name="VentaProducto" Relationship="Self.FK_DetalleVentaProducto_VentaProducto" FromRole="DetalleVentaProducto" ToRole="VentaProducto" />
         </EntityType>
@@ -518,14 +597,13 @@
             <PropertyRef Name="DetalleVentaServicioID" />
           </Key>
           <Property Name="DetalleVentaServicioID" Type="Int32" Nullable="false" />
-          <Property Name="Costo" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Monto" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="Fecha" Type="DateTime" Precision="0" />
           <Property Name="Hora" Type="Time" Precision="7" />
           <Property Name="ServicioID" Type="Int32" />
-          <Property Name="VentaID" Type="Int32" />
           <Property Name="Cantidad" Type="Int32" />
           <Property Name="VentaServicioID" Type="Int32" />
-          <NavigationProperty Name="Servicios" Relationship="Self.FK_DetalleVentaServicio_Servicios" FromRole="DetalleVentaServicio" ToRole="Servicios" />
+          <NavigationProperty Name="Servicio" Relationship="Self.FK_DetalleVentaServicio_Servicios" FromRole="DetalleVentaServicio" ToRole="Servicio" />
           <NavigationProperty Name="VentaServicio" Relationship="Self.FK_DetalleVentaServicio_VentaServicio" FromRole="DetalleVentaServicio" ToRole="VentaServicio" />
         </EntityType>
         <EntityType Name="DetalleVentaVehiculo">
@@ -534,15 +612,36 @@
           </Key>
           <Property Name="DetalleVentaVehiculo1" Type="Int32" Nullable="false" />
           <Property Name="Cantidad" Type="Int32" />
-          <Property Name="Precio" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Monto" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Fecha" Type="DateTime" Precision="0" />
           <Property Name="Hora" Type="Time" Precision="7" />
-          <Property Name="VehiculoID" Type="Int32" />
-          <Property Name="VentaVehiculoID" Type="Int32" />
           <Property Name="InventarioVehiculoID" Type="Int32" />
           <Property Name="VentaVehiculo" Type="Int32" />
-          <NavigationProperty Name="Vehiculo" Relationship="Self.FK_DetalleVentaVehiculo_Vehiculo" FromRole="DetalleVentaVehiculo" ToRole="Vehiculo" />
+          <NavigationProperty Name="InventarioVehiculo" Relationship="Self.FK_DetalleVentaVehiculo_Vehiculo" FromRole="DetalleVentaVehiculo" ToRole="InventarioVehiculo" />
           <NavigationProperty Name="VentaVehiculo1" Relationship="Self.FK_DetalleVentaVehiculo_VentaVehiculo" FromRole="DetalleVentaVehiculo" ToRole="VentaVehiculo" />
+        </EntityType>
+        <EntityType Name="Imagen">
+          <Key>
+            <PropertyRef Name="ImagenID" />
+          </Key>
+          <Property Name="ImagenID" Type="Int32" Nullable="false" />
+          <Property Name="UrlImagen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK_Producto_Imagen" FromRole="Imagen" ToRole="Producto" />
+          <NavigationProperty Name="Servicio" Relationship="Self.FK_Servicio_Imagen" FromRole="Imagen" ToRole="Servicio" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.FK_Vehiculo_Imagen" FromRole="Imagen" ToRole="Vehiculo" />
+        </EntityType>
+        <EntityType Name="InventarioVehiculo">
+          <Key>
+            <PropertyRef Name="InventarioVehiculoID" />
+          </Key>
+          <Property Name="InventarioVehiculoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CantidadDisponible" Type="Int32" />
+          <Property Name="Precio" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="VehiculoID" Type="Int32" />
+          <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Año" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="DetalleVentaVehiculo" Relationship="Self.FK_DetalleVentaVehiculo_Vehiculo" FromRole="InventarioVehiculo" ToRole="DetalleVentaVehiculo" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.FK_Vehiculo_InventarioVehiculo" FromRole="InventarioVehiculo" ToRole="Vehiculo" />
         </EntityType>
         <EntityType Name="Marca">
           <Key>
@@ -551,26 +650,7 @@
           <Property Name="MarcaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PaisOrigen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Modelo" Relationship="Self.FK_Modelo_Marca" FromRole="Marca" ToRole="Modelo" />
-        </EntityType>
-        <EntityType Name="Modelo">
-          <Key>
-            <PropertyRef Name="VehiculoID" />
-          </Key>
-          <Property Name="VehiculoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CantidadPuertas" Type="Int32" />
-          <Property Name="HabilitadoTestDrive" Type="Boolean" />
-          <Property Name="Estado" Type="Int32" />
-          <Property Name="ModeloID" Type="Int32" />
-          <Property Name="TipoVehiculoID" Type="Int32" />
-          <Property Name="TipoCajaID" Type="Int32" />
-          <Property Name="NombreModelo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="MarcaID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Marca" Relationship="Self.FK_Modelo_Marca" FromRole="Modelo" ToRole="Marca" />
-          <NavigationProperty Name="TipoCaja" Relationship="Self.FK_Modelo_TipoCaja" FromRole="Modelo" ToRole="TipoCaja" />
-          <NavigationProperty Name="TipoVehiculo" Relationship="Self.FK_Modelo_TipoVehiculo" FromRole="Modelo" ToRole="TipoVehiculo" />
-          <NavigationProperty Name="Vehiculo" Relationship="Self.FK_Modelo_Vehiculo" FromRole="Modelo" ToRole="Vehiculo" />
-          <NavigationProperty Name="TestDrive" Relationship="Self.FK_TestDrive_Vehiculo" FromRole="Modelo" ToRole="TestDrive" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.FK_Modelo_Marca" FromRole="Marca" ToRole="Vehiculo" />
         </EntityType>
         <EntityType Name="Producto">
           <Key>
@@ -578,23 +658,37 @@
           </Key>
           <Property Name="ProductoID" Type="Int32" Nullable="false" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="TipoProductoID" Type="Int32" />
           <Property Name="Cantidad" Type="Int32" />
+          <Property Name="Precio" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="UrlAmigable" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VisibleMain" Type="Boolean" />
+          <Property Name="Puntuacion" Type="Int32" />
+          <Property Name="ImagenID" Type="Int32" />
+          <Property Name="DescripcionCorta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="DetalleVentaProducto" Relationship="Self.FK_DetalleVentaProducto_Producto" FromRole="Producto" ToRole="DetalleVentaProducto" />
+          <NavigationProperty Name="Imagen" Relationship="Self.FK_Producto_Imagen" FromRole="Producto" ToRole="Imagen" />
           <NavigationProperty Name="Stock" Relationship="Self.FK_Lote_Producto" FromRole="Producto" ToRole="Stock" />
           <NavigationProperty Name="TipoProducto" Relationship="Self.FK_Producto_TipoProducto" FromRole="Producto" ToRole="TipoProducto" />
         </EntityType>
-        <EntityType Name="Servicios">
+        <EntityType Name="Servicio">
           <Key>
             <PropertyRef Name="ServicioID" />
           </Key>
           <Property Name="ServicioID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Precio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Precio" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Estado" Type="Boolean" />
           <Property Name="TipoServicioID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="DetalleVentaServicio" Relationship="Self.FK_DetalleVentaServicio_Servicios" FromRole="Servicios" ToRole="DetalleVentaServicio" />
-          <NavigationProperty Name="TipoServicio" Relationship="Self.FK_Servicios_TipoServicio" FromRole="Servicios" ToRole="TipoServicio" />
+          <Property Name="UrlAmigable" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VisibleMain" Type="Boolean" />
+          <Property Name="Puntuacion" Type="Int32" />
+          <Property Name="ImagenID" Type="Int32" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="DescripcionCorta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DetalleVentaServicio" Relationship="Self.FK_DetalleVentaServicio_Servicios" FromRole="Servicio" ToRole="DetalleVentaServicio" />
+          <NavigationProperty Name="Imagen" Relationship="Self.FK_Servicio_Imagen" FromRole="Servicio" ToRole="Imagen" />
+          <NavigationProperty Name="TipoServicio" Relationship="Self.FK_Servicios_TipoServicio" FromRole="Servicio" ToRole="TipoServicio" />
         </EntityType>
         <EntityType Name="Stock">
           <Key>
@@ -602,11 +696,21 @@
           </Key>
           <Property Name="LoteProductoID" Type="Int32" Nullable="false" />
           <Property Name="Stock1" Type="Int32" />
-          <Property Name="Precio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Precio" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="ProductoID" Type="Int32" />
           <Property Name="CantidadIngreso" Type="Int32" />
           <Property Name="FechaIngreso" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Producto" Relationship="Self.FK_Lote_Producto" FromRole="Stock" ToRole="Producto" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="TestDrive">
           <Key>
@@ -614,12 +718,12 @@
           </Key>
           <Property Name="TestDriveID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FechaProgramada" Type="DateTime" Precision="0" />
-          <Property Name="HoraInicio" Type="DateTime" Precision="3" />
-          <Property Name="HoraFinal" Type="DateTime" Precision="3" />
+          <Property Name="HoraInicio" Type="Time" Precision="7" />
+          <Property Name="HoraFinal" Type="Time" Precision="7" />
           <Property Name="VehiculoID" Type="Int32" />
           <Property Name="UsuarioID" Type="Int32" />
-          <NavigationProperty Name="Modelo" Relationship="Self.FK_TestDrive_Vehiculo" FromRole="TestDrive" ToRole="Modelo" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK_TestDrive_Usuario" FromRole="TestDrive" ToRole="Usuario" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.FK_TestDrive_Vehiculo" FromRole="TestDrive" ToRole="Vehiculo" />
         </EntityType>
         <EntityType Name="TipoCaja">
           <Key>
@@ -627,7 +731,7 @@
           </Key>
           <Property Name="TipoCajaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Modelo" Relationship="Self.FK_Modelo_TipoCaja" FromRole="TipoCaja" ToRole="Modelo" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.FK_Modelo_TipoCaja" FromRole="TipoCaja" ToRole="Vehiculo" />
         </EntityType>
         <EntityType Name="TipoProducto">
           <Key>
@@ -643,7 +747,7 @@
           </Key>
           <Property Name="TipoServicioID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Servicios" Relationship="Self.FK_Servicios_TipoServicio" FromRole="TipoServicio" ToRole="Servicios" />
+          <NavigationProperty Name="Servicio" Relationship="Self.FK_Servicios_TipoServicio" FromRole="TipoServicio" ToRole="Servicio" />
         </EntityType>
         <EntityType Name="TipoVehiculo">
           <Key>
@@ -651,7 +755,7 @@
           </Key>
           <Property Name="TipoVehiculoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Modelo" Relationship="Self.FK_Modelo_TipoVehiculo" FromRole="TipoVehiculo" ToRole="Modelo" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.FK_Vehiculo_TipoVehiculo" FromRole="TipoVehiculo" ToRole="Vehiculo" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
@@ -660,8 +764,8 @@
           <Property Name="UsuarioID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="TestDrive" Relationship="Self.FK_TestDrive_Usuario" FromRole="Usuario" ToRole="TestDrive" />
           <NavigationProperty Name="VentaProducto" Relationship="Self.FK_VentaProducto_Usuario" FromRole="Usuario" ToRole="VentaProducto" />
           <NavigationProperty Name="VentaServicio" Relationship="Self.FK_VentaServicio_Usuario" FromRole="Usuario" ToRole="VentaServicio" />
@@ -669,25 +773,37 @@
         </EntityType>
         <EntityType Name="Vehiculo">
           <Key>
-            <PropertyRef Name="InventarioVehiculoID" />
+            <PropertyRef Name="VehiculoID" />
           </Key>
-          <Property Name="InventarioVehiculoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CantidadDispnible" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Precio" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="ModeloID" Type="Int32" />
-          <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Año" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="DetalleVentaVehiculo" Relationship="Self.FK_DetalleVentaVehiculo_Vehiculo" FromRole="Vehiculo" ToRole="DetalleVentaVehiculo" />
-          <NavigationProperty Name="Modelo" Relationship="Self.FK_Modelo_Vehiculo" FromRole="Vehiculo" ToRole="Modelo" />
+          <Property Name="VehiculoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CantidadPuertas" Type="Int32" />
+          <Property Name="HabilitadoTestDrive" Type="Boolean" />
+          <Property Name="Estado" Type="Boolean" />
+          <Property Name="TipoVehiculoID" Type="Int32" />
+          <Property Name="TipoCajaID" Type="Int32" />
+          <Property Name="NombreModelo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MarcaID" Type="Int32" Nullable="false" />
+          <Property Name="UrlAmigable" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VisibleMain" Type="Boolean" />
+          <Property Name="Puntuacion" Type="Int32" />
+          <Property Name="ImagenID" Type="Int32" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="DescripcionCorta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Imagen" Relationship="Self.FK_Vehiculo_Imagen" FromRole="Vehiculo" ToRole="Imagen" />
+          <NavigationProperty Name="InventarioVehiculo" Relationship="Self.FK_Vehiculo_InventarioVehiculo" FromRole="Vehiculo" ToRole="InventarioVehiculo" />
+          <NavigationProperty Name="Marca" Relationship="Self.FK_Modelo_Marca" FromRole="Vehiculo" ToRole="Marca" />
+          <NavigationProperty Name="TestDrive" Relationship="Self.FK_TestDrive_Vehiculo" FromRole="Vehiculo" ToRole="TestDrive" />
+          <NavigationProperty Name="TipoCaja" Relationship="Self.FK_Modelo_TipoCaja" FromRole="Vehiculo" ToRole="TipoCaja" />
+          <NavigationProperty Name="TipoVehiculo" Relationship="Self.FK_Vehiculo_TipoVehiculo" FromRole="Vehiculo" ToRole="TipoVehiculo" />
         </EntityType>
         <EntityType Name="VentaProducto">
           <Key>
             <PropertyRef Name="VentaID" />
           </Key>
           <Property Name="VentaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Monto" Type="Int32" />
+          <Property Name="Monto" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Fecha" Type="DateTime" Precision="0" />
-          <Property Name="Hora" Type="DateTime" Precision="3" />
+          <Property Name="Hora" Type="Time" Precision="7" />
           <Property Name="UsuarioID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="DetalleVentaProducto" Relationship="Self.FK_DetalleVentaProducto_VentaProducto" FromRole="VentaProducto" ToRole="DetalleVentaProducto" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK_VentaProducto_Usuario" FromRole="VentaProducto" ToRole="Usuario" />
@@ -697,8 +813,8 @@
             <PropertyRef Name="VentaServicioID" />
           </Key>
           <Property Name="VentaServicioID" Type="Int32" Nullable="false" />
-          <Property Name="Monto" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Monto" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
           <Property Name="Hora" Type="Time" Precision="7" />
           <Property Name="UsuarioID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="DetalleVentaServicio" Relationship="Self.FK_DetalleVentaServicio_VentaServicio" FromRole="VentaServicio" ToRole="DetalleVentaServicio" />
@@ -709,7 +825,7 @@
             <PropertyRef Name="VentaVehiculo1" />
           </Key>
           <Property Name="VentaVehiculo1" Type="Int32" Nullable="false" />
-          <Property Name="Monto" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Monto" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Fecha" Type="DateTime" Precision="0" />
           <Property Name="Hora" Type="Time" Precision="7" />
           <Property Name="UsuarioID" Type="Int32" Nullable="false" />
@@ -736,15 +852,15 @@
               <PropertyRef Name="VentaID" />
             </Principal>
             <Dependent Role="DetalleVentaProducto">
-              <PropertyRef Name="VentaID" />
+              <PropertyRef Name="VentaProductoID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DetalleVentaServicio_Servicios">
-          <End Role="Servicios" Type="Self.Servicios" Multiplicity="0..1" />
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="0..1" />
           <End Role="DetalleVentaServicio" Type="Self.DetalleVentaServicio" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Servicios">
+            <Principal Role="Servicio">
               <PropertyRef Name="ServicioID" />
             </Principal>
             <Dependent Role="DetalleVentaServicio">
@@ -765,10 +881,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DetalleVentaVehiculo_Vehiculo">
-          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="0..1" />
+          <End Role="InventarioVehiculo" Type="Self.InventarioVehiculo" Multiplicity="0..1" />
           <End Role="DetalleVentaVehiculo" Type="Self.DetalleVentaVehiculo" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Vehiculo">
+            <Principal Role="InventarioVehiculo">
               <PropertyRef Name="InventarioVehiculoID" />
             </Principal>
             <Dependent Role="DetalleVentaVehiculo">
@@ -788,63 +904,63 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Producto_Imagen">
+          <End Role="Imagen" Type="Self.Imagen" Multiplicity="0..1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Imagen">
+              <PropertyRef Name="ImagenID" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="ImagenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servicio_Imagen">
+          <End Role="Imagen" Type="Self.Imagen" Multiplicity="0..1" />
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Imagen">
+              <PropertyRef Name="ImagenID" />
+            </Principal>
+            <Dependent Role="Servicio">
+              <PropertyRef Name="ImagenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehiculo_Imagen">
+          <End Role="Imagen" Type="Self.Imagen" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Imagen">
+              <PropertyRef Name="ImagenID" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="ImagenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehiculo_InventarioVehiculo">
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="0..1" />
+          <End Role="InventarioVehiculo" Type="Self.InventarioVehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehiculo">
+              <PropertyRef Name="VehiculoID" />
+            </Principal>
+            <Dependent Role="InventarioVehiculo">
+              <PropertyRef Name="VehiculoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Modelo_Marca">
           <End Role="Marca" Type="Self.Marca" Multiplicity="1" />
-          <End Role="Modelo" Type="Self.Modelo" Multiplicity="*" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Marca">
               <PropertyRef Name="MarcaID" />
             </Principal>
-            <Dependent Role="Modelo">
-              <PropertyRef Name="MarcaID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Modelo_TipoCaja">
-          <End Role="TipoCaja" Type="Self.TipoCaja" Multiplicity="0..1" />
-          <End Role="Modelo" Type="Self.Modelo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TipoCaja">
-              <PropertyRef Name="TipoCajaID" />
-            </Principal>
-            <Dependent Role="Modelo">
-              <PropertyRef Name="TipoCajaID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Modelo_TipoVehiculo">
-          <End Role="TipoVehiculo" Type="Self.TipoVehiculo" Multiplicity="0..1" />
-          <End Role="Modelo" Type="Self.Modelo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TipoVehiculo">
-              <PropertyRef Name="TipoVehiculoID" />
-            </Principal>
-            <Dependent Role="Modelo">
-              <PropertyRef Name="TipoVehiculoID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Modelo_Vehiculo">
-          <End Role="Modelo" Type="Self.Modelo" Multiplicity="0..1" />
-          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Modelo">
-              <PropertyRef Name="VehiculoID" />
-            </Principal>
             <Dependent Role="Vehiculo">
-              <PropertyRef Name="ModeloID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TestDrive_Vehiculo">
-          <End Role="Modelo" Type="Self.Modelo" Multiplicity="0..1" />
-          <End Role="TestDrive" Type="Self.TestDrive" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Modelo">
-              <PropertyRef Name="VehiculoID" />
-            </Principal>
-            <Dependent Role="TestDrive">
-              <PropertyRef Name="VehiculoID" />
+              <PropertyRef Name="MarcaID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -874,12 +990,12 @@
         </Association>
         <Association Name="FK_Servicios_TipoServicio">
           <End Role="TipoServicio" Type="Self.TipoServicio" Multiplicity="1" />
-          <End Role="Servicios" Type="Self.Servicios" Multiplicity="*" />
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TipoServicio">
               <PropertyRef Name="TipoServicioID" />
             </Principal>
-            <Dependent Role="Servicios">
+            <Dependent Role="Servicio">
               <PropertyRef Name="TipoServicioID" />
             </Dependent>
           </ReferentialConstraint>
@@ -893,6 +1009,42 @@
             </Principal>
             <Dependent Role="TestDrive">
               <PropertyRef Name="UsuarioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestDrive_Vehiculo">
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="0..1" />
+          <End Role="TestDrive" Type="Self.TestDrive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehiculo">
+              <PropertyRef Name="VehiculoID" />
+            </Principal>
+            <Dependent Role="TestDrive">
+              <PropertyRef Name="VehiculoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Modelo_TipoCaja">
+          <End Role="TipoCaja" Type="Self.TipoCaja" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoCaja">
+              <PropertyRef Name="TipoCajaID" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="TipoCajaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehiculo_TipoVehiculo">
+          <End Role="TipoVehiculo" Type="Self.TipoVehiculo" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoVehiculo">
+              <PropertyRef Name="TipoVehiculoID" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="TipoVehiculoID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -932,15 +1084,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="EcommercedbEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="EcommercedbEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="DetalleVentaProducto" EntityType="Self.DetalleVentaProducto" />
           <EntitySet Name="DetalleVentaServicio" EntityType="Self.DetalleVentaServicio" />
           <EntitySet Name="DetalleVentaVehiculo" EntityType="Self.DetalleVentaVehiculo" />
+          <EntitySet Name="Imagen" EntityType="Self.Imagen" />
+          <EntitySet Name="InventarioVehiculo" EntityType="Self.InventarioVehiculo" />
           <EntitySet Name="Marca" EntityType="Self.Marca" />
-          <EntitySet Name="Modelo" EntityType="Self.Modelo" />
           <EntitySet Name="Producto" EntityType="Self.Producto" />
-          <EntitySet Name="Servicios" EntityType="Self.Servicios" />
+          <EntitySet Name="Servicio" EntityType="Self.Servicio" />
           <EntitySet Name="Stock" EntityType="Self.Stock" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="TestDrive" EntityType="Self.TestDrive" />
           <EntitySet Name="TipoCaja" EntityType="Self.TipoCaja" />
           <EntitySet Name="TipoProducto" EntityType="Self.TipoProducto" />
@@ -960,7 +1114,7 @@
             <End Role="DetalleVentaProducto" EntitySet="DetalleVentaProducto" />
           </AssociationSet>
           <AssociationSet Name="FK_DetalleVentaServicio_Servicios" Association="Self.FK_DetalleVentaServicio_Servicios">
-            <End Role="Servicios" EntitySet="Servicios" />
+            <End Role="Servicio" EntitySet="Servicio" />
             <End Role="DetalleVentaServicio" EntitySet="DetalleVentaServicio" />
           </AssociationSet>
           <AssociationSet Name="FK_DetalleVentaServicio_VentaServicio" Association="Self.FK_DetalleVentaServicio_VentaServicio">
@@ -968,32 +1122,32 @@
             <End Role="DetalleVentaServicio" EntitySet="DetalleVentaServicio" />
           </AssociationSet>
           <AssociationSet Name="FK_DetalleVentaVehiculo_Vehiculo" Association="Self.FK_DetalleVentaVehiculo_Vehiculo">
-            <End Role="Vehiculo" EntitySet="Vehiculo" />
+            <End Role="InventarioVehiculo" EntitySet="InventarioVehiculo" />
             <End Role="DetalleVentaVehiculo" EntitySet="DetalleVentaVehiculo" />
           </AssociationSet>
           <AssociationSet Name="FK_DetalleVentaVehiculo_VentaVehiculo" Association="Self.FK_DetalleVentaVehiculo_VentaVehiculo">
             <End Role="VentaVehiculo" EntitySet="VentaVehiculo" />
             <End Role="DetalleVentaVehiculo" EntitySet="DetalleVentaVehiculo" />
           </AssociationSet>
-          <AssociationSet Name="FK_Modelo_Marca" Association="Self.FK_Modelo_Marca">
-            <End Role="Marca" EntitySet="Marca" />
-            <End Role="Modelo" EntitySet="Modelo" />
+          <AssociationSet Name="FK_Producto_Imagen" Association="Self.FK_Producto_Imagen">
+            <End Role="Imagen" EntitySet="Imagen" />
+            <End Role="Producto" EntitySet="Producto" />
           </AssociationSet>
-          <AssociationSet Name="FK_Modelo_TipoCaja" Association="Self.FK_Modelo_TipoCaja">
-            <End Role="TipoCaja" EntitySet="TipoCaja" />
-            <End Role="Modelo" EntitySet="Modelo" />
+          <AssociationSet Name="FK_Servicio_Imagen" Association="Self.FK_Servicio_Imagen">
+            <End Role="Imagen" EntitySet="Imagen" />
+            <End Role="Servicio" EntitySet="Servicio" />
           </AssociationSet>
-          <AssociationSet Name="FK_Modelo_TipoVehiculo" Association="Self.FK_Modelo_TipoVehiculo">
-            <End Role="TipoVehiculo" EntitySet="TipoVehiculo" />
-            <End Role="Modelo" EntitySet="Modelo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Modelo_Vehiculo" Association="Self.FK_Modelo_Vehiculo">
-            <End Role="Modelo" EntitySet="Modelo" />
+          <AssociationSet Name="FK_Vehiculo_Imagen" Association="Self.FK_Vehiculo_Imagen">
+            <End Role="Imagen" EntitySet="Imagen" />
             <End Role="Vehiculo" EntitySet="Vehiculo" />
           </AssociationSet>
-          <AssociationSet Name="FK_TestDrive_Vehiculo" Association="Self.FK_TestDrive_Vehiculo">
-            <End Role="Modelo" EntitySet="Modelo" />
-            <End Role="TestDrive" EntitySet="TestDrive" />
+          <AssociationSet Name="FK_Vehiculo_InventarioVehiculo" Association="Self.FK_Vehiculo_InventarioVehiculo">
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+            <End Role="InventarioVehiculo" EntitySet="InventarioVehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Modelo_Marca" Association="Self.FK_Modelo_Marca">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
           </AssociationSet>
           <AssociationSet Name="FK_Lote_Producto" Association="Self.FK_Lote_Producto">
             <End Role="Producto" EntitySet="Producto" />
@@ -1005,11 +1159,23 @@
           </AssociationSet>
           <AssociationSet Name="FK_Servicios_TipoServicio" Association="Self.FK_Servicios_TipoServicio">
             <End Role="TipoServicio" EntitySet="TipoServicio" />
-            <End Role="Servicios" EntitySet="Servicios" />
+            <End Role="Servicio" EntitySet="Servicio" />
           </AssociationSet>
           <AssociationSet Name="FK_TestDrive_Usuario" Association="Self.FK_TestDrive_Usuario">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="TestDrive" EntitySet="TestDrive" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestDrive_Vehiculo" Association="Self.FK_TestDrive_Vehiculo">
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+            <End Role="TestDrive" EntitySet="TestDrive" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Modelo_TipoCaja" Association="Self.FK_Modelo_TipoCaja">
+            <End Role="TipoCaja" EntitySet="TipoCaja" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehiculo_TipoVehiculo" Association="Self.FK_Vehiculo_TipoVehiculo">
+            <End Role="TipoVehiculo" EntitySet="TipoVehiculo" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
           </AssociationSet>
           <AssociationSet Name="FK_VentaProducto_Usuario" Association="Self.FK_VentaProducto_Usuario">
             <End Role="Usuario" EntitySet="Usuario" />
@@ -1029,17 +1195,16 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="EcommercedbModelStoreContainer" CdmEntityContainer="EcommercedbEntities">
+        <EntityContainerMapping StorageEntityContainer="EcommercedbModelStoreContainer" CdmEntityContainer="EcommercedbEntities1">
           <EntitySetMapping Name="DetalleVentaProducto">
             <EntityTypeMapping TypeName="EcommercedbModel.DetalleVentaProducto">
               <MappingFragment StoreEntitySet="DetalleVentaProducto">
-                <ScalarProperty Name="DetalleVentaProducto1" ColumnName="DetalleVentaProducto" />
+                <ScalarProperty Name="DetalleVentaProductoID" ColumnName="DetalleVentaProductoID" />
                 <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
                 <ScalarProperty Name="Hora" ColumnName="Hora" />
-                <ScalarProperty Name="VentaProductoID" ColumnName="VentaProductoID" />
                 <ScalarProperty Name="ProductoID" ColumnName="ProductoID" />
-                <ScalarProperty Name="VentaID" ColumnName="VentaID" />
+                <ScalarProperty Name="VentaProductoID" ColumnName="VentaProductoID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1047,11 +1212,10 @@
             <EntityTypeMapping TypeName="EcommercedbModel.DetalleVentaServicio">
               <MappingFragment StoreEntitySet="DetalleVentaServicio">
                 <ScalarProperty Name="DetalleVentaServicioID" ColumnName="DetalleVentaServicioID" />
-                <ScalarProperty Name="Costo" ColumnName="Costo" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
                 <ScalarProperty Name="Hora" ColumnName="Hora" />
                 <ScalarProperty Name="ServicioID" ColumnName="ServicioID" />
-                <ScalarProperty Name="VentaID" ColumnName="VentaID" />
                 <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
                 <ScalarProperty Name="VentaServicioID" ColumnName="VentaServicioID" />
               </MappingFragment>
@@ -1062,13 +1226,31 @@
               <MappingFragment StoreEntitySet="DetalleVentaVehiculo">
                 <ScalarProperty Name="DetalleVentaVehiculo1" ColumnName="DetalleVentaVehiculo" />
                 <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
                 <ScalarProperty Name="Hora" ColumnName="Hora" />
-                <ScalarProperty Name="VehiculoID" ColumnName="VehiculoID" />
-                <ScalarProperty Name="VentaVehiculoID" ColumnName="VentaVehiculoID" />
                 <ScalarProperty Name="InventarioVehiculoID" ColumnName="InventarioVehiculoID" />
                 <ScalarProperty Name="VentaVehiculo" ColumnName="VentaVehiculo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Imagen">
+            <EntityTypeMapping TypeName="EcommercedbModel.Imagen">
+              <MappingFragment StoreEntitySet="Imagen">
+                <ScalarProperty Name="ImagenID" ColumnName="ImagenID" />
+                <ScalarProperty Name="UrlImagen" ColumnName="UrlImagen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InventarioVehiculo">
+            <EntityTypeMapping TypeName="EcommercedbModel.InventarioVehiculo">
+              <MappingFragment StoreEntitySet="InventarioVehiculo">
+                <ScalarProperty Name="InventarioVehiculoID" ColumnName="InventarioVehiculoID" />
+                <ScalarProperty Name="CantidadDisponible" ColumnName="CantidadDisponible" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="VehiculoID" ColumnName="VehiculoID" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Año" ColumnName="Año" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1081,21 +1263,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Modelo">
-            <EntityTypeMapping TypeName="EcommercedbModel.Modelo">
-              <MappingFragment StoreEntitySet="Modelo">
-                <ScalarProperty Name="VehiculoID" ColumnName="VehiculoID" />
-                <ScalarProperty Name="CantidadPuertas" ColumnName="CantidadPuertas" />
-                <ScalarProperty Name="HabilitadoTestDrive" ColumnName="HabilitadoTestDrive" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="ModeloID" ColumnName="ModeloID" />
-                <ScalarProperty Name="TipoVehiculoID" ColumnName="TipoVehiculoID" />
-                <ScalarProperty Name="TipoCajaID" ColumnName="TipoCajaID" />
-                <ScalarProperty Name="NombreModelo" ColumnName="NombreModelo" />
-                <ScalarProperty Name="MarcaID" ColumnName="MarcaID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Producto">
             <EntityTypeMapping TypeName="EcommercedbModel.Producto">
               <MappingFragment StoreEntitySet="Producto">
@@ -1104,16 +1271,28 @@
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="TipoProductoID" ColumnName="TipoProductoID" />
                 <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="UrlAmigable" ColumnName="UrlAmigable" />
+                <ScalarProperty Name="VisibleMain" ColumnName="VisibleMain" />
+                <ScalarProperty Name="Puntuacion" ColumnName="Puntuacion" />
+                <ScalarProperty Name="ImagenID" ColumnName="ImagenID" />
+                <ScalarProperty Name="DescripcionCorta" ColumnName="DescripcionCorta" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Servicios">
-            <EntityTypeMapping TypeName="EcommercedbModel.Servicios">
-              <MappingFragment StoreEntitySet="Servicios">
+          <EntitySetMapping Name="Servicio">
+            <EntityTypeMapping TypeName="EcommercedbModel.Servicio">
+              <MappingFragment StoreEntitySet="Servicio">
                 <ScalarProperty Name="ServicioID" ColumnName="ServicioID" />
                 <ScalarProperty Name="Precio" ColumnName="Precio" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="TipoServicioID" ColumnName="TipoServicioID" />
+                <ScalarProperty Name="UrlAmigable" ColumnName="UrlAmigable" />
+                <ScalarProperty Name="VisibleMain" ColumnName="VisibleMain" />
+                <ScalarProperty Name="Puntuacion" ColumnName="Puntuacion" />
+                <ScalarProperty Name="ImagenID" ColumnName="ImagenID" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="DescripcionCorta" ColumnName="DescripcionCorta" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1126,6 +1305,17 @@
                 <ScalarProperty Name="ProductoID" ColumnName="ProductoID" />
                 <ScalarProperty Name="CantidadIngreso" ColumnName="CantidadIngreso" />
                 <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="EcommercedbModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1187,12 +1377,20 @@
           <EntitySetMapping Name="Vehiculo">
             <EntityTypeMapping TypeName="EcommercedbModel.Vehiculo">
               <MappingFragment StoreEntitySet="Vehiculo">
-                <ScalarProperty Name="InventarioVehiculoID" ColumnName="InventarioVehiculoID" />
-                <ScalarProperty Name="CantidadDispnible" ColumnName="CantidadDispnible" />
-                <ScalarProperty Name="Precio" ColumnName="Precio" />
-                <ScalarProperty Name="ModeloID" ColumnName="ModeloID" />
-                <ScalarProperty Name="Color" ColumnName="Color" />
-                <ScalarProperty Name="Año" ColumnName="Año" />
+                <ScalarProperty Name="VehiculoID" ColumnName="VehiculoID" />
+                <ScalarProperty Name="CantidadPuertas" ColumnName="CantidadPuertas" />
+                <ScalarProperty Name="HabilitadoTestDrive" ColumnName="HabilitadoTestDrive" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="TipoVehiculoID" ColumnName="TipoVehiculoID" />
+                <ScalarProperty Name="TipoCajaID" ColumnName="TipoCajaID" />
+                <ScalarProperty Name="NombreModelo" ColumnName="NombreModelo" />
+                <ScalarProperty Name="MarcaID" ColumnName="MarcaID" />
+                <ScalarProperty Name="UrlAmigable" ColumnName="UrlAmigable" />
+                <ScalarProperty Name="VisibleMain" ColumnName="VisibleMain" />
+                <ScalarProperty Name="Puntuacion" ColumnName="Puntuacion" />
+                <ScalarProperty Name="ImagenID" ColumnName="ImagenID" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="DescripcionCorta" ColumnName="DescripcionCorta" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

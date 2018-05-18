@@ -1,9 +1,11 @@
 ﻿/*
     INDICE
     1. GENERAL
-    2. BOTONES
-    3. METODOS
-    4. FOOTER
+    2. SECCIONES
+    3. BOTONES
+    4. FORMULARIOS
+    5. METODOS
+    6. FOOTER
 */
 
 /*#region 1. GENERAL */
@@ -18,33 +20,158 @@ html, body {
 }
 /*#endregion */
 
-/*#region 2. BOTONES */
+/*#region 2. SECCIONES */
+
+.seccion {
+    /*padding: 60px 80px;*/
+    padding: 50px 80px 0;
+	width: 100%;
+	/*min-height: 100vh;*/
+    min-height: 200px;
+
+	margin: 0; 
+	overflow: hidden;
+
+	position: relative;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+	/*min-height: 50vh;*/
+}
+
+.seccion-titulo {
+	color: #333;
+
+	/*font-size: 3em;*/
+    font-size: 1.6em;
+	padding: 20px 0;
+    /*padding-top: 0;*/
+
+    align-self: flex-start;
+}
+.seccion-cabecera {
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+}
+.seccion-cabecera a {
+    font-size: 16px;
+    padding: 20px 0;
+
+    text-decoration: none;
+}
+.seccion-cabecera a:hover {
+    text-decoration: underline;
+}
+
+.vehiculos {
+    flex-direction: column;
+    padding-bottom: 50px;
+}
+
+.vehiculos-catalogo {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    width: 100vw;
+}
+
+.productos {
+	flex-direction: column;
+}
+
+.servicios {
+	flex-direction: column;
+    padding-bottom: 50px;
+}
+
+.margin-bottom {
+    margin-bottom: 50px;
+}
+/*#endregion */
+
+/*#region 3. BOTONES */
 .button {
-	padding: 8px 50px;
-	box-sizing: border-box;
+    padding: 8px 50px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 	line-height: 50px;
 
 	font-size: 1.3em;
 }
+
 .button:hover {
     cursor: pointer;
 }
 
 .button-blue {
-	background-color: #012c5f;
+    background-color: #012c5f;
 	color: white;
     border: 1px solid white;
+    -webkit-transition: .4s;
+    -moz-transition: .4s;
+    -ms-transition: .4s;
+    -o-transition: .4s;
     transition: .4s;
 }
+
 .button-blue:hover {
     background-color: white;
 	color: #012c5f;
     border: 1px solid #012c5f;
+    -webkit-transition: .6s;
+    -moz-transition: .6s;
+    -ms-transition: .6s;
+    -o-transition: .6s;
     transition: .6s;
+}
+
+/*#endregion */
+
+/*#region 4. FORMULARIOS */
+.formulario-corto {
+	background-color: white;
+
+	width: 400px;
+	min-height: 200px;
+
+	padding: 20px;
+	/*box-sizing: border-box;*/
+}
+.formulario-corto--transparente {
+    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.formulario-largo .seccion-titulo {
+	font-size: 2.2em;
+}
+
+.formulario {
+    background-color: white;
+
+	width: 600px;
+	height: 200px;
+
+	padding: 20px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.formulario-campo {
+	/*width: 100%;*/
+	margin: 5px 30px;
+
+	display: flex;
+	flex-direction: column;
 }
 /*#endregion */
 
-/*#region 3. METODOS */
+/*#region 5. METODOS */
 .pagina-contenedor {
     padding: 0 60px;
 
@@ -65,6 +192,7 @@ html, body {
 }
 
 .space-evenly {
+    /* ReSharper disable once InvalidValue */
     justify-content: space-evenly;
 }
 
@@ -73,7 +201,7 @@ html, body {
 }
 /*#endregion */
 
-/*#region 4. FOOTER */
+/*#region 6. FOOTER */
 footer {
 	background: #223559;
 

@@ -12,18 +12,12 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.DataModels
     using System;
     using System.Collections.Generic;
     
-    public partial class TipoServicio
+    public partial class sysdiagrams
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TipoServicio()
-        {
-            this.Servicio = new HashSet<Servicio>();
-        }
-    
-        public int TipoServicioID { get; set; }
-        public string Nombre { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Servicio> Servicio { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

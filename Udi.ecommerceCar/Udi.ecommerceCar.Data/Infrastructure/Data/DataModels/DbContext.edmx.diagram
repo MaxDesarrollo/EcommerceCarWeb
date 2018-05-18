@@ -4,40 +4,45 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e7a7419ac6674637b269a52b81c73255" Name="Diagram1">
-        <EntityTypeShape EntityType="EcommercedbModel.DetalleVentaProducto" Width="1.5" PointX="14.25" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="EcommercedbModel.DetalleVentaServicio" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="EcommercedbModel.DetalleVentaVehiculo" Width="1.5" PointX="7.5" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="EcommercedbModel.Marca" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="EcommercedbModel.Modelo" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="EcommercedbModel.Producto" Width="1.5" PointX="12" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="EcommercedbModel.Servicios" Width="1.5" PointX="5.25" PointY="16.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="EcommercedbModel.Stock" Width="1.5" PointX="14.25" PointY="8.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="EcommercedbModel.TestDrive" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="EcommercedbModel.TipoCaja" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="EcommercedbModel.TipoProducto" Width="1.5" PointX="9.75" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="EcommercedbModel.TipoServicio" Width="1.5" PointX="3" PointY="16.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EcommercedbModel.TipoVehiculo" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="EcommercedbModel.Usuario" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="EcommercedbModel.Vehiculo" Width="1.5" PointX="5.25" PointY="8.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="EcommercedbModel.VentaProducto" Width="1.5" PointX="12" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EcommercedbModel.VentaServicio" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="EcommercedbModel.VentaVehiculo" Width="1.5" PointX="5.25" PointY="12.375" IsExpanded="true" />
+      <Diagram DiagramId="e6c9e943d9744fa4b33dbe28c1ef7623" Name="Diagram1">
+        <EntityTypeShape EntityType="EcommercedbModel.DetalleVentaProducto" Width="1.5" PointX="8.25" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcommercedbModel.DetalleVentaServicio" Width="1.5" PointX="11.25" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcommercedbModel.DetalleVentaVehiculo" Width="1.5" PointX="10.5" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcommercedbModel.Imagen" Width="1.5" PointX="0.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcommercedbModel.InventarioVehiculo" Width="1.5" PointX="8.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcommercedbModel.Marca" Width="1.5" PointX="3.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcommercedbModel.Producto" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcommercedbModel.Servicio" Width="1.5" PointX="6" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcommercedbModel.Stock" Width="1.5" PointX="5.25" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcommercedbModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcommercedbModel.TestDrive" Width="1.5" PointX="8.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcommercedbModel.TipoCaja" Width="1.5" PointX="3.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcommercedbModel.TipoProducto" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcommercedbModel.TipoServicio" Width="1.5" PointX="3.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcommercedbModel.TipoVehiculo" Width="1.5" PointX="3.75" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcommercedbModel.Usuario" Width="1.5" PointX="6" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcommercedbModel.Vehiculo" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcommercedbModel.VentaProducto" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcommercedbModel.VentaServicio" Width="1.5" PointX="9" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcommercedbModel.VentaVehiculo" Width="1.5" PointX="8.25" PointY="14.75" IsExpanded="true" />
         <AssociationConnector Association="EcommercedbModel.FK_DetalleVentaProducto_Producto" ManuallyRouted="false" />
         <AssociationConnector Association="EcommercedbModel.FK_DetalleVentaProducto_VentaProducto" ManuallyRouted="false" />
         <AssociationConnector Association="EcommercedbModel.FK_DetalleVentaServicio_Servicios" ManuallyRouted="false" />
         <AssociationConnector Association="EcommercedbModel.FK_DetalleVentaServicio_VentaServicio" ManuallyRouted="false" />
         <AssociationConnector Association="EcommercedbModel.FK_DetalleVentaVehiculo_Vehiculo" ManuallyRouted="false" />
         <AssociationConnector Association="EcommercedbModel.FK_DetalleVentaVehiculo_VentaVehiculo" ManuallyRouted="false" />
+        <AssociationConnector Association="EcommercedbModel.FK_Producto_Imagen" ManuallyRouted="false" />
+        <AssociationConnector Association="EcommercedbModel.FK_Servicio_Imagen" ManuallyRouted="false" />
+        <AssociationConnector Association="EcommercedbModel.FK_Vehiculo_Imagen" ManuallyRouted="false" />
+        <AssociationConnector Association="EcommercedbModel.FK_Vehiculo_InventarioVehiculo" ManuallyRouted="false" />
         <AssociationConnector Association="EcommercedbModel.FK_Modelo_Marca" ManuallyRouted="false" />
-        <AssociationConnector Association="EcommercedbModel.FK_Modelo_TipoCaja" ManuallyRouted="false" />
-        <AssociationConnector Association="EcommercedbModel.FK_Modelo_TipoVehiculo" ManuallyRouted="false" />
-        <AssociationConnector Association="EcommercedbModel.FK_Modelo_Vehiculo" ManuallyRouted="false" />
-        <AssociationConnector Association="EcommercedbModel.FK_TestDrive_Vehiculo" ManuallyRouted="false" />
         <AssociationConnector Association="EcommercedbModel.FK_Lote_Producto" ManuallyRouted="false" />
         <AssociationConnector Association="EcommercedbModel.FK_Producto_TipoProducto" ManuallyRouted="false" />
         <AssociationConnector Association="EcommercedbModel.FK_Servicios_TipoServicio" ManuallyRouted="false" />
         <AssociationConnector Association="EcommercedbModel.FK_TestDrive_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="EcommercedbModel.FK_TestDrive_Vehiculo" ManuallyRouted="false" />
+        <AssociationConnector Association="EcommercedbModel.FK_Modelo_TipoCaja" ManuallyRouted="false" />
+        <AssociationConnector Association="EcommercedbModel.FK_Vehiculo_TipoVehiculo" ManuallyRouted="false" />
         <AssociationConnector Association="EcommercedbModel.FK_VentaProducto_Usuario" ManuallyRouted="false" />
         <AssociationConnector Association="EcommercedbModel.FK_VentaServicio_Usuario" ManuallyRouted="false" />
         <AssociationConnector Association="EcommercedbModel.FK_VentaVehiculo_Usuario" ManuallyRouted="false" />

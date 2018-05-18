@@ -10,13 +10,13 @@ namespace Udi.ecommerceCar.Data.Domain.Services
 
         public VehiculoServicio()
         {
-            this._vehiculoRepositorio = new VehiculoRepositorio();
+            _vehiculoRepositorio = new VehiculoRepositorio();
         }
 
-        public int GuardarVehiculo(VehiculoDto vehiculo)
-        {
-            return _vehiculoRepositorio.GuardarVehiculo(vehiculo);
-        }
+        //public int GuardarVehiculo(VehiculoDto vehiculo)
+        //{
+        //    return _vehiculoRepositorio.GuardarVehiculo(vehiculo);
+        //}
 
         public VehiculoDto ObtenerVehiculo(int pk)
         {

@@ -2,34 +2,42 @@
     INDICE
     1. GENERAL
     2. NAVEGADOR
+    3. LOGIN
 */
 
 /*#region 1. GENERAL */
 :root {
-	--margin-inicio: 135px;
+	/*--margin-inicio: 135px;*/
+    --nav-height: 57.5px;
 	--padding-ancho: 80px;
+
+    --login-input-background: #F2F2F2;
+    --login-input-placeholder: #BDBDBD;
+    --login-not-registered-link: #8a8a8a;
+
+    --login-submit-button: #00B241;
 }
 /*#endregion */
 
-
 /*#region 2. NAVEGADOR */
 .navheader {
-	/*height: var(--margin-inicio);*/
-	/*width: 100vw;*/
-	/*position: fixed;*/
-	/*top: 0;*/
-	/*z-index: 100;*/
-
 	display: flex;
 	align-items: flex-end;
-
-	transition: .4s;
+    -webkit-transition: .4s;
+    -moz-transition: .4s;
+    -ms-transition: .4s;
+    -o-transition: .4s;
+    transition: .4s;
 
 	padding: 10px var(--padding-ancho);
-	box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
+
 .navheader {
-	height: calc((var(--margin-inicio) / 2) - 10px);
+	height: calc(var(--nav-height));
+    position: relative;
 
 	background-color: #333;
 	color: #fff;
@@ -39,17 +47,20 @@
 }
 
 .navheader-link {
-	text-decoration: none;
+    text-decoration: none;
 	color: #fff;
 
     border: none;
 	background-color: #333;
 
 	padding: 15px 20px;
-	box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 
     text-transform: uppercase;
 }
+
 .navheader-link:link,
 .navheader-link:visited,
 .navheader-link:active {
@@ -58,13 +69,15 @@
     outline: none;
 }
 .navheader-link:hover {
-	color: #333;
+    color: #333;
     background-color: #fff;
 
     cursor: pointer;
-
+    -webkit-transition: .6s;
+    -moz-transition: .6s;
+    -ms-transition: .6s;
+    -o-transition: .6s;
     transition: .6s;
-
 }
 
 .hamburger-icon {
@@ -103,7 +116,7 @@
 }
 
 .navbar-search-input {
-    width: 50vw;
+    width: 30vw;
 
     padding: 10px 8px;
 }
@@ -134,3 +147,120 @@
 
 /*#endregion*/
 
+/*#region 3. LOGIN */
+.username-container {
+    position: relative;
+}
+
+.login-container {
+    width: 360px;
+	background-color: #ffffff;
+
+    display: none;
+
+    position: absolute;
+    top: var(--nav-height);
+    right: var(--padding-ancho);
+
+    z-index: 2;
+
+	padding: 45px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+	/*display: flex;*/
+	flex-direction: column;
+    -webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    -ms-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.login-container--show {
+    display: flex;
+}
+
+.login-input {
+	padding: 15px 20px;
+	margin-bottom: 10px;
+
+	background-color: var(--login-input-background);
+	border: none;
+}
+
+.login-input::placeholder {
+	color: var(--login-input-placeholder);
+}
+
+.login-submit {
+	margin: 10px 0px;
+	padding: 15px 20px;
+	text-transform: uppercase;
+
+	background-color: var(--login-submit-button);
+	border: 1px solid var(--login-submit-button);
+	color: #ffffff;
+}
+.login-submit:hover {
+    cursor: pointer;
+}
+
+.login-not-registered-link {
+	font-size: 0.8em;
+	text-align: center;
+
+	color: var(--login-not-registered-link);
+}
+
+
+
+.span-show-login {
+    padding: 10px;
+    /*margin: 0px 5px;*/
+    
+    -webkit-transition: .2s;
+    -moz-transition: .2s;
+    -ms-transition: .2s;
+    -o-transition: .2s;
+    transition: .2s;
+}
+.span-show-login--active {
+    color: #333333;
+    background-color: #ffffff;
+}
+.span-show-login:hover {
+    cursor: pointer;
+    /*text-decoration: underline;*/
+
+    color: #333333;
+    background-color: var(--login-input-background);
+
+    -webkit-transition: .2s;
+    -moz-transition: .2s;
+    -ms-transition: .2s;
+    -o-transition: .2s;
+    transition: .2s;
+}
+
+.login-register-link {
+    color: #ffffff;
+    text-decoration: none;
+
+    padding: 10px;
+    /*margin: 0px 5px;*/
+}
+.login-register-link:hover {
+    text-decoration: underline;
+}
+
+
+.login-username {
+    display: none;
+}
+.login-username--show {
+    display: block;
+}
+
+.login-not-registered--hide {
+    display: none;
+}
+/*#endregion*/

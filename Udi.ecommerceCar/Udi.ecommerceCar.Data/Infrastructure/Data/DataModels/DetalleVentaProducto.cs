@@ -14,13 +14,12 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.DataModels
     
     public partial class DetalleVentaProducto
     {
-        public int DetalleVentaProducto1 { get; set; }
-        public string Cantidad { get; set; }
+        public int DetalleVentaProductoID { get; set; }
+        public Nullable<int> Cantidad { get; set; }
         public Nullable<System.DateTime> Fecha { get; set; }
-        public Nullable<System.DateTime> Hora { get; set; }
-        public Nullable<int> VentaProductoID { get; set; }
+        public Nullable<System.TimeSpan> Hora { get; set; }
         public Nullable<int> ProductoID { get; set; }
-        public Nullable<int> VentaID { get; set; }
+        public Nullable<int> VentaProductoID { get; set; }
     
         public virtual Producto Producto { get; set; }
         public virtual VentaProducto VentaProducto { get; set; }

@@ -15,7 +15,9 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                 ProductoID = producto.ProductoID,
                 Nombre = producto.Nombre,
                 Descripcion = producto.Descripcion,
+                DescripcionCorta = producto.DescripcionCorta,
                 Cantidad = producto.Cantidad,
+                Precio = producto.Precio,
                 TipoProductoID = producto.TipoProductoID
             };
 
@@ -31,9 +33,12 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
             {
                 return BuildQuery().Where(x => x.ProductoID == pk).Select(producto => new ProductoDto()
                 {
+                    ProductoID = producto.ProductoID,
                     Nombre = producto.Nombre,
                     Descripcion = producto.Descripcion,
+                    DescripcionCorta = producto.DescripcionCorta,
                     Cantidad = producto.Cantidad,
+                    Precio = producto.Precio,
                     TipoProductoID = producto.TipoProductoID,
                     TipoProducto = producto.TipoProducto.Nombre
                 }).First();
@@ -52,7 +57,9 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                 ProductoID = producto.ProductoID,
                 Nombre = producto.Nombre,
                 Descripcion = producto.Descripcion,
+                DescripcionCorta = producto.DescripcionCorta,
                 Cantidad = producto.Cantidad,
+                Precio = producto.Precio,
                 TipoProductoID = producto.TipoProductoID,
                 TipoProducto = producto.TipoProducto.Nombre
             })
@@ -69,7 +76,9 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                 ProductoID = producto.ProductoID,
                 Nombre = producto.Nombre,
                 Descripcion = producto.Descripcion,
+                DescripcionCorta = producto.DescripcionCorta,
                 Cantidad = producto.Cantidad,
+                Precio = producto.Precio,
                 TipoProductoID = producto.TipoProductoID,
                 TipoProducto = producto.TipoProducto.Nombre
             })

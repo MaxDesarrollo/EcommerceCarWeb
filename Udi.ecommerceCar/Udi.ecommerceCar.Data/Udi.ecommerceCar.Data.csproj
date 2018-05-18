@@ -59,10 +59,12 @@
     <Compile Include="Domain\Entities\TestDriveDto.cs" />
     <Compile Include="Domain\Entities\TipoCajaDto.cs" />
     <Compile Include="Domain\Entities\TipoVehiculo.cs" />
+    <Compile Include="Domain\Entities\UsuarioDto.cs" />
     <Compile Include="Domain\Entities\VehiculoDto.cs" />
     <Compile Include="Domain\Services\ComunServicio.cs" />
     <Compile Include="Domain\Services\ProductoServicio.cs" />
     <Compile Include="Domain\Services\ServicioServicio.cs" />
+    <Compile Include="Domain\Services\UsuarioServicio.cs" />
     <Compile Include="Domain\Services\VehiculoServicio.cs" />
     <Compile Include="Infrastructure\Data\DataModels\DbContext.Context.cs">
       <AutoGen>True</AutoGen>
@@ -88,19 +90,25 @@
     <Compile Include="Infrastructure\Data\DataModels\DetalleVentaVehiculo.cs">
       <DependentUpon>DbContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructure\Data\DataModels\Marca.cs">
+    <Compile Include="Infrastructure\Data\DataModels\Imagen.cs">
       <DependentUpon>DbContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructure\Data\DataModels\Modelo.cs">
+    <Compile Include="Infrastructure\Data\DataModels\InventarioVehiculo.cs">
+      <DependentUpon>DbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Data\DataModels\Marca.cs">
       <DependentUpon>DbContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Data\DataModels\Producto.cs">
       <DependentUpon>DbContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructure\Data\DataModels\Servicios.cs">
+    <Compile Include="Infrastructure\Data\DataModels\Servicio.cs">
       <DependentUpon>DbContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Data\DataModels\Stock.cs">
+      <DependentUpon>DbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Data\DataModels\sysdiagrams.cs">
       <DependentUpon>DbContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Data\DataModels\TestDrive.cs">
@@ -136,14 +144,9 @@
     <Compile Include="Infrastructure\Data\Repositories\EFRepositorio.cs" />
     <Compile Include="Infrastructure\Data\Repositories\ProductoRepositorio.cs" />
     <Compile Include="Infrastructure\Data\Repositories\ServicioRepositorio.cs" />
+    <Compile Include="Infrastructure\Data\Repositories\UsuarioRepositorio.cs" />
     <Compile Include="Infrastructure\Data\Repositories\VehiculoRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="Infrastructure\Data\DataModels\DbContext.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DbContext.Designer.cs</LastGenOutput>
-    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Domain\Entities\Obs.txt" />
@@ -163,6 +166,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
+    <EntityDeploy Include="Infrastructure\Data\DataModels\DbContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DbContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
     <None Include="Infrastructure\Data\DataModels\DbContext.edmx.diagram">
       <DependentUpon>DbContext.edmx</DependentUpon>
     </None>

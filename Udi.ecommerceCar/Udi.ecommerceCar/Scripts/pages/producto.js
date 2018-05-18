@@ -8,23 +8,33 @@
 
 /* 1. VARIABLES GLOBALES */
 var _datosProductos;
+var page = 0;
+var size = 20;
+
 
 /* 2. FUNCIONES GENERALES */
 
 
-function getProductCardHtml(nombre, descripcion, urlImagen, tipoProducto, precio) {
+function getProductCardHtml(id, nombre, descripcion, urlImagen, tipoProducto, precio) {
+
+    if (precio === "Sin precio") {
+        precio = "";
+    } else precio = "Bs. " + precio;
+
     var productCardHtml =
         `<div class="product-card">
             <div class ="product-card-image" style="background-image: url('Images/${tipoProducto}/${nombre}.jpg')"></div>
 
             <div class="product-card-description">
                 <div class ="product-card-header">
-                    <span class ="product-card-title">${nombre}</span>
+                    <span class ="product-card-title">
+                        <a href="Producto/Detalle/${id}">${nombre}</a>
+                    </span>
                 </div>
 
                 <div class ="product-card-detail">
                     <div class ="product-card-price">
-                        Bs.${precio}
+                        ${precio}
                     </div>
                 </div>
             </div>
@@ -54,7 +64,8 @@ function mostrarDatosProductos() {
 
     var listaProductCardHtml = '';
     _datosProductos.forEach(function (producto) {
-        listaProductCardHtml += getProductCardHtml(producto.Nombre, producto.Descripcion, producto.Nombre, producto.TipoProducto, 65);
+        var precio = producto.Precio ? producto.Precio : "Sin precio";
+        listaProductCardHtml += getProductCardHtml(producto.ProductoID, producto.Nombre, producto.Descripcion, producto.Nombre, producto.TipoProducto, precio);
     });
 
     $("#productos .product-card-container").html(listaProductCardHtml);

@@ -12,18 +12,28 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.DataModels
     using System;
     using System.Collections.Generic;
     
-    public partial class TipoServicio
+    public partial class Servicio
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TipoServicio()
+        public Servicio()
         {
-            this.Servicio = new HashSet<Servicio>();
+            this.DetalleVentaServicio = new HashSet<DetalleVentaServicio>();
         }
     
+        public int ServicioID { get; set; }
+        public Nullable<decimal> Precio { get; set; }
+        public Nullable<bool> Estado { get; set; }
         public int TipoServicioID { get; set; }
-        public string Nombre { get; set; }
+        public string UrlAmigable { get; set; }
+        public Nullable<bool> VisibleMain { get; set; }
+        public Nullable<int> Puntuacion { get; set; }
+        public Nullable<int> ImagenID { get; set; }
+        public string Descripcion { get; set; }
+        public string DescripcionCorta { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Servicio> Servicio { get; set; }
+        public virtual ICollection<DetalleVentaServicio> DetalleVentaServicio { get; set; }
+        public virtual Imagen Imagen { get; set; }
+        public virtual TipoServicio TipoServicio { get; set; }
     }
 }

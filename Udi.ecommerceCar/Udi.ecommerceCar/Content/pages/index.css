@@ -3,12 +3,9 @@
 	1. GENERAL
 	2. HEADER
 	3. SECCION SLIDERS
-    4. SECCION VEHICULOS
-	5. SECCION PRODUCTOS
-	6. SECCION SERVICIOS
-	7. SECCION TEST-DRIVE
-    8. MEDIA QUERIES
-	9. KEYFRAMES
+	4. SECCION TEST-DRIVE
+    5. MEDIA QUERIES
+	6. KEYFRAMES
 */
 
 /*#region 1. GENERAL */
@@ -22,80 +19,6 @@
 
 body {
     background-color: var(--bg-color);
-}
-
-.seccion {
-	/*padding: 60px 80px;*/
-    padding: 50px 80px 0;
-	width: 100%;
-	/*min-height: 100vh;*/
-    min-height: 200px;
-
-	margin: 0; 
-	overflow: hidden;
-
-	position: relative;
-	box-sizing: border-box;
-	/*min-height: 50vh;*/
-}
-.seccion-titulo {
-	color: #333;
-
-	/*font-size: 3em;*/
-    font-size: 1.6em;
-	padding: 20px 0;
-    /*padding-top: 0;*/
-
-    align-self: flex-start;
-}
-.seccion-cabecera {
-    display: flex;
-    justify-content: space-between;
-
-    width: 100%;
-}
-.seccion-cabecera a {
-    font-size: 16px;
-    padding: 20px 0;
-
-    text-decoration: none;
-}
-.seccion-cabecera a:hover {
-    text-decoration: underline;
-}
-
-.formulario-corto {
-	background-color: white;
-
-	width: 400px;
-	min-height: 200px;
-
-	padding: 20px;
-	/*box-sizing: border-box;*/
-}
-.formulario-corto--transparente {
-    background-color: rgba(255, 255, 255, 0.8);
-}
-
-.formulario-largo .seccion-titulo {
-	font-size: 2.2em;
-}
-
-.formulario {
-	background-color: white;
-
-	width: 600px;
-	height: 200px;
-
-	padding: 20px;
-	box-sizing: border-box;
-}
-.formulario-campo {
-	/*width: 100%;*/
-	margin: 5px 30px;
-
-	display: flex;
-	flex-direction: column;
 }
 /*#endregion */
 
@@ -126,17 +49,20 @@ body {
 }
 
 .navheader-link {
-	text-decoration: none;
+    text-decoration: none;
 	color: #fff;
 
     border: none;
 	background-color: #333;
 
 	padding: 15px 20px;
-	box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 
     text-transform: uppercase;
 }
+
 .navheader-link:link,
 .navheader-link:visited,
 .navheader-link:active {
@@ -145,13 +71,15 @@ body {
     outline: none;
 }
 .navheader-link:hover {
-	color: #333;
+    color: #333;
     background-color: #fff;
 
     cursor: pointer;
-
+    -webkit-transition: .6s;
+    -moz-transition: .6s;
+    -ms-transition: .6s;
+    -o-transition: .6s;
     transition: .6s;
-
 }
 
 .hamburger-icon {
@@ -166,22 +94,50 @@ body {
     height: 3px;
     background-color: #ccc;
     margin: 5px 0;
-
+    -webkit-transition: .4s;
+    -moz-transition: .4s;
+    -ms-transition: .4s;
+    -o-transition: .4s;
     transition: .4s;
 }
 
 .hamburger-icon--open div:nth-child(1) {
+    -webkit-transform: rotateZ(45deg) translate(4px, 8px);
+    -moz-transform: rotateZ(45deg) translate(4px, 8px);
+    -ms-transform: rotateZ(45deg) translate(4px, 8px);
+    -o-transform: rotateZ(45deg) translate(4px, 8px);
     transform: rotateZ(45deg) translate(4px, 8px);
+    -webkit-transition: .6s;
+    -moz-transition: .6s;
+    -ms-transition: .6s;
+    -o-transition: .6s;
     transition: .6s;
 }
+
 .hamburger-icon--open div:nth-child(2) {
     width: 0;
+    -webkit-transform: translateX(15px);
+    -moz-transform: translateX(15px);
+    -ms-transform: translateX(15px);
+    -o-transform: translateX(15px);
     transform: translateX(15px);
-
+    -webkit-transition: .6s;
+    -moz-transition: .6s;
+    -ms-transition: .6s;
+    -o-transition: .6s;
     transition: .6s;
 }
+
 .hamburger-icon--open div:nth-child(3) {
+    -webkit-transform: rotateZ(-45deg) translate(4px, -8px);
+    -moz-transform: rotateZ(-45deg) translate(4px, -8px);
+    -ms-transform: rotateZ(-45deg) translate(4px, -8px);
+    -o-transform: rotateZ(-45deg) translate(4px, -8px);
     transform: rotateZ(-45deg) translate(4px, -8px);
+    -webkit-transition: .6s;
+    -moz-transition: .6s;
+    -ms-transition: .6s;
+    -o-transition: .6s;
     transition: .6s;
 }
 
@@ -196,42 +152,59 @@ body {
 }
 
 .slider {
-	width: 100%;
+    width: 100%;
 	position: absolute;
 	/*height: calc(var(--seccion-autos-height) + var(--margin-inicio));*/
 	height: 100%;
 
 	padding-bottom: 20px;
-	box-sizing: border-box; 
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .slider-one {
-	/*background-color: white;*/
+    /*background-color: white;*/
 	background-image: url('../../Images/Slider/slider-one-background.jpg');
+    -ms-background-size: cover;
     background-size: cover;
 	left: -100%;
 
 	display: flex;
+    /* ReSharper disable InvalidValue */
 	justify-content: space-evenly;
+    /* ReSharper restore InvalidValue */
 	align-items: flex-end;
 
-	animation: moveFirstSlider var(--animation-duration) infinite;
+    /* ReSharper disable CssNotResolved */
+    -webkit-animation: moveFirstSlider var(--animation-duration) infinite;
+    -moz-animation: moveFirstSlider var(--animation-duration) infinite;
+    -ms-animation: moveFirstSlider var(--animation-duration) infinite;
+    -o-animation: moveFirstSlider var(--animation-duration) infinite;
+    animation: moveFirstSlider var(--animation-duration) infinite;
 }
+
 .slider-two {
-	background-image: url('../../Images/Slider/slider-two-background.jpg');
-	background-size: cover;
+    background-image: url('../../Images/Slider/slider-two-background.jpg');
+    -ms-background-size: cover;
+    background-size: cover;
 	background-position: center;
 	left: 0%;
 
 	display: flex;
+    /* ReSharper disable InvalidValue */
 	justify-content: space-evenly;
+    /* ReSharper restore InvalidValue */
 	align-items: flex-end;
 
-	animation: moveSecondSlider var(--animation-duration) infinite;
+    /* ReSharper disable CssNotResolved */
+	animation: moveSecondSlider var(--animation-duration) infinite;=
 }
+
 .slider-three {
-	/*background-color: white;*/
+    /*background-color: white;*/
     background: url('../../Images/Slider/slider-three-background.png');
+    -ms-background-size: cover;
     background-size: cover;
     background-position: center;
 	left: 100%;
@@ -239,28 +212,34 @@ body {
 	display: flex;
     justify-content: center;
     align-items: center;
-
-	/*justify-content: space-evenly;*/
-	/*align-items: flex-end;*/
-
-	animation: moveThirdSlider var(--animation-duration) infinite;
+    -webkit-animation: moveThirdSlider var(--animation-duration) infinite;
+    -moz-animation: moveThirdSlider var(--animation-duration) infinite;
+    -ms-animation: moveThirdSlider var(--animation-duration) infinite;
+    -o-animation: moveThirdSlider var(--animation-duration) infinite;
+    animation: moveThirdSlider var(--animation-duration) infinite;
 }
 
 .slider-three .slider-image-container {
+    -webkit-transform: translateX(-50px);
+    -moz-transform: translateX(-50px);
+    -ms-transform: translateX(-50px);
+    -o-transform: translateX(-50px);
     transform: translateX(-50px);
 }
 
 
 
 .slider-message {
-	max-width: 33%;
-
-	box-sizing: border-box;
+    max-width: 33%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 	padding: 50px;
 	/*padding-bottom: 10px;*/
-
+    background-color: #ffffff;
     background-color: rgba(255, 255, 255, 0.6);
 }
+
 .slider-title {
 	font-size: 2.5em;
 	font-weight: bold;
@@ -287,45 +266,11 @@ body {
 }
 /*#endregion */
 
-/*#region 4. SECCION VEHICULOS */
-.vehiculos {
-    flex-direction: column;
-
-    padding-bottom: 50px;
-}
-
-.vehiculos-catalogo {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-
-    width: 100vw;
-}
-/*#endregion */
-
-/*#region 5. SECCION PRODUCTOS */
-.productos {
-    /*background-color: #1abc9c;*/
-    /*background-color: #7d5fff;*/
-
-	flex-direction: column;
-}
-/*#endregion */
-
-/*#region 6. SECCION SERVICIOS */
-.servicios {
-    /*background-color: #7efff5;*/
-
-	flex-direction: column;
-
-    padding-bottom: 50px;
-}
-/*#endregion */
-
-/*#region 7. SECCION TEST DRIVE */
+/*#region 4. SECCION TEST DRIVE */
 .test-drive {
-	background-image: url('../../Images/TestDrive/test-drive-01.jpg');
-	background-size: cover;
+    background-image: url('../../Images/TestDrive/test-drive-01.jpg');
+    -ms-background-size: cover;
+    background-size: cover;
 	background-position: center;
 
 	display: flex;
@@ -333,12 +278,13 @@ body {
 
     min-height: 100vh;
 }
+
 .test-drive-formulario {
 	padding: 0 15px;
 }
 /*#endregion */
 
-/*#region 8. MEDIA QUERIES */
+/*#region 5. MEDIA QUERIES */
 @media only screen and (max-width: 1024px) {
     /*.navheader {
         padding: 0 40px;
@@ -452,7 +398,7 @@ body {
 
 /*#endregion */
 
-/*#region 9. KEYFRAMES */
+/*#region 6. KEYFRAMES */
 @keyframes moveFirstSlider {
 	0% {
 		left: -100%;

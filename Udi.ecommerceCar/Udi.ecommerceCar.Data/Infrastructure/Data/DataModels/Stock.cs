@@ -16,7 +16,7 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.DataModels
     {
         public int LoteProductoID { get; set; }
         public Nullable<int> Stock1 { get; set; }
-        public string Precio { get; set; }
+        public Nullable<decimal> Precio { get; set; }
         public Nullable<int> ProductoID { get; set; }
         public Nullable<int> CantidadIngreso { get; set; }
         public Nullable<System.DateTime> FechaIngreso { get; set; }
