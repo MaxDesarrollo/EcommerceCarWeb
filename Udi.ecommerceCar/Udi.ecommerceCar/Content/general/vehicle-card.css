@@ -53,10 +53,22 @@
 	align-items: center;
 }
 
+.vehicle-presentation-title,
 .vehicle-card-title {
 	font-size: 2em;
 	font-weight: 900;
 }
+
+.vehicle-presentation-title a,
+.vehicle-presentation-title a:active,
+.vehicle-presentation-title a:visited {
+    color: #333;
+    text-decoration: none;
+}
+.vehicle-presentation-title a:hover {
+    text-decoration: underline;
+}
+
 
 
 .vehicle-card-price {

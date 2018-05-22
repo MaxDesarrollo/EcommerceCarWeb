@@ -44,7 +44,7 @@ namespace Udi.ecommerceCar.Controllers
                     return new JsonResult { Data = new { Success = false } };
                 }
 
-                Session["usuario"] = data;
+                //Session["usuario"] = data;
 
                 return new JsonResult { Data = new { Success = true, Data = data } };
             }

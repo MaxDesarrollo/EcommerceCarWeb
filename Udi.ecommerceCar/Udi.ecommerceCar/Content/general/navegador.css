@@ -9,6 +9,8 @@
 :root {
 	/*--margin-inicio: 135px;*/
     --nav-height: 57.5px;
+    --nav-background-color: #333;
+
 	--padding-ancho: 80px;
 
     --login-input-background: #F2F2F2;
@@ -39,7 +41,7 @@
 	height: calc(var(--nav-height));
     position: relative;
 
-	background-color: #333;
+	background-color: var(--nav-background-color);
 	color: #fff;
 
 	align-items: center;
@@ -143,6 +145,12 @@
 }
 .navbar-categorias a {
     margin-right: 20px;
+
+    color: #333333;
+    text-decoration: none;
+}
+.navbar-categorias a:hover {
+    text-decoration: underline;
 }
 
 /*#endregion*/
@@ -255,12 +263,59 @@
 
 .login-username {
     display: none;
+
+    padding: 0 20px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
+.login-username:hover {
+    cursor: pointer;
+}
+
 .login-username--show {
     display: block;
 }
-
-.login-not-registered--hide {
+.login-not-registered {
     display: none;
+}
+/*.login-not-registered--hide {
+    display: none;
+}*/
+
+.login-not-registered--show {
+    display: block;
+}
+
+.username-menu {
+    display: none;
+
+    /*display: flex;*/
+    flex-direction: column;
+
+    z-index: 5;
+
+    padding: 10px 20px;
+    background-color: var(--nav-background-color);
+
+    position: absolute;
+    top: var(--nav-height);
+    right: var(--padding-ancho);
+}
+.username-menu--show {
+    display: flex;
+}
+
+.username-menu a {
+    color: #ffffff;
+    text-decoration: none;
+
+    margin: 5px 0;
+}
+.username-menu a:hover {
+    text-decoration: underline;
+}
+.username-menu a:last-child:hover {
+    text-decoration: none;
 }
 /*#endregion*/

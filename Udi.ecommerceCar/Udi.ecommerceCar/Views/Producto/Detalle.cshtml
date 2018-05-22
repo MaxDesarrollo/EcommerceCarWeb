@@ -21,7 +21,7 @@
         </div>
 
         <div class="detalle-articulo-descripcion-contenedor">
-            <div class="detalle-articulo-titulo">
+            <div class="detalle-articulo-titulo" id="detalleArticuloTitulo">
                 @*Xbox One Game PES 2017 Pro Evolution Soccer 17 Football Game*@
                 @Model.Nombre
             </div>
@@ -45,7 +45,7 @@
             <div class="detalle-articulo-opciones-cantidad">
                 <span>Cantidad</span>
 
-                <select>
+                <select id="sltCantidadProducto">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -54,7 +54,7 @@
                 </select>
             </div>
 
-            <button class="btnAddToCart">Añadir al carro</button>
+            <button class="btnAddToCart" id="btnAddToCartProducto">Añadir al carro</button>
             @*<button class="btnAddToList">Add to List</button>*@
             @*<button class="btnAddToFavorites">Add to Favorites</button>*@
         </div>

@@ -8,17 +8,19 @@
 
 /* 1. VARIABLES GLOBALES */
 var _datosServicios;
+var page = 0;
+var size = 20;
 
 /* 2. FUNCIONES GENERALES */
 
 
-function getServiceCardHtml(nombre, urlImagen) {
+function getServiceCardHtml(id, nombre, urlImagen) {
     var serviceCardHtml =
         `<div class="service-card">
             <img src="Images/Servicios/${nombre}.jpg" alt="${nombre}" />
 
             <div class="service-card-description">
-                ${nombre}
+                <a href="Servicio/Detalle/${id}">${nombre}</a>
             </div>
         </div>`;
 
@@ -32,7 +34,7 @@ function getServiceCardHtml(nombre, urlImagen) {
 function mostrarDatosServicios() {
     var listaServiceCardHtml = '';
     _datosServicios.forEach(function (servicio) {
-        listaServiceCardHtml += getServiceCardHtml(servicio.TipoServicio, servicio.TipoServicio);
+        listaServiceCardHtml += getServiceCardHtml(servicio.ServicioID, servicio.TipoServicio, servicio.TipoServicio);
     });
 
     $("#servicios .service-card-container").html(listaServiceCardHtml);

@@ -54,6 +54,7 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                 return BuildQuery()
                 .Select(usuario => new UsuarioDto()
                 {
+                    UsuarioId = usuario.UsuarioID,
                     Nombre = usuario.Nombre,
                     Apellido = usuario.Apellido,
                     Username = usuario.Username,

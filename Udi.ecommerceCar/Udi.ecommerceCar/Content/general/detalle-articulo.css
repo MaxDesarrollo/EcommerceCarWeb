@@ -130,6 +130,9 @@
 
 	font-size: 1.2em;
 }
+.btnAddToCart:hover {
+    cursor: pointer;
+}
 
 .btnAddToList {
 	margin: 15px 0;

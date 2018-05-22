@@ -14,6 +14,9 @@ var movePosVehicleCardContainer = 30, curPosVehicleCardContainer = 0;
 var minLimit = -90, maxLimit = 30;
 var vehicleCards;
 
+var page = 0,
+    size = 20;
+
 
 /* 2. FUNCIONES GENERALES */
 
@@ -49,9 +52,30 @@ function getVehicleCardHtml(nombre, urlImagen, activado) {
     return vehicleCardHtml;
 }
 
+function getVehiclePresentationHtml(id, nombre, urlImagen) {
+    var vehicleCardHtml =
+        `<div class ="vehicle-presentation">
+			<div class ="vehicle-card-image">
+				<img src="Images/Vehiculos/${urlImagen}.png" alt="${nombre}">
+			</div>
+
+			<div class ="vehicle-card-header">
+				<span class ="vehicle-presentation-title">
+                    <a href="Vehiculo/Detalle/${id}">${nombre}</a>
+                </span>
+			</div>
+		</div>
+        `;
+
+    return vehicleCardHtml;
+}
+
 function activateMoveVehicleCardContainer() {
+    minLimit = -30 * (_datosVehiculos.length - 2);
+    maxLimit = 30 * (_datosVehiculos.length - 1);
+
     vehicleCards = document.getElementsByClassName('vehicle-card');
-    console.log(vehicleCards);
+    //console.log(vehicleCards);
     if (vehicleCards.length === 0)
         return;
 
@@ -67,8 +91,7 @@ function activateMoveVehicleCardContainer() {
 }
 
 function moveCurrentVehicleCard(elemento, direction) {
-    newPos = (movePosVehicleCardContainer * direction);
-
+    var newPos = (movePosVehicleCardContainer * direction);
     if (curPosVehicleCardContainer + newPos >= minLimit && curPosVehicleCardContainer + newPos < maxLimit) {
         vehicleCards[indexVehicleCardActive].classList.remove('vehicle-card--active');
         indexVehicleCardActive += -direction;
@@ -77,7 +100,7 @@ function moveCurrentVehicleCard(elemento, direction) {
         curPosVehicleCardContainer += newPos;
         elemento.style.transform = `translateX(${curPosVehicleCardContainer}vw)`;
 
-        console.log(curPosVehicleCardContainer);
+        //console.log(curPosVehicleCardContainer);
     }
 
 }
@@ -85,31 +108,33 @@ function moveCurrentVehicleCard(elemento, direction) {
 
 /* 3. OBTENER VEHICULOS */
 function mostrarDatosVehiculos() {
+    //var listaVehicleCardHtml = '';
+    //_datosVehiculos.forEach(function (vehiculo) {
+    //    listaVehicleCardHtml += getVehicleCardHtml(vehiculo.NombreModelo, vehiculo.NombreModelo);
+    //});
+
+    //$("#vehiculos .vehicle-card-container").html(listaVehicleCardHtml);
+
+
+    console.log('mostrar los vehiculos que son ' + _datosVehiculos.length);
+
     var listaVehicleCardHtml = '';
     _datosVehiculos.forEach(function (vehiculo) {
-        listaVehicleCardHtml += getVehicleCardHtml(vehiculo.NombreModelo, vehiculo.NombreModelo);
+        listaVehicleCardHtml += getVehiclePresentationHtml(vehiculo.VehiculoID, vehiculo.NombreModelo, vehiculo.NombreModelo);
     });
 
     $("#vehiculos .vehicle-card-container").html(listaVehicleCardHtml);
+
 }
 
 function obtenerVehiculosExitoso(resultado) {
-    //console.log(resultado);
     if (resultado.Success) {
         _datosVehiculos = resultado.Data;
-        //console.log(_datosServicios);
-        //_datosTipo = resultado.Data.Tipos;
+
         console.log(_datosVehiculos);
         mostrarDatosVehiculos();
 
-        minLimit = -30 * (_datosVehiculos.length - 2);
-        maxLimit = 30 * (_datosVehiculos.length - 1);
-
-        console.log(minLimit, maxLimit);
-
-        activateMoveVehicleCardContainer();
-
-        //cargarComboTipo();
+        //activateMoveVehicleCardContainer();
     } else {
         toastr.error(resultado.Mensaje);
     }

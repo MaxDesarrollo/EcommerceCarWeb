@@ -194,6 +194,7 @@
     <Content Include="Content\general\vehicle-card.css" />
     <Content Include="Content\pages\index.css" />
     <Content Include="Content\pages\producto.css" />
+    <Content Include="Content\toastr.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -221,7 +222,9 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\general.js" />
+    <Content Include="Scripts\general\carrito.js" />
     <Content Include="Scripts\general\login.js" />
+    <Content Include="Scripts\general\session.js" />
     <Content Include="Scripts\Generico.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

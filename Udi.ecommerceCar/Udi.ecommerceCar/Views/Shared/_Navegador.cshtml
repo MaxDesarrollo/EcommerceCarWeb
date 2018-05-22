@@ -3,7 +3,7 @@
     <div class="logo">LOGO</div>
 
     <div class="navheader-search">
-        <input type="type" name="txtBuscador" id="txtBuscador" class="navbar-search-input" value="" placeholder="Buscar..."/>
+        <input name="txtBuscador" id="txtBuscador" class="navbar-search-input" value="" placeholder="Buscar..."/>
         <button class="navbar-search-button">Buscar</button>
     </div>
 
@@ -19,10 +19,15 @@
         </div>
     </div>
 
+    <div class="username-menu" id="usernameMenu">
+        <a href="#">Mi Perfil</a>
+        <a href="#" onclick="return;" id="btnCerrarSesion">Cerrar Sesión</a>
+    </div>
+
     <div class="login-container" id="loginContainer">
         <!-- <span>Inicio de sesión</span> -->
         <input id="txtLoginUsername" class="login-input" type="text" placeholder="Usuario">
-        <input id="txtLoginPassword" class="login-input" type="text" placeholder="Contaseña">
+        <input id="txtLoginPassword" class="login-input" type="password" placeholder="Contaseña">
         <button class="login-submit" id="loginSubmit">Iniciar sesión</button>
         <span class="login-not-registered-link">¿No estás registrado? <a href="#">Crea una cuenta</a></span>
 
@@ -52,11 +57,11 @@
 </nav>
 
 <div class="navbar-categorias">
-    <a>Vehículos</a>
+    <a href="~/Vehiculo">Vehículos</a>
     @*<a>Nuevos Vehículos</a>*@
-    <a>Repuestos</a>
-    <a>Accesorios</a>
-    <a>Servicios</a>
+    <a href="~/Producto">Repuestos</a>
+    <a href="~/Producto">Accesorios</a>
+    <a href="~/Servicio">Servicios</a>
     <a>Test-Drive</a>
     <a>Solicitar reunión</a>
 </div>

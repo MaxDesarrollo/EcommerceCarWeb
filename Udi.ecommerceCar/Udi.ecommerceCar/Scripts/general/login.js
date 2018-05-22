@@ -2,83 +2,75 @@
 INDICE
 1. VARIABLES GLOBALES
 2. FUNCIONES GENERALES
-3. OBTENER PRODUCTOS
+3. FUNCIONES SESION
 4. INICIAR FUNCIONES
 */
 
 /* 1. VARIABLES GLOBALES */
 var _datosUsername;
 var spanShowLogin = document.getElementById("spanShowLogin"),
-    login = document.getElementById("loginContainer"),
     loginSubmit = document.getElementById("loginSubmit");
 var txtLoginUsername = document.getElementById("txtLoginUsername"),
     txtLoginPassword = document.getElementById("txtLoginPassword");
+
 var loginUsername = document.getElementById("loginUsername"),
-    loginNotRegistered = document.getElementById("loginNotRegistered");
+    login = document.getElementById("loginContainer"),
+    loginNotRegistered = document.getElementById("loginNotRegistered"),
+    usernameMenu = document.getElementById("usernameMenu");
+
+var btnCerrarSesion = document.getElementById("btnCerrarSesion");
 
 
 /* 2. FUNCIONES GENERALES */
+window.addEventListener("storage", function (e) {
+    verificarSesion();
+});
 
-function getProductCardHtml(id, nombre, descripcion, urlImagen, tipoProducto, precio) {
 
-    if (precio === "Sin precio") {
-        precio = "";
-    } else precio = "Bs. " + precio;
+/* 3. VERIFICAR SESION */
 
-    console.log(id);
-
-    var productCardHtml =
-        `<div class="product-card">
-            <div class ="product-card-image" style="background-image: url('Images/${tipoProducto}/${nombre}.jpg')"></div>
-
-            <div class="product-card-description">
-                <div class ="product-card-header">
-                    <span class ="product-card-title">
-                        <a href="Producto/Detalle/${id}">${nombre}</a>
-                    </span>
-                </div>
-
-                <div class ="product-card-detail">
-                    <div class ="product-card-price">
-                        ${precio}
-                    </div>
-                </div>
-            </div>
-        </div>`;
-
-    //<span class="product-card-description">${descripcion}</span>
-    //<img src="Images/${tipoProducto}/${nombre}.jpg" alt="${nombre}">
-
-    return productCardHtml;
+function cerrarSesion() {
+    
 }
 
-/* 3. OBTENER PRODUCTOS */
-function mostrarDatosUsuario() {
-
-    //var listaProductCardHtml = '';
-    //_datosProductos.forEach(function (producto) {
-    //    var precio = producto.Precio ? producto.Precio : "Sin precio";
-    //    listaProductCardHtml += getProductCardHtml(producto.ProductoID, producto.Nombre, producto.Descripcion, producto.Nombre, producto.TipoProducto, precio);
-    //});
-
-    //$("#productos .product-card-container").html(listaProductCardHtml);
-
-    console.log("mostrar datos del usuario porque se inicio sesion correctamente");
-
-    loginUsername.innerText = _datosUsername.Nombre + " " + _datosUsername.Apellido;
-
+function mostrarMenuPerfil() {
     login.classList.remove("login-container--show");
-    loginNotRegistered.classList.add("login-not-registered--hide");
     loginUsername.classList.add("login-username--show");
+    loginNotRegistered.classList.remove("login-not-registered--show");
+
+    loginUsername.innerText = localStorage.getItem("nombre") + " " + localStorage.getItem("apellido");
+}
+
+function mostrarMenuIniciarSesion() {
+    loginUsername.classList.remove("login-username--show");
+    loginNotRegistered.classList.add("login-not-registered--show");
+}
+
+function verificarSesion() {
+    if (localStorage.getItem("usuarioId")) {
+        mostrarMenuPerfil();
+    } else {
+        mostrarMenuIniciarSesion();
+    }
+}
+
+function guardarDatosSesion() {
+    localStorage.setItem("usuarioId", _datosUsername.UsuarioId);
+    localStorage.setItem("username", _datosUsername.Username);
+    localStorage.setItem("nombre", _datosUsername.Nombre);
+    localStorage.setItem("apellido", _datosUsername.Apellido);
 }
 
 function iniciarSesionExitoso(resultado) {
-    console.log('exito');
     if (resultado.Success) {
         _datosUsername = resultado.Data;
-        mostrarDatosUsuario();
+
+        guardarDatosSesion();
+        verificarSesion();
+
     } else {
         toastr.error(resultado.Mensaje);
+
     }
 }
 
@@ -105,14 +97,42 @@ function init() {
     });
 
     loginSubmit.addEventListener("click", function () {
-        console.log("adios");
         var username = txtLoginUsername.value;
         var password = txtLoginPassword.value;
 
-        console.log("Iniciar sesion con " + username + ", " + password);
+        spanShowLogin.classList.remove("span-show-login--active");
+
         iniciarSesion(username, password);
     });
 }
 
 /* 4. INICIAR FUNCIONES */
 init();
+
+if (storageAvailable('localStorage')) {
+    // Yippee! We can use localStorage awesomeness
+    verificarSesion();
+}
+else {
+    // Too bad, no localStorage for us
+    console.log("Ver qué hacer con estos navegadores.");
+}
+
+if (loginUsername) {
+    loginUsername.addEventListener("click", function() {
+        usernameMenu.classList.toggle("username-menu--show");
+    });
+}
+
+if (btnCerrarSesion) {
+    btnCerrarSesion.addEventListener("click", function() {
+        localStorage.removeItem("usuarioId");
+        localStorage.removeItem("username");
+        localStorage.removeItem("nombre");
+        localStorage.removeItem("apellido");
+
+        usernameMenu.classList.remove("username-menu--show");
+
+        verificarSesion();
+    });
+}
