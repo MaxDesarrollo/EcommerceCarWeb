@@ -24,6 +24,7 @@ var btnCerrarSesion = document.getElementById("btnCerrarSesion");
 /* 2. FUNCIONES GENERALES */
 window.addEventListener("storage", function (e) {
     verificarSesion();
+    getCartInfoList();
 });
 
 

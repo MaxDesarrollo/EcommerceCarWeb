@@ -17,7 +17,7 @@
     --login-input-placeholder: #BDBDBD;
     --login-not-registered-link: #8a8a8a;
 
-    --login-submit-button: #00B241;
+    --green-button: #00B241;
 }
 /*#endregion */
 
@@ -157,8 +157,111 @@
 
 /*#region 3. LOGIN */
 .username-container {
+    /*display: inherit;*/
+    display: flex;
+    align-items: center;
+
     position: relative;
 }
+
+
+.cart-info-icon {
+    padding: 0 10px;
+}
+.cart-info-icon:hover {
+    cursor: pointer;
+}
+
+.cart-info-list-container {
+    padding: 15px 20px;
+    width: 350px;
+    
+    display: none;
+    position: absolute;
+    top: var(--nav-height);
+    right: var(--padding-ancho);
+
+    background-color: #ffffff;
+    color: #333333;
+
+    z-index: 5;
+    
+    -webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    -ms-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.cart-info-list-container--show {
+    display: block;
+}
+
+.cart-info-title {
+    padding-bottom: 10px;
+    font-size: 1.2em;
+}
+.cart-info-total-price {
+    padding-top: 10px;
+    text-align: right;
+}
+.cart-info-total-price > div {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.cart-info-subtotal,
+.cart-info-envio,
+.cart-info-total {
+    width: 75px;
+}
+
+#btnVerMiPedido {
+    margin-top: 5px;
+    padding: 10px;
+    
+    background-color: var(--green-button);
+    color: #ffffff;
+
+    text-decoration: none;
+}
+#btnVerMiPedido:hover,
+#btnVerMiPedido:active,
+#btnVerMiPedido:visited {
+    text-decoration: underline;
+}
+
+.cart-info-list-item {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 3px 0;
+    margin-bottom: 7px;
+
+    border-bottom: 1px solid #ddd;
+}
+.cart-info-list-item:last-child {
+    margin-bottom: 0;
+}
+
+.cart-info-list-item-image {
+    width: 25px;
+    height: 25px;
+    text-align: center;
+}
+.cart-info-list-item-image img {
+    max-width: 100%;
+    max-height: 100%;
+}
+.cart-info-list-item-nombre {
+    width: 180px;
+}
+.cart-info-list-item-delete {
+    padding-left: 10px;
+}
+.cart-info-list-item-delete:hover {
+    cursor: pointer;
+}
+
 
 .login-container {
     width: 360px;
@@ -204,8 +307,8 @@
 	padding: 15px 20px;
 	text-transform: uppercase;
 
-	background-color: var(--login-submit-button);
-	border: 1px solid var(--login-submit-button);
+	background-color: var(--green-button);
+	border: 1px solid var(--green-button);
 	color: #ffffff;
 }
 .login-submit:hover {

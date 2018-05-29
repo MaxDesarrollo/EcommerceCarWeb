@@ -14,6 +14,11 @@ namespace Udi.ecommerceCar.Controllers
         //    return View();
         //}
 
+        public ActionResult Carrito()
+        {
+            return View();
+        }
+
         public JsonResult ObtenerUsuario(int pk)
         {
             try

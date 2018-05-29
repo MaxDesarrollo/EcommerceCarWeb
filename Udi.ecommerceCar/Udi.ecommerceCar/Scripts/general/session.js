@@ -34,34 +34,3 @@ function storageAvailable(type) {
             storage.length !== 0;
     }
 }
-
-//function mostrarMenuPerfil() {
-//    login.classList.remove("login-container--show");
-//    loginUsername.classList.add("login-username--show");
-//    loginNotRegistered.classList.remove("login-not-registered--show");
-//}
-
-//function mostrarMenuIniciarSesion() {
-//    loginUsername.classList.remove("login-username--show");
-//    loginNotRegistered.classList.add("login-not-registered--show");
-//}
-
-//function verificarSesion() {
-//    if (!localStorage.getItem("usuarioId")) {
-//        console.log("No esta logueado, asi que hay que mostrar el menu de Iniciar sesion");
-//        mostrarMenuIniciarSesion();
-//    } else {
-//        console.log("Esta logueado, asi que hay que mostrar el menu donde sale su nombre");
-//        mostrarMenuPerfil();
-//    }
-//}
-
-/* 3. LLAMADAS */
-//if (storageAvailable('localStorage')) {
-//    // Yippee! We can use localStorage awesomeness
-//    verificarSesion();
-//}
-//else {
-//    // Too bad, no localStorage for us
-//    console.log("Ver qué hacer con estos navegadores.");
-//}

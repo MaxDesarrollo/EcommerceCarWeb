@@ -1,0 +1,93 @@
+﻿@*@model Udi.ecommerceCar.Data.Domain.Entities.ProductoDto*@
+@{
+    ViewBag.Title = "Carro de compras";
+}
+
+@section styles {
+    <link href="~/Content/pages/usuario/carrito.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    <script src="~/Scripts/pages/detalle-producto.js"></script>
+    <script src="~/Scripts/pages/usuario/carrito.js"></script>
+}
+
+
+<div class="pagina-contenedor">
+    <div class="seccion-titulo">Carro de compras</div>
+
+    <div class="cart-header">
+        <div class="cart-header-name">Productos</div>
+        <div class="cart-header-quantity">Cantidad</div>
+        <div class="cart-header-price">Precio</div>
+        <div class="cart-header-ship-price">Envío</div>
+    </div>
+
+    <div class="cart-container" id="cartContainer">
+        <div class="cart-empty">
+            Todavía no tienes ningún producto en el carrito. Agrega uno!
+        </div>
+        @*<div class="cart-item">
+            <div class="cart-item-information">
+                <div class="cart-item-information-image">
+                    <img src="~/Images/Repuestos/Dunlop Sp Sport Maxx.jpg" alt="Bla bla bla"/>
+                </div>
+
+                <div class="cart-item-information-description">
+                    <div class="cart-item-information-name">
+                        <a href="#">Kingdom Hearts HD 1.5 + 2.5 Remix</a>
+                    </div>
+
+                    <div class="cart-item-information-tipo">
+                        Repuestos
+                    </div>
+
+                    <span class="cart-item-information-stock">
+                        En stock
+                    </span>
+                    
+                    <div class="cart-item-information-options">
+                        <button>Eliminar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cart-item-quantity">
+                <select >
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+
+            <div class="cart-item-price">
+                Bs. 15.00
+            </div>
+
+            <div class="cart-item-ship-price">
+                Gratis
+            </div>
+        </div>*@
+    </div>
+
+    <div class="cart-total-price">
+        <div>
+            <span><b>Subtotal:</b> Bs. </span>
+            <div class="cart-subtotal" id="cartSubtotal">500.00</div>
+        </div>
+        <div>
+            <span><b>Envío:</b> Bs.</span>
+            <div class="cart-envio" id="cartEnvio">0.00</div>
+        </div>
+        <div>
+            <span><b>Total:</b> Bs. </span>
+            <div class="cart-total" id="cartTotal">500.00</div>
+        </div>
+
+        <div>
+            <a href="" id="btnSolicitarPedido">Solicitar pedido</a>
+        </div>
+    </div>
+</div>

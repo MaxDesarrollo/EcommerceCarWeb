@@ -1,8 +1,18 @@
-﻿using System.Web;
-using System.Web.Optimization;
-
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="BundleConfig.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   Defines the BundleConfig type.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 namespace Udi.ecommerceCar
 {
+    using System.Web.Optimization;
+
+    /// <summary>
+    /// The bundle config.
+    /// </summary>
     public class BundleConfig
     {
         // Para obtener más información sobre Bundles, visite http://go.microsoft.com/fwlink/?LinkId=301862

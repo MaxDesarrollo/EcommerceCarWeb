@@ -9,6 +9,10 @@
 */
 
 /*#region 1. GENERAL */
+:root {
+    --link-color: #0000f0;
+}
+
 html, body {
 	min-height: 100vh;
 	max-width: 100vw;
@@ -173,7 +177,7 @@ html, body {
 
 /*#region 5. METODOS */
 .pagina-contenedor {
-    padding: 0 60px;
+    padding: 0 var(--padding-ancho);
 
     margin-top: 20px;
     margin-bottom: 40px;

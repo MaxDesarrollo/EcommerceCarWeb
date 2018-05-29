@@ -1,0 +1,149 @@
+﻿:root {
+	/*--margin-inicio: 135px;*/
+    --information-width: 40%;
+    --section-width: 20%;
+
+    --item-margin-top: 10px;
+}
+
+
+.cart-container {
+    background-color: #fafafa;
+}
+.cart-empty {
+    padding-top: 20px;
+    font-size: 1.2em;
+}
+
+.cart-header {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart-header > div {
+    width: var(--section-width);
+}
+.cart-header-name {
+    width: var(--information-width) !important;
+}
+
+.cart-header-quantity,
+.cart-header-price,
+.cart-header-ship-price {
+    text-align: right;
+}
+
+
+.cart-item {
+    width: 100%;
+    
+    display: flex;
+    justify-content: space-between;
+
+    border-top: 1px solid #ddd;
+    margin-top: var(--item-margin-top);
+}
+
+.cart-item > div {
+    width: var(--section-width);
+}
+.cart-item-information {
+    /*flex-grow: 3 !important;*/
+    width: var(--information-width) !important;
+
+    display: flex;
+}
+
+.cart-item-information-image {
+    width: 115px;
+    text-align: center;
+}
+.cart-item-information-image img {
+    max-height: 100px;
+    margin-top: var(--item-margin-top);
+}
+
+.cart-item-information-name {
+    margin: 15px 0;
+}
+.cart-item-information-name a,
+.cart-item-information-name a:visited {
+    text-decoration: none;
+    color: var(--link-color);
+}
+.cart-item-information-name a:hover {
+    text-decoration: underline;
+    color: var(--link-color);
+}
+
+.cart-item-information-tipo,
+.cart-item-information-stock {
+    font-size: 0.8em;
+}
+
+.cart-item-quantity,
+.cart-item-price,
+.cart-item-ship-price {
+    text-align: right;
+    margin: 15px 0;
+}
+
+.cart-item-information {
+    
+}
+
+/*.cart-item-information-delete {
+    background-color: #b20000;
+    color: #fff;
+
+    border: none;
+
+    margin-top: 5px;
+    padding: 5px;
+}*/
+
+.cart-item-information-options {
+    margin-top: 7px;
+}
+.cart-item-information-delete {
+    color: -webkit-link;
+    text-decoration: none;
+}
+.cart-item-information-delete:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+
+.cart-total-price {
+    padding-top: 10px;
+    text-align: right;
+    font-size: 1.3em;
+}
+.cart-total-price > div {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.cart-subtotal,
+.cart-envio,
+.cart-total {
+    width: 100px;
+}
+
+#btnSolicitarPedido {
+    margin-top: 15px;
+    padding: 10px;
+    
+    background-color: var(--green-button);
+    color: #ffffff;
+
+    text-decoration: none;
+}
+#btnSolicitarPedido:hover,
+#btnSolicitarPedido:active,
+#btnSolicitarPedido:visited {
+    text-decoration: underline;
+}

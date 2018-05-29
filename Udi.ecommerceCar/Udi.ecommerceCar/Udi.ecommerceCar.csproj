@@ -194,6 +194,7 @@
     <Content Include="Content\general\vehicle-card.css" />
     <Content Include="Content\pages\index.css" />
     <Content Include="Content\pages\producto.css" />
+    <Content Include="Content\pages\usuario\carrito.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -222,7 +223,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\general.js" />
-    <Content Include="Scripts\general\carrito.js" />
+    <Content Include="Scripts\general\carrito-info.js" />
     <Content Include="Scripts\general\login.js" />
     <Content Include="Scripts\general\session.js" />
     <Content Include="Scripts\Generico.js" />
@@ -234,9 +235,11 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\pages\detalle-producto.js" />
     <Content Include="Scripts\pages\navegador.js" />
     <Content Include="Scripts\pages\producto.js" />
     <Content Include="Scripts\pages\servicio.js" />
+    <Content Include="Scripts\pages\usuario\carrito.js" />
     <Content Include="Scripts\pages\vehiculo.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -284,10 +287,10 @@
     <Content Include="Views\Servicio\Detalle.cshtml" />
     <Content Include="Views\Shared\_Navegador.cshtml" />
     <Content Include="Views\Shared\_LayoutPrincipal.cshtml" />
+    <Content Include="Views\Usuario\Carrito.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Usuario\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
