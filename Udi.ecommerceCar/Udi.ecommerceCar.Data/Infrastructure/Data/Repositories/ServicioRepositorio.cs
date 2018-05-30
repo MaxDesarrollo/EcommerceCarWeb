@@ -15,6 +15,9 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                 ServicioID = servicio.ServicioID,
                 Precio = servicio.Precio,
                 Estado = servicio.Estado,
+                Descripcion = servicio.Descripcion,
+                DescripcionCorta = servicio.DescripcionCorta,
+                ImagenID = servicio.ImagenID,
                 TipoServicioID = servicio.TipoServicioID
             };
 
@@ -36,6 +39,9 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                     ServicioID = servicio.ServicioID,
                     Precio = (decimal) servicio.Precio,
                     Estado = (bool) servicio.Estado,
+                    Descripcion = servicio.Descripcion,
+                    DescripcionCorta = servicio.DescripcionCorta,
+                    ImagenID = servicio.ImagenID,
                     TipoServicioID = servicio.TipoServicioID,
                     TipoServicio = servicio.TipoServicio.Nombre
                 })
@@ -55,6 +61,9 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                 ServicioID = servicio.ServicioID,
                 Precio = (decimal) servicio.Precio,
                 Estado = (bool) servicio.Estado,
+                Descripcion = servicio.Descripcion,
+                DescripcionCorta = servicio.DescripcionCorta,
+                ImagenID = servicio.ImagenID,
                 TipoServicioID = servicio.TipoServicioID,
                 TipoServicio = servicio.TipoServicio.Nombre
             })
@@ -71,6 +80,9 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                 ServicioID = servicio.ServicioID,
                 Precio = (decimal) servicio.Precio,
                 Estado = (bool) servicio.Estado,
+                Descripcion = servicio.Descripcion,
+                DescripcionCorta = servicio.DescripcionCorta,
+                ImagenID = servicio.ImagenID,
                 TipoServicioID = servicio.TipoServicioID,
                 TipoServicio = servicio.TipoServicio.Nombre
             })

@@ -15,10 +15,17 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                 ProductoID = producto.ProductoID,
                 Nombre = producto.Nombre,
                 Descripcion = producto.Descripcion,
-                DescripcionCorta = producto.DescripcionCorta,
                 Cantidad = producto.Cantidad,
+
+                DescripcionCorta = producto.DescripcionCorta,
+                UrlAmigable = producto.UrlAmigable,
+                Puntuacion = producto.Puntuacion,
                 Precio = producto.Precio,
-                TipoProductoID = producto.TipoProductoID
+                VisibleMain = producto.VisibleMain,
+
+                ImagenID = producto.ImagenId,
+                TipoProductoID = producto.TipoProductoID,
+
             };
 
             Add(newProducto);
@@ -36,9 +43,15 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                     ProductoID = producto.ProductoID,
                     Nombre = producto.Nombre,
                     Descripcion = producto.Descripcion,
-                    DescripcionCorta = producto.DescripcionCorta,
                     Cantidad = producto.Cantidad,
+
+                    DescripcionCorta = producto.DescripcionCorta,
+                    UrlAmigable = producto.UrlAmigable,
+                    Puntuacion = producto.Puntuacion,
                     Precio = producto.Precio,
+                    VisibleMain = producto.VisibleMain,
+
+                    ImagenId = producto.ImagenID,
                     TipoProductoID = producto.TipoProductoID,
                     TipoProducto = producto.TipoProducto.Nombre
                 }).First();
@@ -57,9 +70,15 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                 ProductoID = producto.ProductoID,
                 Nombre = producto.Nombre,
                 Descripcion = producto.Descripcion,
-                DescripcionCorta = producto.DescripcionCorta,
                 Cantidad = producto.Cantidad,
+
+                DescripcionCorta = producto.DescripcionCorta,
+                UrlAmigable = producto.UrlAmigable,
+                Puntuacion = producto.Puntuacion,
                 Precio = producto.Precio,
+                VisibleMain = producto.VisibleMain,
+
+                ImagenId = producto.ImagenID,
                 TipoProductoID = producto.TipoProductoID,
                 TipoProducto = producto.TipoProducto.Nombre
             })
@@ -76,9 +95,15 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                 ProductoID = producto.ProductoID,
                 Nombre = producto.Nombre,
                 Descripcion = producto.Descripcion,
-                DescripcionCorta = producto.DescripcionCorta,
                 Cantidad = producto.Cantidad,
+
+                DescripcionCorta = producto.DescripcionCorta,
+                UrlAmigable = producto.UrlAmigable,
+                Puntuacion = producto.Puntuacion,
                 Precio = producto.Precio,
+                VisibleMain = producto.VisibleMain,
+
+                ImagenId = producto.ImagenID,
                 TipoProductoID = producto.TipoProductoID,
                 TipoProducto = producto.TipoProducto.Nombre
             })

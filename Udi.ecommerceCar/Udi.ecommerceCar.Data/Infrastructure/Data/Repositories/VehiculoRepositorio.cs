@@ -37,7 +37,7 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                     VehiculoID = inventarioVehiculo.Vehiculo.VehiculoID,
                     CantidadDisponible = inventarioVehiculo.CantidadDisponible,
                     Precio = inventarioVehiculo.Precio,
-                    Año = (DateTime) inventarioVehiculo.Año,
+                    Año = (DateTime)inventarioVehiculo.Año,
                     //ModeloID = (int)vehiculo.ModeloID,
                     CantidadPuertas = inventarioVehiculo.Vehiculo.CantidadPuertas,
                     HabilitadoTestDrive = inventarioVehiculo.Vehiculo.HabilitadoTestDrive,
@@ -123,10 +123,14 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                 MarcaID = inventarioVehiculo.Vehiculo.MarcaID,
                 NombreMarca = inventarioVehiculo.Vehiculo.Marca.Nombre,
                 PaisOrigen = inventarioVehiculo.Vehiculo.Marca.PaisOrigen,
+                ImagenID = inventarioVehiculo.Vehiculo.ImagenID,
+                Descripcion = inventarioVehiculo.Vehiculo.Descripcion,
+                DescripcionCorta = inventarioVehiculo.Vehiculo.DescripcionCorta,
                 TipoVehiculoID = inventarioVehiculo.Vehiculo.TipoVehiculoID,
                 NombreTipoVehiculo = inventarioVehiculo.Vehiculo.TipoVehiculo.Nombre,
                 TipoCajaID = inventarioVehiculo.Vehiculo.TipoCajaID,
                 NombreTipoCaja = inventarioVehiculo.Vehiculo.TipoCaja.Nombre
+
             })
             .ToList();
         }

@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Udi.ecommerceCar.Data.Domain.Entities
 {
@@ -26,5 +30,14 @@ namespace Udi.ecommerceCar.Data.Domain.Entities
         public string NombreTipoVehiculo { get; set; }
         public int? TipoCajaID { get; set; }
         public string NombreTipoCaja { get; set; }
+
+        public Nullable<int> ImagenID { get; set; }
+
+        public Nullable<bool> VisibleMain { get; set; }
+        public Nullable<int> Puntuacion { get; set; }
+     
+        public string Descripcion { get; set; }
+        public string DescripcionCorta { get; set; }
+
     }
 }

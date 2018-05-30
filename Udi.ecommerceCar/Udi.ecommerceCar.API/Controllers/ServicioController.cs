@@ -5,22 +5,20 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+
 using Udi.ecommerceCar.API.Controllers;
 using Udi.ecommerceCar.API.Models;
-using Udi.ecommerceCar.Data;
 using Udi.ecommerceCar.Data.Domain.Entities;
 using Udi.ecommerceCar.Data.Domain.Services;
-using Udi.ecommerceCar.Data.Infrastructure.Data.DataModels;
-using Udi.ecommerceCar.Data.Infrastructure.Data.Repositories;
 
 namespace Udi.ecommerceCar.Api.Controllers
 {
-    public class ProductoController : ApiController
+    public class ServicioController : ApiController
     {
 
-        private readonly ProductoServicio productoServicio = new ProductoServicio();
+        private readonly ServicioServicio servicioServicio = new ServicioServicio();
 
-        [Route("api/product/get")]
+        [Route("api/service/get")]
         [HttpPost]
         public IHttpActionResult Sincronizar([FromBody]ParametroApi<List<string>> Parametros)
         {
@@ -37,35 +35,32 @@ namespace Udi.ecommerceCar.Api.Controllers
                 }
 
 
-                
 
-                var Resultado = productoServicio.ObtenerProductosTodos();
 
-                return Ok(RespuestaApi<List<ProductoDto>>.createRespuestaSuccess(Resultado));
+                var Resultado = servicioServicio.ObtenerServiciosTodos();
+
+                return Ok(RespuestaApi<List<ServicioDto>>.createRespuestaSuccess(Resultado));
             }
             catch (Exception ex)
             {
                 return Ok(RespuestaApi<string>.createRespuestaError(ex.Message));
                 throw;
             }
-            
+
         }
 
 
-
-        [Route("api/product/obtener")]
+        [Route("api/service/obtener")]
         [HttpPost]
-        public IHttpActionResult ObtenerPorId([FromBody]ParametroApi<int> Parametros)
+        public IHttpActionResult ObtenerPorId([FromBody]ParametroApi<string> Parametros)
         {
             try
             {
-                int ProductoId = Parametros.DatoG;
+                int ProductoId = Parametros.DatoG[0];
 
-                
+                var Resultado = servicioServicio.ObtenerServicio(ProductoId);
 
-                var Resultado = productoServicio.ObtenerProducto(ProductoId);
-
-                return Ok(RespuestaApi<ProductoDto>.createRespuestaSuccess(Resultado));
+                return Ok(RespuestaApi<ServicioDto>.createRespuestaSuccess(Resultado));
             }
             catch (Exception ex)
             {
@@ -74,6 +69,5 @@ namespace Udi.ecommerceCar.Api.Controllers
             }
 
         }
-
     }
 }
