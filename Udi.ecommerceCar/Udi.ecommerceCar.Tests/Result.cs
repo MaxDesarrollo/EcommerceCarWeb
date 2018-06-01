@@ -9,7 +9,14 @@ namespace Udi.ecommerceCar.Tests
 {
     class Result
     {
-        public bool Success;
-        public string Mensaje;
+        /// <summary>
+        /// Gets or sets a value indicating whether success.
+        /// </summary>
+        public bool Success { get; set; }
+
+        /// <summary>
+        /// Gets or sets the mensaje.
+        /// </summary>
+        public string Mensaje { get; set; }
     }
 }

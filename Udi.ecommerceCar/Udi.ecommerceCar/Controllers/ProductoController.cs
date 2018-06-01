@@ -1,45 +1,75 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Udi.ecommerceCar.Data.Domain.Entities;
-using Udi.ecommerceCar.Data.Domain.Services;
-using Udi.ecommerceCar.Data.Infrastructure.Data.DataModels;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ProductoController.cs" company="MC Autoventas">
+//   © 2018 MC Autoventas
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace Udi.ecommerceCar.Controllers
 {
+    using System;
+    using System.Web.Mvc;
+
+    using Udi.ecommerceCar.Data.Domain.Entities;
+    using Udi.ecommerceCar.Data.Domain.Services;
+
+    /// <summary>
+    /// The producto controller.
+    /// </summary>
     public class ProductoController : Controller
     {
+        /// <summary>
+        /// The producto servicio.
+        /// </summary>
         private readonly ProductoServicio productoServicio = new ProductoServicio();
-        
-        // GET: Producto
-        public ActionResult Index()
-        {
-            return View();
-        }
 
+        /// <summary>
+        /// The detalle.
+        /// </summary>
+        /// <param name="id">
+        /// The id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
         public ActionResult Detalle(int id)
         {
-            ProductoDto producto = productoServicio.ObtenerProducto(id);
-            return producto != null ? View(producto) : View();
+            ProductoDto producto = this.productoServicio.ObtenerProducto(id);
+            return producto != null ? this.View(producto) : this.View();
         }
 
+        /// <summary>
+        /// The guardar producto.
+        /// </summary>
+        /// <param name="nombre">
+        /// The nombre.
+        /// </param>
+        /// <param name="descripcion">
+        /// The descripcion.
+        /// </param>
+        /// <param name="cantidad">
+        /// The cantidad.
+        /// </param>
+        /// <param name="tipoProductoId">
+        /// The tipo producto id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="JsonResult"/>.
+        /// </returns>
         public JsonResult GuardarProducto(string nombre, string descripcion, int cantidad, int tipoProductoId)
         {
             try
             {
-                //Producto prod = ComunServicio.ObtenerDtoFromString<Producto>(producto);
-                int id = productoServicio.ObtenerProductosTodos().Count;
+                // Producto prod = ComunServicio.ObtenerDtoFromString<Producto>(producto);
+                int id = this.productoServicio.ObtenerProductosTodos().Count;
                 ProductoDto prod = new ProductoDto()
-                {
-                    ProductoID = id + 1,
-                    Nombre = nombre,
-                    Descripcion = descripcion,
-                    Cantidad = cantidad,
-                    TipoProductoID = tipoProductoId
-                };
-                int pk = productoServicio.GuardarProducto(prod);
+                                       {
+                                           ProductoID = id + 1, 
+                                           Nombre = nombre, 
+                                           Descripcion = descripcion, 
+                                           Cantidad = cantidad, 
+                                           TipoProductoID = tipoProductoId
+                                       };
+                int pk = this.productoServicio.GuardarProducto(prod);
 
                 return new JsonResult { Data = new { Success = true, Data = pk } };
             }
@@ -48,16 +78,36 @@ namespace Udi.ecommerceCar.Controllers
                 return new JsonResult { Data = new { Success = false, Mensaje = ex.Message } };
             }
         }
+        
+        /// <summary>
+        /// The index.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
+        public ActionResult Index()
+        {
+            return this.View();
+        }
 
+        /// <summary>
+        /// The obtener producto.
+        /// </summary>
+        /// <param name="pk">
+        /// The pk.
+        /// </param>
+        /// <returns>
+        /// The <see cref="JsonResult"/>.
+        /// </returns>
         public JsonResult ObtenerProducto(int pk)
         {
             try
             {
-                var data = productoServicio.ObtenerProducto(pk);
+                var data = this.productoServicio.ObtenerProducto(pk);
 
                 if (data == null)
                 {
-                    return new JsonResult { Data = new { Success = false} };
+                    return new JsonResult { Data = new { Success = false } };
                 }
 
                 return new JsonResult { Data = new { Success = true, Data = data } };
@@ -68,11 +118,23 @@ namespace Udi.ecommerceCar.Controllers
             }
         }
 
-        public JsonResult ObtenerProductosTodos()
+        /// <summary>
+        /// The obtener productos.
+        /// </summary>
+        /// <param name="page">
+        /// The page.
+        /// </param>
+        /// <param name="size">
+        /// The size.
+        /// </param>
+        /// <returns>
+        /// The <see cref="JsonResult"/>.
+        /// </returns>
+        public JsonResult ObtenerProductos(int page, int size)
         {
             try
             {
-                var data = productoServicio.ObtenerProductosTodos();
+                var data = this.productoServicio.ObtenerProductos(page, size);
 
                 return new JsonResult { Data = new { Success = true, Data = data } };
             }
@@ -82,12 +144,17 @@ namespace Udi.ecommerceCar.Controllers
             }
         }
 
-        public JsonResult ObtenerProductos(int page, int size)
+        /// <summary>
+        /// The obtener productos todos.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="JsonResult"/>.
+        /// </returns>
+        public JsonResult ObtenerProductosTodos()
         {
             try
             {
-
-                var data = productoServicio.ObtenerProductos(page, size);
+                var data = this.productoServicio.ObtenerProductosTodos();
 
                 return new JsonResult { Data = new { Success = true, Data = data } };
             }

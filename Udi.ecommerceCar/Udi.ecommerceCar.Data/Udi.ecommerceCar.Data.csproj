@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>G:\Raiden\UDI\7to Semestre\eCommerce\Proyecto\extra\CodeAnalisys.Rules.MedioAlto.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -51,7 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Class1.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="Domain\Entities\MarcaDto.cs" />
     <Compile Include="Domain\Entities\ModeloDto.cs" />
     <Compile Include="Domain\Entities\ProductoDto.cs" />
@@ -169,6 +172,7 @@
     <EntityDeploy Include="Infrastructure\Data\DataModels\DbContext.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DbContext.Designer.cs</LastGenOutput>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </EntityDeploy>
     <None Include="Infrastructure\Data\DataModels\DbContext.edmx.diagram">
       <DependentUpon>DbContext.edmx</DependentUpon>

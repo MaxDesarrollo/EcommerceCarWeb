@@ -1,27 +1,27 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="FilterConfig.cs" company="MC Autoventas">
+// <copyright file="AdminController.cs" company="MC Autoventas">
 //   © 2018 MC Autoventas
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Udi.ecommerceCar
+namespace Udi.ecommerceCar.Controllers
 {
     using System.Web.Mvc;
 
     /// <summary>
-    /// The filter config.
+    /// The admin controller.
     /// </summary>
-    public class FilterConfig
+    public class AdminController : Controller
     {
         /// <summary>
-        /// The register global filters.
+        /// The index.
         /// </summary>
-        /// <param name="filters">
-        /// The filters.
-        /// </param>
-        public static void RegisterGlobalFilters(GlobalFilterCollection filters)
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
+        public ActionResult Index()
         {
-            filters.Add(new HandleErrorAttribute());
+            return this.View();
         }
     }
 }

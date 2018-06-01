@@ -1,65 +1,98 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Udi.ecommerceCar.Data.Domain.Entities;
-using Udi.ecommerceCar.Data.Domain.Services;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ServicioController.cs" company="MC Autoventas">
+//   © 2018 MC Autoventas
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace Udi.ecommerceCar.Controllers
 {
+    using System;
+    using System.Web.Mvc;
+
+    using Udi.ecommerceCar.Data.Domain.Entities;
+    using Udi.ecommerceCar.Data.Domain.Services;
+
+    /// <summary>
+    /// The servicio controller.
+    /// </summary>
     public class ServicioController : Controller
     {
+        /// <summary>
+        /// The servicio servicio.
+        /// </summary>
         private readonly ServicioServicio servicioServicio = new ServicioServicio();
 
-        // GET: Servicio
-        public ActionResult Index()
-        {
-            return View();
-        }
-
+        /// <summary>
+        /// The detalle.
+        /// </summary>
+        /// <param name="id">
+        /// The id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
         public ActionResult Detalle(int id)
         {
-            ServicioDto servicio = servicioServicio.ObtenerServicio(id);
+            ServicioDto servicio = this.servicioServicio.ObtenerServicio(id);
 
             if (servicio != null)
             {
-                //Si existe, que mande el view, sino que mande una pagin de error o algo asi
-                return View(servicio);
+                // Si existe, que mande el view, sino que mande una pagin de error o algo asi
+                return this.View(servicio);
             }
 
-            return View();
+            return this.View();
+        }
+        
+        /// <summary>
+        /// The index.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
+        public ActionResult Index()
+        {
+            return this.View();
         }
 
-        //public JsonResult GuardarServicio(string , string descripcion, int cantidad, int tipoProductoId)
-        //{
-        //    try
-        //    {
-        //        //Producto prod = ComunServicio.ObtenerDtoFromString<Producto>(producto);
-        //        int id = productoServicio.ObtenerProductos().Count;
-        //        ProductoDto prod = new ProductoDto()
-        //        {
-        //            ProductoID = id + 1,
-        //            Nombre = nombre,
-        //            Descripcion = descripcion,
-        //            Cantidad = cantidad,
-        //            TipoProductoID = tipoProductoId
-        //        };
-        //        int pk = productoServicio.GuardarProducto(prod);
+        // public JsonResult GuardarServicio(string , string descripcion, int cantidad, int tipoProductoId)
+        // {
+        // try
+        // {
+        // //Producto prod = ComunServicio.ObtenerDtoFromString<Producto>(producto);
+        // int id = productoServicio.ObtenerProductos().Count;
+        // ProductoDto prod = new ProductoDto()
+        // {
+        // ProductoID = id + 1,
+        // Nombre = nombre,
+        // Descripcion = descripcion,
+        // Cantidad = cantidad,
+        // TipoProductoID = tipoProductoId
+        // };
+        // int pk = productoServicio.GuardarProducto(prod);
 
-        //        return new JsonResult { Data = new { Success = true, Data = pk } };
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return new JsonResult { Data = new { Success = false, Mensaje = ex.Message } };
-        //    }
-        //}
+        // return new JsonResult { Data = new { Success = true, Data = pk } };
+        // }
+        // catch (Exception ex)
+        // {
+        // return new JsonResult { Data = new { Success = false, Mensaje = ex.Message } };
+        // }
+        // }
 
+        /// <summary>
+        /// The obtener servicio.
+        /// </summary>
+        /// <param name="pk">
+        /// The pk.
+        /// </param>
+        /// <returns>
+        /// The <see cref="JsonResult"/>.
+        /// </returns>
         public JsonResult ObtenerServicio(int pk)
         {
             try
             {
-                var data = servicioServicio.ObtenerServicio(pk);
+                var data = this.servicioServicio.ObtenerServicio(pk);
 
                 if (data == null)
                 {
@@ -74,11 +107,23 @@ namespace Udi.ecommerceCar.Controllers
             }
         }
 
-        public JsonResult ObtenerServiciosTodos()
+        /// <summary>
+        /// The obtener servicios.
+        /// </summary>
+        /// <param name="page">
+        /// The page.
+        /// </param>
+        /// <param name="size">
+        /// The size.
+        /// </param>
+        /// <returns>
+        /// The <see cref="JsonResult"/>.
+        /// </returns>
+        public JsonResult ObtenerServicios(int page, int size)
         {
             try
             {
-                var data = servicioServicio.ObtenerServiciosTodos();
+                var data = this.servicioServicio.ObtenerServicios(page, size);
 
                 return new JsonResult { Data = new { Success = true, Data = data } };
             }
@@ -88,11 +133,17 @@ namespace Udi.ecommerceCar.Controllers
             }
         }
 
-        public JsonResult ObtenerServicios(int page, int size)
+        /// <summary>
+        /// The obtener servicios todos.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="JsonResult"/>.
+        /// </returns>
+        public JsonResult ObtenerServiciosTodos()
         {
             try
             {
-                var data = servicioServicio.ObtenerServicios(page, size);
+                var data = this.servicioServicio.ObtenerServiciosTodos();
 
                 return new JsonResult { Data = new { Success = true, Data = data } };
             }

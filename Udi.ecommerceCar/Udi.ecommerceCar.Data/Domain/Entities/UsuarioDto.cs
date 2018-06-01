@@ -1,18 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="UsuarioDto.cs" company="MC Autoventas">
+//   © 2018 MC Autoventas
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace Udi.ecommerceCar.Data.Domain.Entities
 {
+    /// <summary>
+    /// The usuario dto.
+    /// </summary>
     public class UsuarioDto
     {
-        public int UsuarioId { get; set; }
-        public string Nombre { get; set; }
+        /// <summary>
+        /// Gets or sets the apellido.
+        /// </summary>
         public string Apellido { get; set; }
-        public string Username { get; set; }
+
+        /// <summary>
+        /// Gets or sets the nombre.
+        /// </summary>
+        public string Nombre { get; set; }
+
+        /// <summary>
+        /// Obtiene or establece the password.
+        /// </summary>
         public string Password { get; set; }
-        
+
+        /// <summary>
+        /// Gets or sets the username.
+        /// </summary>
+        public string Username { get; set; }
+
+        /// <summary>
+        /// Gets or sets the usuario id.
+        /// </summary>
+        public int UsuarioId { get; set; }
     }
 }
