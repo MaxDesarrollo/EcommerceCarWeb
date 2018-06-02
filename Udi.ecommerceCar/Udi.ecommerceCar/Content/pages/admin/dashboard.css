@@ -1,12 +1,203 @@
 ﻿/*
     INDICE
     1. GENERAL
-    2. 
+    2. MENU LATERAL
+    3. MENU TOP
 */
 
+:root {
+    /*tamaños*/
 
-/*#*/
+    /*colores*/
+    --color-wet-asphalt: #34495e;
+    --color-dark-blue: #202d3a;
+    --color-midnight-blue: #2c3e50;
+
+    --color-peter-river: #3498db;
+    
+    --color-clouds: #ecf0f1;
+    --color-silver: #bdc3c7;
+
+    /*menu-top*/
+    --navbar-height: 50px;
+    --navbar-padding: 8px;
+
+    /*menu-lateral*/
+    --sidebar-width: 20%;
+    --link-padding: 8px 30px;
+    --link-active-padding: 10px 30px;
+    --link-list-margin-top: 50px;
+
+    /*icon*/
+    --icon-size: 23px;
+    --icon-margin: 0 10px 0 0;
+
+    /*admin-content*/
+    --admin-content-padding: 10px;
+
+    /*tabla*/
+	--cell-width: 50px;
+    --row-padding: 10px 5px;
+}
+
+/*#region 1. GENERAL */
+body {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
 .page-container {
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
+
+    display: grid;
+    grid-template-columns: var(--sidebar-width) auto;
+    grid-template-rows: var(--navbar-height) auto;
+    grid-template-areas: 
+        "perfil navbar"
+        "sidebar content";
 }
+
+.admin-navbar {
+    /*height: var(--navbar-height);*/
+    grid-area: navbar;
+
+    padding: var(--navbar-padding);
+    background-color: var(--color-wet-asphalt);
+    color: var(--color-clouds);
+}
+
+.admin-perfil {
+    grid-area: perfil;
+
+    padding: var(--navbar-padding);
+    background-color: var(--color-dark-blue);
+    color: var(--color-clouds);
+}
+.admin-sidebar {
+    /*width: var(--sidebar-width);*/
+    grid-area: sidebar;
+
+    background-color: var(--color-wet-asphalt);
+    color: var(--color-clouds);
+}
+
+.admin-content {
+    grid-area: content;
+
+    padding: var(--admin-content-padding);
+    box-sizing: border-box;
+
+    max-width: calc(100vw - var(--sidebar-width) - (var(--admin-content-padding) * 2));
+}
+
+
+.menu-botones {
+    padding: 10px 0;
+
+}
+
+
+
+.tabla-datos {
+	/*width: 100%;*/
+    max-width: calc(100vw - var(--sidebar-width) - (var(--admin-content-padding) * 2));
+
+    border: 1px solid #aaa;
+}
+
+.cabecera {
+	display: flex;
+	width: 100%;
+}
+.cabecera-celda {
+    border-bottom: 1px solid var(--color-midnight-blue);
+    
+    padding: var(--row-padding);
+}
+
+.fila {
+	display: flex;
+	width: 100%;
+}
+.fila:hover .celda {
+    background-color: var(--color-silver);
+}
+
+.celda {
+	/*min-width: var(--cell-width);*/
+	/*flex-grow: 1;*/
+
+    padding: var(--row-padding);
+    background-color: var(--color-clouds);
+}
+
+.celda-1 {
+	width: var(--cell-width);
+	width: 10%;
+}
+.celda-2 {
+	width: calc(var(--cell-width) * 5);
+    width: 20%;
+}
+.celda-3 {
+	width: calc(var(--cell-width) * 6);
+	/*flex-grow: 3;*/
+}
+.celda-5 {
+	width: calc(var(--cell-width) * 9);
+	width: 50%;
+}
+
+/*#endregion */
+
+/*#region 2. MENU LATERAL */
+.admin-sidebar {
+    background-color: var(--color-wet-asphalt);
+    color: var(--color-clouds);
+}
+
+.links-list {
+    margin-top: var(--link-list-margin-top);
+}
+
+.link {
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    padding: var(--link-padding);
+}
+.link--active {
+    background-color: var(--color-midnight-blue);
+
+    padding: var(--link-active-padding);
+}
+.link--active:before {
+    width: 5px;
+    height: 100%;
+    background-color: var(--color-peter-river);
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.link-span {
+    cursor: pointer;
+}
+.link a {
+    text-decoration: none;
+    color: var(--color-clouds);
+}
+
+.icon {
+    width: var(--icon-size);
+    height: var(--icon-size);
+    fill: var(--color-clouds);
+    margin: var(--icon-margin);
+}
+
+/*#endregion */
+

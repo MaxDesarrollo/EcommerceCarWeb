@@ -1,0 +1,33 @@
+﻿<h1>Vehículos</h1>
+
+<div class="menu-botones">
+    <button>Agregar vehículo</button>
+</div>
+
+<div class="tabla-datos" id="tablaDatos">
+    <div class="cabecera">
+        <div class="cabecera-celda celda-1">
+            ID
+        </div>
+
+        <div class="cabecera-celda celda-2">
+            Modelo
+        </div>
+
+        <div class="cabecera-celda celda-2">
+            Marca
+        </div>
+
+        <div class="cabecera-celda celda-5">
+            Opciones
+        </div>
+    </div>
+
+    <div class="tabla-datos-container" id="tablaDatosContainer">
+
+    </div>
+</div>
+
+<script>
+    obtenerDatosDashboard("/Vehiculo/ObtenerVehiculos", obtenerDatosVehiculosDashboardExitoso);
+</script>

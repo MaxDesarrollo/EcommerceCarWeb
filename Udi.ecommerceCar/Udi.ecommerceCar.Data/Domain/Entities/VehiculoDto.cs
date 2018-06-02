@@ -9,13 +9,11 @@ namespace Udi.ecommerceCar.Data.Domain.Entities
     public class VehiculoDto
     {
         public int VehiculoID { get; set; }
-        // CAMBIAR a INT
+        
         public int? CantidadDisponible { get; set; }
         public decimal? Precio { get; set; }
         public string Color { get; set; }
-
-        ////////////Mala idea? la Ñ 
-        // CAMBIAR A DATETIME
+        
         public DateTime Año { get; set; }
 
         public int? ModeloID { get; set; }

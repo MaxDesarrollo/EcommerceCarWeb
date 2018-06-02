@@ -212,6 +212,9 @@
     <Content Include="Content\general\product-card.css" />
     <Content Include="Content\general\service-card.css" />
     <Content Include="Content\general\vehicle-card.css" />
+    <Content Include="Content\html\admin\productos.html" />
+    <Content Include="Content\html\admin\servicios.html" />
+    <Content Include="Content\html\admin\vehiculos.html" />
     <Content Include="Content\pages\admin\dashboard.css" />
     <Content Include="Content\pages\admin\index.css" />
     <Content Include="Content\pages\admin\menu-lateral.css" />
@@ -260,6 +263,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\pages\admin\dashboard.js" />
     <Content Include="Scripts\pages\detalle-producto.js" />
     <Content Include="Scripts\pages\navegador.js" />
     <Content Include="Scripts\pages\producto.js" />
