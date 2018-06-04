@@ -1,0 +1,43 @@
+﻿<h1>Agregar servicio</h1>
+
+<div class="menu-botones">
+    <button class="link-span" data-page="servicios">Volver a servicios</button>
+</div>
+
+<div class="formulario">
+    <div>
+        <label>Tipo de Servicio</label>
+        <select id="sltTipoServicioServicio"></select>
+    </div>
+
+    <div>
+        <label>Descripción</label>
+        <input id="txtDescripcionServicio" />
+    </div>
+
+    <div>
+        <label>Descripción Corta</label>
+        <input id="txtDescripcionCortaServicio" />
+    </div>
+
+    <div>
+        <label>Precio</label>
+        <input id="txtPrecioServicio" />
+    </div>
+
+    <div>
+        <label>Marcar como Principal</label>
+        <input type="checkbox" id="txtVisibleMainProducto" />
+    </div>
+
+    <div>
+        <label>Imagen</label>
+        <input id="txtImagenServicio" />
+    </div>
+
+    <button id="btnGuardarServicio">Guardar Servicio</button>
+</div>
+
+<script>
+    obtenerDatosDashboard("/TipoServicio/ObtenerTiposServiciosTodos", obtenerDatosAgregarServicioDashboardExitoso);
+</script>

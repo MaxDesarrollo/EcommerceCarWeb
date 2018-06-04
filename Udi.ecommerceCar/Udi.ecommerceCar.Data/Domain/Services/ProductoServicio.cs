@@ -1,39 +1,97 @@
-﻿using System.Collections.Generic;
-using Udi.ecommerceCar.Data.Domain.Entities;
-using Udi.ecommerceCar.Data.Infrastructure.Data.Repositories;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ProductoServicio.cs" company="MC Autoventas">
+//   © 2018 MC Autoventas
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace Udi.ecommerceCar.Data.Domain.Services
 {
+    using System.Collections.Generic;
+
+    using Udi.ecommerceCar.Data.Domain.Entities;
+    using Udi.ecommerceCar.Data.Infrastructure.Data.Repositories;
+
+    /// <summary>
+    /// The producto servicio.
+    /// </summary>
     public class ProductoServicio
     {
-        private readonly ProductoRepositorio _productoRepositorio;
+        /// <summary>
+        /// The _producto repositorio.
+        /// </summary>
+        private readonly ProductoRepositorio productoRepositorio;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ProductoServicio"/> class.
+        /// </summary>
         public ProductoServicio()
         {
-            _productoRepositorio = new ProductoRepositorio();
+            this.productoRepositorio = new ProductoRepositorio();
         }
 
+        /// <summary>
+        /// The guardar producto.
+        /// </summary>
+        /// <param name="producto">
+        /// The producto.
+        /// </param>
+        /// <returns>
+        /// The <see cref="int"/>.
+        /// </returns>
         public int GuardarProducto(ProductoDto producto)
         {
-            return _productoRepositorio.GuardarProducto(producto);
+            return this.productoRepositorio.GuardarProducto(producto);
         }
 
+        /// <summary>
+        /// The obtener producto.
+        /// </summary>
+        /// <param name="pk">
+        /// The pk.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ProductoDto"/>.
+        /// </returns>
         public ProductoDto ObtenerProducto(int pk)
         {
-            return _productoRepositorio.ObtenerProducto(pk);
+            return this.productoRepositorio.ObtenerProducto(pk);
         }
 
+        /// <summary>
+        /// The obtener productos.
+        /// </summary>
+        /// <param name="page">
+        /// The page.
+        /// </param>
+        /// <param name="size">
+        /// The size.
+        /// </param>
+        /// <returns>
+        /// The <see>
+        ///         <cref>List</cref>
+        ///     </see>
+        ///     .
+        /// </returns>
         public List<ProductoDto> ObtenerProductos(int? page, int? size)
         {
             var p = page ?? 0;
             var s = size ?? 10;
 
-            return _productoRepositorio.ObtenerProductos(p, s);
+            return this.productoRepositorio.ObtenerProductos(p, s);
         }
 
+        /// <summary>
+        /// The obtener productos todos.
+        /// </summary>
+        /// <returns>
+        /// The <see>
+        ///         <cref>List</cref>
+        ///     </see>
+        ///     .
+        /// </returns>
         public List<ProductoDto> ObtenerProductosTodos()
         {
-            return _productoRepositorio.ObtenerProductosTodos();
+            return this.productoRepositorio.ObtenerProductosTodos();
         }
     }
 }

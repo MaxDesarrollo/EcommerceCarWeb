@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="TipoProductoDto.cs" company="MC Autoventas">
+// <copyright file="TipoServicioDto.cs" company="MC Autoventas">
 //   © 2018 MC Autoventas
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
@@ -7,9 +7,9 @@
 namespace Udi.ecommerceCar.Data.Domain.Entities
 {
     /// <summary>
-    /// The tipo producto dto.
+    /// The tipo servicio dto.
     /// </summary>
-    public class TipoProductoDto
+    public class TipoServicioDto
     {
         /// <summary>
         /// Gets or sets the nombre.
@@ -17,8 +17,8 @@ namespace Udi.ecommerceCar.Data.Domain.Entities
         public string Nombre { get; set; }
 
         /// <summary>
-        /// Gets or sets the tipo producto id.
+        /// Gets or sets the tipo servicio id.
         /// </summary>
-        public int TipoProductoId { get; set; }
+        public int TipoServicioId { get; set; }
     }
 }

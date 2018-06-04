@@ -3,7 +3,6 @@
 //   © 2018 MC Autoventas
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace Udi.ecommerceCar.Controllers
 {
     using System;
@@ -43,7 +42,7 @@ namespace Udi.ecommerceCar.Controllers
 
             return this.View();
         }
-        
+
         /// <summary>
         /// The index.
         /// </summary>

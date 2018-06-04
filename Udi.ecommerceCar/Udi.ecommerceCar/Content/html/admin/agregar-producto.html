@@ -1,0 +1,53 @@
+﻿<h1>Agregar producto</h1>
+
+<div class="menu-botones">
+    <button class="link-span" data-page="productos">Volver a productos</button>
+</div>
+
+<div class="formulario">
+    <div>
+        <label>Nombre</label>
+        <input id="txtNombreProducto"/>
+    </div>
+
+    <div>
+        <label>Descripción</label>
+        <input id="txtDescripcionProducto"/>
+    </div>
+
+    <div>
+        <label>Descripción Corta</label>
+        <input id="txtDescripcionCortaProducto"/>
+    </div>
+
+    <div>
+        <label>Precio</label>
+        <input id="txtPrecioProducto"/>
+    </div>
+
+    <div>
+        <label>Cantidad</label>
+        <input id="txtCantidadProducto"/>
+    </div>
+
+    <div>
+        <label>Marcar como Principal</label>
+        <input type="checkbox" id="txtVisibleMainProducto"/>
+    </div>
+
+    <div>
+        <label>Imagen</label>
+        <input id="txtImagenProducto"/>
+    </div>
+
+    <div>
+        <label>Tipo de Producto</label>
+        <select id="sltTipoProductoProducto"></select>
+    </div>
+
+    <button id="btnGuardarProducto">Guardar Producto</button>
+</div>
+
+<script>
+    obtenerDatosDashboard("/TipoProducto/ObtenerTiposProductosTodos", obtenerDatosAgregarProductoDashboardExitoso);
+</script>

@@ -176,12 +176,16 @@
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HomeController.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="Controllers\ManageController.cs">
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\ServicioController.cs" />
+    <Compile Include="Controllers\TipoProductoController.cs" />
+    <Compile Include="Controllers\TipoServicioController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\VehiculoController.cs" />
     <Compile Include="Global.asax.cs">
@@ -212,6 +216,9 @@
     <Content Include="Content\general\product-card.css" />
     <Content Include="Content\general\service-card.css" />
     <Content Include="Content\general\vehicle-card.css" />
+    <Content Include="Content\html\admin\agregar-producto.html" />
+    <Content Include="Content\html\admin\agregar-servicio.html" />
+    <Content Include="Content\html\admin\agregar-vehiculo.html" />
     <Content Include="Content\html\admin\productos.html" />
     <Content Include="Content\html\admin\servicios.html" />
     <Content Include="Content\html\admin\vehiculos.html" />
@@ -322,6 +329,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\TipoProducto\" />
+    <Folder Include="Views\TipoServicio\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

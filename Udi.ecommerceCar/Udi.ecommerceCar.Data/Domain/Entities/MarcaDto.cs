@@ -9,21 +9,21 @@ namespace Udi.ecommerceCar.Data.Domain.Entities
     /// <summary>
     /// The marca dto.
     /// </summary>
-    internal class MarcaDto
+    public class MarcaDto
     {
         /// <summary>
-        /// Gets or sets the marca id.
+        /// Obtiene o establece the marca id.
         /// </summary>
-        private int MarcaID { get; set; }
+        public int MarcaId { get; set; }
 
         /// <summary>
         /// Gets or sets the nombre marca.
         /// </summary>
-        private string NombreMarca { get; set; }
+        public string NombreMarca { get; set; }
 
         /// <summary>
         /// Gets or sets the pais origen.
         /// </summary>
-        private string PaisOrigen { get; set; }
+        public string PaisOrigen { get; set; }
     }
 }

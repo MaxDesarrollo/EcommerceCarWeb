@@ -1,15 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.Serialization.Json;
-using System.Text;
-using System.Threading.Tasks;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ComunServicio.cs" company="MC Autoventas">
+//   © 2018 MC Autoventas
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace Udi.ecommerceCar.Data.Domain.Services
 {
+    using System;
+    using System.IO;
+    using System.Runtime.Serialization.Json;
+    using System.Text;
+
+    /// <summary>
+    /// The comun servicio.
+    /// </summary>
     public class ComunServicio
     {
+        /// <summary>
+        /// The obtener dto from string.
+        /// </summary>
+        /// <param name="item">
+        /// The item.
+        /// </param>
+        /// <typeparam name="T">
+        ///     Puede ser de cualquier clase de DTO generado en el proyecto
+        /// </typeparam>
+        /// <returns>
+        /// The <see cref="T"/>.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">
+        ///     Si no puede devolver el DTO especificado tirará un error de Nulo
+        /// </exception>
         public static T ObtenerDtoFromString<T>(string item)
         {
             try
@@ -25,7 +46,7 @@ namespace Udi.ecommerceCar.Data.Domain.Services
                     return (T)serializer.ReadObject(stream);
                 }
             }
-            catch (ArgumentNullException ex)
+            catch (ArgumentNullException)
             {
                 return (T)new object();
             }

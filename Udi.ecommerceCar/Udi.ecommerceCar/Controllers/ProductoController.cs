@@ -3,7 +3,6 @@
 //   © 2018 MC Autoventas
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace Udi.ecommerceCar.Controllers
 {
     using System;
@@ -40,34 +39,28 @@ namespace Udi.ecommerceCar.Controllers
         /// <summary>
         /// The guardar producto.
         /// </summary>
-        /// <param name="nombre">
-        /// The nombre.
-        /// </param>
-        /// <param name="descripcion">
-        /// The descripcion.
-        /// </param>
-        /// <param name="cantidad">
-        /// The cantidad.
-        /// </param>
-        /// <param name="tipoProductoId">
-        /// The tipo producto id.
+        /// <param name="productoString">
+        /// The producto String.
         /// </param>
         /// <returns>
         /// The <see cref="JsonResult"/>.
         /// </returns>
-        public JsonResult GuardarProducto(string nombre, string descripcion, int cantidad, int tipoProductoId)
+        public JsonResult GuardarProducto(string productoString)
         {
             try
             {
-                // Producto prod = ComunServicio.ObtenerDtoFromString<Producto>(producto);
+                ProductoDto productoDto = ComunServicio.ObtenerDtoFromString<ProductoDto>(productoString);
                 int id = this.productoServicio.ObtenerProductosTodos().Count;
                 ProductoDto prod = new ProductoDto()
                                        {
-                                           ProductoID = id + 1, 
-                                           Nombre = nombre, 
-                                           Descripcion = descripcion, 
-                                           Cantidad = cantidad, 
-                                           TipoProductoID = tipoProductoId
+                                           ProductoId = id + 1, 
+                                           Nombre = productoDto.Nombre, 
+                                           Descripcion = productoDto.Descripcion, 
+                                           DescripcionCorta = productoDto.DescripcionCorta, 
+                                           Precio = productoDto.Precio, 
+                                           Cantidad = productoDto.Cantidad, 
+                                           VisibleMain = productoDto.VisibleMain, 
+                                           TipoProductoId = productoDto.TipoProductoId
                                        };
                 int pk = this.productoServicio.GuardarProducto(prod);
 
@@ -78,7 +71,7 @@ namespace Udi.ecommerceCar.Controllers
                 return new JsonResult { Data = new { Success = false, Mensaje = ex.Message } };
             }
         }
-        
+
         /// <summary>
         /// The index.
         /// </summary>

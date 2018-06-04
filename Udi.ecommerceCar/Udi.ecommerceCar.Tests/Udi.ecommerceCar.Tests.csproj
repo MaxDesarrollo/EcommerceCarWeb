@@ -99,6 +99,8 @@
     <Compile Include="Controllers\HomeControllerTest.cs" />
     <Compile Include="Repositories\ProductoTest.cs" />
     <Compile Include="Repositories\ServicioTest.cs" />
+    <Compile Include="Repositories\TipoProductoTest.cs" />
+    <Compile Include="Repositories\TipoServicioTest.cs" />
     <Compile Include="Repositories\UsuarioTest.cs" />
     <Compile Include="Repositories\VehiculoTest.cs" />
     <Compile Include="Result.cs" />

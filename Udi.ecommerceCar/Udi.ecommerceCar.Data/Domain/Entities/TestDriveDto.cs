@@ -3,7 +3,6 @@
 //   © 2018 MC Autoventas
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace Udi.ecommerceCar.Data.Domain.Entities
 {
     using System;
@@ -11,36 +10,36 @@ namespace Udi.ecommerceCar.Data.Domain.Entities
     /// <summary>
     /// The test drive dto.
     /// </summary>
-    internal class TestDriveDto
+    public class TestDriveDto
     {
         /// <summary>
         /// Gets or sets the fecha programada.
         /// </summary>
-        private DateTime FechaProgramada { get; set; }
+        public DateTime FechaProgramada { get; set; }
 
         /// <summary>
         /// Gets or sets the hora final.
         /// </summary>
-        private DateTime HoraFinal { get; set; }
+        public DateTime HoraFinal { get; set; }
 
         /// <summary>
         /// Gets or sets the hora inicio.
         /// </summary>
-        private DateTime HoraInicio { get; set; }
+        public DateTime HoraInicio { get; set; }
 
         /// <summary>
         /// Gets or sets the test drive id.
         /// </summary>
-        private int TestDriveID { get; set; }
+        public int TestDriveId { get; set; }
 
         /// <summary>
         /// Gets or sets the usuario id.
         /// </summary>
-        private int UsuarioID { get; set; }
+        public int UsuarioId { get; set; }
 
         /// <summary>
         /// Gets or sets the vehiculo id.
         /// </summary>
-        private int VehiculoID { get; set; }
+        public int VehiculoId { get; set; }
     }
 }
