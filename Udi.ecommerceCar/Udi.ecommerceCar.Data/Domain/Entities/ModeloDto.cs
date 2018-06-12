@@ -12,42 +12,42 @@ namespace Udi.ecommerceCar.Data.Domain.Entities
     public class ModeloDto
     {
         /// <summary>
-        /// Gets or sets the cantidad puertas.
+        /// Obtiene o establece the cantidad puertas.
         /// </summary>
         public int CantidadPuertas { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether estado.
+        /// Obtiene o establece a value indicating whether estado.
         /// </summary>
         public bool Estado { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether habilitado test drive.
+        /// Obtiene o establece a value indicating whether habilitado test drive.
         /// </summary>
         public bool HabilitadoTestDrive { get; set; }
 
         /// <summary>
-        /// Gets or sets the marca id.
+        /// Obtiene o establece the marca id.
         /// </summary>
         public int MarcaId { get; set; }
 
         /// <summary>
-        /// Gets or sets the nombre modelo.
+        /// Obtiene o establece the nombre modelo.
         /// </summary>
         public string NombreModelo { get; set; }
 
         /// <summary>
-        /// Gets or sets the tipo caja id.
+        /// Obtiene o establece the tipo caja id.
         /// </summary>
         public int TipoCajaId { get; set; }
 
         /// <summary>
-        /// Gets or sets the tipo vehiculo id.
+        /// Obtiene o establece the tipo vehiculo id.
         /// </summary>
         public int TipoVehiculoId { get; set; }
 
         /// <summary>
-        /// Gets or sets the vehiculo id.
+        /// Obtiene o establece the vehiculo id.
         /// </summary>
         public int VehiculoId { get; set; }
     }

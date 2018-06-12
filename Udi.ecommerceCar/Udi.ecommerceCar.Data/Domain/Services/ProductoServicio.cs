@@ -95,28 +95,60 @@ namespace Udi.ecommerceCar.Data.Domain.Services
             return this.productoRepositorio.ObtenerProductosTodos();
         }
 
-
+        /// <summary>
+        /// The marcar principal producto.
+        /// </summary>
+        /// <param name="id">
+        /// The id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         public bool MarcarPrincipalProducto(int id)
         {
             return this.productoRepositorio.MarcarPrincipalProducto(id);
         }
 
+        /// <summary>
+        /// The obtener productos principales.
+        /// </summary>
+        /// <returns>
+        /// The <see>
+        ///         <cref>List</cref>
+        ///     </see>
+        ///     .
+        /// </returns>
         public List<ProductoDto> ObtenerProductosPrincipales()
         {
             return this.productoRepositorio.ObtenerProductosPrincipales();
         }
 
-        public int SolicitarPedidoProducto(int UsuarioId, List<ProductoDto> listaProductos)
+        /// <summary>
+        /// The solicitar pedido producto.
+        /// </summary>
+        /// <param name="usuarioId">
+        /// The usuario id.
+        /// </param>
+        /// <param name="listaProductos">
+        /// The lista productos.
+        /// </param>
+        /// <returns>
+        /// The <see cref="int"/>.
+        /// </returns>
+        public int SolicitarPedidoProducto(int usuarioId, List<ProductoDto> listaProductos)
         {
             VentaProductoRepositorio ventaProductoRepositorio = new VentaProductoRepositorio();
 
-            VentaProductoDto ventaProductoDto = new VentaProductoDto();
-            ventaProductoDto.UsuarioId = UsuarioId;
-            ventaProductoDto.Estado = (int)VentaEstado.Pendiente;
+            VentaProductoDto ventaProductoDto = 
+                new VentaProductoDto
+                    {
+                        UsuarioId = usuarioId,
+                        Estado = (int)VentaEstado.Pendiente
+                    };
             int idVentaProducto = ventaProductoRepositorio.GuardarVentaProducto(ventaProductoDto);
             ventaProductoDto.VentaId = idVentaProducto;
-
-            // Si es nulo, o algo asi, Chau, mensaje de error
+            
+            //// Si es nulo, o algo asi, Chau, mensaje de error
             
             DetalleVentaProductoRepositorio detalleVentaProductoRepositorio = new DetalleVentaProductoRepositorio();
             int cantidadInsertado = detalleVentaProductoRepositorio.GuardarDetalleVentaProducto(idVentaProducto, listaProductos);
@@ -128,11 +160,29 @@ namespace Udi.ecommerceCar.Data.Domain.Services
             return cantidadInsertado;
         }
 
+        /// <summary>
+        /// The modificar producto.
+        /// </summary>
+        /// <param name="productoDto">
+        /// The producto dto.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         public bool ModificarProducto(ProductoDto productoDto)
         {
             return this.productoRepositorio.ModificarProducto(productoDto);
         }
 
+        /// <summary>
+        /// The eliminar producto.
+        /// </summary>
+        /// <param name="pk">
+        /// The pk.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         public bool EliminarProducto(int pk)
         {
             return this.productoRepositorio.EliminarProducto(pk);

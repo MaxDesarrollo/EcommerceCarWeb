@@ -17,12 +17,12 @@ namespace Udi.ecommerceCar.Data.Domain.Entities
         public int MarcaId { get; set; }
 
         /// <summary>
-        /// Gets or sets the nombre marca.
+        /// Obtiene o establece the nombre marca.
         /// </summary>
         public string NombreMarca { get; set; }
 
         /// <summary>
-        /// Gets or sets the pais origen.
+        /// Obtiene o establece the pais origen.
         /// </summary>
         public string PaisOrigen { get; set; }
     }

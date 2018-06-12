@@ -154,6 +154,15 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                     .ToList();
         }
 
+        /// <summary>
+        /// The marcar principal servicio.
+        /// </summary>
+        /// <param name="id">
+        /// The id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         public bool MarcarPrincipalServicio(int id)
         {
             var servicio = this.Get(id);
@@ -170,6 +179,15 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
             return (bool)servicio.VisibleMain;
         }
 
+        /// <summary>
+        /// The obtener servicios principales.
+        /// </summary>
+        /// <returns>
+        /// The <see>
+        ///         <cref>List</cref>
+        ///     </see>
+        ///     .
+        /// </returns>
         public List<ServicioDto> ObtenerServiciosPrincipales()
         {
             return

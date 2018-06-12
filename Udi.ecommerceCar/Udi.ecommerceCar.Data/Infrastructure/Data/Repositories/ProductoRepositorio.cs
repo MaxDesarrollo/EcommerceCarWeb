@@ -90,8 +90,6 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                 return null;
             }
         }
-
-        ////////////EFRepositorio tiene su propio metodo para llamar por paginas, seria estudiarlo un poco
         
         /// <summary>
         /// The obtener productos.
@@ -193,6 +191,15 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
             return (bool)producto.VisibleMain;
         }
 
+        /// <summary>
+        /// The obtener productos principales.
+        /// </summary>
+        /// <returns>
+        /// The <see>
+        ///         <cref>List</cref>
+        ///     </see>
+        ///     .
+        /// </returns>
         public List<ProductoDto> ObtenerProductosPrincipales()
         {
             return
@@ -218,65 +225,51 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                     .ToList();
         }
 
-        //public void SolicitarPedidoProducto(int idUsuario, List<ProductoDto> listaProductos)
-        //{
-        //    // Agarrar la lista de productos
-        //    // Crear una VentaProducto
-        //    VentaProducto ventaProducto = new VentaProducto();
-        //    // Llenar los datos
-        //    ventaProducto.Monto = 0;
-        //    ventaProducto.Fecha = DateTime.Today;
-        //    ventaProducto.Hora = DateTime.Now.TimeOfDay;
-        //    ventaProducto.UsuarioID = idUsuario;
-        //    ventaProducto.Estado = 0;
-        //    // Guardar Producto
-        //    // Llamar a algo que guarde ventaProducto
-        //    // Crear un DetalleVentaProducto
-        //    // Llenar los datos
-        //    // Llamar a algo que guarde detalleVentaProducto
-        //    // Devolver un OK(?)
-        //}
+        /// <summary>
+        /// The modificar producto.
+        /// </summary>
+        /// <param name="productoDto">
+        /// The producto dto.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         public bool ModificarProducto(ProductoDto productoDto)
         {
-            try
-            {
-                Producto productoUpdate = this.Get(productoDto.ProductoId);
-                productoUpdate.Nombre = productoDto.Nombre;
-                productoUpdate.Descripcion = productoDto.Descripcion;
-                productoUpdate.DescripcionCorta = productoDto.DescripcionCorta;
-                productoUpdate.Precio = productoDto.Precio;
-                productoUpdate.Cantidad = productoDto.Cantidad;
-                productoUpdate.UrlAmigable = productoDto.UrlAmigable;
-                productoUpdate.VisibleMain = productoDto.VisibleMain;
-                productoUpdate.Puntuacion = productoDto.Puntuacion;
-                productoUpdate.ImagenID = productoDto.ImagenId;
-                productoUpdate.TipoProductoID = productoDto.TipoProductoId;
+            Producto productoUpdate = this.Get(productoDto.ProductoId);
+            productoUpdate.Nombre = productoDto.Nombre;
+            productoUpdate.Descripcion = productoDto.Descripcion;
+            productoUpdate.DescripcionCorta = productoDto.DescripcionCorta;
+            productoUpdate.Precio = productoDto.Precio;
+            productoUpdate.Cantidad = productoDto.Cantidad;
+            productoUpdate.UrlAmigable = productoDto.UrlAmigable;
+            productoUpdate.VisibleMain = productoDto.VisibleMain;
+            productoUpdate.Puntuacion = productoDto.Puntuacion;
+            productoUpdate.ImagenID = productoDto.ImagenId;
+            productoUpdate.TipoProductoID = productoDto.TipoProductoId;
 
-                Update(productoUpdate);
-                this.SaveChanges();
+            this.Update(productoUpdate);
+            this.SaveChanges();
 
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            return true;
         }
 
+        /// <summary>
+        /// The eliminar producto.
+        /// </summary>
+        /// <param name="pk">
+        /// The pk.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         public bool EliminarProducto(int pk)
         {
-            try
-            {
-                Producto producto = this.Get(pk);
-                Remove(producto);
-                this.SaveChanges();
+            Producto producto = this.Get(pk);
+            this.Remove(producto);
+            this.SaveChanges();
 
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            return true;
         }
     }
 }

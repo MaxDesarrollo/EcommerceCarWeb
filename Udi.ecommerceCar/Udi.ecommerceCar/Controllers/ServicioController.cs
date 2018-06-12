@@ -152,7 +152,15 @@ namespace Udi.ecommerceCar.Controllers
             }
         }
 
-
+        /// <summary>
+        /// The marcar principal servicio.
+        /// </summary>
+        /// <param name="id">
+        /// The id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="JsonResult"/>.
+        /// </returns>
         public JsonResult MarcarPrincipalServicio(int id)
         {
             try
@@ -165,13 +173,18 @@ namespace Udi.ecommerceCar.Controllers
 
                 return new JsonResult { Data = new { Success = true, Mensaje = mensaje } };
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return new JsonResult { Data = new { Success = false, Mensaje = "Error al querer marcar/desmarcar el servicio" } };
             }
         }
 
-
+        /// <summary>
+        /// The obtener servicios principales.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="JsonResult"/>.
+        /// </returns>
         public JsonResult ObtenerServiciosPrincipales()
         {
             try

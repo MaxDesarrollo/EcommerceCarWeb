@@ -95,7 +95,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="Controllers\HomeControllerTest.cs" />
     <Compile Include="Repositories\ProductoTest.cs" />
     <Compile Include="Repositories\ServicioTest.cs" />
@@ -104,6 +106,7 @@
     <Compile Include="Repositories\UsuarioTest.cs" />
     <Compile Include="Repositories\VehiculoTest.cs" />
     <Compile Include="Result.cs" />
+    <Compile Include="Services\ComunServicioTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config">

@@ -1,18 +1,44 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="VentaEstado.cs" company="MC Autoventas">
+//   © 2018 MC Autoventas
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace Udi.ecommerceCar.Data.Enum
 {
-    public enum VentaEstado : int
+    /// <summary>
+    /// The venta estado.
+    /// </summary>
+    public enum VentaEstado
     {
-        Pendiente = 0,
-        Pagado = 1,
-        Enviado = 2,
-        Completado = 3,
-        CanceladoPorAdministrador = 4,
+        /// <summary>
+        /// Pendiente, que todavía no realizó el depósito del pago a la empresa
+        /// </summary>
+        Pendiente = 0, 
+
+        /// <summary>
+        /// Pagado, que ya se confirmó su pago del cliente
+        /// </summary>
+        Pagado = 1, 
+
+        /// <summary>
+        /// Enviado, que al cliente se confirmó que le llegó su pedido
+        /// </summary>
+        Enviado = 2, 
+
+        /// <summary>
+        /// Completado, que ya se confirmó el flujo completo del pedido
+        /// </summary>
+        Completado = 3, 
+
+        /// <summary>
+        /// Cancelado por administrador
+        /// </summary>
+        CanceladoPorAdministrador = 4, 
+
+        /// <summary>
+        /// Cancelado por cliente
+        /// </summary>
         CanceladoPorCliente = 5
     }
 }
