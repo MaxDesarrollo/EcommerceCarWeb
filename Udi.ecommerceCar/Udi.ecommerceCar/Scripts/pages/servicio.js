@@ -34,7 +34,7 @@ function getServiceCardHtml(id, nombre, urlImagen) {
 function mostrarDatosServicios() {
     var listaServiceCardHtml = '';
     _datosServicios.forEach(function (servicio) {
-        listaServiceCardHtml += getServiceCardHtml(servicio.ServicioID, servicio.TipoServicio, servicio.TipoServicio);
+        listaServiceCardHtml += getServiceCardHtml(servicio.ServicioId, servicio.TipoServicio, servicio.TipoServicio);
     });
 
     $("#servicios .service-card-container").html(listaServiceCardHtml);
@@ -66,3 +66,4 @@ function init() {
 
 /* 4. INICIAR FUNCIONES */
 init();
+

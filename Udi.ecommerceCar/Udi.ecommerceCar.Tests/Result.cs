@@ -7,7 +7,7 @@ using System.Web.Script.Serialization;
 
 namespace Udi.ecommerceCar.Tests
 {
-    class Result
+    class Result<T>
     {
         /// <summary>
         /// Gets or sets a value indicating whether success.
@@ -18,5 +18,9 @@ namespace Udi.ecommerceCar.Tests
         /// Gets or sets the mensaje.
         /// </summary>
         public string Mensaje { get; set; }
+        
+        public T Data { get; set; }
+
+        //public List<T> ListData { get; set; } 
     }
 }

@@ -9,9 +9,13 @@
 
 namespace Udi.ecommerceCar.Tests.Repositories
 {
+    using System.Collections.Generic;
+    using System.Web.Script.Serialization;
+
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-    using Udi.ecommerceCar.Data.Domain.Services;
+    using Udi.ecommerceCar.Controllers;
+    using Udi.ecommerceCar.Data.Domain.Entities;
 
     /// <summary>
     /// The producto test.
@@ -20,11 +24,41 @@ namespace Udi.ecommerceCar.Tests.Repositories
     public class ProductoTest
     {
         /// <summary>
-        /// The producto servicio.
+        /// The producto controller.
         /// </summary>
-        private readonly ProductoServicio productoServicio = new ProductoServicio();
+        private readonly ProductoController productoController = new ProductoController();
 
-        // readonly ProductoController _productoController = new ProductoController();
+        /// <summary>
+        /// The serializer.
+        /// </summary>
+        private readonly JavaScriptSerializer serializer = new JavaScriptSerializer();
+
+        /// <summary>
+        /// The guardar producto test.
+        /// </summary>
+        [TestMethod]
+        public void AbmProductoTest()
+        {
+            string productoDtoString =
+                "{\"ProductoId\":0,\"Nombre\":\"Nombre Prueba\",\"Descripcion\":\"Descripcion Prueba\",\"DescripcionCorta\":\"Descripcion Corta Prueba\",\"Cantidad\":\"1522\",\"Precio\":\"1522\",\"VisibleMain\":false,\"TipoProductoId\":\"1\",\"Puntuacion\":null,\"UrlAmigable\":null,\"ImagenId\":null,\"TipoProducto\":null}";
+            var res = this.productoController.GuardarProducto(productoDtoString);
+            Result<int> resultadoGuardado =
+                this.serializer.Deserialize<Result<int>>(this.serializer.Serialize(res.Data));
+            
+            string productoModificadoDtoString =
+                "{\"ProductoId\":\"" + resultadoGuardado.Data + "\",\"Nombre\":\"Nombre modificado Prueba\",\"Descripcion\":\"Descripcion modificada Prueba\",\"DescripcionCorta\":\"Descripcion Corta Prueba\",\"Cantidad\":\"1522\",\"Precio\":\"1522\",\"VisibleMain\":false,\"TipoProductoId\":\"1\",\"Puntuacion\":null,\"UrlAmigable\":null,\"ImagenId\":null,\"TipoProducto\":null}";
+            res = this.productoController.ModificarProducto(productoModificadoDtoString);
+            Result<bool> resultadoModificado =
+                this.serializer.Deserialize<Result<bool>>(this.serializer.Serialize(res.Data));
+
+            res = this.productoController.EliminarProducto(resultadoGuardado.Data);
+            Result<bool> resultadoEliminado =
+                this.serializer.Deserialize<Result<bool>>(this.serializer.Serialize(res.Data));
+
+            Assert.IsNotNull(resultadoGuardado.Data);
+            Assert.IsTrue(resultadoModificado.Data);
+            Assert.IsTrue(resultadoEliminado.Data);
+        }
 
         /// <summary>
         /// The obtener producto existe test.
@@ -32,14 +66,11 @@ namespace Udi.ecommerceCar.Tests.Repositories
         [TestMethod]
         public void ObtenerProductoExisteTest()
         {
-            var producto = this.productoServicio.ObtenerProducto(2);
-            Assert.IsNotNull(producto);
+            var producto = this.productoController.ObtenerProducto(2);
+            Result<ProductoDto> resultado = this.serializer.Deserialize<Result<ProductoDto>>(this.serializer.Serialize(producto.Data));
 
-            // var producto = _productoController.ObtenerProducto(2);
-            // JavaScriptSerializer serializer = new JavaScriptSerializer();
-            // Result resultado = serializer.Deserialize<Result>(serializer.Serialize(producto.Data));
-
-            // Assert.AreEqual(true, resultado.Success);
+            Assert.AreEqual(true, resultado.Success);
+            Assert.AreEqual("Dunlop SP Sport Maxx", resultado.Data.Nombre);
         }
 
         /// <summary>
@@ -48,14 +79,11 @@ namespace Udi.ecommerceCar.Tests.Repositories
         [TestMethod]
         public void ObtenerProductoNoExisteTest()
         {
-            var producto = this.productoServicio.ObtenerProducto(10);
-            Assert.IsNull(producto);
+            var producto = this.productoController.ObtenerProducto(100);
+            Result<ProductoDto> resultado = this.serializer.Deserialize<Result<ProductoDto>>(this.serializer.Serialize(producto.Data));
 
-            // var producto = _productoController.ObtenerProducto(-1);
-            // JavaScriptSerializer serializer = new JavaScriptSerializer();
-            // Result resultado = serializer.Deserialize<Result>(serializer.Serialize(producto.Data));
-
-            // Assert.AreEqual(false, resultado.Success);
+            Assert.AreEqual(false, resultado.Success);
+            Assert.IsNull(resultado.Data);
         }
 
         /// <summary>
@@ -64,14 +92,11 @@ namespace Udi.ecommerceCar.Tests.Repositories
         [TestMethod]
         public void ObtenerProductosExisteTest()
         {
-            var productos = this.productoServicio.ObtenerProductos(0, 10);
-            Assert.IsNotNull(productos);
+            var productos = this.productoController.ObtenerProductos(0, 10);
+            Result<List<ProductoDto>> resultado = this.serializer.Deserialize<Result<List<ProductoDto>>>(this.serializer.Serialize(productos.Data));
 
-            // var productos = _productoController.ObtenerProductos(0, 10);
-            // JavaScriptSerializer serializer = new JavaScriptSerializer();
-            // Result resultado = serializer.Deserialize<Result>(serializer.Serialize(productos.Data));
-
-            // Assert.AreEqual(true, resultado.Success);
+            Assert.AreEqual(true, resultado.Success);
+            Assert.IsNotNull(resultado.Data);
         }
 
         /// <summary>
@@ -80,14 +105,11 @@ namespace Udi.ecommerceCar.Tests.Repositories
         [TestMethod]
         public void ObtenerProductosSinParametrosExisteTest()
         {
-            var productos = this.productoServicio.ObtenerProductos(null, null);
-            Assert.IsNotNull(productos);
+            var productos = this.productoController.ObtenerProductos(null, null);
+            Result<List<ProductoDto>> resultado = this.serializer.Deserialize<Result<List<ProductoDto>>>(this.serializer.Serialize(productos.Data));
 
-            // var productos = _productoController.ObtenerProductos(0, 10);
-            // JavaScriptSerializer serializer = new JavaScriptSerializer();
-            // Result resultado = serializer.Deserialize<Result>(serializer.Serialize(productos.Data));
-
-            // Assert.AreEqual(true, resultado.Success);
+            Assert.AreEqual(true, resultado.Success);
+            Assert.IsNotNull(resultado.Data);
         }
 
         /// <summary>
@@ -96,14 +118,11 @@ namespace Udi.ecommerceCar.Tests.Repositories
         [TestMethod]
         public void ObtenerProductosTodosExisteTest()
         {
-            var preoductos = this.productoServicio.ObtenerProductosTodos();
-            Assert.IsNotNull(preoductos);
+            var productos = this.productoController.ObtenerProductosTodos();
+            Result<List<ProductoDto>> resultado = this.serializer.Deserialize<Result<List<ProductoDto>>>(this.serializer.Serialize(productos.Data));
 
-            // var productos = _productoController.ObtenerProductosTodos();
-            // JavaScriptSerializer serializer = new JavaScriptSerializer();
-            // Result resultado = serializer.Deserialize<Result>(serializer.Serialize(productos.Data));
-
-            // Assert.AreEqual(true, resultado.Success);
+            Assert.AreEqual(true, resultado.Success);
+            Assert.IsNotNull(resultado.Data);
         }
     }
 }

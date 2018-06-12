@@ -9,6 +9,7 @@ namespace Udi.ecommerceCar.Data.Domain.Services
     using System.Collections.Generic;
 
     using Udi.ecommerceCar.Data.Domain.Entities;
+    using Udi.ecommerceCar.Data.Enum;
     using Udi.ecommerceCar.Data.Infrastructure.Data.Repositories;
 
     /// <summary>
@@ -92,6 +93,49 @@ namespace Udi.ecommerceCar.Data.Domain.Services
         public List<ProductoDto> ObtenerProductosTodos()
         {
             return this.productoRepositorio.ObtenerProductosTodos();
+        }
+
+
+        public bool MarcarPrincipalProducto(int id)
+        {
+            return this.productoRepositorio.MarcarPrincipalProducto(id);
+        }
+
+        public List<ProductoDto> ObtenerProductosPrincipales()
+        {
+            return this.productoRepositorio.ObtenerProductosPrincipales();
+        }
+
+        public int SolicitarPedidoProducto(int UsuarioId, List<ProductoDto> listaProductos)
+        {
+            VentaProductoRepositorio ventaProductoRepositorio = new VentaProductoRepositorio();
+
+            VentaProductoDto ventaProductoDto = new VentaProductoDto();
+            ventaProductoDto.UsuarioId = UsuarioId;
+            ventaProductoDto.Estado = (int)VentaEstado.Pendiente;
+            int idVentaProducto = ventaProductoRepositorio.GuardarVentaProducto(ventaProductoDto);
+            ventaProductoDto.VentaId = idVentaProducto;
+
+            // Si es nulo, o algo asi, Chau, mensaje de error
+            
+            DetalleVentaProductoRepositorio detalleVentaProductoRepositorio = new DetalleVentaProductoRepositorio();
+            int cantidadInsertado = detalleVentaProductoRepositorio.GuardarDetalleVentaProducto(idVentaProducto, listaProductos);
+
+            decimal montoVentaProducto = detalleVentaProductoRepositorio.GetMontoVentaProducto(ventaProductoDto);
+            ventaProductoDto.Monto = montoVentaProducto;
+            ventaProductoRepositorio.CambiarMontoVentaProducto(ventaProductoDto);
+            
+            return cantidadInsertado;
+        }
+
+        public bool ModificarProducto(ProductoDto productoDto)
+        {
+            return this.productoRepositorio.ModificarProducto(productoDto);
+        }
+
+        public bool EliminarProducto(int pk)
+        {
+            return this.productoRepositorio.EliminarProducto(pk);
         }
     }
 }

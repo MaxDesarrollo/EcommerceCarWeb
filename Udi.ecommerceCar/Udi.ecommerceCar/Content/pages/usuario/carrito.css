@@ -139,6 +139,7 @@
     
     background-color: var(--green-button);
     color: #ffffff;
+    border: none;
 
     text-decoration: none;
 }
@@ -146,4 +147,5 @@
 #btnSolicitarPedido:active,
 #btnSolicitarPedido:visited {
     text-decoration: underline;
+    cursor: pointer;
 }

@@ -65,7 +65,7 @@ function mostrarDatosProductos() {
     var listaProductCardHtml = '';
     _datosProductos.forEach(function (producto) {
         var precio = producto.Precio ? producto.Precio : "Sin precio";
-        listaProductCardHtml += getProductCardHtml(producto.ProductoID, producto.Nombre, producto.Descripcion, producto.Nombre, producto.TipoProducto, precio);
+        listaProductCardHtml += getProductCardHtml(producto.ProductoId, producto.Nombre, producto.Descripcion, producto.Nombre, producto.TipoProducto, precio);
     });
 
     $("#productos .product-card-container").html(listaProductCardHtml);
@@ -97,3 +97,4 @@ function init() {
 
 /* 4. INICIAR FUNCIONES */
 init();
+

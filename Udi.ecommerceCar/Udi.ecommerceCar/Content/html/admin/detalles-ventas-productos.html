@@ -1,0 +1,46 @@
+﻿<h1>Detalles de la Venta</h1>
+
+<div class="menu-botones">
+    <button class="link-span" data-page="pedidos">Volver a pedidos</button>
+</div>
+
+<div class="tabla-datos" id="tablaDatos">
+    <div class="cabecera">
+        <div class="cabecera-celda celda-1">ID</div>
+        <div class="cabecera-celda celda-3">Producto</div>
+        <div class="cabecera-celda celda-2">Cantidad</div>
+        <div class="cabecera-celda celda-2">Precio</div>
+        <div class="cabecera-celda celda-2"></div>
+    </div>
+
+    <div class="tabla-datos-container" id="tablaDatosContainer"></div>
+</div>
+
+<div class="dashboard-price">
+    <div>
+        <span><b>Subtotal:</b> Bs. </span>
+        <div class="dashboard-price-subtotal" id="dashboardPriceSubtotal">0.00</div>
+    </div>
+    
+    <div>
+        <span><b>Envío:</b> Bs.</span>
+        <div class="dashboard-price-envio" id="dashboardPriceEnvio">0.00</div>
+    </div>
+
+    <div>
+        <span><b>Total:</b> Bs. </span>
+        <div class="dashboard-price-total" id="dashboardPriceTotal">0.00</div>
+    </div>
+</div>
+
+<script>
+    var datos = {
+        VentaProductoId: document.getElementById("txtParametros").value
+    };
+
+    obtenerDatosDashboard(
+        "/DetalleVentaProducto/ObtenerDetallesVentasProductosTodos",
+        obtenerDatosDetallesVentasProductosDashboardExitoso,
+        datos);
+
+</script>

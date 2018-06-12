@@ -151,5 +151,39 @@ namespace Udi.ecommerceCar.Controllers
                 return new JsonResult { Data = new { Success = false, Mensaje = ex.Message } };
             }
         }
+
+
+        public JsonResult MarcarPrincipalServicio(int id)
+        {
+            try
+            {
+                var data = this.servicioServicio.MarcarPrincipalServicio(id);
+
+                string mensaje = data
+                                     ? "Servicio marcado como principal correctamente"
+                                     : "Servicio desmarcado como principal correctamente";
+
+                return new JsonResult { Data = new { Success = true, Mensaje = mensaje } };
+            }
+            catch (Exception ex)
+            {
+                return new JsonResult { Data = new { Success = false, Mensaje = "Error al querer marcar/desmarcar el servicio" } };
+            }
+        }
+
+
+        public JsonResult ObtenerServiciosPrincipales()
+        {
+            try
+            {
+                var data = this.servicioServicio.ObtenerServiciosPrincipales();
+
+                return new JsonResult { Data = new { Success = true, Data = data } };
+            }
+            catch (Exception ex)
+            {
+                return new JsonResult { Data = new { Success = false, Mensaje = ex.Message } };
+            }
+        }
     }
 }

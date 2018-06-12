@@ -35,10 +35,10 @@ function addToCart(categoria, id, nombre, cantidad, precio, tipo) {
                 break;
             }
 
-            if (prods[i].id === id) {
-                var cant = parseInt(prods[i].cantidad) + parseInt(cantidad);
+            if (prods[i].ProductoId === id) {
+                var cant = parseInt(prods[i].Cantidad) + parseInt(cantidad);
                 cant *= 1;
-                prods[i].cantidad = cant;
+                prods[i].Cantidad = cant;
 
                 repeated = true;
                 message = " cambiado en el carrito!";
@@ -48,11 +48,11 @@ function addToCart(categoria, id, nombre, cantidad, precio, tipo) {
         // Si no lo encuentra en el carrito lo aumenta
         if (!repeated) {
             newProducto = {
-                id: id,
-                nombre: nombre,
-                cantidad: cantidad,
-                precio: precio,
-                tipo: tipo
+                ProductoId: id,
+                Nombre: nombre,
+                Cantidad: cantidad,
+                Precio: precio,
+                TipoProducto: tipo
             }
             prods.push(newProducto);
 
@@ -72,11 +72,11 @@ function addToCart(categoria, id, nombre, cantidad, precio, tipo) {
             productos: []
         };
         newProducto = {
-            id: id,
-            nombre: nombre,
-            cantidad: cantidad,
-            precio: precio,
-            tipo: tipo
+            ProductoId: id,
+            Nombre: nombre,
+            Cantidad: cantidad,
+            Precio: precio,
+            TipoProducto: tipo
         }
 
         carrito.productos.push(newProducto);
@@ -101,12 +101,12 @@ function deleteItemFromCartInfo(event) {
 
     var repeated = false;
     for (var i = 0; i < prods.length; i++) {
-        console.log(id, prods[i]);
+        //console.log(id, prods[i]);
         if (repeated) {
             break;
         }
 
-        if (prods[i].id == id) {
+        if (prods[i].ProductoId == id) {
             prods.splice(i, 1);
 
             repeated = true;
@@ -140,13 +140,13 @@ function activateDeleteItemFromCartInfo() {
 
 function createCartInfoListItem(item) {
     var cartInfoListItem = `
-                <div class ="cart-info-list-item" data-cart-list-item-id="${item.id}">
+                <div class ="cart-info-list-item" data-cart-list-item-id="${item.ProductoId}">
                     <div class="cart-info-list-item-image">
-                        <img src="/Images/${item.tipo}/${item.nombre}.jpg" />
+                        <img src="/Images/${item.TipoProducto}/${item.Nombre}.jpg" />
                     </div>
-                    <span class ="cart-info-list-item-nombre">${item.nombre}</span>
-                    <span>${item.cantidad}</span>
-                    <span>Bs.${(item.precio * item.cantidad).toFixed(2)}</span>
+                    <span class ="cart-info-list-item-nombre">${item.Nombre}</span>
+                    <span>${item.Cantidad}</span>
+                    <span>Bs.${(item.Precio * item.Cantidad).toFixed(2)}</span>
                     <span class ="cart-info-list-item-delete">
                         <svg viewPort="0 0 12 12" version="1.1" width="13" height="13"
                              xmlns="http://www.w3.org/2000/svg">
@@ -168,7 +168,7 @@ function createCartInfoListItem(item) {
 function refreshValuesCartInfo() {
     cartInfoSubtotal.innerText = subtotal.toFixed(2);
 
-    console.log("Por ahora el envio es cero siempre, no hay forma de escoger el metodo de envio");
+    //console.log("Por ahora el envio es cero siempre, no hay forma de escoger el metodo de envio");
     cartInfoEnvio.innerText = (0).toFixed(2);
 
     var total = subtotal + 0;
@@ -189,7 +189,7 @@ function createCartInfoList() {
         var productos = carrito.productos;
         for (var i = 0; i < productos.length; i++) {
             cartInfoListItems += createCartInfoListItem(productos[i]);
-            subtotal += sumSubtotal(productos[i].precio, productos[i].cantidad);
+            subtotal += sumSubtotal(productos[i].Precio, productos[i].Cantidad);
         }
     } else {
         cartInfoListItems = "TODAVIA NO TIENE PRODUCTOS EN EL CARRITO";
@@ -219,7 +219,7 @@ if (btnAddToCartProducto) {
         // Hacer llamada a la BD para que de alla devuelva el objeto, verificando asi su existencia y que devuelva los datos correctos.
         obtenerDetalleProducto(id, function (resultado) {
             if (resultado.Success) {
-                addToCart("producto", resultado.Data.ProductoID, resultado.Data.Nombre, cantidad, resultado.Data.Precio, resultado.Data.TipoProducto);
+                addToCart("producto", resultado.Data.ProductoId, resultado.Data.Nombre, cantidad, resultado.Data.Precio, resultado.Data.TipoProducto);
             }
         });
 

@@ -75,7 +75,7 @@
     <div class="cart-total-price">
         <div>
             <span><b>Subtotal:</b> Bs. </span>
-            <div class="cart-subtotal" id="cartSubtotal">500.00</div>
+            <div class="cart-subtotal" id="cartSubtotal">0.00</div>
         </div>
         <div>
             <span><b>Envío:</b> Bs.</span>
@@ -83,11 +83,17 @@
         </div>
         <div>
             <span><b>Total:</b> Bs. </span>
-            <div class="cart-total" id="cartTotal">500.00</div>
+            <div class="cart-total" id="cartTotal">0.00</div>
         </div>
 
         <div>
-            <a href="" id="btnSolicitarPedido">Solicitar pedido</a>
+            <a onclick="return;" id="btnSolicitarPedido">Solicitar pedido</a>
         </div>
+
+        @*<form action="/Producto/SolicitarPedidoProducto" method="POST">
+            <input type="text" id="txtIdUsuarioCarrito"/>
+            <input type="text" id="txtListaProductosCarrito" />
+            <button type="submit" id="btnSolicitarPedido">Solicitar Pedido</button>
+        </form>*@
     </div>
 </div>

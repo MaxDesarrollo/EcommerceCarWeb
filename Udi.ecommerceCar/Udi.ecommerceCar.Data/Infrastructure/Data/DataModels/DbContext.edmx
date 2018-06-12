@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="EcommercedbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="EcommercedbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="DetalleVentaProducto">
           <Key>
             <PropertyRef Name="DetalleVentaProductoID" />
@@ -195,6 +195,7 @@
           <Property Name="Fecha" Type="date" />
           <Property Name="Hora" Type="time" Precision="7" />
           <Property Name="UsuarioID" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="int" />
         </EntityType>
         <EntityType Name="VentaServicio">
           <Key>
@@ -205,6 +206,7 @@
           <Property Name="Fecha" Type="date" />
           <Property Name="Hora" Type="time" Precision="7" />
           <Property Name="UsuarioID" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="int" />
         </EntityType>
         <EntityType Name="VentaVehiculo">
           <Key>
@@ -215,6 +217,7 @@
           <Property Name="Fecha" Type="date" />
           <Property Name="Hora" Type="time" Precision="7" />
           <Property Name="UsuarioID" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="int" />
         </EntityType>
         <Association Name="FK_DetalleVentaProducto_Producto">
           <End Role="Producto" Type="Self.Producto" Multiplicity="0..1" />
@@ -574,8 +577,7 @@
             <End Role="VentaVehiculo" EntitySet="VentaVehiculo" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="EcommercedbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -807,6 +809,7 @@
           <Property Name="UsuarioID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="DetalleVentaProducto" Relationship="Self.FK_DetalleVentaProducto_VentaProducto" FromRole="VentaProducto" ToRole="DetalleVentaProducto" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK_VentaProducto_Usuario" FromRole="VentaProducto" ToRole="Usuario" />
+          <Property Name="Estado" Type="Int32" />
         </EntityType>
         <EntityType Name="VentaServicio">
           <Key>
@@ -819,6 +822,7 @@
           <Property Name="UsuarioID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="DetalleVentaServicio" Relationship="Self.FK_DetalleVentaServicio_VentaServicio" FromRole="VentaServicio" ToRole="DetalleVentaServicio" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK_VentaServicio_Usuario" FromRole="VentaServicio" ToRole="Usuario" />
+          <Property Name="Estado" Type="Int32" />
         </EntityType>
         <EntityType Name="VentaVehiculo">
           <Key>
@@ -831,6 +835,7 @@
           <Property Name="UsuarioID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="DetalleVentaVehiculo" Relationship="Self.FK_DetalleVentaVehiculo_VentaVehiculo" FromRole="VentaVehiculo" ToRole="DetalleVentaVehiculo" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK_VentaVehiculo_Usuario" FromRole="VentaVehiculo" ToRole="Usuario" />
+          <Property Name="Estado" Type="Int32" />
         </EntityType>
         <Association Name="FK_DetalleVentaProducto_Producto">
           <End Role="Producto" Type="Self.Producto" Multiplicity="0..1" />
@@ -1397,6 +1402,7 @@
           <EntitySetMapping Name="VentaProducto">
             <EntityTypeMapping TypeName="EcommercedbModel.VentaProducto">
               <MappingFragment StoreEntitySet="VentaProducto">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="VentaID" ColumnName="VentaID" />
                 <ScalarProperty Name="Monto" ColumnName="Monto" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
@@ -1408,6 +1414,7 @@
           <EntitySetMapping Name="VentaServicio">
             <EntityTypeMapping TypeName="EcommercedbModel.VentaServicio">
               <MappingFragment StoreEntitySet="VentaServicio">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="VentaServicioID" ColumnName="VentaServicioID" />
                 <ScalarProperty Name="Monto" ColumnName="Monto" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
@@ -1419,6 +1426,7 @@
           <EntitySetMapping Name="VentaVehiculo">
             <EntityTypeMapping TypeName="EcommercedbModel.VentaVehiculo">
               <MappingFragment StoreEntitySet="VentaVehiculo">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="VentaVehiculo1" ColumnName="VentaVehiculo" />
                 <ScalarProperty Name="Monto" ColumnName="Monto" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />

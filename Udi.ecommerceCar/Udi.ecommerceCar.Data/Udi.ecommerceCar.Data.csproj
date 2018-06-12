@@ -55,6 +55,7 @@
     <Compile Include="Class1.cs">
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
+    <Compile Include="Domain\Entities\DetalleVentaProductoDto.cs" />
     <Compile Include="Domain\Entities\MarcaDto.cs" />
     <Compile Include="Domain\Entities\ModeloDto.cs" />
     <Compile Include="Domain\Entities\ProductoDto.cs" />
@@ -66,13 +67,18 @@
     <Compile Include="Domain\Entities\TipoVehiculo.cs" />
     <Compile Include="Domain\Entities\UsuarioDto.cs" />
     <Compile Include="Domain\Entities\VehiculoDto.cs" />
+    <Compile Include="Domain\Entities\VentaProductoDto.cs" />
     <Compile Include="Domain\Services\ComunServicio.cs" />
+    <Compile Include="Domain\Services\DetalleVentaProductoServicio.cs" />
     <Compile Include="Domain\Services\ProductoServicio.cs" />
     <Compile Include="Domain\Services\ServicioServicio.cs" />
     <Compile Include="Domain\Services\TipoProductoServicio.cs" />
     <Compile Include="Domain\Services\TipoServicioServicio.cs" />
     <Compile Include="Domain\Services\UsuarioServicio.cs" />
     <Compile Include="Domain\Services\VehiculoServicio.cs" />
+    <Compile Include="Domain\Services\VentaProductoServicio.cs" />
+    <Compile Include="Domain\Utilidades.cs" />
+    <Compile Include="Enum\VentaEstado.cs" />
     <Compile Include="Infrastructure\Data\DataModels\DbContext.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -149,6 +155,7 @@
     <Compile Include="Infrastructure\Data\DataModels\VentaVehiculo.cs">
       <DependentUpon>DbContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\Data\Repositories\DetalleVentaProductoRepositorio.cs" />
     <Compile Include="Infrastructure\Data\Repositories\EFRepositorio.cs">
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
@@ -158,6 +165,7 @@
     <Compile Include="Infrastructure\Data\Repositories\TipoServicioRepositorio.cs" />
     <Compile Include="Infrastructure\Data\Repositories\UsuarioRepositorio.cs" />
     <Compile Include="Infrastructure\Data\Repositories\VehiculoRepositorio.cs" />
+    <Compile Include="Infrastructure\Data\Repositories\VentaProductoRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>

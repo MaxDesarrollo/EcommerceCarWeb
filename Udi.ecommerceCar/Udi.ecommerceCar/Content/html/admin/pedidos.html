@@ -1,0 +1,24 @@
+﻿<h1>Pedidos</h1>
+
+<div class="menu-botones">
+    <!--<button class="link-span" data-page="agregar-producto">Agregar producto</button>-->
+</div>
+
+<div class="tabla-datos" id="tablaDatos">
+    <div class="cabecera">
+        <div class="cabecera-celda celda-1">ID</div>
+        <div class="cabecera-celda celda-2">Usuario</div>
+        <div class="cabecera-celda celda-2">Fecha</div>
+        <div class="cabecera-celda celda-2">Monto</div>
+        <div class="cabecera-celda celda-1">Estado</div>
+        <div class="cabecera-celda celda-2">Opciones</div>
+    </div>
+
+    <div class="tabla-datos-container" id="tablaDatosContainer">
+
+    </div>
+</div>
+
+<script>
+    obtenerDatosDashboard("/VentaProducto/ObtenerVentasProductosTodos", obtenerDatosVentasProductosDashboardExitoso);
+</script>

@@ -15,6 +15,8 @@ var cartSubtotal = document.getElementById("cartSubtotal"),
     cartEnvio = document.getElementById("cartEnvio"),
     cartTotal = document.getElementById("cartTotal");
 
+var btnSolicitarPedido = document.getElementById("btnSolicitarPedido");
+
 //var subtotal = 0;
 
 /*#region 2. FUNCIONES */
@@ -37,27 +39,27 @@ function createSelectWidthQuantitySelected(quantity, selectedQuantity, dataId) {
 }
 
 function getCartItemHtml(item) {
-    var cantidad = item.cantidad;
-    var precio = item.precio ? (item.precio * cantidad).toFixed(2) : "0.00";
+    var cantidad = item.Cantidad;
+    var precio = item.Precio ? (item.Precio * cantidad).toFixed(2) : "0.00";
     
     //Creo un string selected con la opcion seleccionada en la cantidad correcta
-    var slt = createSelectWidthQuantitySelected(10, cantidad, item.id);
+    var slt = createSelectWidthQuantitySelected(10, cantidad, item.ProductoId);
     console.log(item);
 
     var cartItemHtml = `
         <div class="cart-item">
             <div class="cart-item-information">
                 <div class="cart-item-information-image">
-                    <img src="../../Images/${item.tipo}/${item.nombre}.jpg" alt="${item.nombre}"/>
+                    <img src="../../Images/${item.TipoProducto}/${item.Nombre}.jpg" alt="${item.Nombre}"/>
                 </div>
 
                 <div class="cart-item-information-description">
                     <div class="cart-item-information-name">
-                        <a href="/Producto/Detalle/${item.id}">${item.nombre}</a>
+                        <a href="/Producto/Detalle/${item.ProductoId}">${item.Nombre}</a>
                     </div>
 
                     <div class="cart-item-information-tipo">
-                        ${item.tipo}
+                        ${item.TipoProducto}
                     </div>
 
                     <span class="cart-item-information-stock">
@@ -106,7 +108,7 @@ function selectOnChangeQuantity(ev) {
     // Hacer llamada a la BD para que de alla devuelva el objeto, verificando asi su existencia y que devuelva los datos correctos.
     obtenerDetalleProducto(id, function (resultado) {
         if (resultado.Success) {
-            addToCart("producto", resultado.Data.ProductoID, resultado.Data.Nombre, quantity, resultado.Data.Precio, resultado.Data.TipoProducto);
+            addToCart("producto", resultado.Data.ProductoId, resultado.Data.Nombre, quantity, resultado.Data.Precio, resultado.Data.TipoProducto);
 
             ev.target.setAttribute("data-current-quantity", newQuantity);
             refreshValuesCart();
@@ -132,6 +134,27 @@ function refreshValuesCart() {
     cartTotal.innerText = total.toFixed(2);
 }
 
+
+function metodoSolicitarPedidoProductoExitoso() {
+    toastr.success("Se ha realizado tu pedido");
+    // Borrar carrito
+    localStorage.removeItem("carrito");
+    refreshValuesCart();
+    // Capaz redireccionarlo a otro lugar
+}
+
+function solicitarPedidoProducto(idUsuario, listaProductos) {
+    var url = "/Producto/SolicitarPedidoProducto";
+    var tipo = "POST";
+    var datos = {
+        idUsuario: idUsuario,
+        listaProductosString: listaProductos
+    };
+
+    var tipoDatos = "JSON";
+    solicitudAjax(url, metodoSolicitarPedidoProductoExitoso, datos, tipoDatos, tipo);
+}
+
 function init() {
 
     if (localStorage.getItem("carrito")) {
@@ -143,6 +166,24 @@ function init() {
         activateSelectOnChangeQuantity();
 
         refreshValuesCart();
+
+        if (btnSolicitarPedido) {
+            btnSolicitarPedido.addEventListener("click", function() {
+                console.log("Holaaaaa");
+
+                // Conseguir el ID del usuario
+                var idUsuario = localStorage.getItem("usuarioId");
+
+                // Conseguir la lista de productos, sacarles los corchetes o lo que sea que sean innecesarias
+                var productos = JSON.parse(localStorage.getItem("carrito"));
+
+                productos = JSON.stringify(productos.productos);
+                console.log(productos);
+
+                // Llamar una solicitud Ajax para guardar todo eso
+                solicitarPedidoProducto(idUsuario, productos);
+            });
+        }
     }
     
 }

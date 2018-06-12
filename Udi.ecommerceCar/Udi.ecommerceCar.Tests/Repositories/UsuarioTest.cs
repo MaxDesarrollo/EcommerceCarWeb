@@ -7,6 +7,8 @@ using Udi.ecommerceCar.Controllers;
 
 namespace Udi.ecommerceCar.Tests.Repositories
 {
+    using Udi.ecommerceCar.Data.Domain.Entities;
+
     /// <summary>
     /// Descripción resumida de UsuarioTest
     /// </summary>
@@ -20,7 +22,7 @@ namespace Udi.ecommerceCar.Tests.Repositories
         {
             var usuario = _usuarioController.ObtenerUsuario(1);
             JavaScriptSerializer serializer = new JavaScriptSerializer();
-            Result resultado = serializer.Deserialize<Result>(serializer.Serialize(usuario.Data));
+            Result<UsuarioDto> resultado = serializer.Deserialize<Result<UsuarioDto>>(serializer.Serialize(usuario.Data));
 
             Assert.AreEqual(true, resultado.Success);
         }
@@ -30,7 +32,7 @@ namespace Udi.ecommerceCar.Tests.Repositories
         {
             var usuario = _usuarioController.IniciarSesion("Raiden", "raiden");
             JavaScriptSerializer serializer = new JavaScriptSerializer();
-            Result resultado = serializer.Deserialize<Result>(serializer.Serialize(usuario.Data));
+            Result<UsuarioDto> resultado = serializer.Deserialize<Result<UsuarioDto>>(serializer.Serialize(usuario.Data));
 
             Assert.AreEqual(true, resultado.Success);
         }
@@ -40,7 +42,7 @@ namespace Udi.ecommerceCar.Tests.Repositories
         {
             var usuario = _usuarioController.IniciarSesion("asldk", "asdf");
             JavaScriptSerializer serializer = new JavaScriptSerializer();
-            Result resultado = serializer.Deserialize<Result>(serializer.Serialize(usuario.Data));
+            Result<UsuarioDto> resultado = serializer.Deserialize<Result<UsuarioDto>>(serializer.Serialize(usuario.Data));
 
             Assert.AreEqual(false, resultado.Success);
         }

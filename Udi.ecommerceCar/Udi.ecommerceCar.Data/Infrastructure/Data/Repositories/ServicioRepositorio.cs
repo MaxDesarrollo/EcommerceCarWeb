@@ -73,7 +73,8 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                                     DescripcionCorta = servicio.DescripcionCorta, 
                                     ImagenId = servicio.ImagenID, 
                                     TipoServicioId = servicio.TipoServicioID, 
-                                    TipoServicio = servicio.TipoServicio.Nombre
+                                    TipoServicio = servicio.TipoServicio.Nombre,
+                                    VisibleMain = servicio.VisibleMain
                                 })
                         .First(x => x.ServicioId == pk);
             }
@@ -115,7 +116,8 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                                 DescripcionCorta = servicio.DescripcionCorta, 
                                 ImagenId = servicio.ImagenID, 
                                 TipoServicioId = servicio.TipoServicioID, 
-                                TipoServicio = servicio.TipoServicio.Nombre
+                                TipoServicio = servicio.TipoServicio.Nombre,
+                                VisibleMain = servicio.VisibleMain
                             })
                     .OrderBy(x => x.ServicioId)
                     .Skip(page * size)
@@ -149,6 +151,43 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                                 TipoServicioId = servicio.TipoServicioID, 
                                 TipoServicio = servicio.TipoServicio.Nombre
                             })
+                    .ToList();
+        }
+
+        public bool MarcarPrincipalServicio(int id)
+        {
+            var servicio = this.Get(id);
+
+            if (servicio.VisibleMain == null)
+            {
+                servicio.VisibleMain = false;
+            }
+
+            servicio.VisibleMain = !servicio.VisibleMain;
+
+            this.SaveChanges();
+
+            return (bool)servicio.VisibleMain;
+        }
+
+        public List<ServicioDto> ObtenerServiciosPrincipales()
+        {
+            return
+                this.BuildQuery()
+                    .Where(x => x.VisibleMain == true)
+                    .Select(
+                        servicio =>
+                        new ServicioDto()
+                        {
+                            ServicioId = servicio.ServicioID,
+                            Precio = (decimal)servicio.Precio,
+                            Estado = (bool)servicio.Estado,
+                            Descripcion = servicio.Descripcion,
+                            DescripcionCorta = servicio.DescripcionCorta,
+                            ImagenId = servicio.ImagenID,
+                            TipoServicioId = servicio.TipoServicioID,
+                            TipoServicio = servicio.TipoServicio.Nombre
+                        })
                     .ToList();
         }
     }

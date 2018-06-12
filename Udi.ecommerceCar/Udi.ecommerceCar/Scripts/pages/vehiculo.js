@@ -120,7 +120,7 @@ function mostrarDatosVehiculos() {
 
     var listaVehicleCardHtml = '';
     _datosVehiculos.forEach(function (vehiculo) {
-        listaVehicleCardHtml += getVehiclePresentationHtml(vehiculo.VehiculoID, vehiculo.NombreModelo, vehiculo.NombreModelo);
+        listaVehicleCardHtml += getVehiclePresentationHtml(vehiculo.VehiculoId, vehiculo.NombreModelo, vehiculo.NombreModelo);
     });
 
     $("#vehiculos .vehicle-card-container").html(listaVehicleCardHtml);

@@ -6,6 +6,7 @@
 namespace Udi.ecommerceCar.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.Web.Mvc;
 
     using Udi.ecommerceCar.Data.Domain.Entities;
@@ -51,18 +52,19 @@ namespace Udi.ecommerceCar.Controllers
             {
                 ProductoDto productoDto = ComunServicio.ObtenerDtoFromString<ProductoDto>(productoString);
                 int id = this.productoServicio.ObtenerProductosTodos().Count;
-                ProductoDto prod = new ProductoDto()
-                                       {
-                                           ProductoId = id + 1, 
-                                           Nombre = productoDto.Nombre, 
-                                           Descripcion = productoDto.Descripcion, 
-                                           DescripcionCorta = productoDto.DescripcionCorta, 
-                                           Precio = productoDto.Precio, 
-                                           Cantidad = productoDto.Cantidad, 
-                                           VisibleMain = productoDto.VisibleMain, 
-                                           TipoProductoId = productoDto.TipoProductoId
-                                       };
-                int pk = this.productoServicio.GuardarProducto(prod);
+                productoDto.ProductoId = id;
+                //ProductoDto prod = new ProductoDto()
+                //                       {
+                //                           ProductoId = id + 1, 
+                //                           Nombre = productoDto.Nombre, 
+                //                           Descripcion = productoDto.Descripcion, 
+                //                           DescripcionCorta = productoDto.DescripcionCorta, 
+                //                           Precio = productoDto.Precio, 
+                //                           Cantidad = productoDto.Cantidad, 
+                //                           VisibleMain = productoDto.VisibleMain, 
+                //                           TipoProductoId = productoDto.TipoProductoId
+                //                       };
+                int pk = this.productoServicio.GuardarProducto(productoDto);
 
                 return new JsonResult { Data = new { Success = true, Data = pk } };
             }
@@ -96,12 +98,9 @@ namespace Udi.ecommerceCar.Controllers
         {
             try
             {
-                var data = this.productoServicio.ObtenerProducto(pk);
-
-                if (data == null)
-                {
-                    return new JsonResult { Data = new { Success = false } };
-                }
+                // Lo hago asi para que devuelva nulo si no pilla
+                ProductoDto data = new ProductoDto();
+                data = this.productoServicio.ObtenerProducto(pk);
 
                 return new JsonResult { Data = new { Success = true, Data = data } };
             }
@@ -123,7 +122,7 @@ namespace Udi.ecommerceCar.Controllers
         /// <returns>
         /// The <see cref="JsonResult"/>.
         /// </returns>
-        public JsonResult ObtenerProductos(int page, int size)
+        public JsonResult ObtenerProductos(int? page, int? size)
         {
             try
             {
@@ -150,6 +149,84 @@ namespace Udi.ecommerceCar.Controllers
                 var data = this.productoServicio.ObtenerProductosTodos();
 
                 return new JsonResult { Data = new { Success = true, Data = data } };
+            }
+            catch (Exception ex)
+            {
+                return new JsonResult { Data = new { Success = false, Mensaje = ex.Message } };
+            }
+        }
+
+
+        public JsonResult MarcarPrincipalProducto(int id)
+        {
+            try
+            {
+                var data = this.productoServicio.MarcarPrincipalProducto(id);
+                
+                string mensaje = data
+                                     ? "Producto marcado como principal correctamente"
+                                     : "Producto desmarcado como principal correctamente";
+
+                return new JsonResult { Data = new { Success = true, Mensaje = mensaje } };
+            }
+            catch (Exception ex)
+            {
+                return new JsonResult { Data = new { Success = false, Mensaje = "Error al querer marcar/desmarcar el producto" } };
+            }
+        }
+
+        public JsonResult ObtenerProductosPrincipales()
+        {
+            try
+            {
+                var data = this.productoServicio.ObtenerProductosPrincipales();
+
+                return new JsonResult { Data = new { Success = true, Data = data } };
+            }
+            catch (Exception ex)
+            {
+                return new JsonResult { Data = new { Success = false, Mensaje = ex.Message } };
+            }
+        }
+
+        public JsonResult SolicitarPedidoProducto(int idUsuario, string listaProductosString)
+        {
+            try
+            {
+                List<ProductoDto> listaProductosDto = ComunServicio.ObtenerDtoFromString<List<ProductoDto>>(listaProductosString);
+                
+                var data = this.productoServicio.SolicitarPedidoProducto(idUsuario, listaProductosDto);
+
+                return new JsonResult { Data = new { Success = true, Data = data } };
+            }
+            catch (Exception ex)
+            {
+                return new JsonResult { Data = new { Success = false, Mensaje = ex.Message } };
+            }
+        }
+
+        public JsonResult ModificarProducto(string productoModificadoDtoString)
+        {
+            try
+            {
+                ProductoDto productoDto = ComunServicio.ObtenerDtoFromString<ProductoDto>(productoModificadoDtoString);
+                bool modificado = this.productoServicio.ModificarProducto(productoDto);
+
+                return new JsonResult { Data = new { Success = true, Data = modificado } };
+            }
+            catch (Exception ex)
+            {
+                return new JsonResult { Data = new { Success = false, Mensaje = ex.Message } };
+            }
+        }
+
+        public JsonResult EliminarProducto(int pk)
+        {
+            try
+            {
+                bool eliminado = this.productoServicio.EliminarProducto(pk);
+
+                return new JsonResult { Data = new { Success = true, Data = eliminado } };
             }
             catch (Exception ex)
             {

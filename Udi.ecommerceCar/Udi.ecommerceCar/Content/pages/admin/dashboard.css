@@ -3,6 +3,7 @@
     1. GENERAL
     2. MENU LATERAL
     3. MENU TOP
+    4. CONTENIDO
 */
 
 :root {
@@ -43,6 +44,29 @@
 /*#region 1. GENERAL */
 body {
     font-family: Helvetica, Arial, sans-serif;
+}
+
+.hidden {
+    display: none;
+}
+.text-right {
+    text-align: right;
+}
+
+.dashboard-price {
+    padding-top: 10px;
+    text-align: right;
+    font-size: 1.3em;
+}
+.dashboard-price > div {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.dashboard-price-subtotal,
+.dashboard-price-envio,
+.dashboard-price-total {
+    width: 100px;
 }
 
 .page-container {
@@ -123,6 +147,11 @@ body {
     background-color: var(--color-silver);
 }
 
+.fila-mensaje {
+    padding: 10px 5px;
+    font-size: 1.1em;
+}
+
 .celda {
 	/*min-width: var(--cell-width);*/
 	/*flex-grow: 1;*/
@@ -201,3 +230,16 @@ body {
 
 /*#endregion */
 
+/*#region 4. CONTENIDO */
+.btn-cambio-estado-venta-producto {
+    display: none;
+}
+.btn-cambio-estado-venta-producto--show {
+    display: block;
+    margin: 0 10px;
+}
+
+.fila-una-linea {
+    display: flex;
+}
+/*#endregion */

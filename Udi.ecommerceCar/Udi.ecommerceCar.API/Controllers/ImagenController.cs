@@ -21,50 +21,50 @@ namespace Udi.ecommerceCar.Api.Controllers
     {
 
 
-        private readonly ImagenServicio imagenServicio = new ImagenServicio();
+        //private readonly ImagenServicio imagenServicio = new ImagenServicio();
 
-        [System.Web.Http.Route("api/image/get")]
-        [System.Web.Http.HttpGet]
-        public IHttpActionResult ObtenerImagen(int id)
-        {
-            try
-            {
+        //[System.Web.Http.Route("api/image/get")]
+        //[System.Web.Http.HttpGet]
+        //public IHttpActionResult ObtenerImagen(int id)
+        //{
+        //    try
+        //    {
              
-                var Resultado = imagenServicio.ObtenerImagen(id);
+        //        var Resultado = imagenServicio.ObtenerImagen(id);
 
           
 
-                return Ok(RespuestaApi<ImagenDto>.createRespuestaSuccess(Resultado));
-            }
-            catch (Exception ex)
-            {
-                return Ok(RespuestaApi<string>.createRespuestaError(ex.Message));
-                throw;
-            }
+        //        return Ok(RespuestaApi<ImagenDto>.createRespuestaSuccess(Resultado));
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return Ok(RespuestaApi<string>.createRespuestaError(ex.Message));
+        //        throw;
+        //    }
 
-        }
+        //}
 
-        [System.Web.Http.Route("api/image/getUrl")]
-        [System.Web.Http.HttpGet]
-        public HttpResponseMessage GetImagen(int id)
-        {
+        //[System.Web.Http.Route("api/image/getUrl")]
+        //[System.Web.Http.HttpGet]
+        //public HttpResponseMessage GetImagen(int id)
+        //{
            
 
-                var urlImagen = imagenServicio.ObtenerUrlImagen(id);
+        //        var urlImagen = imagenServicio.ObtenerUrlImagen(id);
 
-                Byte[] b = File.ReadAllBytes(@urlImagen);
-
-
-
-                MemoryStream ms = new MemoryStream(b);
-                HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
-                response.Content = new StreamContent(ms);
-                response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/png");
-                return response;
+        //        Byte[] b = File.ReadAllBytes(@urlImagen);
 
 
 
-        }
+        //        MemoryStream ms = new MemoryStream(b);
+        //        HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
+        //        response.Content = new StreamContent(ms);
+        //        response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/png");
+        //        return response;
+
+
+
+        //}
 
 
     }

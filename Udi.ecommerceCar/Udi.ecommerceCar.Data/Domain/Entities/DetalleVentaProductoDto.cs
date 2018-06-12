@@ -6,19 +6,22 @@ using System.Threading.Tasks;
 
 namespace Udi.ecommerceCar.Data.Domain.Entities
 {
-    internal class DetalleVentaProductoDto
+    public class DetalleVentaProductoDto
     {
-        private int DetalleVentaProductoID { get; set; }
+        public int DetalleVentaProductoId { get; set; }
 
-        private int Cantidad { get; set; }
+        public int? Cantidad { get; set; }
 
-        DateTime Fecha { get; set; }
+        public DateTime? Fecha { get; set; }
 
-        private DateTime Hora { get; set; }
+        public TimeSpan? Hora { get; set; }
 
-        private int ProductoID { get; set; }
+        public int? ProductoId { get; set; }
 
-        private int VentaProductoID { get; set; }
+        public string Producto { get; set; }
 
+        public decimal? Precio { get; set; }
+
+        public int? VentaProductoId { get; set; }
     }
 }

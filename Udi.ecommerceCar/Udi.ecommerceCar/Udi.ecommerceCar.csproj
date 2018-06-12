@@ -176,6 +176,7 @@
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\DetalleVentaProductoController.cs" />
     <Compile Include="Controllers\HomeController.cs">
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
@@ -188,6 +189,7 @@
     <Compile Include="Controllers\TipoServicioController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\VehiculoController.cs" />
+    <Compile Include="Controllers\VentaProductoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -219,6 +221,8 @@
     <Content Include="Content\html\admin\agregar-producto.html" />
     <Content Include="Content\html\admin\agregar-servicio.html" />
     <Content Include="Content\html\admin\agregar-vehiculo.html" />
+    <Content Include="Content\html\admin\detalles-ventas-productos.html" />
+    <Content Include="Content\html\admin\pedidos.html" />
     <Content Include="Content\html\admin\productos.html" />
     <Content Include="Content\html\admin\servicios.html" />
     <Content Include="Content\html\admin\vehiculos.html" />
@@ -272,6 +276,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\pages\admin\dashboard.js" />
     <Content Include="Scripts\pages\detalle-producto.js" />
+    <Content Include="Scripts\pages\index.js" />
     <Content Include="Scripts\pages\navegador.js" />
     <Content Include="Scripts\pages\producto.js" />
     <Content Include="Scripts\pages\servicio.js" />
@@ -329,8 +334,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\DetalleVentaProducto\" />
     <Folder Include="Views\TipoProducto\" />
     <Folder Include="Views\TipoServicio\" />
+    <Folder Include="Views\VentaProducto\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
