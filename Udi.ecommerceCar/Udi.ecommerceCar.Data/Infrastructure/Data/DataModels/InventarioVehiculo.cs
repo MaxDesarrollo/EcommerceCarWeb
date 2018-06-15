@@ -26,6 +26,7 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.DataModels
         public Nullable<int> VehiculoID { get; set; }
         public string Color { get; set; }
         public Nullable<System.DateTime> Año { get; set; }
+        public Nullable<bool> VisibleMain { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DetalleVentaVehiculo> DetalleVentaVehiculo { get; set; }

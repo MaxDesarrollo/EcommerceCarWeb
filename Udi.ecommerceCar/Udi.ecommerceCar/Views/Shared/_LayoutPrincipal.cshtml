@@ -16,7 +16,7 @@
 
     <nav id="navheader" class="navheader">
 
-        <div class="logo">LOGO</div>
+        <div class="logo"><img src="~/Images/Recursos/logo.png" alt="MC Autoventas" /></div>
 
         <div class="logo-bar-right">
             <div id="hamburgerIcon" class="hamburger-icon">
@@ -29,25 +29,15 @@
                 <button class="navheader-link moveToSection" data-section="vehiculos">Vehículos</button>
                 <button class="navheader-link moveToSection" data-section="productos">Productos</button>
                 <button class="navheader-link moveToSection" data-section="servicios">Servicios</button>
-                <button class="navheader-link moveToSection" data-section="test-drive">Test-Drive</button>
             </div>
         </div>
     </nav>
 
 
-    @*@RenderSection("navbar", required: false)*@
-
     @RenderBody()
-    @*<div class="container body-content">
-            @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
-            </footer>
-        </div>*@
 
     <footer>
-        <div class="footer-info">
+        <div class="footer-info hidden">
             <div class="footer-column">
                 <span class="footer-column-title">Conócenos</span>
 

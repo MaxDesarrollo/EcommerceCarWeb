@@ -12,9 +12,10 @@
 }
 
 @section scripts {
-    <script src="~/Scripts/pages/vehiculo.js"></script>
+    @*<script src="~/Scripts/pages/vehiculo.js"></script>*@
     <script src="~/Scripts/pages/producto.js"></script>
     <script src="~/Scripts/pages/servicio.js"></script>
+    <script src="~/Scripts/pages/index.js"></script>
 
 }
 
@@ -49,9 +50,9 @@
 
         <div class="slider-message">
             <span class="slider-title">¿Necesitas un vehículo nuevo?</span>
-            <p class="slider-text">Conoce los nuevos vehículos económicos aquí</p>
+            <p class="slider-text">Conoce los nuevos vehículos aquí</p>
 
-            <button>Ver más</button>
+            <a class="flat-button flat-peter-river" href="/Vehiculo">Ver más</a>
         </div>
 
     </div>
@@ -66,7 +67,7 @@
             <span class="slider-title">Nuevo</span>
             <p class="slider-text">Experimenta el nuevo RAV4 2018 para todos los terrenos</p>
 
-            <button>Ver más</button>
+            <a class="flat-button flat-peter-river" href="Vehiculo/4">Ver más</a>
         </div>
 
         <div class="slider-image-container">
@@ -82,11 +83,11 @@
     @*<div class="seccion-titulo">Vehículos</div>*@
 
     <div class="vehiculos-catalogo">
-        <div id="btnPreviousVehicleCard" class="btnMoveCards"><</div>
+        <div id="btnPreviousVehicleCard" class="btnMoveCards hidden"><</div>
 
         <div class="vehicle-card-container"></div>
 
-        <div id="btnNextVehicleCard" class="btnMoveCards">></div>
+        <div id="btnNextVehicleCard" class="btnMoveCards hidden">></div>
     </div>
 </div>
 
@@ -111,7 +112,7 @@
     <div class="service-card-container"></div>
 </div>
 
-<div id="test-drive" class="seccion test-drive">
+@*<div id="test-drive" class="seccion test-drive">
     <div class="formulario-corto formulario-corto--transparente">
         <div class="seccion-titulo">Pide tu Test-Drive!</div>
         <div class="test-drive-formulario">
@@ -120,7 +121,7 @@
             <button>Pedir</button>
         </div>
     </div>
-</div>
+</div>*@
 
 
 

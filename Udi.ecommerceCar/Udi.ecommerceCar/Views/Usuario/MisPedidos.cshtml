@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Mis Pedidos";
+}
+
+@section styles {
+}
+
+@section Scripts {
+    <script src="~/Scripts/pages/usuario/misPedidos.js"></script>
+}
+
+<div class="pagina-contenedor">
+    <h2>Mis Pedidos</h2>
+
+    <div class="tabla-datos" id="tablaDatos">
+        <div class="cabecera">
+            <div class="cabecera-celda celda-1">ID</div>
+            <div class="cabecera-celda celda-2">Usuario</div>
+            <div class="cabecera-celda celda-2">Fecha</div>
+            <div class="cabecera-celda celda-2">Monto</div>
+            <div class="cabecera-celda celda-1">Estado</div>
+            <div class="cabecera-celda celda-2"></div>
+        </div>
+
+        <div class="tabla-datos-container" id="tablaDatosContainer"></div>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+﻿@model Udi.ecommerceCar.Data.Domain.Entities.VentaProductoDto
+@using System.Linq;
+@{
+    //Layout = null;
+    ViewBag.Title = "Mi Pedido";
+
+    ViewBag.Monto = 0;
+    foreach (var detalleVentaProducto in ViewBag.ListaDetalleVentaProductoDto)
+    {
+        ViewBag.Monto += (detalleVentaProducto.Precio * detalleVentaProducto.Cantidad);
+    }
+}
+
+<div class="pagina-contenedor">
+    <h2>Mi Pedido</h2>
+
+    <div class="mensaje-grande padding-bottom">
+        Su pedido se ha realizado correctamente! Por favor verifique sus datos, 
+        si tiene algún inconveniente con el pedido, por favor llame al 78002780.
+    </div>
+
+    <div><strong>Nro Transacción:</strong> @Model.VentaId</div>
+    <div><strong>Fecha:</strong> @($"{Model.Fecha:dd/MM/yyyy}")</div>
+    <div><strong>Solicitud:</strong> @Model.EstadoString</div>
+
+    <table class="tabla-info">
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th class="text-right">Precio</th>
+        </tr>
+        @foreach (var detalleVentaProducto in ViewBag.ListaDetalleVentaProductoDto)
+        {
+            <tr>
+                <td>@detalleVentaProducto.Producto</td>
+                <td>@detalleVentaProducto.Cantidad</td>
+                <td class="text-right">Bs. @detalleVentaProducto.Precio</td>
+            </tr>
+        }
+    </table>
+
+    <div class="cart-total-price">
+        <div>
+            <span><b>Subtotal:</b> Bs. </span>
+            <div class="cart-subtotal" id="cartSubtotal">@ViewBag.Monto</div>
+        </div>
+        <div>
+            <span><b>Envío:</b> Bs.</span>
+            <div class="cart-envio" id="cartEnvio">0.00</div>
+        </div>
+        <div>
+            <span><b>Total:</b> Bs. </span>
+            <div class="cart-total" id="cartTotal">@(ViewBag.Monto + 0)</div>
+        </div>
+    </div>
+
+    <div class="mensaje-grande padding-top">
+        Para poder completar su pedido, debe realizar una transferencia bancaria a la cuenta 123456789 del Banco Ganadero con el monto total de su pedido: Bs. @(ViewBag.Monto) a nombre de MCAutoventas
+        Una vez precesada la transacción, debe enviar la foto del comprobante a pedidos@mcautoventas.com para poder dar de alta su reserva.
+    </div>
+
+    <div class="mensaje-grande">
+        Una vez comprobado el pago, la empresa se contactará con usted para que usted pueda recoger su pedido a la oficina, ubicado en la Avenida Bánzer 6to anillo, Calle Alhelíes #17.
+    </div>
+
+    <div class="mensaje-grande text-right">
+        <a href="/Producto" class="">¡Gracias! Quiero seguir comprando</a>
+    </div>
+
+</div>

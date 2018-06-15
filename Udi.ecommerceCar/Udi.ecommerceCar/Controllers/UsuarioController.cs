@@ -38,6 +38,11 @@ namespace Udi.ecommerceCar.Controllers
             return this.View();
         }
 
+        public ActionResult MisPedidos()
+        {
+            return this.View();
+        }
+
         /// <summary>
         /// The iniciar sesion.
         /// </summary>
@@ -84,6 +89,27 @@ namespace Udi.ecommerceCar.Controllers
             try
             {
                 var data = this.usuarioServicio.ObtenerUsuario(pk);
+
+                if (data == null)
+                {
+                    return new JsonResult { Data = new { Success = false } };
+                }
+
+                return new JsonResult { Data = new { Success = true, Data = data } };
+            }
+            catch (Exception ex)
+            {
+                return new JsonResult { Data = new { Success = false, Mensaje = ex.Message } };
+            }
+        }
+
+
+        public JsonResult ObtenerVentasProductosUsuario(int pk)
+        {
+            try
+            {
+                VentaProductoServicio ventaProductoServicio = new VentaProductoServicio();
+                var data = ventaProductoServicio.ObtenerVentasProductosUsuario(pk);
 
                 if (data == null)
                 {

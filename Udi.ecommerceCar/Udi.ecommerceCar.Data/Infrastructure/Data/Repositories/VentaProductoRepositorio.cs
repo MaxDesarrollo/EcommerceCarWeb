@@ -141,7 +141,8 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                                     Fecha = ventaProducto.Fecha, 
                                     Hora = ventaProducto.Hora, 
                                     UsuarioId = ventaProducto.UsuarioID, 
-                                    Estado = ventaProducto.Estado
+                                    Estado = ventaProducto.Estado,
+                                    EstadoString = ((VentaEstado)ventaProducto.Estado).ToString()
                                 })
                         .First();
             }
@@ -182,6 +183,32 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                                 Estado = ventaProducto.Estado, 
                                 EstadoString = ((VentaEstado)ventaProducto.Estado).ToString()
                             })
+                    .ToList();
+        }
+
+        public List<VentaProductoDto> ObtenerVentasProductosUsuario(int pk)
+        {
+            return
+                this.BuildQuery()
+                    .Where(
+                        x =>
+                        x.UsuarioID == pk
+                        && x.Estado != (int)VentaEstado.CanceladoPorAdministrador
+                        && x.Estado != (int)VentaEstado.CanceladoPorCliente)
+                    .Select(
+                        ventaProducto =>
+                        new VentaProductoDto()
+                        {
+                            VentaId = ventaProducto.VentaID,
+                            Monto = ventaProducto.Monto,
+                            Fecha = ventaProducto.Fecha,
+                            Hora = ventaProducto.Hora,
+                            UsuarioId = ventaProducto.UsuarioID,
+                            Usuario =
+                                    ventaProducto.Usuario.Nombre + " " + ventaProducto.Usuario.Apellido,
+                            Estado = ventaProducto.Estado,
+                            EstadoString = ((VentaEstado)ventaProducto.Estado).ToString()
+                        })
                     .ToList();
         }
     }

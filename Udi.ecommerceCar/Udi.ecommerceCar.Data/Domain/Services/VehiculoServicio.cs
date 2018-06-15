@@ -84,5 +84,15 @@ namespace Udi.ecommerceCar.Data.Domain.Services
         {
             return this.vehiculoRepositorio.ObtenerVehiculosTodos();
         }
+
+        public bool MarcarPrincipalVehiculo(int id)
+        {
+            return this.vehiculoRepositorio.MarcarPrincipalVehiculo(id);
+        }
+
+        public List<VehiculoDto> ObtenerVehiculosPrincipales()
+        {
+            return this.vehiculoRepositorio.ObtenerVehiculosPrincipales();
+        }
     }
 }

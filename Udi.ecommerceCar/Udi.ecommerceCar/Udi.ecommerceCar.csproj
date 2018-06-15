@@ -221,6 +221,7 @@
     <Content Include="Content\html\admin\agregar-producto.html" />
     <Content Include="Content\html\admin\agregar-servicio.html" />
     <Content Include="Content\html\admin\agregar-vehiculo.html" />
+    <Content Include="Content\html\admin\dashboard.html" />
     <Content Include="Content\html\admin\detalles-ventas-productos.html" />
     <Content Include="Content\html\admin\pedidos.html" />
     <Content Include="Content\html\admin\productos.html" />
@@ -240,6 +241,7 @@
     </Content>
     <Content Include="Content\Site.css" />
     <Content Include="Images\Recursos\five-star.png" />
+    <Content Include="Images\Recursos\logo.png" />
     <Content Include="Images\Repuestos\Aro Plateado.jpg" />
     <Content Include="Images\Repuestos\Dunlop Sp Sport Maxx.jpg" />
     <Content Include="Images\Repuestos\Llanta Dunlop GT601.jpg" />
@@ -281,6 +283,7 @@
     <Content Include="Scripts\pages\producto.js" />
     <Content Include="Scripts\pages\servicio.js" />
     <Content Include="Scripts\pages\usuario\carrito.js" />
+    <Content Include="Scripts\pages\usuario\misPedidos.js" />
     <Content Include="Scripts\pages\vehiculo.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -331,13 +334,14 @@
     <Content Include="Views\Usuario\Carrito.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutDashboard.cshtml" />
+    <Content Include="Views\VentaProducto\Detalle.cshtml" />
+    <Content Include="Views\Usuario\MisPedidos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\DetalleVentaProducto\" />
     <Folder Include="Views\TipoProducto\" />
     <Folder Include="Views\TipoServicio\" />
-    <Folder Include="Views\VentaProducto\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -56,12 +56,12 @@ function getVehiclePresentationHtml(id, nombre, urlImagen) {
     var vehicleCardHtml =
         `<div class ="vehicle-presentation">
 			<div class ="vehicle-card-image">
-				<img src="Images/Vehiculos/${urlImagen}.png" alt="${nombre}">
+				<img src="/Images/Vehiculos/${urlImagen}.png" alt="${nombre}">
 			</div>
 
 			<div class ="vehicle-card-header">
 				<span class ="vehicle-presentation-title">
-                    <a href="Vehiculo/Detalle/${id}">${nombre}</a>
+                    <a href="/Vehiculo/Detalle/${id}">${nombre}</a>
                 </span>
 			</div>
 		</div>

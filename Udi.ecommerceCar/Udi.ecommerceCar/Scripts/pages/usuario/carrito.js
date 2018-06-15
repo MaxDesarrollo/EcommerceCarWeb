@@ -44,7 +44,6 @@ function getCartItemHtml(item) {
     
     //Creo un string selected con la opcion seleccionada en la cantidad correcta
     var slt = createSelectWidthQuantitySelected(10, cantidad, item.ProductoId);
-    console.log(item);
 
     var cartItemHtml = `
         <div class="cart-item">
@@ -67,22 +66,14 @@ function getCartItemHtml(item) {
                     </span>
 
                     <div class="cart-item-information-options">
-                        <span class="cart-item-information-delete">Eliminar</span>
+                        <span class="cart-item-information-delete" data-producto-id="${item.ProductoId}">Eliminar</span>
                     </div>
                 </div>
             </div>
 
-            <div class="cart-item-quantity">
-                ${slt}
-            </div>
-
-            <div class="cart-item-price">
-                Bs. ${precio}
-            </div>
-
-            <div class="cart-item-ship-price">
-                Gratis
-            </div>
+            <div class="cart-item-quantity">${slt}</div>
+            <div class="cart-item-price">Bs. ${precio}</div>
+            <div class="cart-item-ship-price">Gratis</div>
         </div>`;
 
     return cartItemHtml;
@@ -91,7 +82,6 @@ function getCartItemHtml(item) {
 function mostrarDatosProductosCarrito() {
     var cartItemListHtml = "";
     _datosProductosCarrito.forEach(function (producto) {
-        
         cartItemListHtml += getCartItemHtml(producto);
     });
 
@@ -127,7 +117,7 @@ function activateSelectOnChangeQuantity() {
 function refreshValuesCart() {
     cartSubtotal.innerText = subtotal.toFixed(2);
 
-    console.log("Por ahora el envio es cero siempre, no hay forma de escoger el metodo de envio");
+    //console.log("Por ahora el envio es cero siempre, no hay forma de escoger el metodo de envio");
     cartEnvio.innerText = (0).toFixed(2);
 
     var total = subtotal + 0;
@@ -135,12 +125,19 @@ function refreshValuesCart() {
 }
 
 
-function metodoSolicitarPedidoProductoExitoso() {
-    toastr.success("Se ha realizado tu pedido");
-    // Borrar carrito
-    localStorage.removeItem("carrito");
-    refreshValuesCart();
-    // Capaz redireccionarlo a otro lugar
+function metodoSolicitarPedidoProductoExitoso(res) {
+    if (res.Success) {
+        toastr.success("Se ha realizado tu pedido. Se lo redireccionará a un detalle");
+
+        localStorage.removeItem("carrito");
+        refreshValuesCart();
+
+        setTimeout(function() {
+            window.location.href = "/VentaProducto/Detalle/" + res.Data;
+        }, 2500);
+    } else {
+        toastr.error("Ocurrió un error mientras se realizaba el pedido. Por favor, intente nuevamente");
+    }
 }
 
 function solicitarPedidoProducto(idUsuario, listaProductos) {
@@ -155,10 +152,60 @@ function solicitarPedidoProducto(idUsuario, listaProductos) {
     solicitudAjax(url, metodoSolicitarPedidoProductoExitoso, datos, tipoDatos, tipo);
 }
 
+
+function deleteItemFromCart(event) {
+    var id = event.target.dataset.productoId;
+    if (id == null) {
+        toastr.error("Existe un problema con el producto seleccionado");
+        return;
+    }
+
+    var carrito = JSON.parse(localStorage.getItem("carrito"));
+    var prods = carrito.productos;
+    //console.log(prods);
+
+    var repeated = false;
+    for (var i = 0; i < prods.length; i++) {
+        if (repeated) {
+            break;
+        }
+
+        if (prods[i].ProductoId == id) {
+            prods.splice(i, 1);
+
+            repeated = true;
+        }
+    }
+
+    if (repeated) {
+        carrito.productos = prods;
+        carrito = JSON.stringify(carrito);
+
+        localStorage.setItem("carrito", carrito);
+
+        getCartInfoList();
+        event.target.parentElement.parentElement.parentElement.parentElement.innerHTML = `<div class="mensaje-grande"><strong>Producto eliminado satisfactoriamente!</strong></div>`;
+    } else {
+        toastr.error("No se pudo realizar la acción, por favor inténtelo nuevamente.");
+    }
+}
+
+function activateDeleteItemFromCart() {
+    var itemDeleteList = document.getElementsByClassName("cart-item-information-delete");
+
+    for (var i = 0; i < itemDeleteList.length; i++) {
+        itemDeleteList[i].addEventListener("click", function (event) {
+            deleteItemFromCart(event);
+        });
+    }
+
+}
+
 function init() {
 
-    if (localStorage.getItem("carrito")) {
-        var carrito = JSON.parse(localStorage.getItem("carrito"));
+    var carrito = JSON.parse(localStorage.getItem("carrito"));
+    if (carrito.productos && carrito.productos.length > 0) {
+        
         var prods = carrito.productos;
 
         _datosProductosCarrito = prods;
@@ -166,21 +213,15 @@ function init() {
         activateSelectOnChangeQuantity();
 
         refreshValuesCart();
+        activateDeleteItemFromCart();
 
         if (btnSolicitarPedido) {
             btnSolicitarPedido.addEventListener("click", function() {
-                console.log("Holaaaaa");
-
-                // Conseguir el ID del usuario
                 var idUsuario = localStorage.getItem("usuarioId");
-
-                // Conseguir la lista de productos, sacarles los corchetes o lo que sea que sean innecesarias
                 var productos = JSON.parse(localStorage.getItem("carrito"));
 
                 productos = JSON.stringify(productos.productos);
-                console.log(productos);
 
-                // Llamar una solicitud Ajax para guardar todo eso
                 solicitarPedidoProducto(idUsuario, productos);
             });
         }

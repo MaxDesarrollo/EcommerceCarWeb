@@ -11,8 +11,9 @@
     background-color: #fafafa;
 }
 .cart-empty {
-    padding-top: 20px;
     font-size: 1.2em;
+
+    margin: 20px 0;
 }
 
 .cart-header {

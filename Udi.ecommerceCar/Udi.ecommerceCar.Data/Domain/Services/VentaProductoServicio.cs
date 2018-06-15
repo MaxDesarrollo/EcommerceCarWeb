@@ -66,5 +66,15 @@ namespace Udi.ecommerceCar.Data.Domain.Services
 
             return listaVentaProductoDto;
         }
+
+        public VentaProductoDto ObtenerVentaProducto(VentaProductoDto ventaProductoDto)
+        {
+            return this.ventaProductoRepositorio.ObtenerVentaProducto(ventaProductoDto);
+        }
+
+        public List<VentaProductoDto> ObtenerVentasProductosUsuario(int pk)
+        {
+            return this.ventaProductoRepositorio.ObtenerVentasProductosUsuario(pk);
+        }
     }
 }

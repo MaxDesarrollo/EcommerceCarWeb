@@ -30,10 +30,6 @@ window.addEventListener("storage", function (e) {
 
 /* 3. VERIFICAR SESION */
 
-function cerrarSesion() {
-    
-}
-
 function mostrarMenuPerfil() {
     login.classList.remove("login-container--show");
     loginUsername.classList.add("login-username--show");

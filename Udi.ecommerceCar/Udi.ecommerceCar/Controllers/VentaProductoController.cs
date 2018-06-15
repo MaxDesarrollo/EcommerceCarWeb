@@ -9,6 +9,7 @@ namespace Udi.ecommerceCar.Controllers
     using System;
     using System.Web.Mvc;
 
+    using Udi.ecommerceCar.Data.Domain.Entities;
     using Udi.ecommerceCar.Data.Domain.Services;
 
     /// <summary>
@@ -20,6 +21,21 @@ namespace Udi.ecommerceCar.Controllers
         /// The venta producto servicio.
         /// </summary>
         private readonly VentaProductoServicio ventaProductoServicio = new VentaProductoServicio();
+        
+        public ActionResult Detalle(int id)
+        {
+            DetalleVentaProductoServicio detalleVentaProductoServicio = new DetalleVentaProductoServicio();
+
+            VentaProductoDto ventaProductoDto = new VentaProductoDto();
+            ventaProductoDto.VentaId = id;
+
+            VentaProductoDto ventaProducto = this.ventaProductoServicio.ObtenerVentaProducto(ventaProductoDto);
+
+            var detallesVentasProducto = detalleVentaProductoServicio.ObtenerDetallesVentasProductosTodos(ventaProducto.VentaId);
+            this.ViewBag.ListaDetalleVentaProductoDto = detallesVentasProducto;
+
+            return this.View(ventaProducto);
+        }
 
         /// <summary>
         /// The cambiar estado venta producto.

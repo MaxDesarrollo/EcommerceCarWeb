@@ -10,33 +10,20 @@ var estadoCancelado = false;
 
 function getRow(id, nombre, descripcion, marcado) {
     var desc = descripcion ? descripcion : "";
-    var btnMarcarPrincipalText = marcado ? "Desmarcar como Principal" : "Marcar como Principal";
+    var btnMarcarPrincipalText = marcado ? "Desmarcar" : "Marcar";
 
     var row =
         `<div class="fila">
-			<div class="celda celda-1">
-				${id}
-			</div>
-
-			<div class="celda celda-2">
-				${nombre}
-			</div>
-
-			<div class="celda celda-2">
-				${desc}
-			</div>
-
-            <div class ="celda celda-2">
-				<button class ="btn-marcar-principal" data-id="${id}">${btnMarcarPrincipalText}</button>
-			</div>
-
-			<div class="celda celda-2">
-                Editar, Eliminar
-			</div>
+			<div class="celda celda-1">${id}</div>
+			<div class="celda celda-2">${nombre}</div>
+			<div class="celda celda-2">${desc}</div>
+            <div class="celda celda-1"><button class="btn-marcar-principal boton boton-naranja" data-id="${id}">${btnMarcarPrincipalText}</button></div>
+			<div class="celda celda-4"></div>
 		</div>`;
 
     return row;
 }
+
 
 function parseJsonDate(jsonDateString) {
     var date = new Date(parseInt(jsonDateString.replace('/Date(', '')));
@@ -44,20 +31,28 @@ function parseJsonDate(jsonDateString) {
 }
 
 /* Paginas para ver */
+
+function obtenerDashboardExitoso() {
+    document.getElementsByClassName("link--active")[0].classList.remove("link--active");
+    document.getElementById("linkDashboard").classList.add("link--active");
+    refreshLinkSpanList();
+}
+
 function obtenerDatosVehiculosDashboardExitoso(res) {
     if (res.Success) {
-        _datos = res.Data;
+        var datos = res.Data;
         // Hare que siempre se llame asi el contenedor porque este metodo es Dashboard, para Dashboard siempre se llamara asi
         var tablaDatosContainer = document.getElementById("tablaDatosContainer");
         tablaDatosContainer.innerHTML = "";
 
-        for (var i = 0; i < _datos.length; i++) {
-            tablaDatosContainer.innerHTML += getRow(_datos[i].VehiculoId, _datos[i].NombreModelo, _datos[i].NombreMarca, _datos[i].VisibleMain);
+        for (var i = 0; i < datos.length; i++) {
+            tablaDatosContainer.innerHTML += getRow(datos[i].InventarioVehiculoId, datos[i].NombreModelo, datos[i].NombreMarca, datos[i].VisibleMain);
         }
 
         document.getElementsByClassName("link--active")[0].classList.remove("link--active");
         document.getElementById("linkVehiculos").classList.add("link--active");
         refreshLinkSpanList();
+        activateBtnMarcarPrincipal("/Vehiculo/MarcarPrincipalVehiculo", marcarPrincipalVehiculoExitoso);
     }
 }
 
@@ -87,7 +82,6 @@ function obtenerDatosServiciosDashboardExitoso(res) {
         tablaDatosContainer.innerHTML = "";
 
         for (var i = 0; i < datos.length; i++) {
-            console.log(datos[i]);
             tablaDatosContainer.innerHTML += getRow(datos[i].ServicioId, datos[i].TipoServicio, datos[i].DescripcionCorta, datos[i].VisibleMain);
         }
 
@@ -116,8 +110,8 @@ function obtenerDatosVentasProductosDashboardExitoso(res) {
                     <div class="celda celda-1">${datos[i].EstadoSelect}</div>
 
 			        <div class="celda celda-2 fila-una-linea">
-                        <button class="link-span" data-page="detalles-ventas-productos" data-parameters="${datos[i].VentaId}">Ver Detalle</button>
-                        <button class="btn-cambio-estado-venta-producto" data-venta-producto-id="${datos[i].VentaId}">Confirmar</button>
+                        <button class="link-span boton boton-azul" data-page="detalles-ventas-productos" data-parameters="${datos[i].VentaId}">Ver Detalle</button>
+                        <button class="btn-cambio-estado-venta-producto boton boton-verde" data-venta-producto-id="${datos[i].VentaId}">Confirmar</button>
 			        </div>
 		        </div>`;
 
@@ -164,7 +158,6 @@ function obtenerDatosDetallesVentasProductosDashboardExitoso(res) {
         toastr.error("Ocurrió un problema al momento de realizar la acción. Por favor intente nuevamente.");
     }
 }
-
 
 
 /* Paginas para agregar */
@@ -232,7 +225,6 @@ function obtenerDatosDashboard(url, obtenerDatosDashboardExitoso, datosParametro
 
 function activateBtnMarcarPrincipal(url, marcarPrincipalExitoso) {
     var btnMarcarPrincipalList = document.getElementsByClassName("btn-marcar-principal");
-    console.log(btnMarcarPrincipalList);
 
     if (btnMarcarPrincipalList) {
         for (var j = 0; j < btnMarcarPrincipalList.length; j++) {
@@ -240,10 +232,10 @@ function activateBtnMarcarPrincipal(url, marcarPrincipalExitoso) {
                 var id = this.dataset.id;
                 marcarPrincipal(url, id, marcarPrincipalExitoso);
 
-                if (this.innerText == "Marcar como Principal") {
-                    this.innerText = "Desmarcar como Principal";
+                if (this.innerText == "Marcar") {
+                    this.innerText = "Desmarcar";
                 } else {
-                    this.innerText = "Marcar como Principal";
+                    this.innerText = "Marcar";
                 }
             });
         }
@@ -263,9 +255,7 @@ function refreshLinkSpanList() {
                 var url = urlAdmin + page + ".html";
                 document.getElementById("txtParametros").value = parameters;
 
-                $("#adminContent").load(url, function () {
-                    
-                });
+                $("#adminContent").load(url, function () {});
             });
         }
     }
@@ -449,7 +439,6 @@ function guardarServicio() {
 
 function marcarPrincipalProductoExitoso(res) {
     if (res.Success) {
-        console.log("Mostrar un toastr que se actualizo su valor y cambiar tambien el texto del boton o hasta el color para identificar que es marcar o desmarcar como principal");
         toastr.success(res.Mensaje);
     } else {
         toastr.error(res.Mensaje);
@@ -458,7 +447,14 @@ function marcarPrincipalProductoExitoso(res) {
 
 function marcarPrincipalServicioExitoso(res) {
     if (res.Success) {
-        console.log("Mostrar un toastr que se actualizo su valor y cambiar tambien el texto del boton o hasta el color para identificar que es marcar o desmarcar como principal");
+        toastr.success(res.Mensaje);
+    } else {
+        toastr.error(res.Mensaje);
+    }
+}
+
+function marcarPrincipalVehiculoExitoso(res) {
+    if (res.Success) {
         toastr.success(res.Mensaje);
     } else {
         toastr.error(res.Mensaje);
@@ -487,4 +483,5 @@ function showPriceDashboard(subtotal) {
 
 refreshLinkSpanList();
 
-
+var url = urlAdmin + "dashboard.html";
+$("#adminContent").load(url, function () { });

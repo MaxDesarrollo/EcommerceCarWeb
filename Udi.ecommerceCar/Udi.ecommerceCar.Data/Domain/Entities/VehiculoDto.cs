@@ -13,6 +13,8 @@ namespace Udi.ecommerceCar.Data.Domain.Entities
     /// </summary>
     public class VehiculoDto
     {
+        public int InventarioVehiculoId { get; set; }
+
         /// <summary>
         /// Gets or sets the año.
         /// </summary>

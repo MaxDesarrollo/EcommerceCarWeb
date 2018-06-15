@@ -89,19 +89,17 @@ function addToCart(categoria, id, nombre, cantidad, precio, tipo) {
 }
 
 function deleteItemFromCartInfo(event) {
-    var id = event.target.parentElement.dataset.cartListItemId;
+    var id = event.target.parentElement.dataset.productoId;
     if (id == null) {
-        console.log("No existe el ID seleccionado");
+        toastr.error("Existe un problema con el producto seleccionado");
         return;
     }
 
     var carrito = JSON.parse(localStorage.getItem("carrito"));
     var prods = carrito.productos;
-    console.log(prods);
 
     var repeated = false;
     for (var i = 0; i < prods.length; i++) {
-        //console.log(id, prods[i]);
         if (repeated) {
             break;
         }
@@ -118,8 +116,6 @@ function deleteItemFromCartInfo(event) {
         carrito = JSON.stringify(carrito);
 
         localStorage.setItem("carrito", carrito);
-
-        console.log(carrito);
 
         getCartInfoList();
     } else {
@@ -147,7 +143,7 @@ function createCartInfoListItem(item) {
                     <span class ="cart-info-list-item-nombre">${item.Nombre}</span>
                     <span>${item.Cantidad}</span>
                     <span>Bs.${(item.Precio * item.Cantidad).toFixed(2)}</span>
-                    <span class ="cart-info-list-item-delete">
+                    <span class="cart-info-list-item-delete" data-producto-id="${item.ProductoId}">
                         <svg viewPort="0 0 12 12" version="1.1" width="13" height="13"
                              xmlns="http://www.w3.org/2000/svg">
                             <line x1="1" y1="11"
@@ -168,7 +164,6 @@ function createCartInfoListItem(item) {
 function refreshValuesCartInfo() {
     cartInfoSubtotal.innerText = subtotal.toFixed(2);
 
-    //console.log("Por ahora el envio es cero siempre, no hay forma de escoger el metodo de envio");
     cartInfoEnvio.innerText = (0).toFixed(2);
 
     var total = subtotal + 0;
@@ -183,9 +178,8 @@ function createCartInfoList() {
     var cartInfoListItems = "";
     subtotal = 0;
 
-    if (localStorage.getItem("carrito")) {
-        var carrito = JSON.parse(localStorage.getItem("carrito"));
-
+    var carrito = JSON.parse(localStorage.getItem("carrito"));
+    if (carrito.productos && carrito.productos.length > 0) {
         var productos = carrito.productos;
         for (var i = 0; i < productos.length; i++) {
             cartInfoListItems += createCartInfoListItem(productos[i]);

@@ -17,20 +17,11 @@
 <body>
     
     @Html.Partial("~/Views/Shared/_Navegador.cshtml")
-    
-    @*@RenderSection("navbar", required: false)*@
 
     @RenderBody()
-        @*<div class="container body-content">
-            @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
-            </footer>
-        </div>*@
 
     <footer>
-        <div class="footer-info">
+        <div class="footer-info hidden">
             <div class="footer-column">
                 <span class="footer-column-title">Conócenos</span>
 

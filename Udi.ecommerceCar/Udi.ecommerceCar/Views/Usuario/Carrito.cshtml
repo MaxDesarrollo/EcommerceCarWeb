@@ -17,15 +17,15 @@
     <div class="seccion-titulo">Carro de compras</div>
 
     <div class="cart-header">
-        <div class="cart-header-name">Productos</div>
-        <div class="cart-header-quantity">Cantidad</div>
-        <div class="cart-header-price">Precio</div>
-        <div class="cart-header-ship-price">Envío</div>
+        <div class="cart-header-name"><strong>Productos</strong></div>
+        <div class="cart-header-quantity"><strong>Cantidad</strong></div>
+        <div class="cart-header-price"><strong>Precio</strong></div>
+        <div class="cart-header-ship-price"><strong>Envío</strong></div>
     </div>
 
     <div class="cart-container" id="cartContainer">
         <div class="cart-empty">
-            Todavía no tienes ningún producto en el carrito. Agrega uno!
+            Todavía no tienes ningún producto en el carrito. <a href="/Producto">¡Agrega uno!</a>
         </div>
         @*<div class="cart-item">
             <div class="cart-item-information">
@@ -89,11 +89,5 @@
         <div>
             <a onclick="return;" id="btnSolicitarPedido">Solicitar pedido</a>
         </div>
-
-        @*<form action="/Producto/SolicitarPedidoProducto" method="POST">
-            <input type="text" id="txtIdUsuarioCarrito"/>
-            <input type="text" id="txtListaProductosCarrito" />
-            <button type="submit" id="btnSolicitarPedido">Solicitar Pedido</button>
-        </form>*@
     </div>
 </div>

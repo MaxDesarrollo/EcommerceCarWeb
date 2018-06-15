@@ -57,6 +57,7 @@
           <Property Name="VehiculoID" Type="int" />
           <Property Name="Color" Type="varchar" MaxLength="50" />
           <Property Name="Año" Type="date" />
+          <Property Name="VisibleMain" Type="bit" />
         </EntityType>
         <EntityType Name="Marca">
           <Key>
@@ -644,6 +645,7 @@
           <Property Name="Año" Type="DateTime" Precision="0" />
           <NavigationProperty Name="DetalleVentaVehiculo" Relationship="Self.FK_DetalleVentaVehiculo_Vehiculo" FromRole="InventarioVehiculo" ToRole="DetalleVentaVehiculo" />
           <NavigationProperty Name="Vehiculo" Relationship="Self.FK_Vehiculo_InventarioVehiculo" FromRole="InventarioVehiculo" ToRole="Vehiculo" />
+          <Property Name="VisibleMain" Type="Boolean" />
         </EntityType>
         <EntityType Name="Marca">
           <Key>
@@ -1250,6 +1252,7 @@
           <EntitySetMapping Name="InventarioVehiculo">
             <EntityTypeMapping TypeName="EcommercedbModel.InventarioVehiculo">
               <MappingFragment StoreEntitySet="InventarioVehiculo">
+                <ScalarProperty Name="VisibleMain" ColumnName="VisibleMain" />
                 <ScalarProperty Name="InventarioVehiculoID" ColumnName="InventarioVehiculoID" />
                 <ScalarProperty Name="CantidadDisponible" ColumnName="CantidadDisponible" />
                 <ScalarProperty Name="Precio" ColumnName="Precio" />

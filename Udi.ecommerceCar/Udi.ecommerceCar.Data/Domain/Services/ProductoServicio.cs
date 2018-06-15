@@ -157,7 +157,7 @@ namespace Udi.ecommerceCar.Data.Domain.Services
             ventaProductoDto.Monto = montoVentaProducto;
             ventaProductoRepositorio.CambiarMontoVentaProducto(ventaProductoDto);
             
-            return cantidadInsertado;
+            return idVentaProducto;
         }
 
         /// <summary>

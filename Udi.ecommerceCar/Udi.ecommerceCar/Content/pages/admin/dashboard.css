@@ -36,9 +36,7 @@
     /*admin-content*/
     --admin-content-padding: 20px;
 
-    /*tabla*/
-	--cell-width: 50px;
-    --row-padding: 10px 5px;
+    
 }
 
 /*#region 1. GENERAL */
@@ -115,67 +113,7 @@ body {
 }
 
 
-.menu-botones {
-    padding: 10px 0;
 
-}
-
-
-
-.tabla-datos {
-	/*width: 100%;*/
-    max-width: calc(100vw - var(--sidebar-width) - (var(--admin-content-padding) * 2));
-
-    border: 1px solid #aaa;
-}
-
-.cabecera {
-	display: flex;
-	width: 100%;
-}
-.cabecera-celda {
-    border-bottom: 1px solid var(--color-midnight-blue);
-    
-    padding: var(--row-padding);
-}
-
-.fila {
-	display: flex;
-	width: 100%;
-}
-.fila:hover .celda {
-    background-color: var(--color-silver);
-}
-
-.fila-mensaje {
-    padding: 10px 5px;
-    font-size: 1.1em;
-}
-
-.celda {
-	/*min-width: var(--cell-width);*/
-	/*flex-grow: 1;*/
-
-    padding: var(--row-padding);
-    background-color: var(--color-clouds);
-}
-
-.celda-1 {
-	width: var(--cell-width);
-	width: 10%;
-}
-.celda-2 {
-	width: calc(var(--cell-width) * 5);
-    width: 20%;
-}
-.celda-3 {
-	width: calc(var(--cell-width) * 6);
-	/*flex-grow: 3;*/
-}
-.celda-5 {
-	width: calc(var(--cell-width) * 9);
-	width: 50%;
-}
 
 /*#endregion */
 

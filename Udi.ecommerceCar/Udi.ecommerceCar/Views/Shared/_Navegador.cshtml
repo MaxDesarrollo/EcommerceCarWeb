@@ -1,10 +1,10 @@
 ﻿<nav id="navheader" class="navheader">
 
-    <div class="logo">LOGO</div>
+    <div class="logo"><img src="~/Images/Recursos/logo.png" alt="MC Autoventas"/></div>
 
     <div class="navheader-search">
-        <input name="txtBuscador" id="txtBuscador" class="navbar-search-input" value="" placeholder="Buscar..."/>
-        <button class="navbar-search-button">Buscar</button>
+        <input name="txtBuscador" id="txtBuscador" class="navbar-search-input hidden" value="" placeholder="Buscar..."/>
+        <button class="navbar-search-button hidden">Buscar</button>
     </div>
 
     <div class="username-container">
@@ -19,7 +19,7 @@
         </div>
 
         <div class="login-username" id="loginUsername">
-            Raiden M
+            Usuario
         </div>
 
         <div class="login-not-registered" id="loginNotRegistered">
@@ -54,48 +54,24 @@
     </div>
 
     <div class="username-menu" id="usernameMenu">
-        <a href="#">Mi Perfil</a>
+        <a href="/Usuario/MisPedidos">Mis Pedidos</a>
         <a href="#" onclick="return;" id="btnCerrarSesion">Cerrar Sesión</a>
     </div>
 
     <div class="login-container" id="loginContainer">
-        <!-- <span>Inicio de sesión</span> -->
         <input id="txtLoginUsername" class="login-input" type="text" placeholder="Usuario">
         <input id="txtLoginPassword" class="login-input" type="password" placeholder="Contaseña">
         <button class="login-submit" id="loginSubmit">Iniciar sesión</button>
         <span class="login-not-registered-link">¿No estás registrado? <a href="#">Crea una cuenta</a></span>
 
     </div>
-
-    @*<div class="logo-bar-right">
-        <div id="hamburgerIcon" class="hamburger-icon">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-
-        @*<div id="navheaderLinks" class="navheader-links">
-            <button class="navheader-link moveToSection" data-section="vehiculos">HOlaaa</button>
-            <button class="navheader-link moveToSection" data-section="productos">Productos</button>
-            <button class="navheader-link moveToSection" data-section="servicios">Servicios</button>
-            <button class="navheader-link moveToSection" data-section="test-drive">Test-Drive</button>
-        </div>*
-
-
-
-        <div class="navheader-search">
-            <input type="type" name="txtBuscador" id="txtBuscador" class="navbar-search-input" value="" placeholder="Buscar..." />
-            <button class="navbar-search-button">Buscar</button>
-        </div>
-    </div>*@
 </nav>
 
 <div class="navbar-categorias">
     <a href="~/Vehiculo">Vehículos</a>
-    @*<a>Nuevos Vehículos</a>*@
     <a href="~/Producto">Repuestos</a>
     <a href="~/Producto">Accesorios</a>
     <a href="~/Servicio">Servicios</a>
-    <a>Test-Drive</a>
-    <a>Solicitar reunión</a>
+    <a class="hidden">Test-Drive</a>
+    <a class="hidden">Solicitar reunión</a>
 </div>
