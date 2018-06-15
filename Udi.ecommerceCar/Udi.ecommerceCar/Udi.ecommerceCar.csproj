@@ -240,13 +240,27 @@
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Content>
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Accesorios\Módulos Elevavidrios Para Autos.jpg" />
+    <Content Include="Images\Accesorios\Papel Polarizado.jpg" />
+    <Content Include="Images\Accesorios\Pinos aromaticos.jpg" />
+    <Content Include="Images\Accesorios\Pisos De Goma Pvc.jpg" />
+    <Content Include="Images\Accesorios\Rastreo Satelital Para Vehículos.jpg" />
+    <Content Include="Images\Accesorios\Seguro Bloqueador De Capó.jpg" />
+    <Content Include="Images\Accesorios\Sensor De Parqueo Multimedia.jpg" />
+    <Content Include="Images\Accesorios\Trabapalancas Para Vehiculos.jpg" />
     <Content Include="Images\Recursos\five-star.png" />
     <Content Include="Images\Recursos\logo.png" />
+    <Content Include="Images\Repuestos\Aro 18 Gear Cromados.jpg" />
     <Content Include="Images\Repuestos\Aro Plateado.jpg" />
+    <Content Include="Images\Repuestos\Aros Trd Off Road Originales Toyota.jpg" />
+    <Content Include="Images\Repuestos\Autopartes.jpg" />
     <Content Include="Images\Repuestos\Dunlop Sp Sport Maxx.jpg" />
+    <Content Include="Images\Repuestos\Kit De 4 Amortiguadores Bilstein.jpg" />
     <Content Include="Images\Repuestos\Llanta Dunlop GT601.jpg" />
     <Content Include="Images\Repuestos\Llanta DUNLOP SP Sport LM704.jpg" />
     <Content Include="Images\Repuestos\LLANTA DUNLOP SP Touring T1 82T.jpg" />
+    <Content Include="Images\Repuestos\Mascara De Toyota Tacoma.jpg" />
+    <Content Include="Images\Repuestos\Tuercas Y Pernos De Seguridad.jpg" />
     <Content Include="Images\Servicios\Arreglo de Motor.jpg" />
     <Content Include="Images\Servicios\Mantenimiento General.jpg" />
     <Content Include="Images\Servicios\Servicio de Frenos.jpg" />
