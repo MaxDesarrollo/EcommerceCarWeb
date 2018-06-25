@@ -25,10 +25,10 @@ function getRow(id, nombre, descripcion, marcado) {
 }
 
 
-function parseJsonDate(jsonDateString) {
-    var date = new Date(parseInt(jsonDateString.replace('/Date(', '')));
-    return `${date.getDay().toString().padStart(2, "0")}/${date.getMonth().toString().padStart(2, "0")}/${date.getFullYear()}`;
-}
+//function parseJsonDate(jsonDateString) {
+//    var date = new Date(parseInt(jsonDateString.replace('/Date(', '')));
+//    return `${date.getDay().toString().padStart(2, "0")}/${date.getMonth().toString().padStart(2, "0")}/${date.getFullYear()}`;
+//}
 
 /* Paginas para ver */
 
@@ -82,7 +82,8 @@ function obtenerDatosServiciosDashboardExitoso(res) {
         tablaDatosContainer.innerHTML = "";
 
         for (var i = 0; i < datos.length; i++) {
-            tablaDatosContainer.innerHTML += getRow(datos[i].ServicioId, datos[i].TipoServicio, datos[i].DescripcionCorta, datos[i].VisibleMain);
+            var precio = `Bs. ${datos[i].Precio.toFixed(2)}`;
+            tablaDatosContainer.innerHTML += getRow(datos[i].ServicioId, datos[i].TipoServicio, precio, datos[i].VisibleMain);
         }
 
         document.getElementsByClassName("link--active")[0].classList.remove("link--active");
@@ -105,7 +106,7 @@ function obtenerDatosVentasProductosDashboardExitoso(res) {
                 `<div class="fila">
 			        <div class="celda celda-1">${datos[i].VentaId}</div>
 			        <div class="celda celda-2">${datos[i].Usuario}</div>
-			        <div class="celda celda-2">${parseJsonDate(datos[i].Fecha)}</div>
+			        <div class="celda celda-2">${getDateFromStringNoFormat(datos[i].Fecha)}</div>
                     <div class="celda celda-2">Bs.${datos[i].Monto.toFixed(2)}</div>
                     <div class="celda celda-1">${datos[i].EstadoSelect}</div>
 
@@ -361,7 +362,6 @@ function guardarProductoExitoso(res) {
         toastr.error("Error");
     }
 }
-
 function guardarProducto() {
     var url = "/Producto/GuardarProducto";
 
@@ -408,7 +408,6 @@ function guardarServicioExitoso(res) {
         toastr.error("Error");
     }
 }
-
 function guardarServicio() {
     var url = "/Servicio/GuardarServicio";
 
@@ -444,7 +443,6 @@ function marcarPrincipalProductoExitoso(res) {
         toastr.error(res.Mensaje);
     }
 }
-
 function marcarPrincipalServicioExitoso(res) {
     if (res.Success) {
         toastr.success(res.Mensaje);
@@ -460,7 +458,6 @@ function marcarPrincipalVehiculoExitoso(res) {
         toastr.error(res.Mensaje);
     }
 }
-
 function marcarPrincipal(url, id, marcarPrincipalExitoso) {
     var tipo = "POST";
     var datos = {
@@ -479,9 +476,41 @@ function showPriceDashboard(subtotal) {
     document.getElementById("dashboardPriceTotal").innerText = (subtotal + (0)).toFixed(2);
 }
 
-
-
 refreshLinkSpanList();
 
 var url = urlAdmin + "dashboard.html";
 $("#adminContent").load(url, function () { });
+
+function autorizarUsuarioError() {
+    toastr.error("No ha iniciado sesión. Usted no tiene permitido ingresar al Panel del Administrador");
+    setTimeout(function () {
+        location.href = "/Producto";
+    }, 3000);
+}
+
+function autorizarUsuarioExitoso(res) {
+    if (res.Success) {
+        // Mostrar nombre de usuario
+        document.getElementById("adminPerfil").innerText = localStorage.getItem("nombre") + " " + localStorage.getItem("apellido");
+    } else {
+        autorizarUsuarioError();
+    }
+}
+
+function autorizarUsuario() {
+    var usuarioId = localStorage.getItem("usuarioId");
+    if (usuarioId != null) {
+        var url = "/Usuario/AutorizarUsuario";
+        var tipo = "POST";
+        var datos = {
+            pk: usuarioId
+        };
+
+        var tipoDatos = "JSON";
+        solicitudAjax(url, autorizarUsuarioExitoso, datos, tipoDatos, tipo);
+    } else {
+        autorizarUsuarioError();
+    }
+}
+
+autorizarUsuario();

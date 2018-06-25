@@ -3,7 +3,6 @@
 //   © 2018 MC Autoventas
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace Udi.ecommerceCar.Data.Domain.Services
 {
     using System.Collections.Generic;
@@ -47,6 +46,20 @@ namespace Udi.ecommerceCar.Data.Domain.Services
         }
 
         /// <summary>
+        /// The obtener venta producto.
+        /// </summary>
+        /// <param name="ventaProductoDto">
+        /// The venta producto dto.
+        /// </param>
+        /// <returns>
+        /// The <see cref="VentaProductoDto"/>.
+        /// </returns>
+        public VentaProductoDto ObtenerVentaProducto(VentaProductoDto ventaProductoDto)
+        {
+            return this.ventaProductoRepositorio.ObtenerVentaProducto(ventaProductoDto);
+        }
+
+        /// <summary>
         /// The obtener ventas productos todos.
         /// </summary>
         /// <returns>
@@ -67,11 +80,18 @@ namespace Udi.ecommerceCar.Data.Domain.Services
             return listaVentaProductoDto;
         }
 
-        public VentaProductoDto ObtenerVentaProducto(VentaProductoDto ventaProductoDto)
-        {
-            return this.ventaProductoRepositorio.ObtenerVentaProducto(ventaProductoDto);
-        }
-
+        /// <summary>
+        /// The obtener ventas productos usuario.
+        /// </summary>
+        /// <param name="pk">
+        /// The pk.
+        /// </param>
+        /// <returns>
+        /// The <see>
+        ///         <cref>List</cref>
+        ///     </see>
+        ///     .
+        /// </returns>
         public List<VentaProductoDto> ObtenerVentasProductosUsuario(int pk)
         {
             return this.ventaProductoRepositorio.ObtenerVentasProductosUsuario(pk);

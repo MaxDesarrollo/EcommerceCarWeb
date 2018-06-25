@@ -285,13 +285,12 @@ html, body {
     min-height: 56vh;
 }
 
-.flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.container-center {
+    
 }
 
-.centrado {
+.centrado,
+.flex-center {
     display: flex;
     justify-content: center;
     align-items: center;

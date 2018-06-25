@@ -3,7 +3,6 @@
 //   © 2018 MC Autoventas
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace Udi.ecommerceCar.Data.Domain.Services
 {
     using System.Collections.Generic;
@@ -27,6 +26,20 @@ namespace Udi.ecommerceCar.Data.Domain.Services
         public VehiculoServicio()
         {
             this.vehiculoRepositorio = new VehiculoRepositorio();
+        }
+
+        /// <summary>
+        /// The marcar principal vehiculo.
+        /// </summary>
+        /// <param name="id">
+        /// The id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
+        public bool MarcarPrincipalVehiculo(int id)
+        {
+            return this.vehiculoRepositorio.MarcarPrincipalVehiculo(id);
         }
 
         // public int GuardarVehiculo(VehiculoDto vehiculo)
@@ -72,6 +85,20 @@ namespace Udi.ecommerceCar.Data.Domain.Services
         }
 
         /// <summary>
+        /// The obtener vehiculos principales.
+        /// </summary>
+        /// <returns>
+        /// The <see>
+        ///         <cref>List</cref>
+        ///     </see>
+        ///     .
+        /// </returns>
+        public List<VehiculoDto> ObtenerVehiculosPrincipales()
+        {
+            return this.vehiculoRepositorio.ObtenerVehiculosPrincipales();
+        }
+
+        /// <summary>
         /// The obtener vehiculos todos.
         /// </summary>
         /// <returns>
@@ -83,16 +110,6 @@ namespace Udi.ecommerceCar.Data.Domain.Services
         public List<VehiculoDto> ObtenerVehiculosTodos()
         {
             return this.vehiculoRepositorio.ObtenerVehiculosTodos();
-        }
-
-        public bool MarcarPrincipalVehiculo(int id)
-        {
-            return this.vehiculoRepositorio.MarcarPrincipalVehiculo(id);
-        }
-
-        public List<VehiculoDto> ObtenerVehiculosPrincipales()
-        {
-            return this.vehiculoRepositorio.ObtenerVehiculosPrincipales();
         }
     }
 }

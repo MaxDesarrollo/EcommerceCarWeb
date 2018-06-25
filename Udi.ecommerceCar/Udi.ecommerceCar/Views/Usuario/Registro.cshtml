@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Registro";
+}
+
+@section Scripts {
+    <script src="~/Scripts/general/registro.js"></script>
+}
+
+<div class="pagina-contenedor">
+    <div class="flex-center">
+        <div class="login-container login-container--show">
+            <h4>Registro</h4>
+            <input class="login-input" type="text" placeholder="Nombre" id="txtRegisterNombre">
+            <input class="login-input" type="text" placeholder="Apellido" id="txtRegisterApellido">
+            <input class="login-input" type="text" placeholder="Usuario" id="txtRegisterUsername">
+            <input class="login-input" type="password" placeholder="Contaseña" id="txtRegisterPassword">
+            @*<input class="login-input" type="password" placeholder="Repetir Contaseña" id="txtRegisterPasswordAgain">*@
+
+            <button class="login-submit" id="btnRegistrar">Registrarse</button>
+        </div>
+    </div>
+</div>
+
+@* 
+    Debe poder llenar todos los datos, confirmar que no esten vacios, verificar que contraseña y verificar contraseña sean iguales
+    Al mandar, hacer que espere un rato el usuario nuevo, capaz darle un UI para que se dé cuenta.
+    No puede mandar más que una vez
+    Al terminar y verificar que es correcto, redireccionarlo a algún lugar.
+*@

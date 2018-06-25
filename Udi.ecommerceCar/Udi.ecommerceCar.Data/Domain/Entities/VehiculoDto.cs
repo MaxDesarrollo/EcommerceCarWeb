@@ -13,6 +13,9 @@ namespace Udi.ecommerceCar.Data.Domain.Entities
     /// </summary>
     public class VehiculoDto
     {
+        /// <summary>
+        /// Gets or sets the inventario vehiculo id.
+        /// </summary>
         public int InventarioVehiculoId { get; set; }
 
         /// <summary>

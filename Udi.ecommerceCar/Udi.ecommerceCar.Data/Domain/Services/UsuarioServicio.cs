@@ -54,9 +54,52 @@ namespace Udi.ecommerceCar.Data.Domain.Services
         /// <returns>
         /// The <see cref="Usuario"/>.
         /// </returns>
-        public Usuario ObtenerUsuario(int pk)
+        public UsuarioDto ObtenerUsuario(int pk)
         {
             return this.usuarioRepositorio.ObtenerUsuario(pk);
+        }
+
+        /// <summary>
+        /// The obtener usuario por username.
+        /// </summary>
+        /// <param name="username">
+        /// The username.
+        /// </param>
+        /// <returns>
+        /// The <see cref="UsuarioDto"/>.
+        /// </returns>
+        public UsuarioDto ObtenerUsuarioPorUsername(string username)
+        {
+            return this.usuarioRepositorio.ObtenerUsuarioPorUsername(username);
+        }
+
+        /// <summary>
+        /// The registrar usuario.
+        /// </summary>
+        /// <param name="usuarioDto">
+        /// The usuario dto.
+        /// </param>
+        /// <returns>
+        /// The <see cref="UsuarioDto"/>.
+        /// </returns>
+        public UsuarioDto RegistrarUsuario(UsuarioDto usuarioDto)
+        {
+            UsuarioDto usuario = this.ObtenerUsuarioPorUsername(usuarioDto.Username);
+            return usuario == null ? this.usuarioRepositorio.RegistrarUsuario(usuarioDto) : null;
+        }
+
+        /// <summary>
+        /// The autorizar usuario.
+        /// </summary>
+        /// <param name="pk">
+        /// The pk.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
+        public bool AutorizarUsuario(int pk)
+        {
+            return this.usuarioRepositorio.AutorizarUsuario(pk);
         }
     }
 }

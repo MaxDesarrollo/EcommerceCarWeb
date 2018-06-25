@@ -280,6 +280,7 @@
     <Content Include="Scripts\general.js" />
     <Content Include="Scripts\general\carrito-info.js" />
     <Content Include="Scripts\general\login.js" />
+    <Content Include="Scripts\general\registro.js" />
     <Content Include="Scripts\general\session.js" />
     <Content Include="Scripts\Generico.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -350,6 +351,7 @@
     <Content Include="Views\Shared\_LayoutDashboard.cshtml" />
     <Content Include="Views\VentaProducto\Detalle.cshtml" />
     <Content Include="Views\Usuario\MisPedidos.cshtml" />
+    <Content Include="Views\Usuario\Registro.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

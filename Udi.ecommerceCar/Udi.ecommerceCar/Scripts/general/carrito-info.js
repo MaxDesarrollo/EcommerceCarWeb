@@ -179,7 +179,7 @@ function createCartInfoList() {
     subtotal = 0;
 
     var carrito = JSON.parse(localStorage.getItem("carrito"));
-    if (carrito.productos && carrito.productos.length > 0) {
+    if (carrito && carrito.productos && carrito.productos.length > 0) {
         var productos = carrito.productos;
         for (var i = 0; i < productos.length; i++) {
             cartInfoListItems += createCartInfoListItem(productos[i]);

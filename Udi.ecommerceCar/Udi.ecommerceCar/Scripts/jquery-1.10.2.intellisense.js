@@ -1482,7 +1482,12 @@ intellisense.annotate(jQuery.fn, {
     ///   <returns type="jQuery" />
     /// </signature>
   },
-  'hidden': function() {
+  'hidden'+
+  ''+
+  ''+
+  ''+
+  ''+
+  '': function() {
     /// <summary>Selects all elements that are hidden.</summary>
   },
   'hide': function() {

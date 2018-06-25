@@ -1,8 +1,8 @@
 ﻿
-function parseJsonDate(jsonDateString) {
-    var date = new Date(parseInt(jsonDateString.replace('/Date(', '')));
-    return `${date.getDay().toString().padStart(2, "0")}/${date.getMonth().toString().padStart(2, "0")}/${date.getFullYear()}`;
-}
+//function parseJsonDate(jsonDateString) {
+//    var date = new Date(parseInt(jsonDateString.replace('/Date(', '')));
+//    return `${date.getDay().toString().padStart(2, "0")}/${date.getMonth().toString().padStart(2, "0")}/${date.getFullYear()}`;
+//}
 
 function obtenerMisPedidosExitoso(res) {
     if (res.Success) {
@@ -15,7 +15,7 @@ function obtenerMisPedidosExitoso(res) {
                 `<div class="fila">
 			        <div class="celda celda-1">${datos[i].VentaId}</div>
 			        <div class="celda celda-2">${datos[i].Usuario}</div>
-			        <div class="celda celda-2">${parseJsonDate(datos[i].Fecha)}</div>
+			        <div class="celda celda-2">${getDateFromStringNoFormat(datos[i].Fecha)}</div>
                     <div class="celda celda-2">Bs.${datos[i].Monto.toFixed(2)}</div>
                     <div class="celda celda-1">${datos[i].EstadoString}</div>
 

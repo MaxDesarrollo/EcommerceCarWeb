@@ -218,6 +218,10 @@ function init() {
         if (btnSolicitarPedido) {
             btnSolicitarPedido.addEventListener("click", function() {
                 var idUsuario = localStorage.getItem("usuarioId");
+                if (idUsuario == null) {
+                    location.href = "/Usuario/Registro";
+                }
+
                 var productos = JSON.parse(localStorage.getItem("carrito"));
 
                 productos = JSON.stringify(productos.productos);

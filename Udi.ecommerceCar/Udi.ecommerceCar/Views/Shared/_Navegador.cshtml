@@ -1,6 +1,8 @@
 ﻿<nav id="navheader" class="navheader">
 
-    <div class="logo"><img src="~/Images/Recursos/logo.png" alt="MC Autoventas"/></div>
+    <div class="logo">
+        <a href="/"><img src="~/Images/Recursos/logo.png" alt="MC Autoventas" /></a>
+    </div>
 
     <div class="navheader-search">
         <input name="txtBuscador" id="txtBuscador" class="navbar-search-input hidden" value="" placeholder="Buscar..."/>
@@ -25,7 +27,7 @@
         <div class="login-not-registered" id="loginNotRegistered">
             <span id="spanShowLogin" class="span-show-login">Iniciar sesión</span>
             <span>o</span>
-            <a href="#" class="login-register-link">Registrarse</a>
+            <a href="/Usuario/Registro" class="login-register-link">Registrarse</a>
         </div>
     </div>
 
@@ -35,7 +37,7 @@
         <div class="cart-info-total-price">
             <div>
                 <span><b>Subtotal:</b> Bs. </span>
-                <div class="cart-info-subtotal" id="cartInfoSubtotal">500.00</div>
+                <div class="cart-info-subtotal" id="cartInfoSubtotal">0.00</div>
             </div>
             <div>
                 <span><b>Envío:</b> Bs.</span>
@@ -43,7 +45,7 @@
             </div>
             <div>
                 <span><b>Total:</b> Bs. </span>
-                <div class="cart-info-total" id="cartInfoTotal">500.00</div>
+                <div class="cart-info-total" id="cartInfoTotal">0.00</div>
             </div>
 
             <div>
@@ -58,11 +60,11 @@
         <a href="#" onclick="return;" id="btnCerrarSesion">Cerrar Sesión</a>
     </div>
 
-    <div class="login-container" id="loginContainer">
+    <div class="login-container login-container--float" id="loginContainer">
         <input id="txtLoginUsername" class="login-input" type="text" placeholder="Usuario">
         <input id="txtLoginPassword" class="login-input" type="password" placeholder="Contaseña">
         <button class="login-submit" id="loginSubmit">Iniciar sesión</button>
-        <span class="login-not-registered-link">¿No estás registrado? <a href="#">Crea una cuenta</a></span>
+        <span class="login-not-registered-link">¿No estás registrado? <a href="/Usuario/Registro">Crea una cuenta</a></span>
 
     </div>
 </nav>

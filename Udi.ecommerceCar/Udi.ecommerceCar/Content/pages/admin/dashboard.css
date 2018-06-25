@@ -94,6 +94,10 @@ body {
     padding: var(--navbar-padding);
     background-color: var(--color-dark-blue);
     color: var(--color-clouds);
+
+    display: flex;
+    align-items: center;
+    padding: 8px 30px;
 }
 .admin-sidebar {
     /*width: var(--sidebar-width);*/

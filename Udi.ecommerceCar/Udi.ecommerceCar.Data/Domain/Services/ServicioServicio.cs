@@ -3,7 +3,6 @@
 //   © 2018 MC Autoventas
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace Udi.ecommerceCar.Data.Domain.Services
 {
     using System.Collections.Generic;
@@ -44,6 +43,20 @@ namespace Udi.ecommerceCar.Data.Domain.Services
         }
 
         /// <summary>
+        /// The marcar principal servicio.
+        /// </summary>
+        /// <param name="id">
+        /// The id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
+        public bool MarcarPrincipalServicio(int id)
+        {
+            return this.servicioRepositorio.MarcarPrincipalServicio(id);
+        }
+
+        /// <summary>
         /// The obtener servicio.
         /// </summary>
         /// <param name="pk">
@@ -81,6 +94,20 @@ namespace Udi.ecommerceCar.Data.Domain.Services
         }
 
         /// <summary>
+        /// The obtener servicios principales.
+        /// </summary>
+        /// <returns>
+        /// The <see>
+        ///         <cref>List</cref>
+        ///     </see>
+        ///     .
+        /// </returns>
+        public List<ServicioDto> ObtenerServiciosPrincipales()
+        {
+            return this.servicioRepositorio.ObtenerServiciosPrincipales();
+        }
+
+        /// <summary>
         /// The obtener servicios todos.
         /// </summary>
         /// <returns>
@@ -92,16 +119,6 @@ namespace Udi.ecommerceCar.Data.Domain.Services
         public List<ServicioDto> ObtenerServiciosTodos()
         {
             return this.servicioRepositorio.ObtenerServiciosTodos();
-        }
-
-        public bool MarcarPrincipalServicio(int id)
-        {
-            return this.servicioRepositorio.MarcarPrincipalServicio(id);
-        }
-
-        public List<ServicioDto> ObtenerServiciosPrincipales()
-        {
-            return this.servicioRepositorio.ObtenerServiciosPrincipales();
         }
     }
 }

@@ -47,12 +47,12 @@ function getProductCardHtml(id, nombre, descripcion, urlImagen, tipoProducto, pr
 
     var productCardHtml =
         `<div class="product-card">
-            <div class ="product-card-image" style="background-image: url('Images/${tipoProducto}/${nombre}.jpg')"></div>
+            <div class ="product-card-image" style="background-image: url('/Images/${tipoProducto}/${nombre}.jpg')"></div>
 
             <div class="product-card-description">
                 <div class ="product-card-header">
                     <span class ="product-card-title">
-                        <a href="Producto/Detalle/${id}">${nombre}</a>
+                        <a href="/Producto/Detalle/${id}">${nombre}</a>
                     </span>
                 </div>
 
@@ -95,10 +95,10 @@ function obtenerProductosPrincipales() {
 function getServiceCardHtml(id, nombre, urlImagen) {
     var serviceCardHtml =
         `<div class="service-card">
-            <img src="Images/Servicios/${nombre}.jpg" alt="${nombre}" />
+            <a href="/Servicio/Detalle/${id}"><img src="/Images/Servicios/${nombre}.jpg" alt="${nombre}" /></a>
 
             <div class="service-card-description">
-                <a href="Servicio/Detalle/${id}">${nombre}</a>
+                <a href="/Servicio/Detalle/${id}">${nombre}</a>
             </div>
         </div>`;
 

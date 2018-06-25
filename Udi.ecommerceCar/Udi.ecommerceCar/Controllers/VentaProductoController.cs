@@ -21,7 +21,16 @@ namespace Udi.ecommerceCar.Controllers
         /// The venta producto servicio.
         /// </summary>
         private readonly VentaProductoServicio ventaProductoServicio = new VentaProductoServicio();
-        
+
+        /// <summary>
+        /// The detalle.
+        /// </summary>
+        /// <param name="id">
+        /// The id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
         public ActionResult Detalle(int id)
         {
             DetalleVentaProductoServicio detalleVentaProductoServicio = new DetalleVentaProductoServicio();

@@ -186,6 +186,18 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                     .ToList();
         }
 
+        /// <summary>
+        /// The obtener ventas productos usuario.
+        /// </summary>
+        /// <param name="pk">
+        /// The pk.
+        /// </param>
+        /// <returns>
+        /// The <see>
+        ///         <cref>List</cref>
+        ///     </see>
+        ///     .
+        /// </returns>
         public List<VentaProductoDto> ObtenerVentasProductosUsuario(int pk)
         {
             return

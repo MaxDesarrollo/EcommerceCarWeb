@@ -121,3 +121,21 @@ Array.prototype.remove = function (item) {
     if (i != -1)
         this.splice(i, 1);
 };
+
+
+function getDateFromStringNoFormat(fecha) {
+    var fechaMilliseconds = parseInt(fecha.replace("/Date(", "").replace(")/", ""));
+
+    var f = new Date(parseInt(fechaMilliseconds));
+    var day = f.getDate();
+    if (day < 10)
+        day = "0" + day;
+
+    var month = f.getMonth() + 1;
+    if (month < 10)
+        month = "0" + month;
+
+    var year = f.getFullYear();
+
+    return `${day}/${month}/${year}`;
+}

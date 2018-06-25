@@ -3,7 +3,6 @@
 //   © 2018 MC Autoventas
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
 {
     using System;
@@ -18,6 +17,31 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
     /// </summary>
     internal class VehiculoRepositorio : EFRepositorio<InventarioVehiculo>
     {
+        /// <summary>
+        /// The marcar principal vehiculo.
+        /// </summary>
+        /// <param name="id">
+        /// The id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
+        public bool MarcarPrincipalVehiculo(int id)
+        {
+            var vehiculo = this.Get(id);
+
+            if (vehiculo.VisibleMain == null)
+            {
+                vehiculo.VisibleMain = false;
+            }
+
+            vehiculo.VisibleMain = !vehiculo.VisibleMain;
+
+            this.SaveChanges();
+
+            return (bool)vehiculo.VisibleMain;
+        }
+
         // public int GuardarVehiculo(VehiculoDto vehiculo)
         // {
         // Vehiculo newVehiculo = new Vehiculo()
@@ -56,9 +80,9 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                         .Select(
                             inventarioVehiculo =>
                             new VehiculoDto()
-                            {
-                                InventarioVehiculoId = inventarioVehiculo.InventarioVehiculoID,
-                                VehiculoId = inventarioVehiculo.Vehiculo.VehiculoID, 
+                                {
+                                    InventarioVehiculoId = inventarioVehiculo.InventarioVehiculoID, 
+                                    VehiculoId = inventarioVehiculo.Vehiculo.VehiculoID, 
                                     CantidadDisponible = inventarioVehiculo.CantidadDisponible, 
                                     Precio = inventarioVehiculo.Precio, 
                                     Año = (DateTime)inventarioVehiculo.Año, 
@@ -107,9 +131,9 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                     .Select(
                         inventarioVehiculo =>
                         new VehiculoDto()
-                        {
-                            InventarioVehiculoId = inventarioVehiculo.InventarioVehiculoID,
-                            VehiculoId = inventarioVehiculo.Vehiculo.VehiculoID, 
+                            {
+                                InventarioVehiculoId = inventarioVehiculo.InventarioVehiculoID, 
+                                VehiculoId = inventarioVehiculo.Vehiculo.VehiculoID, 
                                 CantidadDisponible = inventarioVehiculo.CantidadDisponible, 
                                 Precio = inventarioVehiculo.Precio, 
                                 Año = (DateTime)inventarioVehiculo.Año, 
@@ -125,9 +149,9 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                                 TipoVehiculoId = inventarioVehiculo.Vehiculo.TipoVehiculoID, 
                                 NombreTipoVehiculo = inventarioVehiculo.Vehiculo.TipoVehiculo.Nombre, 
                                 TipoCajaId = inventarioVehiculo.Vehiculo.TipoCajaID, 
-                                NombreTipoCaja = inventarioVehiculo.Vehiculo.TipoCaja.Nombre,
-                            VisibleMain = inventarioVehiculo.VisibleMain
-                        })
+                                NombreTipoCaja = inventarioVehiculo.Vehiculo.TipoCaja.Nombre, 
+                                VisibleMain = inventarioVehiculo.VisibleMain
+                            })
                     .OrderBy(x => x.VehiculoId)
                     .Skip(page * size)
                     .Take(size)
@@ -155,7 +179,7 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
         }
 
         /// <summary>
-        /// The obtener vehiculos todos.
+        /// The obtener vehiculos principales.
         /// </summary>
         /// <returns>
         /// The <see>
@@ -163,15 +187,15 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
         ///     </see>
         ///     .
         /// </returns>
-        public List<VehiculoDto> ObtenerVehiculosTodos()
+        public List<VehiculoDto> ObtenerVehiculosPrincipales()
         {
             return
                 this.BuildQuery()
+                    .Where(x => x.VisibleMain == true)
                     .Select(
                         inventarioVehiculo =>
                         new VehiculoDto()
                             {
-                                InventarioVehiculoId = inventarioVehiculo.InventarioVehiculoID,
                                 VehiculoId = inventarioVehiculo.Vehiculo.VehiculoID, 
                                 CantidadDisponible = inventarioVehiculo.CantidadDisponible, 
                                 Precio = inventarioVehiculo.Precio, 
@@ -191,57 +215,48 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                                 TipoVehiculoId = inventarioVehiculo.Vehiculo.TipoVehiculoID, 
                                 NombreTipoVehiculo = inventarioVehiculo.Vehiculo.TipoVehiculo.Nombre, 
                                 TipoCajaId = inventarioVehiculo.Vehiculo.TipoCajaID, 
-                                NombreTipoCaja = inventarioVehiculo.Vehiculo.TipoCaja.Nombre,
-                                VisibleMain = inventarioVehiculo.VisibleMain
+                                NombreTipoCaja = inventarioVehiculo.Vehiculo.TipoCaja.Nombre
                             }).ToList();
         }
 
-        public bool MarcarPrincipalVehiculo(int id)
-        {
-            var vehiculo = this.Get(id);
-
-            if (vehiculo.VisibleMain == null)
-            {
-                vehiculo.VisibleMain = false;
-            }
-
-            vehiculo.VisibleMain = !vehiculo.VisibleMain;
-
-            this.SaveChanges();
-
-            return (bool)vehiculo.VisibleMain;
-        }
-
-        public List<VehiculoDto> ObtenerVehiculosPrincipales()
+        /// <summary>
+        /// The obtener vehiculos todos.
+        /// </summary>
+        /// <returns>
+        /// The <see>
+        ///         <cref>List</cref>
+        ///     </see>
+        ///     .
+        /// </returns>
+        public List<VehiculoDto> ObtenerVehiculosTodos()
         {
             return
                 this.BuildQuery()
-                    .Where(x => x.VisibleMain == true)
                     .Select(
                         inventarioVehiculo =>
                         new VehiculoDto()
-                        {
-                            VehiculoId = inventarioVehiculo.Vehiculo.VehiculoID,
-                            CantidadDisponible = inventarioVehiculo.CantidadDisponible,
-                            Precio = inventarioVehiculo.Precio,
-                            Año = (DateTime)inventarioVehiculo.Año,
-
-                            // ModeloID = (int)vehiculo.ModeloID,
-                            CantidadPuertas = inventarioVehiculo.Vehiculo.CantidadPuertas,
-                            HabilitadoTestDrive = inventarioVehiculo.Vehiculo.HabilitadoTestDrive,
-                            Estado = inventarioVehiculo.Vehiculo.Estado,
-                            NombreModelo = inventarioVehiculo.Vehiculo.NombreModelo,
-                            MarcaId = inventarioVehiculo.Vehiculo.MarcaID,
-                            NombreMarca = inventarioVehiculo.Vehiculo.Marca.Nombre,
-                            PaisOrigen = inventarioVehiculo.Vehiculo.Marca.PaisOrigen,
-                            ImagenId = inventarioVehiculo.Vehiculo.ImagenID,
-                            Descripcion = inventarioVehiculo.Vehiculo.Descripcion,
-                            DescripcionCorta = inventarioVehiculo.Vehiculo.DescripcionCorta,
-                            TipoVehiculoId = inventarioVehiculo.Vehiculo.TipoVehiculoID,
-                            NombreTipoVehiculo = inventarioVehiculo.Vehiculo.TipoVehiculo.Nombre,
-                            TipoCajaId = inventarioVehiculo.Vehiculo.TipoCajaID,
-                            NombreTipoCaja = inventarioVehiculo.Vehiculo.TipoCaja.Nombre
-                        }).ToList();
+                            {
+                                InventarioVehiculoId = inventarioVehiculo.InventarioVehiculoID, 
+                                VehiculoId = inventarioVehiculo.Vehiculo.VehiculoID, 
+                                CantidadDisponible = inventarioVehiculo.CantidadDisponible, 
+                                Precio = inventarioVehiculo.Precio, 
+                                Año = (DateTime)inventarioVehiculo.Año, 
+                                CantidadPuertas = inventarioVehiculo.Vehiculo.CantidadPuertas, 
+                                HabilitadoTestDrive = inventarioVehiculo.Vehiculo.HabilitadoTestDrive, 
+                                Estado = inventarioVehiculo.Vehiculo.Estado, 
+                                NombreModelo = inventarioVehiculo.Vehiculo.NombreModelo, 
+                                MarcaId = inventarioVehiculo.Vehiculo.MarcaID, 
+                                NombreMarca = inventarioVehiculo.Vehiculo.Marca.Nombre, 
+                                PaisOrigen = inventarioVehiculo.Vehiculo.Marca.PaisOrigen, 
+                                ImagenId = inventarioVehiculo.Vehiculo.ImagenID, 
+                                Descripcion = inventarioVehiculo.Vehiculo.Descripcion, 
+                                DescripcionCorta = inventarioVehiculo.Vehiculo.DescripcionCorta, 
+                                TipoVehiculoId = inventarioVehiculo.Vehiculo.TipoVehiculoID, 
+                                NombreTipoVehiculo = inventarioVehiculo.Vehiculo.TipoVehiculo.Nombre, 
+                                TipoCajaId = inventarioVehiculo.Vehiculo.TipoCajaID, 
+                                NombreTipoCaja = inventarioVehiculo.Vehiculo.TipoCaja.Nombre, 
+                                VisibleMain = inventarioVehiculo.VisibleMain
+                            }).ToList();
         }
     }
 }

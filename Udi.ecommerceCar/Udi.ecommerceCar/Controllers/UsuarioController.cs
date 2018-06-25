@@ -9,6 +9,7 @@ namespace Udi.ecommerceCar.Controllers
     using System;
     using System.Web.Mvc;
 
+    using Udi.ecommerceCar.Data.Domain.Entities;
     using Udi.ecommerceCar.Data.Domain.Services;
 
     /// <summary>
@@ -38,7 +39,27 @@ namespace Udi.ecommerceCar.Controllers
             return this.View();
         }
 
+        /// <summary>
+        /// The mis pedidos.
+        /// </summary>
+        /// <returns>
+        /// The <see>
+        ///         <cref>ActionResult</cref>
+        ///     </see>
+        ///     .
+        /// </returns>
         public ActionResult MisPedidos()
+        {
+            return this.View();
+        }
+
+        /// <summary>
+        /// The registro.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
+        public ActionResult Registro()
         {
             return this.View();
         }
@@ -90,12 +111,7 @@ namespace Udi.ecommerceCar.Controllers
             {
                 var data = this.usuarioServicio.ObtenerUsuario(pk);
 
-                if (data == null)
-                {
-                    return new JsonResult { Data = new { Success = false } };
-                }
-
-                return new JsonResult { Data = new { Success = true, Data = data } };
+                return data == null ? new JsonResult { Data = new { Success = false } } : new JsonResult { Data = new { Success = true, Data = data } };
             }
             catch (Exception ex)
             {
@@ -103,7 +119,68 @@ namespace Udi.ecommerceCar.Controllers
             }
         }
 
+        /// <summary>
+        /// The registrar usuario.
+        /// </summary>
+        /// <param name="usuarioString">
+        /// The usuario String.
+        /// </param>
+        /// <returns>
+        /// The <see cref="JsonResult"/>.
+        /// </returns>
+        public JsonResult RegistrarUsuario(string usuarioString)
+        {
+            try
+            {
+                UsuarioDto usuarioDto = ComunServicio.ObtenerDtoFromString<UsuarioDto>(usuarioString);
+                var data = this.usuarioServicio.RegistrarUsuario(usuarioDto);
 
+                if (data != null)
+                {
+                    return new JsonResult { Data = new { Success = true, Data = data } };
+                }
+                
+                return new JsonResult { Data = new { Success = false, Mensaje = "El Usuario ya existe. Por favor escoger otro nombre de usuario." } };
+            }
+            catch (Exception)
+            {
+                return new JsonResult { Data = new { Success = false, Mensaje = "error" } };
+            }
+        }
+
+        /// <summary>
+        /// The autorizar usuario.
+        /// </summary>
+        /// <param name="pk">
+        /// The pk.
+        /// </param>
+        /// <returns>
+        /// The <see cref="JsonResult"/>.
+        /// </returns>
+        public JsonResult AutorizarUsuario(int pk)
+        {
+            try
+            {
+                // UsuarioDto usuarioDto = ComunServicio.ObtenerDtoFromString<UsuarioDto>(usuarioString);
+                var autorizado = this.usuarioServicio.AutorizarUsuario(pk);
+
+                return new JsonResult { Data = new { Success = true, Autorizado = autorizado } };
+            }
+            catch (Exception)
+            {
+                return new JsonResult { Data = new { Success = false, Autorizado = false } };
+            }
+        }
+
+        /// <summary>
+        /// The obtener ventas productos usuario.
+        /// </summary>
+        /// <param name="pk">
+        /// The pk.
+        /// </param>
+        /// <returns>
+        /// The <see cref="JsonResult"/>.
+        /// </returns>
         public JsonResult ObtenerVentasProductosUsuario(int pk)
         {
             try

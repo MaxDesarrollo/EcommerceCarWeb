@@ -8,6 +8,7 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
 {
     using System;
     using System.Linq;
+    using System.Security.Policy;
 
     using Udi.ecommerceCar.Data.Domain.Entities;
     using Udi.ecommerceCar.Data.Infrastructure.Data.DataModels;
@@ -64,38 +65,96 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
         /// <returns>
         /// The <see cref="Usuario"/>.
         /// </returns>
-        public Usuario ObtenerUsuario(int pk)
+        public UsuarioDto ObtenerUsuario(int pk)
+        {
+            Usuario usuario = this.Get(pk);
+            UsuarioDto usuarioDto = 
+                new UsuarioDto()
+                    {
+                        UsuarioId = usuario.UsuarioID,
+                        Nombre = usuario.Nombre,
+                        Apellido = usuario.Apellido,
+                        Username = usuario.Username,
+                        Password = usuario.Password
+                    };
+
+            return usuarioDto;
+        }
+
+        /// <summary>
+        /// The registrar usuario.
+        /// </summary>
+        /// <param name="usuarioDto">
+        /// The usuario Dto.
+        /// </param>
+        /// <returns>
+        /// The <see cref="UsuarioDto"/>.
+        /// </returns>
+        public UsuarioDto RegistrarUsuario(UsuarioDto usuarioDto)
+        {
+            Usuario newUsuario = new Usuario()
+            {
+                Nombre = usuarioDto.Nombre,
+                Apellido = usuarioDto.Apellido,
+                Username = usuarioDto.Username,
+                Password = usuarioDto.Password
+            };
+
+            this.Add(newUsuario);
+            this.SaveChanges();
+
+            return usuarioDto;
+        }
+
+        /// <summary>
+        /// The obtener usuario por username.
+        /// </summary>
+        /// <param name="username">
+        /// The username.
+        /// </param>
+        /// <returns>
+        /// The <see cref="UsuarioDto"/>.
+        /// </returns>
+        public UsuarioDto ObtenerUsuarioPorUsername(string username)
         {
             try
             {
-                Usuario usuario = this.Get(pk);
+                UsuarioDto usuarioDto =
+                this.BuildQuery()
+                    .Where(x => x.Username == username)
+                    .Select(
+                        usuario =>
+                        new UsuarioDto()
+                        {
+                            UsuarioId = usuario.UsuarioID,
+                            Nombre = usuario.Nombre,
+                            Apellido = usuario.Apellido,
+                            Username = usuario.Username,
+                            Password = usuario.Password
+                        })
+                    .First();
 
-                return usuario;
-
-                // return BuildQuery().Where(x => x == pk).Select(inventarioVehiculo => new Usuario()
-                // {
-                // VehiculoID = inventarioVehiculo.Vehiculo.VehiculoID,
-                // CantidadDisponible = inventarioVehiculo.CantidadDisponible,
-                // Precio = inventarioVehiculo.Precio,
-                // Año = (DateTime)inventarioVehiculo.Año,
-                // //ModeloID = (int)vehiculo.ModeloID,
-                // CantidadPuertas = inventarioVehiculo.Vehiculo.CantidadPuertas,
-                // HabilitadoTestDrive = inventarioVehiculo.Vehiculo.HabilitadoTestDrive,
-                // Estado = inventarioVehiculo.Vehiculo.Estado,
-                // NombreModelo = inventarioVehiculo.Vehiculo.NombreModelo,
-                // MarcaID = inventarioVehiculo.Vehiculo.MarcaID,
-                // NombreMarca = inventarioVehiculo.Vehiculo.Marca.Nombre,
-                // PaisOrigen = inventarioVehiculo.Vehiculo.Marca.PaisOrigen,
-                // TipoVehiculoID = inventarioVehiculo.Vehiculo.TipoVehiculoID,
-                // NombreTipoVehiculo = inventarioVehiculo.Vehiculo.TipoVehiculo.Nombre,
-                // TipoCajaID = inventarioVehiculo.Vehiculo.TipoCajaID,
-                // NombreTipoCaja = inventarioVehiculo.Vehiculo.TipoCaja.Nombre
-                // }).First();
+                return usuarioDto;
             }
             catch (Exception)
             {
                 return null;
             }
+        }
+
+        /// <summary>
+        /// The autorizar usuario.
+        /// </summary>
+        /// <param name="pk">
+        /// The pk.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
+        public bool AutorizarUsuario(int pk)
+        {
+            Usuario usuario = this.Get(pk);
+            return usuario.Username == "Raiden";
         }
     }
 }

@@ -165,6 +165,18 @@ namespace Udi.ecommerceCar.Controllers
             }
         }
 
+        /// <summary>
+        /// The marcar principal vehiculo.
+        /// </summary>
+        /// <param name="id">
+        /// The id.
+        /// </param>
+        /// <returns>
+        /// The <see>
+        ///         <cref>JsonResult</cref>
+        ///     </see>
+        ///     .
+        /// </returns>
         public JsonResult MarcarPrincipalVehiculo(int id)
         {
             try
@@ -183,6 +195,12 @@ namespace Udi.ecommerceCar.Controllers
             }
         }
 
+        /// <summary>
+        /// The obtener vehiculos principales.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="JsonResult"/>.
+        /// </returns>
         public JsonResult ObtenerVehiculosPrincipales()
         {
             var data = this.vehiculoServicio.ObtenerVehiculosPrincipales();
