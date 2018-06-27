@@ -17,6 +17,8 @@ var cartSubtotal = document.getElementById("cartSubtotal"),
 
 var btnSolicitarPedido = document.getElementById("btnSolicitarPedido");
 
+var solicitandoPedido = false;
+
 //var subtotal = 0;
 
 /*#region 2. FUNCIONES */
@@ -101,6 +103,10 @@ function selectOnChangeQuantity(ev) {
             addToCart("producto", resultado.Data.ProductoId, resultado.Data.Nombre, quantity, resultado.Data.Precio, resultado.Data.TipoProducto);
 
             ev.target.setAttribute("data-current-quantity", newQuantity);
+            var precioText = ev.target.parentElement.parentElement.getElementsByClassName("cart-item-price")[0];
+            if (precioText) {
+                precioText.innerText = "Bs. " + (newQuantity * resultado.Data.Precio).toFixed(2);
+            }
             refreshValuesCart();
         }
     });
@@ -138,9 +144,16 @@ function metodoSolicitarPedidoProductoExitoso(res) {
     } else {
         toastr.error("Ocurrió un error mientras se realizaba el pedido. Por favor, intente nuevamente");
     }
+
+    solicitandoPedido = false;
 }
 
 function solicitarPedidoProducto(idUsuario, listaProductos) {
+    if (solicitandoPedido) {
+        return;
+    }
+    solicitandoPedido = true;
+
     var url = "/Producto/SolicitarPedidoProducto";
     var tipo = "POST";
     var datos = {

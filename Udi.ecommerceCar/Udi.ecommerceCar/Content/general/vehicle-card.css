@@ -12,6 +12,7 @@
 .vehicle-card-container {
 	display: flex;
 	justify-content: space-between;
+    flex-wrap: wrap;
 
 	overflow: hidden;
 	max-width: 90vw;

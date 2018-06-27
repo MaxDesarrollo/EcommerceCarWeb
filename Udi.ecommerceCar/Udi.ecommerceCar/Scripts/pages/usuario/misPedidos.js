@@ -1,8 +1,45 @@
 ﻿
-//function parseJsonDate(jsonDateString) {
-//    var date = new Date(parseInt(jsonDateString.replace('/Date(', '')));
-//    return `${date.getDay().toString().padStart(2, "0")}/${date.getMonth().toString().padStart(2, "0")}/${date.getFullYear()}`;
-//}
+var solicitando = false;
+var fila;
+
+function cancelarPedidoPorClienteExitoso(res) {
+    if (res.Success) {
+        toastr.success("Pedido cancelado correctamente.");
+        fila.innerHTML = "<div class='fila-mensaje'>Pedido cancelado satisfactoriamente.</div>";
+        fila = null;
+    } else {
+        toastr.error("Ocurrió un problema al querer cancelar su pedido. Por favor intente nuevamente");
+    }
+
+    solicitando = false;
+}
+
+function cancelarPedidoPorCliente(id) {
+    if (solicitando) {
+        return;
+    }
+    solicitando = true;
+
+    var tipo = "POST";
+    var url = "/VentaProducto/CancelarPedidoPorCliente";
+    var datos = {
+        ventaProductoId: id
+    };
+
+    var tipoDatos = "JSON";
+    solicitudAjax(url, cancelarPedidoPorClienteExitoso, datos, tipoDatos, tipo);
+}
+
+function activateCancelarPedidoCliente() {
+    var botonesCancelarPedidoCliente = document.getElementsByClassName("btn-cancelar-pedido");
+    for (var i = 0; i < botonesCancelarPedidoCliente.length; i++) {
+        botonesCancelarPedidoCliente[i].addEventListener("click", function () {
+            var id = this.dataset.ventaId;
+            cancelarPedidoPorCliente(id);
+            fila = this.parentElement.parentElement;
+        });
+    }
+}
 
 function obtenerMisPedidosExitoso(res) {
     if (res.Success) {
@@ -11,6 +48,11 @@ function obtenerMisPedidosExitoso(res) {
         tablaDatosContainer.innerHTML = "";
 
         for (var i = 0; i < datos.length; i++) {
+            var btnCancelarPedido = "";
+            if (datos[i].EstadoString == "Pendiente") {
+                btnCancelarPedido = `<button class="link-span boton boton-rojo btn-cancelar-pedido" data-venta-id="${datos[i].VentaId}">Cancelar</button>`;
+            }
+
             var row =
                 `<div class="fila">
 			        <div class="celda celda-1">${datos[i].VentaId}</div>
@@ -20,9 +62,11 @@ function obtenerMisPedidosExitoso(res) {
                     <div class="celda celda-1">${datos[i].EstadoString}</div>
 
 			        <div class="celda celda-2 fila-una-linea">
-                        <button class="link-span boton boton-azul hidden" data-page="detalles-ventas-productos" data-parameters="${datos[i].VentaId}">
-                            <a href="/VentaProducto/Detalle/${datos[i].VentaId}">Ver Detalle</a>
+                        <button class="link-span boton boton-azul" data-page="detalles-ventas-productos" data-parameters="${datos[i].VentaId}">
+                            <a href="/VentaProducto/DetallePedido/${datos[i].VentaId}">Ver Detalle</a>
                         </button>
+
+                        ${btnCancelarPedido}
 			        </div>
 		        </div>`;
 
@@ -35,6 +79,7 @@ function obtenerMisPedidosExitoso(res) {
         //refreshLinkSpanList();
 
         //activateVentaProductoEstadoSelect();
+        activateCancelarPedidoCliente();
     }
 }
 

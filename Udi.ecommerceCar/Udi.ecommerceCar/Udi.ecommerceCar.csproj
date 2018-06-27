@@ -272,8 +272,18 @@
     <Content Include="Images\Slider\slider-two-background-02.jpg" />
     <Content Include="Images\Slider\slider-two-background.jpg" />
     <Content Include="Images\TestDrive\test-drive-01.jpg" />
+    <Content Include="Images\Vehiculos\A1.png" />
+    <Content Include="Images\Vehiculos\A5.png" />
+    <Content Include="Images\Vehiculos\A8.png" />
     <Content Include="Images\Vehiculos\ASX.png" />
+    <Content Include="Images\Vehiculos\Edge.png" />
+    <Content Include="Images\Vehiculos\Ka.png" />
+    <Content Include="Images\Vehiculos\Kuga.png" />
     <Content Include="Images\Vehiculos\Pathfinder.png" />
+    <Content Include="Images\Vehiculos\Q2.PNG" />
+    <Content Include="Images\Vehiculos\R8.png" />
+    <Content Include="Images\Vehiculos\Ranger.png" />
+    <Content Include="Images\Vehiculos\S-Max.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -352,6 +362,7 @@
     <Content Include="Views\VentaProducto\Detalle.cshtml" />
     <Content Include="Views\Usuario\MisPedidos.cshtml" />
     <Content Include="Views\Usuario\Registro.cshtml" />
+    <Content Include="Views\VentaProducto\DetallePedido.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

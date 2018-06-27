@@ -32,31 +32,24 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
         /// <returns>
         /// The <see cref="string"/>.
         /// </returns>
-        public string CambiarEstadoVentaProducto(int ventaProductoId, int nuevoEstado)
+        public VentaProductoDto CambiarEstadoVentaProducto(int ventaProductoId, int nuevoEstado)
         {
-            try
-            {
-                VentaProducto ventaProducto = this.Get(ventaProductoId);
-                ventaProducto.Estado = nuevoEstado;
+            VentaProducto ventaProducto = this.Get(ventaProductoId);
+            ventaProducto.Estado = nuevoEstado;
 
-                this.Update(ventaProducto);
-                this.SaveChanges();
+            this.Update(ventaProducto);
+            this.SaveChanges();
 
-                VentaProductoDto ventaProductoDto = new VentaProductoDto();
-                ventaProductoDto.VentaId = ventaProducto.VentaID;
-                ventaProductoDto.Monto = ventaProducto.Monto;
-                ventaProductoDto.Fecha = ventaProducto.Fecha;
-                ventaProductoDto.Hora = ventaProducto.Hora;
-                ventaProductoDto.UsuarioId = ventaProducto.UsuarioID;
-                ventaProductoDto.Estado = ventaProducto.Estado;
-                ventaProductoDto.EstadoString = ((VentaEstado)ventaProducto.Estado).ToString();
+            VentaProductoDto ventaProductoDto = new VentaProductoDto();
+            ventaProductoDto.VentaId = ventaProducto.VentaID;
+            ventaProductoDto.Monto = ventaProducto.Monto;
+            ventaProductoDto.Fecha = ventaProducto.Fecha;
+            ventaProductoDto.Hora = ventaProducto.Hora;
+            ventaProductoDto.UsuarioId = ventaProducto.UsuarioID;
+            ventaProductoDto.Estado = ventaProducto.Estado;
+            ventaProductoDto.EstadoString = ((VentaEstado)ventaProducto.Estado).ToString();
 
-                return Utilidades.ObtenerSelectVentaProductoEstado(ventaProductoDto);
-            }
-            catch (Exception)
-            {
-                return string.Empty;
-            }
+            return ventaProductoDto;
         }
 
         /// <summary>
@@ -169,6 +162,8 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                         x =>
                         x.Estado != (int)VentaEstado.CanceladoPorAdministrador
                         && x.Estado != (int)VentaEstado.CanceladoPorCliente)
+                    .OrderBy(x => x.Estado)
+                    .ThenByDescending(x => x.Fecha)
                     .Select(
                         ventaProducto =>
                         new VentaProductoDto()
@@ -207,6 +202,8 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                         x.UsuarioID == pk
                         && x.Estado != (int)VentaEstado.CanceladoPorAdministrador
                         && x.Estado != (int)VentaEstado.CanceladoPorCliente)
+                    .OrderBy(x => x.Estado)
+                    .ThenByDescending(x => x.Fecha)
                     .Select(
                         ventaProducto =>
                         new VentaProductoDto()

@@ -8,6 +8,7 @@ namespace Udi.ecommerceCar.Data.Domain.Services
     using System.Collections.Generic;
 
     using Udi.ecommerceCar.Data.Domain.Entities;
+    using Udi.ecommerceCar.Data.Enum;
     using Udi.ecommerceCar.Data.Infrastructure.Data.Repositories;
 
     /// <summary>
@@ -42,7 +43,23 @@ namespace Udi.ecommerceCar.Data.Domain.Services
         /// </returns>
         public string CambiarEstadoVentaProducto(int ventaProductoId, int nuevoEstado)
         {
-            return this.ventaProductoRepositorio.CambiarEstadoVentaProducto(ventaProductoId, nuevoEstado);
+            VentaProductoDto ventaProductoDto = this.ventaProductoRepositorio.CambiarEstadoVentaProducto(ventaProductoId, nuevoEstado);
+            return Utilidades.ObtenerSelectVentaProductoEstado(ventaProductoDto);
+        }
+
+        /// <summary>
+        /// The cancelar pedido por cliente.
+        /// </summary>
+        /// <param name="ventaProductoId">
+        /// The venta producto id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
+        public bool CancelarPedidoPorCliente(int ventaProductoId)
+        {
+            VentaProductoDto ventaProductoDto = this.ventaProductoRepositorio.CambiarEstadoVentaProducto(ventaProductoId, (int)VentaEstado.CanceladoPorCliente);
+            return ventaProductoDto != null;
         }
 
         /// <summary>
