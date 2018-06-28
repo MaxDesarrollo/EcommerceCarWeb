@@ -17,7 +17,7 @@ var size = 20;
 function getServiceCardHtml(id, nombre, urlImagen) {
     var serviceCardHtml =
         `<div class="service-card">
-            <img src="Images/Servicios/${nombre}.jpg" alt="${nombre}" />
+            <a href="/Servicio/Detalle/${id}"><img src="/Images/Servicios/${nombre}.jpg" alt="${nombre}" /></a>
 
             <div class="service-card-description">
                 <a href="Servicio/Detalle/${id}">${nombre}</a>
