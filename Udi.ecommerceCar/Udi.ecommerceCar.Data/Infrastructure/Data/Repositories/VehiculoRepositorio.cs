@@ -83,7 +83,8 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                                 {
                                     InventarioVehiculoId = inventarioVehiculo.InventarioVehiculoID, 
                                     VehiculoId = inventarioVehiculo.Vehiculo.VehiculoID, 
-                                    CantidadDisponible = inventarioVehiculo.CantidadDisponible, 
+                                    CantidadDisponible = inventarioVehiculo.CantidadDisponible,
+                                    Color = inventarioVehiculo.Color,
                                     Precio = inventarioVehiculo.Precio, 
                                     Año = (DateTime)inventarioVehiculo.Año, 
 
@@ -134,7 +135,8 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                             {
                                 InventarioVehiculoId = inventarioVehiculo.InventarioVehiculoID, 
                                 VehiculoId = inventarioVehiculo.Vehiculo.VehiculoID, 
-                                CantidadDisponible = inventarioVehiculo.CantidadDisponible, 
+                                CantidadDisponible = inventarioVehiculo.CantidadDisponible,
+                                Color = inventarioVehiculo.Color,
                                 Precio = inventarioVehiculo.Precio, 
                                 Año = (DateTime)inventarioVehiculo.Año, 
 
@@ -199,8 +201,8 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                                 VehiculoId = inventarioVehiculo.Vehiculo.VehiculoID, 
                                 CantidadDisponible = inventarioVehiculo.CantidadDisponible, 
                                 Precio = inventarioVehiculo.Precio, 
-                                Año = (DateTime)inventarioVehiculo.Año, 
-
+                                Año = (DateTime)inventarioVehiculo.Año,
+                                Color = inventarioVehiculo.Color,
                                 // ModeloID = (int)vehiculo.ModeloID,
                                 CantidadPuertas = inventarioVehiculo.Vehiculo.CantidadPuertas, 
                                 HabilitadoTestDrive = inventarioVehiculo.Vehiculo.HabilitadoTestDrive, 
@@ -238,7 +240,8 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                             {
                                 InventarioVehiculoId = inventarioVehiculo.InventarioVehiculoID, 
                                 VehiculoId = inventarioVehiculo.Vehiculo.VehiculoID, 
-                                CantidadDisponible = inventarioVehiculo.CantidadDisponible, 
+                                CantidadDisponible = inventarioVehiculo.CantidadDisponible,
+                                Color = inventarioVehiculo.Color,
                                 Precio = inventarioVehiculo.Precio, 
                                 Año = (DateTime)inventarioVehiculo.Año, 
                                 CantidadPuertas = inventarioVehiculo.Vehiculo.CantidadPuertas, 

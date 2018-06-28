@@ -52,7 +52,7 @@ function getVehicleCardHtml(nombre, urlImagen, activado) {
     return vehicleCardHtml;
 }
 
-function getVehiclePresentationHtml(id, nombre, urlImagen) {
+function getVehiclePresentationHtml(id, nombre, urlImagen, color) {
     var vehicleCardHtml =
         `<div class ="vehicle-presentation">
 			<div class ="vehicle-card-image">
@@ -61,7 +61,7 @@ function getVehiclePresentationHtml(id, nombre, urlImagen) {
 
 			<div class ="vehicle-card-header">
 				<span class ="vehicle-presentation-title">
-                    <a href="/Vehiculo/Detalle/${id}">${nombre}</a>
+                    <a href="/Vehiculo/Detalle/${id}">${nombre} (${color})</a>
                 </span>
 			</div>
 		</div>
@@ -120,7 +120,7 @@ function mostrarDatosVehiculos() {
 
     var listaVehicleCardHtml = '';
     _datosVehiculos.forEach(function (vehiculo) {
-        listaVehicleCardHtml += getVehiclePresentationHtml(vehiculo.VehiculoId, vehiculo.NombreModelo, vehiculo.NombreModelo);
+        listaVehicleCardHtml += getVehiclePresentationHtml(vehiculo.VehiculoId, vehiculo.NombreModelo, vehiculo.NombreModelo, vehiculo.Color);
     });
 
     $("#vehiculos .vehicle-card-container").html(listaVehicleCardHtml);
