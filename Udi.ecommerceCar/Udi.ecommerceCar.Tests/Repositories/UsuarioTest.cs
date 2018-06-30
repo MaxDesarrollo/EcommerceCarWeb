@@ -12,6 +12,7 @@ namespace Udi.ecommerceCar.Tests.Repositories
 
     using Udi.ecommerceCar.Controllers;
     using Udi.ecommerceCar.Data.Domain.Entities;
+    using Udi.ecommerceCar.Data.Domain.Services;
 
     /// <summary>
     /// Descripción resumida de UsuarioTest
@@ -23,6 +24,16 @@ namespace Udi.ecommerceCar.Tests.Repositories
         /// The _usuario controller.
         /// </summary>
         private readonly UsuarioController usuarioController = new UsuarioController();
+
+        /// <summary>
+        /// The usuario servicio.
+        /// </summary>
+        private readonly UsuarioServicio usuarioServicio = new UsuarioServicio();
+
+        /// <summary>
+        /// The id usuario administrador.
+        /// </summary>
+        private readonly int idUsuarioAdministrador = 1;
 
         /// <summary>
         /// The iniciar sesion exitoso.
@@ -72,12 +83,37 @@ namespace Udi.ecommerceCar.Tests.Repositories
         [TestMethod]
         public void ObtenerUsuario()
         {
-            var usuario = this.usuarioController.ObtenerUsuario(1);
+            var usuario = this.usuarioController.ObtenerUsuario(this.idUsuarioAdministrador);
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             Result<UsuarioDto> resultado = serializer.Deserialize<Result<UsuarioDto>>(
                 serializer.Serialize(usuario.Data));
 
             Assert.AreEqual(true, resultado.Success);
+        }
+
+        /// <summary>
+        /// The autorizar usuario.
+        /// </summary>
+        [TestMethod]
+        public void AutorizarUsuario()
+        {
+            var autorizado = this.usuarioController.AutorizarUsuario(this.idUsuarioAdministrador);
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            Result<UsuarioDto> resultado = serializer.Deserialize<Result<UsuarioDto>>(
+                serializer.Serialize(autorizado.Data));
+
+            Assert.AreEqual(true, resultado.Success);
+        }
+
+        /// <summary>
+        /// The obtener usuario por username.
+        /// </summary>
+        [TestMethod]
+        public void ObtenerUsuarioPorUsername()
+        {
+            var usuario = this.usuarioServicio.ObtenerUsuarioPorUsername("Raiden");
+            Assert.AreEqual("Raiden", usuario.Nombre);
+            Assert.AreEqual("Makio", usuario.Apellido);
         }
     }
 }

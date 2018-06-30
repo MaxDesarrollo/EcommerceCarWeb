@@ -6,8 +6,13 @@
 
 namespace Udi.ecommerceCar.Tests.Repositories
 {
+    using System.Collections.Generic;
+    using System.Web.Script.Serialization;
+
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    using Udi.ecommerceCar.Controllers;
+    using Udi.ecommerceCar.Data.Domain.Entities;
     using Udi.ecommerceCar.Data.Domain.Services;
 
     /// <summary>
@@ -16,12 +21,30 @@ namespace Udi.ecommerceCar.Tests.Repositories
     [TestClass]
     public class ServicioTest
     {
-        /// <summary>
-        /// The servicio servicio.
-        /// </summary>
-        private readonly ServicioServicio servicioServicio = new ServicioServicio();
+        ///// <summary>
+        ///// The servicio servicio.
+        ///// </summary>
+        // private readonly ServicioServicio servicioServicio = new ServicioServicio();
 
-        //// readonly ServicioController _servicioController = new ServicioController();
+        /// <summary>
+        /// The _servicio controller.
+        /// </summary>
+        private readonly ServicioController servicioController = new ServicioController();
+
+        /// <summary>
+        /// The serializer.
+        /// </summary>
+        private readonly JavaScriptSerializer serializer = new JavaScriptSerializer();
+
+        /// <summary>
+        /// The id servicio no existente.
+        /// </summary>
+        private readonly int idServicioNoExistente = 10000;
+
+        /// <summary>
+        /// The id servicio existente.
+        /// </summary>
+        private readonly int idServicioExistente = 2;
 
         /// <summary>
         /// The obtener servicio existe test.
@@ -29,14 +52,10 @@ namespace Udi.ecommerceCar.Tests.Repositories
         [TestMethod]
         public void ObtenerServicioExisteTest()
         {
-            var servicio = this.servicioServicio.ObtenerServicio(2);
-            Assert.IsNotNull(servicio);
+            var servicio = this.servicioController.ObtenerServicio(this.idServicioExistente);
+            Result<ServicioDto> resultado = this.serializer.Deserialize<Result<ServicioDto>>(this.serializer.Serialize(servicio.Data));
 
-            // var servicio = _servicioController.ObtenerServicio(2);
-            // JavaScriptSerializer serializer = new JavaScriptSerializer();
-            // Result resultado = serializer.Deserialize<Result>(serializer.Serialize(servicio.Data));
-
-            // Assert.AreEqual(true, resultado.Success);
+            Assert.AreEqual(true, resultado.Success);
         }
 
         /// <summary>
@@ -45,14 +64,10 @@ namespace Udi.ecommerceCar.Tests.Repositories
         [TestMethod]
         public void ObtenerServicioNoExisteTest()
         {
-            var servicio = this.servicioServicio.ObtenerServicio(10);
-            Assert.IsNull(servicio);
+            var servicio = this.servicioController.ObtenerServicio(this.idServicioNoExistente);
+            Result<ServicioDto> resultado = this.serializer.Deserialize<Result<ServicioDto>>(this.serializer.Serialize(servicio.Data));
 
-            // var servicio = _servicioController.ObtenerServicio(-1);
-            // JavaScriptSerializer serializer = new JavaScriptSerializer();
-            // Result resultado = serializer.Deserialize<Result>(serializer.Serialize(servicio.Data));
-
-            // Assert.AreEqual(false, resultado.Success);
+            Assert.AreEqual(false, resultado.Success);
         }
 
         /// <summary>
@@ -61,30 +76,22 @@ namespace Udi.ecommerceCar.Tests.Repositories
         [TestMethod]
         public void ObtenerServiciosExisteTest()
         {
-            var servicios = this.servicioServicio.ObtenerServicios(0, 10);
-            Assert.IsNotNull(servicios);
+            var servicios = this.servicioController.ObtenerServicios(0, 10);
+            Result<List<ServicioDto>> resultado = this.serializer.Deserialize<Result<List<ServicioDto>>>(this.serializer.Serialize(servicios.Data));
 
-            // var servicios = _servicioController.ObtenerServicios(0, 10);
-            // JavaScriptSerializer serializer = new JavaScriptSerializer();
-            // Result resultado = serializer.Deserialize<Result>(serializer.Serialize(servicios.Data));
-
-            // Assert.AreEqual(true, resultado.Success);
+            Assert.AreEqual(true, resultado.Success);
         }
 
         /// <summary>
-        /// The obtener servicios sin parámetros existe test.
+        /// The obtener servicios sin parametros existe test.
         /// </summary>
         [TestMethod]
         public void ObtenerServiciosSinParametrosExisteTest()
         {
-            var servicios = this.servicioServicio.ObtenerServicios(null, null);
-            Assert.IsNotNull(servicios);
+            var servicios = this.servicioController.ObtenerServicios(null, null);
+            Result<List<ServicioDto>> resultado = this.serializer.Deserialize<Result<List<ServicioDto>>>(this.serializer.Serialize(servicios.Data));
 
-            // var servicios = _servicioController.ObtenerServicios(0, 10);
-            // JavaScriptSerializer serializer = new JavaScriptSerializer();
-            // Result resultado = serializer.Deserialize<Result>(serializer.Serialize(servicios.Data));
-
-            // Assert.AreEqual(true, resultado.Success);
+            Assert.AreEqual(true, resultado.Success);
         }
 
         /// <summary>
@@ -93,14 +100,44 @@ namespace Udi.ecommerceCar.Tests.Repositories
         [TestMethod]
         public void ObtenerServiciosTodosExisteTest()
         {
-            var servicios = this.servicioServicio.ObtenerServiciosTodos();
-            Assert.IsNotNull(servicios);
+            var servicios = this.servicioController.ObtenerServiciosTodos();
+            Result<List<ServicioDto>> resultado = this.serializer.Deserialize<Result<List<ServicioDto>>>(this.serializer.Serialize(servicios.Data));
 
-            // var servicios = _servicioController.ObtenerServiciosTodos();
-            // JavaScriptSerializer serializer = new JavaScriptSerializer();
-            // Result resultado = serializer.Deserialize<Result>(serializer.Serialize(servicios.Data));
+            Assert.AreEqual(true, resultado.Success);
+        }
 
-            // Assert.AreEqual(true, resultado.Success);
+        /// <summary>
+        /// The marcar principal producto exitoso.
+        /// </summary>
+        [TestMethod]
+        public void MarcarPrincipalServicioExitoso()
+        {
+            var producto = this.servicioController.MarcarPrincipalServicio(this.idServicioExistente);
+            Result<List<ProductoDto>> result = this.serializer.Deserialize<Result<List<ProductoDto>>>(this.serializer.Serialize(producto.Data));
+
+            var producto2 = this.servicioController.MarcarPrincipalServicio(this.idServicioExistente);
+            Result<List<ProductoDto>> result2 = this.serializer.Deserialize<Result<List<ProductoDto>>>(this.serializer.Serialize(producto2.Data));
+
+            Assert.IsTrue(result.Success);
+            Assert.IsNotNull(result.Mensaje);
+
+            Assert.IsTrue(result2.Success);
+            Assert.IsNotNull(result2.Mensaje);
+
+            Assert.AreNotEqual(result.Mensaje, result2.Mensaje);
+        }
+
+        /// <summary>
+        /// The obtener productos principales.
+        /// </summary>
+        [TestMethod]
+        public void ObtenerProductosPrincipales()
+        {
+            var serviciosPrincipales = this.servicioController.ObtenerServiciosPrincipales();
+            Result<List<ServicioDto>> resultado = this.serializer.Deserialize<Result<List<ServicioDto>>>(this.serializer.Serialize(serviciosPrincipales.Data));
+
+            Assert.AreEqual(true, resultado.Success);
+            Assert.IsNotNull(resultado.Data);
         }
     }
 }

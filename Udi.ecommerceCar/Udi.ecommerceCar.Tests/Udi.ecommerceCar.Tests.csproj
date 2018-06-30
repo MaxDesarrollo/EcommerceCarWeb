@@ -99,6 +99,7 @@
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="Controllers\HomeControllerTest.cs" />
+    <Compile Include="Repositories\DetalleVentaProductoTest.cs" />
     <Compile Include="Repositories\ProductoTest.cs" />
     <Compile Include="Repositories\ServicioTest.cs" />
     <Compile Include="Repositories\TipoProductoTest.cs" />

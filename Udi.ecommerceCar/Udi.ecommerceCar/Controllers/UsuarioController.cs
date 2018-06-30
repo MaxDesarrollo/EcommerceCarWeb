@@ -9,6 +9,7 @@ namespace Udi.ecommerceCar.Controllers
     using System;
     using System.Web.Mvc;
 
+    using Udi.ecommerceCar.Data.Domain;
     using Udi.ecommerceCar.Data.Domain.Entities;
     using Udi.ecommerceCar.Data.Domain.Services;
 
@@ -90,7 +91,7 @@ namespace Udi.ecommerceCar.Controllers
                 // Session["usuario"] = data;
                 return new JsonResult { Data = new { Success = true, Data = data } };
             }
-            catch (Exception ex)
+            catch (ExcepcionComercio ex)
             {
                 return new JsonResult { Data = new { Success = false, Mensaje = ex.Message } };
             }
@@ -113,7 +114,7 @@ namespace Udi.ecommerceCar.Controllers
 
                 return data == null ? new JsonResult { Data = new { Success = false } } : new JsonResult { Data = new { Success = true, Data = data } };
             }
-            catch (Exception ex)
+            catch (ExcepcionComercio ex)
             {
                 return new JsonResult { Data = new { Success = false, Mensaje = ex.Message } };
             }
@@ -142,7 +143,7 @@ namespace Udi.ecommerceCar.Controllers
                 
                 return new JsonResult { Data = new { Success = false, Mensaje = "El Usuario ya existe. Por favor escoger otro nombre de usuario." } };
             }
-            catch (Exception)
+            catch (ExcepcionComercio)
             {
                 return new JsonResult { Data = new { Success = false, Mensaje = "error" } };
             }
@@ -166,7 +167,7 @@ namespace Udi.ecommerceCar.Controllers
 
                 return new JsonResult { Data = new { Success = true, Autorizado = autorizado } };
             }
-            catch (Exception)
+            catch (ExcepcionComercio)
             {
                 return new JsonResult { Data = new { Success = false, Autorizado = false } };
             }
@@ -195,7 +196,7 @@ namespace Udi.ecommerceCar.Controllers
 
                 return new JsonResult { Data = new { Success = true, Data = data } };
             }
-            catch (Exception ex)
+            catch (ExcepcionComercio ex)
             {
                 return new JsonResult { Data = new { Success = false, Mensaje = ex.Message } };
             }

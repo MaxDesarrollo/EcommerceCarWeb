@@ -30,6 +30,8 @@ namespace Udi.ecommerceCar.Tests.Controllers
             // Act
             ViewResult result = controller.About() as ViewResult;
 
+            controller.Dispose();
+
             // Assert
             if (result != null)
             {
@@ -49,6 +51,8 @@ namespace Udi.ecommerceCar.Tests.Controllers
             // Act
             ViewResult result = controller.Contact() as ViewResult;
 
+            controller.Dispose();
+
             // Assert
             Assert.IsNotNull(result);
         }
@@ -65,6 +69,8 @@ namespace Udi.ecommerceCar.Tests.Controllers
             // Act
             ViewResult result = controller.Index() as ViewResult;
 
+
+            controller.Dispose();
             // Assert
             Assert.IsNotNull(result);
         }

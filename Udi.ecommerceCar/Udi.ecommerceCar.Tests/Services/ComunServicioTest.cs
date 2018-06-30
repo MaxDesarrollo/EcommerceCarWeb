@@ -10,6 +10,7 @@ namespace Udi.ecommerceCar.Tests.Services
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    using Udi.ecommerceCar.Data.Domain;
     using Udi.ecommerceCar.Data.Domain.Entities;
     using Udi.ecommerceCar.Data.Domain.Services;
 
@@ -29,9 +30,9 @@ namespace Udi.ecommerceCar.Tests.Services
 
             try
             {
-                var usuario = ComunServicio.ObtenerDtoFromString<ProductoDto>(null);
+                ComunServicio.ObtenerDtoFromString<ProductoDto>(null);
             }
-            catch (Exception ex)
+            catch (ExcepcionComercio ex)
             {
                 exception = ex;
             }

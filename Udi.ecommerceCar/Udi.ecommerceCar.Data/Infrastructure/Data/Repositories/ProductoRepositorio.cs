@@ -10,6 +10,7 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
     using System.Collections.Generic;
     using System.Linq;
 
+    using Udi.ecommerceCar.Data.Domain;
     using Udi.ecommerceCar.Data.Domain.Entities;
     using Udi.ecommerceCar.Data.Infrastructure.Data.DataModels;
 
@@ -85,7 +86,7 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                                 })
                         .First();
             }
-            catch (Exception)
+            catch (ExcepcionComercio)
             {
                 return null;
             }

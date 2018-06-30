@@ -10,6 +10,7 @@
 namespace Udi.ecommerceCar.Tests.Repositories
 {
     using System.Collections.Generic;
+    using System.Runtime.InteropServices;
     using System.Web.Mvc;
     using System.Web.Script.Serialization;
 
@@ -61,6 +62,8 @@ namespace Udi.ecommerceCar.Tests.Repositories
             // Act
             ViewResult result = controller.Index() as ViewResult;
 
+            controller.Dispose();
+
             // Assert
             Assert.IsNotNull(result);
         }
@@ -77,6 +80,8 @@ namespace Udi.ecommerceCar.Tests.Repositories
             // Act
             ViewResult result = controller.Detalle(this.idProductoExistente) as ViewResult;
 
+            controller.Dispose();
+
             // Assert
             Assert.IsNotNull(result);
         }
@@ -92,6 +97,8 @@ namespace Udi.ecommerceCar.Tests.Repositories
 
             // Act
             ViewResult result = controller.Detalle(this.idProductoNoExistente) as ViewResult;
+
+            controller.Dispose();
 
             // Assert
             Assert.IsNotNull(result);

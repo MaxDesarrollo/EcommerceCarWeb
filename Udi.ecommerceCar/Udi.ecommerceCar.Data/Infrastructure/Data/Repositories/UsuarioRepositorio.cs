@@ -10,6 +10,7 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
     using System.Linq;
     using System.Security.Policy;
 
+    using Udi.ecommerceCar.Data.Domain;
     using Udi.ecommerceCar.Data.Domain.Entities;
     using Udi.ecommerceCar.Data.Infrastructure.Data.DataModels;
 
@@ -50,7 +51,7 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                                 })
                         .First(x => x.Username == username && x.Password == password);
             }
-            catch (Exception)
+            catch (ExcepcionComercio)
             {
                 return null;
             }
@@ -136,7 +137,7 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
 
                 return usuarioDto;
             }
-            catch (Exception)
+            catch (ExcepcionComercio)
             {
                 return null;
             }

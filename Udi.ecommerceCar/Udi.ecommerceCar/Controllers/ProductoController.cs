@@ -7,8 +7,10 @@ namespace Udi.ecommerceCar.Controllers
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Web.Mvc;
 
+    using Udi.ecommerceCar.Data.Domain;
     using Udi.ecommerceCar.Data.Domain.Entities;
     using Udi.ecommerceCar.Data.Domain.Services;
 
@@ -51,14 +53,14 @@ namespace Udi.ecommerceCar.Controllers
             try
             {
                 ProductoDto productoDto = ComunServicio.ObtenerDtoFromString<ProductoDto>(productoString);
-                int id = this.productoServicio.ObtenerProductosTodos().Count;
+                int id = this.productoServicio.ObtenerProductosTodos().Last().ProductoId + 1;
                 productoDto.ProductoId = id;
 
                 int pk = this.productoServicio.GuardarProducto(productoDto);
 
                 return new JsonResult { Data = new { Success = true, Data = pk } };
             }
-            catch (Exception ex)
+            catch (ExcepcionComercio ex)
             {
                 return new JsonResult { Data = new { Success = false, Mensaje = ex.Message } };
             }
@@ -141,7 +143,7 @@ namespace Udi.ecommerceCar.Controllers
 
                 return new JsonResult { Data = new { Success = true, Mensaje = mensaje } };
             }
-            catch (Exception)
+            catch (ExcepcionComercio)
             {
                 return new JsonResult { Data = new { Success = false, Mensaje = "Error al querer marcar/desmarcar el producto" } };
             }
@@ -179,7 +181,7 @@ namespace Udi.ecommerceCar.Controllers
                 var data = this.productoServicio.SolicitarPedidoProducto(idUsuario, listaProductosDto);
                 return new JsonResult { Data = new { Success = true, Data = data } };
             }
-            catch (Exception ex)
+            catch (ExcepcionComercio ex)
             {
                 return new JsonResult { Data = new { Success = false, Mensaje = ex.Message } };
             }
@@ -203,7 +205,7 @@ namespace Udi.ecommerceCar.Controllers
 
                 return new JsonResult { Data = new { Success = true, Data = modificado } };
             }
-            catch (Exception ex)
+            catch (ExcepcionComercio ex)
             {
                 return new JsonResult { Data = new { Success = false, Mensaje = ex.Message } };
             }
@@ -225,7 +227,7 @@ namespace Udi.ecommerceCar.Controllers
                 bool eliminado = this.productoServicio.EliminarProducto(pk);
                 return new JsonResult { Data = new { Success = true, Data = eliminado } };
             }
-            catch (Exception ex)
+            catch (ExcepcionComercio ex)
             {
                 return new JsonResult { Data = new { Success = false, Mensaje = ex.Message } };
             }

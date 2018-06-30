@@ -9,6 +9,7 @@ namespace Udi.ecommerceCar.Controllers
     using System;
     using System.Web.Mvc;
 
+    using Udi.ecommerceCar.Data.Domain;
     using Udi.ecommerceCar.Data.Domain.Services;
 
     /// <summary>
@@ -35,7 +36,7 @@ namespace Udi.ecommerceCar.Controllers
 
                 return new JsonResult { Data = new { Success = true, Data = data } };
             }
-            catch (Exception ex)
+            catch (ExcepcionComercio ex)
             {
                 return new JsonResult { Data = new { Success = false, Mensaje = ex.Message } };
             }

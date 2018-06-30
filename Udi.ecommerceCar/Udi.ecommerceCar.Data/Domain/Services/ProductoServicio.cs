@@ -151,12 +151,17 @@ namespace Udi.ecommerceCar.Data.Domain.Services
             //// Si es nulo, o algo asi, Chau, mensaje de error
             
             DetalleVentaProductoRepositorio detalleVentaProductoRepositorio = new DetalleVentaProductoRepositorio();
-            int cantidadInsertado = detalleVentaProductoRepositorio.GuardarDetalleVentaProducto(idVentaProducto, listaProductos);
+            
+            // int cantidadInsertado = detalleVentaProductoRepositorio.GuardarDetalleVentaProducto(idVentaProducto, listaProductos);
+            detalleVentaProductoRepositorio.GuardarDetalleVentaProducto(idVentaProducto, listaProductos);
 
             decimal montoVentaProducto = detalleVentaProductoRepositorio.GetMontoVentaProducto(ventaProductoDto);
             ventaProductoDto.Monto = montoVentaProducto;
             ventaProductoRepositorio.CambiarMontoVentaProducto(ventaProductoDto);
-            
+
+            ventaProductoRepositorio.Dispose();
+            detalleVentaProductoRepositorio.Dispose();
+
             return idVentaProducto;
         }
 

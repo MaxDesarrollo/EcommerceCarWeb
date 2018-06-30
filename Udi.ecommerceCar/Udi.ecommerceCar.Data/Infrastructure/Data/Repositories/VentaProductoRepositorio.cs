@@ -63,20 +63,13 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
         /// </returns>
         public bool CambiarMontoVentaProducto(VentaProductoDto ventaProductoDto)
         {
-            try
-            {
-                VentaProducto ventaProducto = this.Get(ventaProductoDto.VentaId);
-                ventaProducto.Monto = ventaProductoDto.Monto;
+            VentaProducto ventaProducto = this.Get(ventaProductoDto.VentaId);
+            ventaProducto.Monto = ventaProductoDto.Monto;
 
-                this.Update(ventaProducto);
-                this.SaveChanges();
+            this.Update(ventaProducto);
+            this.SaveChanges();
 
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            return true;
         }
 
         // Metodo para GuardarVentaProducto
@@ -120,29 +113,22 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
         /// </returns>
         public VentaProductoDto ObtenerVentaProducto(VentaProductoDto ventaProductoDto)
         {
-            try
-            {
-                return
+            return
                     this.BuildQuery()
                         .Where(x => x.VentaID == ventaProductoDto.VentaId)
                         .Select(
                             ventaProducto =>
                             new VentaProductoDto()
-                                {
-                                    VentaId = ventaProducto.VentaID, 
-                                    Monto = ventaProducto.Monto, 
-                                    Fecha = ventaProducto.Fecha, 
-                                    Hora = ventaProducto.Hora, 
-                                    UsuarioId = ventaProducto.UsuarioID, 
-                                    Estado = ventaProducto.Estado,
-                                    EstadoString = ((VentaEstado)ventaProducto.Estado).ToString()
-                                })
+                            {
+                                VentaId = ventaProducto.VentaID,
+                                Monto = ventaProducto.Monto,
+                                Fecha = ventaProducto.Fecha,
+                                Hora = ventaProducto.Hora,
+                                UsuarioId = ventaProducto.UsuarioID,
+                                Estado = ventaProducto.Estado,
+                                EstadoString = ((VentaEstado)ventaProducto.Estado).ToString()
+                            })
                         .First();
-            }
-            catch (Exception)
-            {
-                return null;
-            }
         }
 
         /// <summary>

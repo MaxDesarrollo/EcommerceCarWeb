@@ -9,6 +9,7 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
     using System.Collections.Generic;
     using System.Linq;
 
+    using Udi.ecommerceCar.Data.Domain;
     using Udi.ecommerceCar.Data.Domain.Entities;
     using Udi.ecommerceCar.Data.Infrastructure.Data.DataModels;
 
@@ -29,14 +30,7 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
         public bool MarcarPrincipalVehiculo(int id)
         {
             var vehiculo = this.Get(id);
-
-            if (vehiculo.VisibleMain == null)
-            {
-                vehiculo.VisibleMain = false;
-            }
-
             vehiculo.VisibleMain = !vehiculo.VisibleMain;
-
             this.SaveChanges();
 
             return (bool)vehiculo.VisibleMain;
@@ -102,7 +96,7 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                                     NombreTipoCaja = inventarioVehiculo.Vehiculo.TipoCaja.Nombre
                                 }).First();
             }
-            catch (Exception)
+            catch (ExcepcionComercio)
             {
                 return null;
             }
@@ -203,7 +197,6 @@ namespace Udi.ecommerceCar.Data.Infrastructure.Data.Repositories
                                 Precio = inventarioVehiculo.Precio, 
                                 Año = (DateTime)inventarioVehiculo.Año,
                                 Color = inventarioVehiculo.Color,
-                                // ModeloID = (int)vehiculo.ModeloID,
                                 CantidadPuertas = inventarioVehiculo.Vehiculo.CantidadPuertas, 
                                 HabilitadoTestDrive = inventarioVehiculo.Vehiculo.HabilitadoTestDrive, 
                                 Estado = inventarioVehiculo.Vehiculo.Estado, 

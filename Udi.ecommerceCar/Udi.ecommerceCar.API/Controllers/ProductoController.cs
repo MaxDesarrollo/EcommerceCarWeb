@@ -29,11 +29,11 @@ namespace Udi.ecommerceCar.Api.Controllers
                 string fecha = Parametros.DatoStr;
 
                 DateTime date = DateTime.ParseExact("1990-01-01T00:00:00", "yyyy-MM-dd'T'HH:mm:ss", CultureInfo.InvariantCulture);
-                bool PrimeraVez = true;
+                //bool PrimeraVez = true;
                 if (!string.IsNullOrEmpty(fecha) && !fecha.Equals("1990-01-01T00:00:00"))
                 {
                     date = DateTime.ParseExact(fecha, "yyyy-MM-dd'T'HH:mm:ss", CultureInfo.InvariantCulture);
-                    PrimeraVez = false;
+                    //PrimeraVez = false;
                 }
 
 

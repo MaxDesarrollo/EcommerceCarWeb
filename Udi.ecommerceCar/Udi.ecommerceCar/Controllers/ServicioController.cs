@@ -8,6 +8,7 @@ namespace Udi.ecommerceCar.Controllers
     using System;
     using System.Web.Mvc;
 
+    using Udi.ecommerceCar.Data.Domain;
     using Udi.ecommerceCar.Data.Domain.Entities;
     using Udi.ecommerceCar.Data.Domain.Services;
 
@@ -100,7 +101,7 @@ namespace Udi.ecommerceCar.Controllers
 
                 return new JsonResult { Data = new { Success = true, Data = data } };
             }
-            catch (Exception ex)
+            catch (ExcepcionComercio ex)
             {
                 return new JsonResult { Data = new { Success = false, Mensaje = ex.Message } };
             }
@@ -118,7 +119,7 @@ namespace Udi.ecommerceCar.Controllers
         /// <returns>
         /// The <see cref="JsonResult"/>.
         /// </returns>
-        public JsonResult ObtenerServicios(int page, int size)
+        public JsonResult ObtenerServicios(int? page, int? size)
         {
             try
             {
@@ -126,7 +127,7 @@ namespace Udi.ecommerceCar.Controllers
 
                 return new JsonResult { Data = new { Success = true, Data = data } };
             }
-            catch (Exception ex)
+            catch (ExcepcionComercio ex)
             {
                 return new JsonResult { Data = new { Success = false, Mensaje = ex.Message } };
             }
@@ -146,7 +147,7 @@ namespace Udi.ecommerceCar.Controllers
 
                 return new JsonResult { Data = new { Success = true, Data = data } };
             }
-            catch (Exception ex)
+            catch (ExcepcionComercio ex)
             {
                 return new JsonResult { Data = new { Success = false, Mensaje = ex.Message } };
             }
@@ -173,7 +174,7 @@ namespace Udi.ecommerceCar.Controllers
 
                 return new JsonResult { Data = new { Success = true, Mensaje = mensaje } };
             }
-            catch (Exception)
+            catch (ExcepcionComercio)
             {
                 return new JsonResult { Data = new { Success = false, Mensaje = "Error al querer marcar/desmarcar el servicio" } };
             }
@@ -193,7 +194,7 @@ namespace Udi.ecommerceCar.Controllers
 
                 return new JsonResult { Data = new { Success = true, Data = data } };
             }
-            catch (Exception ex)
+            catch (ExcepcionComercio ex)
             {
                 return new JsonResult { Data = new { Success = false, Mensaje = ex.Message } };
             }

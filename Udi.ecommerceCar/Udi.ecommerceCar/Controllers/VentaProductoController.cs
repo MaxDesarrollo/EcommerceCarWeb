@@ -9,6 +9,7 @@ namespace Udi.ecommerceCar.Controllers
     using System;
     using System.Web.Mvc;
 
+    using Udi.ecommerceCar.Data.Domain;
     using Udi.ecommerceCar.Data.Domain.Entities;
     using Udi.ecommerceCar.Data.Domain.Services;
 
@@ -45,8 +46,6 @@ namespace Udi.ecommerceCar.Controllers
 
             return this.View(ventaProducto);
         }
-
-
 
         /// <summary>
         /// The detalle pedido.
@@ -94,7 +93,7 @@ namespace Udi.ecommerceCar.Controllers
 
                 return new JsonResult { Data = new { Success = true, Data = nuevoEstadoSelect } };
             }
-            catch (Exception ex)
+            catch (ExcepcionComercio ex)
             {
                 return new JsonResult { Data = new { Success = false, Mensaje = ex.Message } };
             }
@@ -116,7 +115,7 @@ namespace Udi.ecommerceCar.Controllers
                 bool cancelado = this.ventaProductoServicio.CancelarPedidoPorCliente(ventaProductoId);
                 return new JsonResult { Data = new { Success = cancelado } };
             }
-            catch (Exception ex)
+            catch (ExcepcionComercio ex)
             {
                 return new JsonResult { Data = new { Success = false, Mensaje = ex.Message } };
             }
@@ -136,7 +135,7 @@ namespace Udi.ecommerceCar.Controllers
 
                 return new JsonResult { Data = new { Success = true, Data = data } };
             }
-            catch (Exception ex)
+            catch (ExcepcionComercio ex)
             {
                 return new JsonResult { Data = new { Success = false, Mensaje = ex.Message } };
             }

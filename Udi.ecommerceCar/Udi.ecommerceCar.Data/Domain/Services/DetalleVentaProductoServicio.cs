@@ -19,15 +19,7 @@ namespace Udi.ecommerceCar.Data.Domain.Services
         /// <summary>
         /// The detalle venta producto repositorio.
         /// </summary>
-        private readonly DetalleVentaProductoRepositorio detalleVentaProductoRepositorio;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DetalleVentaProductoServicio"/> class.
-        /// </summary>
-        public DetalleVentaProductoServicio()
-        {
-            this.detalleVentaProductoRepositorio = new DetalleVentaProductoRepositorio();
-        }
+        private readonly DetalleVentaProductoRepositorio detalleVentaProductoRepositorio = new DetalleVentaProductoRepositorio();
 
         /// <summary>
         /// The obtener detalles ventas productos todos.
